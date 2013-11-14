@@ -1,0 +1,1044 @@
+      create  app/views/layouts/application.html.erb
+      create  app/assets/images/.keep
+      create  app/mailers/.keep
+      create  app/models/.keep
+      create  app/controllers/concerns/.keep
+      create  app/models/concerns/.keep
+      create  bin
+      create  bin/bundle
+      create  bin/rails
+      create  bin/rake
+      create  config
+      create  config/routes.rb
+      create  config/application.rb
+      create  config/environment.rb
+      create  config/environments
+      create  config/environments/development.rb
+      create  config/environments/production.rb
+      create  config/environments/test.rb
+      create  config/initializers
+      create  config/initializers/backtrace_silencers.rb
+      create  config/initializers/filter_parameter_logging.rb
+      create  config/initializers/inflections.rb
+      create  config/initializers/mime_types.rb
+      create  config/initializers/secret_token.rb
+      create  config/initializers/session_store.rb
+      create  config/initializers/wrap_parameters.rb
+      create  config/locales
+      create  config/locales/en.yml
+      create  config/boot.rb
+      create  config/database.yml
+      create  db
+      create  db/seeds.rb
+      create  lib
+      create  lib/tasks
+      create  lib/tasks/.keep
+      create  lib/assets
+      create  lib/assets/.keep
+      create  log
+      create  log/.keep
+      create  public
+      create  public/404.html
+      create  public/422.html
+      create  public/500.html
+      create  public/favicon.ico
+      create  public/robots.txt
+      create  tmp/cache
+      create  tmp/cache/assets
+      create  vendor/assets/javascripts
+      create  vendor/assets/javascripts/.keep
+      create  vendor/assets/stylesheets
+      create  vendor/assets/stylesheets/.keep
+       apply  https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+    composer  WOOT! The recipes you've selected are known to work together.
+    composer  You are using Rails version 4.0.1.
+    composer  Using rails_apps_composer recipes to generate an application.
+      insert    config/application.rb
+      recipe  Running core recipe...
+        core  selected all core recipes
+      recipe  Running git recipe...
+         git  initialize git
+      remove    .gitignore
+      create    .gitignore
+         run    git init from "."
+Initialised empty Git repository in /home/mark/rails01/virtual-museum/virtual-museum/.git/
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: initial commit" from "."
+      recipe  Running railsapps recipe...
+    question  Install an example application for Rails 4.0?
+          1)  Build a RailsApps starter application
+          2)  Build a contributed application
+          3)  I want to build my own application
+   railsapps  Enter your selection: 3
+      recipe  Running setup recipe...
+       setup  Your operating system is linux-gnu.
+       setup  You are using Ruby version 2.0.0.
+       setup  You are using Rails version 4.0.1.
+    question  Web server for development?
+          1)  WEBrick (default)
+          2)  Thin
+          3)  Unicorn
+          4)  Puma
+       setup  Enter your selection: 1
+    question  Web server for production?
+          1)  Same as development
+          2)  Thin
+          3)  Unicorn
+          4)  Puma
+       setup  Enter your selection: 1
+    question  Database used in development?
+          1)  SQLite
+          2)  PostgreSQL
+          3)  MySQL
+          4)  MongoDB
+       setup  Enter your selection: 2
+    question  Template engine?
+          1)  ERB
+          2)  Haml
+          3)  Slim (experimental)
+       setup  Enter your selection: 1
+    question  Unit testing?
+          1)  Test::Unit
+          2)  RSpec
+          3)  MiniTest
+       setup  Enter your selection: 2
+    question  Integration testing?
+          1)  None
+          2)  RSpec with Capybara
+          3)  Cucumber with Capybara
+          4)  Turnip with Capybara
+          5)  MiniTest with Capybara
+       setup  Enter your selection: 3
+    question  Continuous testing?
+          1)  None
+          2)  Guard
+       setup  Enter your selection: 1
+    question  Fixture replacement?
+          1)  None
+          2)  Factory Girl
+          3)  Machinist
+          4)  Fabrication
+       setup  Enter your selection: 2
+    question  Front-end framework?
+          1)  None
+          2)  Zurb Foundation 4.0
+          3)  Twitter Bootstrap 3.0
+          4)  Twitter Bootstrap 2.3
+          5)  Simple CSS
+       setup  Enter your selection: 4
+    question  Add support for sending email?
+          1)  None
+          2)  Gmail
+          3)  SMTP
+          4)  SendGrid
+          5)  Mandrill
+       setup  Enter your selection: 1
+    question  Authentication?
+          1)  None
+          2)  Devise
+          3)  OmniAuth
+       setup  Enter your selection: 2
+    question  Devise modules?
+          1)  Devise with default modules
+          2)  Devise with Confirmable module
+          3)  Devise with Confirmable and Invitable modules
+       setup  Enter your selection: 1
+    question  Authorization?
+          1)  None
+          2)  CanCan with Rolify
+       setup  Enter your selection: 2
+    question  Use a form builder gem?
+          1)  None
+          2)  SimpleForm
+       setup  Enter your selection: 2
+    question  Install a starter app?
+          1)  None
+          2)  Home Page
+          3)  Home Page, User Accounts
+          4)  Home Page, User Accounts, Admin Dashboard
+       setup  Enter your selection: 4
+      create    README
+      append    README
+      recipe  Running readme recipe...
+      recipe  Running gems recipe...
+      insert    Gemfile
+        gsub    Gemfile
+        gsub    Gemfile
+        gsub    Gemfile
+        gsub    Gemfile
+        gsub    Gemfile
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: Gemfile" from "."
+      recipe  Running testing recipe...
+      recipe  Running email recipe...
+      recipe  Running models recipe...
+      recipe  Running controllers recipe...
+      recipe  Running views recipe...
+      recipe  Running routes recipe...
+      recipe  Running frontend recipe...
+      recipe  Running init recipe...
+      recipe  Running apps4 recipe...
+      recipe  Running prelaunch recipe...
+      recipe  Running prelaunch recipe...
+      recipe  Running extras recipe...
+      extras  Set a robots.txt file to ban spiders? (y/n) y
+      extras  Create a GitHub repository? (y/n) n
+      extras  Use application.yml file for environment variables? (y/n) y
+      extras  Reduce assets logger noise during development? (y/n) y
+      extras  Improve error reporting with 'better_errors' during development? (y/n) y
+      extras  Use or create a project-specific rvm gemset? (y/n) n
+      extras  recipe setting quiet_assets for reduced asset pipeline logging
+      extras  recipe creating application.yml file for environment variables
+      extras  recipe adding better_errors gem
+      extras  recipe banning spiders by modifying 'public/robots.txt'
+      extras  Add 'therubyracer' JavaScript runtime (for Linux users without node.js)? (y/n) n
+    composer  Installing gems. This will take a while.
+         run    bundle install --without production from "."
+Fetching gem metadata from https://rubygems.org/.........
+Fetching gem metadata from https://rubygems.org/..
+Resolving dependencies...
+Using rake (10.1.0) 
+Using i18n (0.6.5) 
+Using minitest (4.7.5) 
+Using multi_json (1.8.2) 
+Using atomic (1.1.14) 
+Using thread_safe (0.1.3) 
+Using tzinfo (0.3.38) 
+Using activesupport (4.0.1) 
+Using builder (3.1.4) 
+Using erubis (2.7.0) 
+Using rack (1.5.2) 
+Using rack-test (0.6.2) 
+Using actionpack (4.0.1) 
+Using mime-types (1.25) 
+Using polyglot (0.3.3) 
+Using treetop (1.4.15) 
+Using mail (2.5.4) 
+Using actionmailer (4.0.1) 
+Using activemodel (4.0.1) 
+Using activerecord-deprecated_finders (1.0.3) 
+Using arel (4.0.1) 
+Using activerecord (4.0.1) 
+Using addressable (2.3.5) 
+Using bcrypt-ruby (3.1.2) 
+Using coderay (1.1.0) 
+Using better_errors (1.0.1) 
+Using debug_inspector (0.0.2) 
+Using binding_of_caller (0.7.2) 
+Using sass (3.2.12) 
+Using bootstrap-sass (2.3.2.2) 
+Using bundler (1.3.5) 
+Using cancan (1.6.10) 
+Using mini_portile (0.5.2) 
+Using nokogiri (1.6.0) 
+Using xpath (2.0.0) 
+Using capybara (2.1.0) 
+Using coffee-script-source (1.6.3) 
+Using execjs (2.0.2) 
+Using coffee-script (2.2.0) 
+Using thor (0.18.1) 
+Using railties (4.0.1) 
+Using coffee-rails (4.0.1) 
+Using diff-lcs (1.2.5) 
+Installing gherkin (2.12.2) 
+Using multi_test (0.0.2) 
+Installing cucumber (1.3.9) 
+Using hike (1.2.3) 
+Using tilt (1.4.1) 
+Using sprockets (2.10.0) 
+Using sprockets-rails (2.0.1) 
+Using rails (4.0.1) 
+Using cucumber-rails (1.4.0) 
+Using database_cleaner (1.0.1) 
+Installing orm_adapter (0.5.0) 
+Using warden (1.2.3) 
+Installing devise (3.2.1) 
+Installing launchy (2.4.0) 
+Using email_spec (1.5.0) 
+Using factory_girl (4.3.0) 
+Using factory_girl_rails (4.3.0) 
+Using figaro (0.7.0) 
+Using jbuilder (1.5.2) 
+Using jquery-rails (3.0.4) 
+Using json (1.8.1) 
+Using pg (0.17.0) 
+Using quiet_assets (1.0.2) 
+Using rails_layout (0.5.0) 
+Using rolify (3.2.0) 
+Using rspec-core (2.14.7) 
+Using rspec-expectations (2.14.4) 
+Using rspec-mocks (2.14.4) 
+Using rspec-rails (2.14.0) 
+Using sass-rails (4.0.1) 
+Using simple_form (3.0.0) 
+Using turbolinks (1.3.0) 
+Using uglifier (2.3.1) 
+Your bundle is complete!
+Gems in the group production were not installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+    composer  Updating gem paths.
+WARN: Unresolved specs during Gem::Specification.reset:
+      multi_json (~> 1.3)
+      tzinfo (~> 0.3.37)
+      minitest (~> 4.2)
+      rake (>= 0.8.7)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+    composer  Running 'after bundler' callbacks.
+gems
+      remove    config/database.yml
+      create    config/database.yml
+        gems  Username for PostgreSQL?(leave blank to use the app name) 
+        gems  Creating a user named 'virtual-museum' for PostgreSQL
+         run    createuser virtual-museum from "."
+Shall the new role be a superuser? (y/n) y
+        gsub    config/database.yml
+        gsub    config/database.yml
+        gsub    config/database.yml
+        gsub    config/database.yml
+        gems  Okay to drop all existing databases named virtual-museum? 'No' will abort immediately! (y/n) y
+         run    bundle exec rake db:drop from "."
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:8:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:30:in `drop'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:98:in `drop'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:110:in `block in drop_current'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:183:in `block in each_current_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:182:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:182:in `each_current_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:109:in `drop_current'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:35:in `block (2 levels) in <top (required)>'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `call'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `block in execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:175:in `block in invoke_with_call_chain'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:168:in `invoke_with_call_chain'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:161:in `invoke'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:149:in `invoke_task'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:115:in `run_with_threads'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:100:in `top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:78:in `block in run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:75:in `run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/bin/rake:33:in `<top (required)>'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `load'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `<main>'
+Couldn't drop virtual-museum_development
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:8:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:30:in `drop'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:98:in `drop'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:110:in `block in drop_current'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:183:in `block in each_current_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:182:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:182:in `each_current_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:109:in `drop_current'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:35:in `block (2 levels) in <top (required)>'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `call'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `block in execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:175:in `block in invoke_with_call_chain'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:168:in `invoke_with_call_chain'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:161:in `invoke'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:149:in `invoke_task'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:115:in `run_with_threads'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:100:in `top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:78:in `block in run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:75:in `run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/bin/rake:33:in `<top (required)>'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `load'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `<main>'
+Couldn't drop virtual-museum_test
+         run    bundle exec rake db:create:all from "."
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:8:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:17:in `create'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:73:in `create'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:82:in `block in create_all'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:192:in `block in each_local_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:188:in `each_value'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:188:in `each_local_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:82:in `create_all'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:11:in `block (3 levels) in <top (required)>'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `call'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `block in execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:175:in `block in invoke_with_call_chain'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:168:in `invoke_with_call_chain'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:161:in `invoke'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:149:in `invoke_task'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:115:in `run_with_threads'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:100:in `top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:78:in `block in run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:75:in `run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/bin/rake:33:in `<top (required)>'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `load'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `<main>'
+Couldn't create database for {"adapter"=>"postgresql", "host"=>"localhost", "encoding"=>"unicode", "database"=>"virtual-museum_development", "pool"=>5, "username"=>"virtual-museum", "password"=>nil, "template"=>"template0"}
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:8:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:17:in `create'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:73:in `create'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:82:in `block in create_all'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:192:in `block in each_local_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:188:in `each_value'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:188:in `each_local_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:82:in `create_all'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:11:in `block (3 levels) in <top (required)>'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `call'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `block in execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:175:in `block in invoke_with_call_chain'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:168:in `invoke_with_call_chain'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:161:in `invoke'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:149:in `invoke_task'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:115:in `run_with_threads'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:100:in `top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:78:in `block in run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:75:in `run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/bin/rake:33:in `<top (required)>'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `load'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `<main>'
+Couldn't create database for {"adapter"=>"postgresql", "host"=>"localhost", "encoding"=>"unicode", "database"=>"virtual-museum_test", "pool"=>5, "username"=>"virtual-museum", "password"=>nil, "template"=>"template0"}
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:8:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:17:in `create'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:73:in `create'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:82:in `block in create_all'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:192:in `block in each_local_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:188:in `each_value'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:188:in `each_local_configuration'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:82:in `create_all'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:11:in `block (3 levels) in <top (required)>'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `call'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:236:in `block in execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:231:in `execute'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:175:in `block in invoke_with_call_chain'
+/opt/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:168:in `invoke_with_call_chain'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/task.rb:161:in `invoke'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:149:in `invoke_task'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block (2 levels) in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `each'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:106:in `block in top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:115:in `run_with_threads'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:100:in `top_level'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:78:in `block in run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/lib/rake/application.rb:75:in `run'
+/home/mark/.gem/ruby/2.0.0/gems/rake-10.1.0/bin/rake:33:in `<top (required)>'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `load'
+/home/mark/.gem/ruby/2.0.0/bin/rake:23:in `<main>'
+Couldn't create database for {"adapter"=>"postgresql", "host"=>"localhost", "encoding"=>"unicode", "database"=>"virtual-museum_production", "pool"=>5, "username"=>"virtual-museum", "password"=>nil, "template"=>"template0"}
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: create database" from "."
+gems
+        gems  recipe installing simple_form for use with Twitter Bootstrap
+    generate    simple_form:install --bootstrap
+      create  config/initializers/simple_form.rb
+      create  config/initializers/simple_form_bootstrap.rb
+       exist  config/locales
+      create  config/locales/simple_form.en.yml
+      create  lib/templates/erb/scaffold/_form.html.erb
+===============================================================================
+
+  Be sure to have a copy of the Bootstrap stylesheet available on your
+  application, you can get it on http://twitter.github.com/bootstrap.
+
+  Inside your views, use the 'simple_form_for' with one of the Bootstrap form
+  classes, '.form-horizontal', '.form-inline', '.form-search' or
+  '.form-vertical', as the following:
+
+    = simple_form_for(@user, html: {class: 'form-horizontal' }) do |form|
+
+===============================================================================
+    generate    figaro:install
+      create  config/application.yml
+      append  .gitignore
+        gsub    config/application.yml
+        gsub    config/application.yml
+     prepend    config/application.yml
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: generators" from "."
+testing
+     testing  recipe running after 'bundle install'
+     testing  recipe installing RSpec
+    generate    rspec:install
+      create  .rspec
+      create  spec
+      create  spec/spec_helper.rb
+      remove    spec/spec_helper.rb
+      create    spec/spec_helper.rb
+    generate    email_spec:steps
+      create  features/step_definitions/email_steps.rb
+      insert    spec/spec_helper.rb
+      insert    spec/spec_helper.rb
+         run    rm -rf test/ from "."
+      insert    config/application.rb
+      create    spec/support/devise.rb
+     testing  recipe installing Cucumber
+    generate    cucumber:install --capybara --rspec
+      create  config/cucumber.yml
+      create  script/cucumber
+       chmod  script/cucumber
+       exist  features/step_definitions
+      create  features/support
+      create  features/support/env.rb
+       exist  lib/tasks
+      create  lib/tasks/cucumber.rake
+        gsub  config/database.yml
+        gsub  config/database.yml
+       force  config/database.yml
+        gsub    config/cucumber.yml
+      create    features/support/email_spec.rb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: testing framework" from "."
+email
+       email  recipe running after 'bundle install'
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: set email accounts" from "."
+# On branch master
+nothing to commit, working directory clean
+models
+      models  recipe running after 'bundle install'
+        gsub    config/application.rb
+    generate    devise:install
+      create  config/initializers/devise.rb
+      create  config/locales/devise.en.yml
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have defined default url options in your environments files. Here 
+     is an example of default_url_options appropriate for a development environment 
+     in config/environments/development.rb:
+
+       config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+     In production, :host should be set to the actual host of your application.
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root :to => "home#index"
+
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+  4. If you are deploying on Heroku with Rails 3.2 only, you may want to set:
+
+       config.assets.initialize_on_precompile = false
+
+     On config/application.rb forcing your application to not access the DB
+     or load models when precompiling your assets.
+
+  5. You can copy Devise views (for customization) to your app by running:
+
+       rails g devise:views
+
+===============================================================================
+    generate    devise user
+      invoke  active_record
+      create    db/migrate/20131114133612_devise_create_users.rb
+      create    app/models/user.rb
+      invoke    rspec
+      create      spec/models/user_spec.rb
+      invoke      factory_girl
+      create        spec/factories/users.rb
+      insert    app/models/user.rb
+       route  devise_for :users
+    generate    migration AddNameToUsers name:string
+      invoke  active_record
+      create    db/migrate/20131114133615_add_name_to_users.rb
+        gsub    config/initializers/devise.rb
+    generate    cancan:ability
+      create  app/models/ability.rb
+      remove    app/models/ability.rb
+      create    app/models/ability.rb
+      insert    app/models/user.rb
+    generate    rolify:role Role User
+      create  app/models/role.rb
+      insert  app/models/user.rb
+      create  config/initializers/rolify.rb
+      create  db/migrate/20131114133620_rolify_create_roles.rb
+===============================================================================
+
+An initializer file has been created here: config/initializers/rolify.rb, you 
+can change rolify settings to match your needs. 
+Defaults values are commented out.
+
+A Role class has been been created in app/models (with the name you gave as 
+argument otherwise the default is role.rb), you can add your own business logic 
+inside.
+
+Inside your User class (or the name you gave as argument otherwise the default 
+is user.rb), rolify method has been inserted to provide rolify methods.
+
+Now, if you just have to run the migration using rake command:
+
+   rake db:migrate
+
+and you will be able to add the resourcify method inside all models you want 
+scoped by a role.
+
+===============================================================================
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: models" from "."
+controllers
+  controllers  recipe running after 'bundle install'
+      insert    app/controllers/application_controller.rb
+    generate    controller
+      create  app/controllers/home_controller.rb
+       route  get "home/index"
+      invoke  erb
+      create    app/views/home
+      create    app/views/home/index.html.erb
+      invoke  rspec
+      create    spec/controllers/home_controller_spec.rb
+      invoke  helper
+      create    app/helpers/home_helper.rb
+      invoke    rspec
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/home.js.coffee
+      invoke    scss
+      create      app/assets/stylesheets/home.css.scss
+        gsub    app/controllers/home_controller.rb
+      remove    app/controllers/users_controller.rb
+      create    app/controllers/users_controller.rb
+      remove    app/controllers/registrations_controller.rb
+      create    app/controllers/registrations_controller.rb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: controllers" from "."
+views
+       views  recipe running after 'bundle install'
+      remove    app/views/devise/shared/_links.html.erb
+      create    app/views/devise/shared/_links.html.erb
+      remove    app/views/devise/registrations/edit.html.erb
+      create    app/views/devise/registrations/edit.html.erb
+      remove    app/views/devise/registrations/new.html.erb
+      create    app/views/devise/registrations/new.html.erb
+      remove    app/views/devise/sessions/new.html.erb
+      create    app/views/devise/sessions/new.html.erb
+      remove    app/helpers/application_helper.rb
+      create    app/helpers/application_helper.rb
+      remove    app/views/home/index.html.erb
+      create    app/views/home/index.html.erb
+      remove    app/views/users/index.html.erb
+      create    app/views/users/index.html.erb
+      remove    app/views/users/_user.html.erb
+      create    app/views/users/_user.html.erb
+      remove    app/views/users/show.html.erb
+      create    app/views/users/show.html.erb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: views" from "."
+routes
+      routes  recipe running after 'bundle install'
+      remove    config/routes.rb
+      create    config/routes.rb
+        gsub    config/routes.rb
+        gsub    config/routes.rb
+        gsub    config/routes.rb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: routes" from "."
+frontend
+    frontend  recipe running after 'bundle install'
+    generate    layout bootstrap2 -f
+      remove  app/assets/stylesheets/application.css
+      create  app/assets/stylesheets/application.css.scss
+      create  app/assets/stylesheets/framework_and_overrides.css.scss
+       force  app/assets/javascripts/application.js
+      remove  app/assets/stylesheets/simple.css
+      remove  app/assets/stylesheets/foundation_and_overrides.css.scss
+       force  app/views/layouts/application.html.erb
+      create  app/views/layouts/_messages.html.erb
+      create  app/views/layouts/_navigation.html.erb
+      create  app/views/layouts/_navigation_links.html.erb
+      remove    app/views/layouts/_navigation.html.erb
+      create    app/views/layouts/_navigation.html.erb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: front-end framework" from "."
+extras
+        gsub    public/robots.txt
+        gsub    public/robots.txt
+    composer  Running 'after everything' callbacks.
+readme
+      readme  recipe running after everything
+      remove    README
+      remove    README.rdoc
+      remove    doc/README_FOR_APP
+      remove    public/humans.txt
+      create    public/humans.txt
+      remove    README
+      create    README
+      remove    README.textile
+      create    README.textile
+        gsub    README
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README
+        gsub    README
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+        gsub    README.textile
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: add README files" from "."
+testing
+     testing  recipe running after everything
+     testing  copying RSpec files from the rails3-bootstrap-devise-cancan examples
+      remove    spec/factories/users.rb
+      create    spec/factories/users.rb
+      remove    spec/controllers/home_controller_spec.rb
+      create    spec/controllers/home_controller_spec.rb
+      remove    spec/controllers/users_controller_spec.rb
+      create    spec/controllers/users_controller_spec.rb
+      remove    spec/models/user_spec.rb
+      create    spec/models/user_spec.rb
+      remove    spec/views/home/index.html.erb_spec.rb
+      remove    spec/views/home/index.html.haml_spec.rb
+      remove    spec/views/users/show.html.erb_spec.rb
+      remove    spec/views/users/show.html.haml_spec.rb
+      remove    spec/helpers/home_helper_spec.rb
+      remove    spec/helpers/users_helper_spec.rb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: rspec files" from "."
+     testing  copying Cucumber scenarios from the rails3-bootstrap-devise-cancan examples
+      remove    spec/controllers/home_controller_spec.rb
+      create    spec/controllers/home_controller_spec.rb
+      remove    features/users/sign_in.feature
+      create    features/users/sign_in.feature
+      remove    features/users/sign_out.feature
+      create    features/users/sign_out.feature
+      remove    features/users/sign_up.feature
+      create    features/users/sign_up.feature
+      remove    features/users/user_edit.feature
+      create    features/users/user_edit.feature
+      remove    features/users/user_show.feature
+      create    features/users/user_show.feature
+      remove    features/step_definitions/user_steps.rb
+      create    features/step_definitions/user_steps.rb
+      remove    features/support/paths.rb
+      create    features/support/paths.rb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: cucumber files" from "."
+init
+        init  recipe running after everything
+      append    config/application.yml
+      append    config/application.yml
+      append    config/application.yml
+      create    config/application.example.yml
+      append    db/seeds.rb
+      append    db/seeds.rb
+        gsub    db/seeds.rb
+      append    db/seeds.rb
+      append    db/seeds.rb
+        init  applying migrations and seeding the database
+         run    bundle exec rake db:migrate from "."
+rake aborted!
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/migration.rb:863:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/migration.rb:764:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/migration.rb:764:in `up'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/migration.rb:742:in `migrate'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:42:in `block (2 levels) in <top (required)>'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+         run    bundle exec rake db:test:prepare from "."
+rake aborted!
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:8:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:30:in `drop'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/postgresql_database_tasks.rb:43:in `purge'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/tasks/database_tasks.rb:137:in `purge'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:364:in `block (3 levels) in <top (required)>'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:370:in `block (3 levels) in <top (required)>'
+Tasks: TOP => db:test:load => db:test:purge
+(See full trace by running task with --trace)
+         run    bundle exec rake db:seed from "."
+rake aborted!
+fe_sendauth: no password supplied
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/connection_handling.rb:53:in `connection'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/migration.rb:863:in `initialize'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/migration.rb:779:in `new'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/migration.rb:779:in `open'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:164:in `block (2 levels) in <top (required)>'
+/home/mark/.gem/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/railties/databases.rake:180:in `block (2 levels) in <top (required)>'
+Tasks: TOP => db:abort_if_pending_migrations
+(See full trace by running task with --trace)
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: set up database" from "."
+extras
+      extras  recipe removing unnecessary files and whitespace
+      remove    public/index.html
+      remove    app/assets/images/rails.png
+        gsub    Gemfile
+        gsub    Gemfile
+        gsub    config/routes.rb
+        gsub    config/routes.rb
+         run    git add -A from "."
+         run    git commit -qm "rails_apps_composer: extras" from "."
+    composer  WOOT! The recipes you've selected are known to work together.
+    composer  If they don't, open an issue for rails_apps_composer on GitHub.
+    composer  WARNING! The preferences you've selected might not work together.
+    composer  Help us out by reporting whether this combination works or fails.
+    composer  Please open an issue for rails_apps_composer on GitHub.
+    composer  Your new application will contain diagnostics in its README file.
+    composer  Finished running the rails_apps_composer app template.
+    composer  Your new Rails app is ready. Time to run 'bundle install'.
+         run  bundle install
+Using rake (10.1.0) 
+Using i18n (0.6.5) 
+Using minitest (4.7.5) 
+Using multi_json (1.8.2) 
+Using atomic (1.1.14) 
+Using thread_safe (0.1.3) 
+Using tzinfo (0.3.38) 
+Using activesupport (4.0.1) 
+Using builder (3.1.4) 
+Using erubis (2.7.0) 
+Using rack (1.5.2) 
+Using rack-test (0.6.2) 
+Using actionpack (4.0.1) 
+Using mime-types (1.25) 
+Using polyglot (0.3.3) 
+Using treetop (1.4.15) 
+Using mail (2.5.4) 
+Using actionmailer (4.0.1) 
+Using activemodel (4.0.1) 
+Using activerecord-deprecated_finders (1.0.3) 
+Using arel (4.0.1) 
+Using activerecord (4.0.1) 
+Using addressable (2.3.5) 
+Using bcrypt-ruby (3.1.2) 
+Using coderay (1.1.0) 
+Using better_errors (1.0.1) 
+Using debug_inspector (0.0.2) 
+Using binding_of_caller (0.7.2) 
+Using sass (3.2.12) 
+Using bootstrap-sass (2.3.2.2) 
+Using cancan (1.6.10) 
+Using mini_portile (0.5.2) 
+Using nokogiri (1.6.0) 
+Using xpath (2.0.0) 
+Using capybara (2.1.0) 
+Using coffee-script-source (1.6.3) 
+Using execjs (2.0.2) 
+Using coffee-script (2.2.0) 
+Using thor (0.18.1) 
+Using railties (4.0.1) 
+Using coffee-rails (4.0.1) 
+Using diff-lcs (1.2.5) 
+Using gherkin (2.12.2) 
+Using multi_test (0.0.2) 
+Using cucumber (1.3.9) 
+Using bundler (1.3.5) 
+Using hike (1.2.3) 
+Using tilt (1.4.1) 
+Using sprockets (2.10.0) 
+Using sprockets-rails (2.0.1) 
+Using rails (4.0.1) 
+Using cucumber-rails (1.4.0) 
+Using database_cleaner (1.0.1) 
+Using orm_adapter (0.5.0) 
+Using warden (1.2.3) 
+Using devise (3.2.1) 
+Using launchy (2.4.0) 
+Using email_spec (1.5.0) 
+Using factory_girl (4.3.0) 
+Using factory_girl_rails (4.3.0) 
+Using figaro (0.7.0) 
+Using jbuilder (1.5.2) 
+Using jquery-rails (3.0.4) 
+Using json (1.8.1) 
+Using pg (0.17.0) 
+Using quiet_assets (1.0.2) 
+Using rails_layout (0.5.0) 
+Using rolify (3.2.0) 
+Using rspec-core (2.14.7) 
+Using rspec-expectations (2.14.4) 
+Using rspec-mocks (2.14.4) 
+Using rspec-rails (2.14.0) 
+Using sass-rails (4.0.1) 
+Using simple_form (3.0.0) 
+Using turbolinks (1.3.0) 
+Using uglifier (2.3.1) 
+Your bundle is complete!
+Gems in the group production were not installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+/home/mark/rails01/virtual-museum  😸 0  $$   
+                                                                                                                                                                                      
