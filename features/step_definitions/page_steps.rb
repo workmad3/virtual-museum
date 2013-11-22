@@ -4,18 +4,19 @@ Given(/^I am signed in$/) do
   fill_in 'user_email', :with => @user.email
   fill_in('user_password', :with => @user.password)
   click_button('Sign in')
-  visit edit_user_registration_path
+  current_path.should == '/'
   page.should have_content('Sign out')
 end
 
 When(/^I go to the Add Page page/) do
+  click_button('Add page')
+  #visit edit_user_registration_path
+end
+
+And(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
   pending # express the regexp above with the code you wish you had
 end
 
-And(/^I add a page entitled "(.*?) with content (.*?)"$/) do |title, content|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should see  a page entitled "(.*?) with content (.*?)"$/) do |title, content|
+Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
 end
