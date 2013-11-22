@@ -9,8 +9,8 @@ Given(/^I am signed in$/) do
 end
 
 When(/^I go to the Add Page page/) do
-  click_button('Add page')
-  #visit edit_user_registration_path
+  click_link("Add page")
+  current_path.should == edit_page_path
 end
 
 And(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|

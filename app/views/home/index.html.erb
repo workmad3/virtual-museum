@@ -1,6 +1,6 @@
 <h1>Home</h1>
 
-<%= link_to "Add page", '/microposts/new', class: "btn btn-large btn-primary" if user_signed_in? %>
+<%= link_to "Add page", new_page_path, id: 'fresh', class: "btn btn-large btn-primary" if user_signed_in? %>
 
 <% @users.each do |user| %>
   <p>User: <%=link_to user.name, user %></p>
