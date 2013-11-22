@@ -5,13 +5,17 @@ Given(/^I am signed in$/) do
   fill_in('user_password', :with => @user.password)
   click_button('Sign in')
   visit edit_user_registration_path
-  page.should have_content(@user.email)
+  page.should have_content('Sign out')
 end
 
-When(/^I add a page entitled "(.*?)"$/) do |arg1|
+When(/^I go to the Add Page page/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should see the page "(.*?)" on the home page$/) do |arg1|
+And(/^I add a page entitled "(.*?) with content (.*?)"$/) do |title, content|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see  a page entitled "(.*?) with content (.*?)"$/) do |title, content|
   pending # express the regexp above with the code you wish you had
 end

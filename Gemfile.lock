@@ -189,7 +189,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   cucumber-rails
-  database_cleaner (= 1.0.1)
+  database_cleaner
   devise
   email_spec
   factory_girl_rails
