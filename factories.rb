@@ -1,4 +1,3 @@
-require_relative './spec/spec_helper'
 
 FactoryGirl.define do
   factory :user do
