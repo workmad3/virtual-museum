@@ -6,6 +6,6 @@ class PagesController < ApplicationController
     redirect_to '/', status: 301
   end
   def show
-    @page = Page.find(params[:id])
-  end
+    current_slug = request.path_info.sub(/.*\//,'')
+    @page = Page.find_by slug: current_slug  end
 end

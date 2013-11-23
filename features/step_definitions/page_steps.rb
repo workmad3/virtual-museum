@@ -20,8 +20,11 @@ And(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, conten
 end
 
 Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
-  current_path.should == '/'
+  visit '/'
+  page.should have_link(title)
   click_link(title)
+  current_slug = current_path.sub /.*\//,''
+  current_path.should == pages_path + '/' + current_slug
   page.should have_content(title)
   page.should have_content(content)
 end
