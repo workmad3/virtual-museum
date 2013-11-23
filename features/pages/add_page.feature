@@ -1,6 +1,6 @@
 Feature: Add page
 
-Scenario: Add one page and see it on the home page
+Scenario: Add a page and then see it
   Given I am signed in
   When I go to the Add Page page
   And I create a page entitled "Test" with content "Test me"

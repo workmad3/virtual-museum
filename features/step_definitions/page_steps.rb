@@ -22,5 +22,6 @@ end
 Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
   current_path.should == '/'
   click_link(title)
-  current_path.should == '/pages/1'
+  page.should have_content(title)
+  page.should have_content(content)
 end
