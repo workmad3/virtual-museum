@@ -1,0 +1,10 @@
+<h1>Create a page</h1>
+
+<%= form_tag("/pages", method: "post") do %>
+    <%= label_tag(:content, "Title") %>
+    <%= text_field_tag(:title) %>
+    <%= label_tag(:content, "Content") %>
+    <%= text_field_tag(:content) %>
+
+    <%= submit_tag("Create") %>
+<% end %>

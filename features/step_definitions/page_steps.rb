@@ -10,11 +10,11 @@ end
 
 When(/^I go to the Add Page page/) do
   click_link("Add page")
-  current_path.should == edit_page_path
+  current_path.should == new_page_path
 end
 
 And(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
-  pending # express the regexp above with the code you wish you had
+  @page =  FactoryGirl.create(:page)
 end
 
 Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |arg1, arg2|

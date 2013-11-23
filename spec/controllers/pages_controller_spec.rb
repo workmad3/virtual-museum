@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe PageController do
+describe PagesController do
 
 end

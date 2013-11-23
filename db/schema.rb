@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20131115235020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "page", force: true do |t|
+  create_table "pages", force: true do |t|
     t.string   "name"
     t.text     "content"
     t.integer  "user_id"
