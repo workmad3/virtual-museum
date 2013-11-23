@@ -19,7 +19,7 @@ And(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, conten
   click_button('Create')
 end
 
-Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
+Then(/^I can see a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
   visit '/'
   page.should have_link(title)
   click_link(title)
@@ -27,4 +27,8 @@ Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |titl
   current_path.should == pages_path + '/' + current_slug
   page.should have_content(title)
   page.should have_content(content)
+end
+
+When(/^I change the content to "(.*?)"$/) do |arg1|
+  click_link("Edit")
 end

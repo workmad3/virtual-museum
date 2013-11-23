@@ -1,3 +1,4 @@
+=begin
 begin
   require 'database_cleaner'
   require 'database_cleaner/cucumber'
@@ -8,9 +9,14 @@ rescue NameError
 end
 
 Before do
-  DatabaseCleaner.start
+  DatabaseCleaner.clean
 end
+=end
 
-After do |scenario|
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+
+Before do
   DatabaseCleaner.clean
 end
