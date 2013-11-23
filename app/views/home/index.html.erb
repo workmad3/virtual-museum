@@ -3,5 +3,5 @@
 <%= link_to "Add page", new_page_path, id: 'fresh', class: "btn btn-large btn-primary" if user_signed_in? %>
 
 <% @pages.each do |page| %>
-  <p>Page: <%=link_to page.name, page %></p>
+  <p>Page: <%=link_to page.title, page %></p>
 <% end %>
