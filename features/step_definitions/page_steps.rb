@@ -14,9 +14,13 @@ When(/^I go to the Add Page page/) do
 end
 
 And(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
-  @page =  FactoryGirl.create(:page)
+  fill_in('title', :with => title)
+  fill_in('content', :with => content)
+  click_button('Create')
 end
 
-Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see a new page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
+  current_path.should == '/'
+  click_link(title)
+  current_path.should == '/pages/1'
 end

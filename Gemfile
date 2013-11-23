@@ -14,6 +14,8 @@ gem 'figaro'
 gem 'pg'
 gem 'rolify'
 gem 'simple_form'
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
