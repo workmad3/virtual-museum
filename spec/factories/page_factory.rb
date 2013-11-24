@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :page do
-    name 'A page title'
-    content 'Page content'
-    user_id 1
+    title 'A page title'
+    content 'Sample page content'
+    association :user
   end
 end

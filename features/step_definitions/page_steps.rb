@@ -23,12 +23,27 @@ Then(/^I can see a page entitled "(.*?)" with content "(.*?)"$/) do |title, cont
   visit '/'
   page.should have_link(title)
   click_link(title)
-  current_slug = current_path.sub /.*\//,''
+  current_slug = current_path.sub /.*\//, ''
   current_path.should == pages_path + '/' + current_slug
   page.should have_content(title)
   page.should have_content(content)
 end
 
-When(/^I change the content to "(.*?)"$/) do |arg1|
+When(/^I change the content to "(.*?)"$/) do |new_content|
   click_link("Edit")
+  fill_in('content', with: new_content)
+  click_button 'Save'
 end
+
+When(/^I change the title to "(.*?)"$/) do |new_title|
+  click_link("Edit")
+  fill_in('title', with: new_title)
+  click_button 'Save'
+end
+
+Then(/^The page slug should be "(.*?)"$/) do |slug|
+  current_slug = current_path.sub /.*\//, ''
+  current_slug.should == slug
+end
+
+
