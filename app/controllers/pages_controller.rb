@@ -3,8 +3,8 @@ class PagesController < ApplicationController
   end
 
   def create
-    Page.create(user_id: current_user.id, title: params[:title], content: params[:content]).save
-    redirect_to '/', status: 301
+    p = Page.create(user_id: current_user.id, title: params[:title], content: params[:content])
+    redirect_to '/pages/' + p.slug, status: 301
   end
 
   def show
