@@ -9,6 +9,14 @@ class Page < ActiveRecord::Base
   has_many :previous_pages
 
   def history
-    ['Sample page content']
+    PreviousPage.where(page: self)
   end
+
+  def new_title_and_or_content args
+    PreviousPage.create(title: title, content: content, user: args[:user], page: self)
+    self.title = args[:title] if args[:title]
+    self.content = args[:content] if args[:content] != nil
+    save
+  end
+
 end

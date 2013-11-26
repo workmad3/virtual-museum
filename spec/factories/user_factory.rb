@@ -1,9 +1,12 @@
 FactoryGirl.define do
+
   factory :user do
-    name 'John Lennon'
-    email 'j@b.c'
+
+    sequence(:name) {|n| "Andy Warhol #{n}" }
+    sequence(:email) {|n| "andy#{n}@factory.com" }
+
     password 11111111
-    password_confirmation 11111111
+    password_confirmation { |usr| usr.password }
   end
 end
 
