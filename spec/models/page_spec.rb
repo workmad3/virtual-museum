@@ -20,13 +20,21 @@ describe Page do
   it { should belong_to(:user) }
 
   it "should be able to change content" do
-    page.change_content(user: user, content: ' xxx ')
-    page.content.should == ' xxx '
+    original_title = page.title
+    original_creator = page.user
+    page.change_content(user: user, content: 'check me')
+    page.content.should == 'check me'
+    page.title.should == original_title
+    page.user == original_creator
   end
 
   it "should be able to change title" do
-    page.change_title(user: user, title: ' xxx ')
-    page.title.should == ' xxx '
+    original_content = page.content
+    original_creator = page.user
+    page.change_title(user: user, title: 'check me')
+    page.title.should == 'check me'
+    page.content.should == original_content
+    page.user == original_creator
   end
 
   it "should have no previous pages after creation" do
@@ -35,17 +43,17 @@ describe Page do
 
   it "should create a past page after a change" do
     PreviousPage.count.should == 0
-    tmp = page.content
+    original_content = page.content
 
     page.change_content(user: user, content: ' xxx ')
     PreviousPage.count.should == 1
-    pp = PreviousPage.first
+    prev_page = PreviousPage.first
 
-    pp.title.should == page.title
-    pp.content.should == tmp
+    prev_page.title.should == page.title
+    prev_page.content.should == original_content
 
-    pp.page.should == page
-    pp.user.should == user
+    prev_page.page.should == page
+    prev_page.user.should == user
   end
 
   it "should have one past page after one change"  do
