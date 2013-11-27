@@ -12,11 +12,25 @@ class Page < ActiveRecord::Base
     PreviousPage.where(page: self)
   end
 
-  def new_title_and_or_content args
+  def change_content args
+    PreviousPage.create(title: title, content: content, user: args[:user], page: self)
+    self.content = args[:content] if args[:content] != nil
+    save
+  end
+
+  def change_title args
+    PreviousPage.create(title: title, content: content, user: args[:user], page: self)
+    self.title = args[:title] if args[:title]
+    save
+  end
+
+=begin
+  def change_both args
     PreviousPage.create(title: title, content: content, user: args[:user], page: self)
     self.title = args[:title] if args[:title]
     self.content = args[:content] if args[:content] != nil
     save
   end
+=end
 
 end

@@ -1,69 +1,90 @@
 require 'spec_helper'
 
 describe Page do
+
+  def user
+    @user || @user = FactoryGirl.create(:user)
+  end
+  def page
+    @page || @page = FactoryGirl.create(:page, user: user)
+  end
+
   before(:each) do
     DatabaseCleaner.clean
-    @user = FactoryGirl.create(:user)
-    @page = FactoryGirl.create(:page, user: @user)
-    @history = [@page.content]
-    subject { @page }
+    user
+    page
+    subject { page }
   end
 
   it { should validate_presence_of(:user_id) }
   it { should belong_to(:user) }
 
+  it "should be able to change content" do
+    page.change_content(user: user, content: ' xxx ')
+    page.content.should == ' xxx '
+  end
+
+  it "should be able to change title" do
+    page.change_title(user: user, title: ' xxx ')
+    page.title.should == ' xxx '
+  end
+
   it "should have no previous pages after creation" do
-    Page.first.history.should == []
-    end
+    page.history.should == []
+  end
 
-  it "should create a history record after a change" do
+  it "should create a past page after a change" do
     PreviousPage.count.should == 0
-    tmp = @page.content
-    @page.new_title_and_or_content(user: @user, content: ' xxx ')
+    tmp = page.content
+
+    page.change_content(user: user, content: ' xxx ')
     PreviousPage.count.should == 1
-    pp= PreviousPage.first
-    pp.page.should == @page
-    pp.user.should == @user
-    pp.title.should == @page.title
+    pp = PreviousPage.first
+
+    pp.title.should == page.title
     pp.content.should == tmp
+
+    pp.page.should == page
+    pp.user.should == user
   end
 
-  it "should return one past page after a change"  do
-    @page.new_title_and_or_content(user: @user, content: ' xxx ')
-    Page.first.history.count.should == 1
+  it "should have one past page after one change"  do
+    page.change_content(user: user, content: ' xxx ')
+    page.history.count.should == 1
   end
 
-  it "should return two past pages after two changes"  do
-    @page.new_title_and_or_content(user: @user, content: ' xxx ')
-    @page.new_title_and_or_content(user: @user, title: ' zzzz ')
+  it "should have two past pages after two changes"  do
+    page.change_content(user: user, content: ' xxx ')
+    page.change_content(user: user, content: ' zzzz ')
     Page.first.history.count.should == 2
   end
 
-  it "should only return its prev pages" do
+  it "should only return its past pages" do
     user2 = FactoryGirl.create(:user)
-    @page.new_title_and_or_content(user: @user, content: ' xxx ')
-    @page.new_title_and_or_content(user: user2, title: ' zzzz ')
-    Page.first.history.count.should == 2
+    page2 = FactoryGirl.create(:page,user: user2)
+    original_page_content = page.content
+    original_page2_content = page2.content
+
+    page.change_content(user: user, content: 'page content')
+    page.change_content(user: user2, content: 'not tested')
+    page2.change_content(user: user2, content: 'also not tested')
+
+    page.history[0].content.should == 'page content'
+    page.history[1].content.should == original_page_content
+
+    page2.history[0].content.should == original_page2_content
   end
 
 
-  it "should change content" do
-    @page.new_title_and_or_content(user: @user, content: ' xxx ')
-    @page.content.should == ' xxx '
-  end
 
-  it "should change title" do
-    @page.new_title_and_or_content(user: @user, title: ' xxx ')
-    @page.title.should == ' xxx '
-  end
 
 
 =begin
 
   it "should provide a change history after update" do
-    @page.new_title_and_or_content(user: @user, content: ' xxx ')
+    @page.new_title_and_or_content(user: user, content: ' xxx ')
     @page.history.should == [FactoryGirl.create(:previous_page,
-                                                page: self, user: @user, title: @page.title, content: 'xxx')]
+                                                page: self, user: user, title: @page.title, content: 'xxx')]
   end
 =end
 
