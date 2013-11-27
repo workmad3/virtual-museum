@@ -1,24 +1,27 @@
 require 'spec_helper'
 
+def user
+  @user || @user = FactoryGirl.create(:user)
+end
+
+def page
+  @page || @page = FactoryGirl.create(:page, user: user)
+end
+
+def user2
+  @user2 || @user2 = FactoryGirl.create(:user)
+end
+
+def page2
+  @page2 || @page2 = FactoryGirl.create(:page, user: user2)
+end
+
 describe Page do
-
-  def user
-    @user || @user = FactoryGirl.create(:user)
-  end
-  def user2
-    @user2 || @user2 = FactoryGirl.create(:user)
-  end
-  def page
-    @page || @page = FactoryGirl.create(:page, user: user)
-  end
-  def page2
-    @page2 || @page2 = FactoryGirl.create(:page, user: user2)
-  end
-
   before(:each) do
-    DatabaseCleaner.clean
     user
     page
+    user2
+    page2
     subject { page }
   end
 
@@ -64,29 +67,33 @@ describe Page do
     prev_page.user.should == user2
   end
 
-  it "should have one past page after one change"  do
+  it "should have one past page after one change" do
     page.change_content(user: user, content: ' xxx ')
     page.history.count.should == 1
   end
 
-  it "should have two past pages after two changes"  do
+  it "should have two past pages after two changes" do
     page.change_content(user: user, content: ' xxx ')
     page.change_content(user: user, content: ' zzzz ')
     Page.first.history.count.should == 2
   end
 
-  it "should only return its past pages" do
-    user2
-    page2
+  it "history should only return correct pages" do
+    original_page_content = page.content
+    original_page2_content = page2.content
 
     page.change_content(user: user, content: 'first content change')
-    page.change_content(user: user2, content: 'second content change, not tested')
-    page2.change_content(user: user2, content: 'first content change, also not tested')
+    page.change_content(user: user, content: 'second content change, not tested')
+    page2.change_content(user: user, content: 'first content change, also not tested')
 
-    page.history[0].content.should == 'first content change'
-    page.history[1].content.should == original_page_content
+    history = Page.find_by_user_id(user.id).history
+    history.count.should == 2
+    history[0].content.should == 'first content change'
+    history[1].content.should == original_page_content
 
-    page2.history[0].content.should == original_page2_content
+    history2 = Page.find_by_user_id(user2.id).history
+    history2.count.should == 1
+    history2[0].content.should == original_page2_content
   end
 end
 
