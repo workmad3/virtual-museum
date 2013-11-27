@@ -42,10 +42,12 @@ describe Page do
   end
 
   it "should create a past page after a change" do
+    user2 = FactoryGirl.create(:user)
+
     PreviousPage.count.should == 0
     original_content = page.content
 
-    page.change_content(user: user, content: ' xxx ')
+    page.change_content(user: user2, content: ' xxx ')
     PreviousPage.count.should == 1
     prev_page = PreviousPage.first
 
@@ -53,7 +55,7 @@ describe Page do
     prev_page.content.should == original_content
 
     prev_page.page.should == page
-    prev_page.user.should == user
+    prev_page.user.should == user2
   end
 
   it "should have one past page after one change"  do
@@ -73,11 +75,11 @@ describe Page do
     original_page_content = page.content
     original_page2_content = page2.content
 
-    page.change_content(user: user, content: 'page content')
-    page.change_content(user: user2, content: 'not tested')
-    page2.change_content(user: user2, content: 'also not tested')
+    page.change_content(user: user, content: 'first content change')
+    page.change_content(user: user2, content: 'second content change, not tested')
+    page2.change_content(user: user2, content: 'first content change, also not tested')
 
-    page.history[0].content.should == 'page content'
+    page.history[0].content.should == 'first content change'
     page.history[1].content.should == original_page_content
 
     page2.history[0].content.should == original_page2_content
