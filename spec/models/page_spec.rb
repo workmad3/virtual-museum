@@ -5,8 +5,14 @@ describe Page do
   def user
     @user || @user = FactoryGirl.create(:user)
   end
+  def user2
+    @user2 || @user2 = FactoryGirl.create(:user)
+  end
   def page
     @page || @page = FactoryGirl.create(:page, user: user)
+  end
+  def page2
+    @page2 || @page2 = FactoryGirl.create(:page, user: user2)
   end
 
   before(:each) do
@@ -22,6 +28,7 @@ describe Page do
   it "should be able to change content" do
     original_title = page.title
     original_creator = page.user
+
     page.change_content(user: user, content: 'check me')
     page.content.should == 'check me'
     page.title.should == original_title
@@ -31,6 +38,7 @@ describe Page do
   it "should be able to change title" do
     original_content = page.content
     original_creator = page.user
+
     page.change_title(user: user, title: 'check me')
     page.title.should == 'check me'
     page.content.should == original_content
@@ -42,8 +50,6 @@ describe Page do
   end
 
   it "should create a past page after a change" do
-    user2 = FactoryGirl.create(:user)
-
     PreviousPage.count.should == 0
     original_content = page.content
 
@@ -70,10 +76,8 @@ describe Page do
   end
 
   it "should only return its past pages" do
-    user2 = FactoryGirl.create(:user)
-    page2 = FactoryGirl.create(:page,user: user2)
-    original_page_content = page.content
-    original_page2_content = page2.content
+    user2
+    page2
 
     page.change_content(user: user, content: 'first content change')
     page.change_content(user: user2, content: 'second content change, not tested')
@@ -84,20 +88,6 @@ describe Page do
 
     page2.history[0].content.should == original_page2_content
   end
-
-
-
-
-
-=begin
-
-  it "should provide a change history after update" do
-    @page.new_title_and_or_content(user: user, content: ' xxx ')
-    @page.history.should == [FactoryGirl.create(:previous_page,
-                                                page: self, user: user, title: @page.title, content: 'xxx')]
-  end
-=end
-
 end
 
 
