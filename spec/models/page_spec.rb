@@ -1,16 +1,7 @@
 require 'spec_helper'
 
-def user
-  @user || @user = FactoryGirl.create(:user)
-end
-def page
-  @page || @page = FactoryGirl.create(:page, user: user)
-end
-def user2
-  @user2 || @user2 = FactoryGirl.create(:user)
-end
-def page2
-  @page2 || @page2 = FactoryGirl.create(:page, user: user2)
+RSpec.configure do |config|
+  config.include(UserAndPageHelpers)
 end
 
 describe Page do
@@ -64,7 +55,7 @@ describe Page do
     prev_page.content.should == original_content
 
     prev_page.page.should == page
-    prev_page.user.should == user2
+    prev_page.user.should == user
   end
 
   it "should have one past page after one change" do
@@ -78,7 +69,7 @@ describe Page do
     Page.first.history.count.should == 2
   end
 
-  it "history should only return correct pages" do
+  it "history should only contain correct pages" do
     original_page_content = page.content
     original_page2_content = page2.content
 
@@ -86,12 +77,12 @@ describe Page do
     page.change_content(user: user, content: 'second content change, not tested')
     page2.change_content(user: user, content: 'first content change, also not tested')
 
-    history = Page.find_by_user_id(user.id).history
+    history = Page.first.history
     history.count.should == 2
     history[0].content.should == 'first content change'
     history[1].content.should == original_page_content
 
-    history2 = Page.find_by_user_id(user2.id).history
+    history2 = Page.last.history
     history2.count.should == 1
     history2[0].content.should == original_page2_content
   end
