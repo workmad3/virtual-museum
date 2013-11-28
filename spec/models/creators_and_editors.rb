@@ -29,6 +29,10 @@ describe Page do
     page2.creator.should == user2
   end
 
+  it "editor should be nil when page first created"  do
+    page.editor.should == nil
+  end
+
   it "editor should be set when page content is changed"  do
     page.change_content(user: user2, content: 'changed content')
     page.user.should == user2
@@ -43,11 +47,11 @@ describe Page do
 
   it "editor should be set when page title or content is changed" do
     page.change(user2, content: 'changed title')
-    page.user.should == user
-    page.editor.should == user
+    page.user.should == user2
+    page.editor.should == user2
   end
 
-  it "creator should not vary when successively changing title" do
+  it "creator should not vary when successively changing content" do
     page.creator.should == user
     page.change_content(user: user2, content: 'changed content')
     page.creator.should == user
@@ -60,6 +64,14 @@ describe Page do
     page.change_title(user: user2, content: 'changed title')
     page.creator.should == user
     page.change_title(user: user2, content: 'changed title')
+    page.creator.should == user
+  end
+
+  it "creator should not vary when successively changing title"  do
+    page.creator.should == user
+    page.change(user2, content: 'changed content')
+    page.creator.should == user
+    page.change(user2, title: 'changed title')
     page.creator.should == user
   end
 end

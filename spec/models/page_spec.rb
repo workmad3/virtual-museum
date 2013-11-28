@@ -35,6 +35,9 @@ describe Page do
     page.user == original_creator
   end
 
+  # TODO test Page#change
+
+
   it "should be able to change title" do
     original_content = page.content
     original_creator = page.user
