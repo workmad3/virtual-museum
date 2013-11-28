@@ -34,4 +34,12 @@ class Page < ActiveRecord::Base
     save
   end
 
+  def change user, args
+    PreviousPage.create(title: title, content: content, user: user, page: self)
+    self.user =  args[:user]
+    self.title = args[:title] if args[:title]
+    self.content = args[:content] if args[:content]
+  end
+
+
 end

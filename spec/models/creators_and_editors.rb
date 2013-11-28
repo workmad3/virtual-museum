@@ -41,6 +41,12 @@ describe Page do
     page.editor.should == user2
   end
 
+  it "editor should be set when page title or content is changed" do
+    page.change(user2, content: 'changed title')
+    page.user.should == user
+    page.editor.should == user
+  end
+
   it "creator should not vary when successively changing title" do
     page.creator.should == user
     page.change_content(user: user2, content: 'changed content')
