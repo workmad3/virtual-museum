@@ -37,6 +37,7 @@ When(/^I change the title to "(.*?)"$/) do |new_title|
   click_link('Edit')
   fill_in('title', with: new_title)
   click_button 'Save'
+  PreviousPage.count.should == 1
 
 end
 

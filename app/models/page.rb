@@ -42,5 +42,12 @@ class Page < ActiveRecord::Base
     save
   end
 
+  def slugged_content
+    self.content.gsub(/\[([a-zA-Z0-9:_ ]*)\]/) do |t|
+      pg = Page.find_by_title( t.chop.reverse.chop.reverse )
+      '['+pg.slug+']'
+    end
+  end
+
 
 end

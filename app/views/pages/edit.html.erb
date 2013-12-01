@@ -2,9 +2,9 @@
 
 <%= form_tag(@update_url, method: "put") do %>
     <%= label_tag(:title) %>
-    <%= text_field_tag(:title, @page.title) %>
+    <%= text_field_tag(:title, @page.title, class: "span6") %>
     <%= label_tag(:content) %>
-    <%= text_field_tag(:content, @page.content) %>
+    <%= text_area_tag(:content, @page.content, class: "span6", rows: "5") %>
 
-    <%= submit_tag("Save") %>
+<%= submit_tag("Save") %>
 <% end %>

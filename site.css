@@ -1,0 +1,2231 @@
+.flex-container a:active, .flexslider a:active, .flex-container a:focus, .flexslider a:focus {
+    outline: none
+}
+
+.slides, .flex-control-nav, .flex-direction-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.flexslider {
+    margin: 0;
+    padding: 0
+}
+
+.flexslider .slides>li {
+    display: none;
+    -webkit-backface-visibility: hidden
+}
+
+.flexslider .slides img {
+    width: 100%;
+    display: block
+}
+
+.flex-pauseplay span {
+    text-transform: capitalize
+}
+
+.slides:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0
+}
+
+html[xmlns] .slides {
+    display: block
+}
+
+* html .slides {
+    height: 1%
+}
+
+.no-js .slides>li:first-child {
+    display: block
+}
+
+.flexslider {
+    margin: 0 0 60px;
+    background: #fff;
+    border: 4px solid #fff;
+    position: relative;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    zoom: 1
+}
+
+.flex-viewport {
+    max-height: 2000px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease
+}
+
+.loading .flex-viewport {
+    max-height: 300px
+}
+
+.flexslider .slides {
+    zoom: 1
+}
+
+.carousel li {
+    margin-right: 5px
+}
+
+.flex-direction-nav {
+    *height: 0
+}
+
+.flex-direction-nav a {
+    width: 30px;
+    height: 30px;
+    margin: -20px 0 0;
+    display: block;
+    background: url(/assets/flexslider-2.1/bg_direction_nav-3c36224a76ddbcac2e36b643832074cf.png) no-repeat 0 0;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    cursor: pointer;
+    text-indent: -9999px;
+    opacity: 0;
+    -webkit-transition: all .3s ease
+}
+
+.flex-direction-nav .flex-next {
+    background-position: 100% 0;
+    right: -36px
+}
+
+.flex-direction-nav .flex-prev {
+    left: -36px
+}
+
+.flexslider:hover .flex-next {
+    opacity: 0.8;
+    right: 5px
+}
+
+.flexslider:hover .flex-prev {
+    opacity: 0.8;
+    left: 5px
+}
+
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {
+    opacity: 1
+}
+
+.flex-direction-nav .flex-disabled {
+    opacity: .3 !important;
+    filter: alpha(opacity=30);
+    cursor: default
+}
+
+.flex-control-nav {
+    width: 100%;
+    position: absolute;
+    bottom: -40px;
+    text-align: center
+}
+
+.flex-control-nav li {
+    margin: 0 6px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline
+}
+
+.flex-control-paging li a {
+    width: 11px;
+    height: 11px;
+    display: block;
+    background: #666;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-indent: -9999px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3)
+}
+
+.flex-control-paging li a:hover {
+    background: #333;
+    background: rgba(0, 0, 0, 0.7)
+}
+
+.flex-control-paging li a.flex-active {
+    background: #000;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: default
+}
+
+.flex-control-thumbs {
+    margin: 5px 0 0;
+    position: static;
+    overflow: hidden
+}
+
+.flex-control-thumbs li {
+    width: 25%;
+    float: left;
+    margin: 0
+}
+
+.flex-control-thumbs img {
+    width: 100%;
+    display: block;
+    opacity: .7;
+    cursor: pointer
+}
+
+.flex-control-thumbs img:hover {
+    opacity: 1
+}
+
+.flex-control-thumbs .flex-active {
+    opacity: 1;
+    cursor: default
+}
+
+@media screen and (max-width: 860px) {
+    .flex-direction-nav .flex-prev {
+        opacity: 1;
+        left: 0
+    }
+
+    .flex-direction-nav .flex-next {
+        opacity: 1;
+        right: 0
+    }
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+ol, ul {
+    list-style: none
+}
+
+blockquote, q {
+    quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+.group:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+a {
+    color: #73c241;
+    text-decoration: none
+}
+
+a:visited {
+    color: #5c9d33
+}
+
+a:hover {
+    color: #457726;
+    text-decoration: underline
+}
+
+a:active {
+    color: #5c9d33;
+    text-decoration: underline
+}
+
+strong {
+    font-weight: bold;
+    color: #377c0f
+}
+
+p.message {
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    padding: 0.5em 1em;
+    text-align: center;
+    font-size: 0.88em
+}
+
+p.message.notice {
+    border: 2px solid #ffc618;
+    background-color: #fdebb6
+}
+
+p.message.error {
+    border: 2px solid #e5325e;
+    background-color: #f0888a
+}
+
+body {
+    background: url("/assets/body-bg-0aba7c61458d19c676558ae50f9497b0.png") repeat-x 0 301px;
+    background-color: #e5e5e5;
+    color: #444;
+    font: normal 100% Arial, sans-serif
+}
+
+div#toolbar-wrapper {
+    background-color: #000;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#272727), to(#000));
+    background-image: -moz-linear-gradient(top, #272727, #000);
+    background-image: linear-gradient(top, #272727, #000);
+    color: #aba2a2;
+    font-size: 0.774em
+}
+
+div#toolbar {
+    margin: 0 auto;
+    padding: 0 4%
+}
+
+div#toolbar a {
+    color: #fff
+}
+
+div#toolbar nav.links {
+    float: right;
+    margin-right: 2.041%
+}
+
+div#toolbar nav.links ul.menu {
+    list-style: none
+}
+
+div#toolbar nav.links ul.menu li {
+    float: left;
+    padding-right: 1em
+}
+
+div#swatch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    z-index: -2;
+    background-color: #66b038;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#72c240), to(#66b038));
+    background-image: -moz-linear-gradient(top, #72c240, #66b038);
+    background-image: linear-gradient(top, #72c240, #66b038)
+}
+
+header.banner {
+    margin: 0 auto;
+    padding: 0 4%;
+    padding-top: 1em
+}
+
+header.banner h1, header.banner h2 {
+    margin-left: 2.041%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #2e4108
+}
+
+header.banner h1 {
+    margin-bottom: 0.5em;
+    font-size: 2.18em
+}
+
+footer.contentinfo {
+    margin: 0 auto;
+    padding: 0 4%
+}
+
+footer.contentinfo p, footer.contentinfo ul {
+    padding: 0.75em 2.041%;
+    font-size: 0.774em
+}
+
+div#page {
+    width: 92%;
+    margin: 0 auto;
+    border: 1px solid #d0d0d0;
+    -moz-border-radius-topleft: 0.188em;
+    -moz-border-radius-topright: 0.188em;
+    -moz-border-radius-bottomright: 0.188em;
+    -moz-border-radius-bottomleft: 0.188em;
+    -webkit-border-top-left-radius: 0.188em;
+    -webkit-border-top-right-radius: 0.188em;
+    -webkit-border-bottom-right-radius: 0.188em;
+    -webkit-border-bottom-left-radius: 0.188em;
+    border-top-left-radius: 0.188em;
+    border-top-right-radius: 0.188em;
+    border-bottom-right-radius: 0.188em;
+    border-bottom-left-radius: 0.188em;
+    background-color: #fff
+}
+
+header#page-header {
+    position: relative;
+    padding: 20px 2.041% 0
+}
+
+section.main {
+    position: relative;
+    padding: 20px 2.041% 0
+}
+
+section.main h1 {
+    margin-bottom: 0.5em;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 2.18em
+}
+
+section.main h2 {
+    margin: 1em 0 0.5em;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.64em
+}
+
+section.main h3 {
+    margin: 1em 0 0.5em;
+    font-size: 1.45em
+}
+
+section.main ol {
+    margin-left: 1.25em;
+    list-style: decimal
+}
+
+section.main ul {
+    margin-left: 1.25em;
+    list-style: disc
+}
+
+section.main p, section.main ul, section.main ol, section.main nav, section.main h2, section.main h3, section.main h4 {
+    line-height: 1.4
+}
+
+section.main h1 {
+    line-height: 1
+}
+
+section.main article h1, section.main section h1 {
+    line-height: 1.4
+}
+
+section.main p {
+    margin: 1em 0
+}
+
+section.main form ol, section.main form ul {
+    margin-left: 0;
+    list-style: none
+}
+
+section.main form ol ol, section.main form ol ul, section.main form ul ol, section.main form ul ul {
+    margin-left: 0;
+    list-style: none
+}
+
+section.main>form {
+    margin: 1em 0;
+    border: 1px solid #d0d0d0;
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    padding: 0 2.041%;
+    background: #fff;
+    padding-top: 1em
+}
+
+section.main>form fieldset {
+    border-bottom: 1px solid #d0d0d0
+}
+
+section.main>form fieldset:last-child, section.main>form fieldset.last {
+    border-bottom: none
+}
+
+section.other {
+    padding: 20px 2.041%
+}
+
+body.alternative_layout section.other {
+    padding: 0 2.041%
+}
+
+section.main form p.hint, section.other form p.hint {
+    font-size: 0.774em;
+    color: #6a6a6a
+}
+
+section.main form span.error, section.other form span.error {
+    margin-left: 0.5em;
+    font-size: 0.88em;
+    font-weight: bold;
+    color: #f0888a
+}
+
+section.main form span.field-with-errors input, section.other form span.field-with-errors input {
+    background: #fff
+}
+
+section.main form label, section.other form label {
+    font-size: 0.88em
+}
+
+section.main form input[disabled], section.main form textarea[disabled], section.other form input[disabled], section.other form textarea[disabled] {
+    background: #e3e6e3
+}
+
+section.main form textarea, section.other form textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 6em
+}
+
+section.main form input[type="password"], section.main form input[type="text"], section.main form select[multiple], section.main form input[type="search"], section.main form textarea, section.other form input[type="password"], section.other form input[type="text"], section.other form select[multiple], section.other form input[type="search"], section.other form textarea {
+    border: 2px solid #d0d0d0;
+    -moz-border-radius-topleft: 0.188em;
+    -moz-border-radius-topright: 0.188em;
+    -moz-border-radius-bottomright: 0.188em;
+    -moz-border-radius-bottomleft: 0.188em;
+    -webkit-border-top-left-radius: 0.188em;
+    -webkit-border-top-right-radius: 0.188em;
+    -webkit-border-bottom-right-radius: 0.188em;
+    -webkit-border-bottom-left-radius: 0.188em;
+    border-top-left-radius: 0.188em;
+    border-top-right-radius: 0.188em;
+    border-bottom-right-radius: 0.188em;
+    border-bottom-left-radius: 0.188em;
+    padding: 0.3em;
+    font-family: Arial, sans-serif;
+    font-size: 0.88em
+}
+
+section.main form input[type="submit"], section.other form input[type="submit"] {
+    border: 1px solid #7ac64c;
+    background: #6dbc3c;
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    padding: 0.4em 1em;
+    color: #f7f7f7;
+    font-size: 0.88em
+}
+
+section.main form input[type="submit"]:hover, section.other form input[type="submit"]:hover {
+    background: #98cd77;
+    border: 1px solid #6eb642
+}
+
+section.main form input[type="submit"]:hover, section.other form input[type="submit"]:hover {
+    color: #fff
+}
+
+section.main form input[type="submit"].positive, section.other form input[type="submit"].positive {
+    border: 1px solid #32a54a;
+    background: #2c9141
+}
+
+section.main form input[type="submit"].positive:hover, section.other form input[type="submit"].positive:hover {
+    background: #4ac062;
+    border: 1px solid #318c44
+}
+
+section.main form input[type="submit"].negative, section.other form input[type="submit"].negative {
+    border: 1px solid #dc404a;
+    background: #d82a36
+}
+
+section.main form input[type="submit"].negative:hover, section.other form input[type="submit"].negative:hover {
+    background: #df6f77;
+    border: 1px solid #d2303b
+}
+
+section.main form fieldset, section.other form fieldset {
+    margin-bottom: 1em
+}
+
+section.main form fieldset legend, section.other form fieldset legend {
+    padding-bottom: 1em;
+    font-weight: bold
+}
+
+section.main form ol, section.main form ul, section.main form p, section.other form ol, section.other form ul, section.other form p {
+    margin: 0 0 1em
+}
+
+section.main form ol li, section.main form ul li, section.other form ol li, section.other form ul li {
+    margin-bottom: 0.5em
+}
+
+section.main form ol li.choice ul, section.main form ul li.choice ul, section.other form ol li.choice ul, section.other form ul li.choice ul {
+    padding-left: 20px
+}
+
+section.main form ol li span.error, section.main form ul li span.error, section.other form ol li span.error, section.other form ul li span.error {
+    margin-left: 1em
+}
+
+section.main form ol li input[type="password"], section.main form ol li input[type="text"], section.main form ul li input[type="password"], section.main form ul li input[type="text"], section.other form ol li input[type="password"], section.other form ol li input[type="text"], section.other form ul li input[type="password"], section.other form ul li input[type="text"] {
+    width: 12em
+}
+
+section.main form ol li label, section.main form ul li label, section.main form p label, section.other form ol li label, section.other form ul li label, section.other form p label {
+    display: block;
+    font-size: 0.774em;
+    font-weight: bold
+}
+
+section.main form ol li.choice label, section.main form ul li.choice label, section.main form p.choice label, section.other form ol li.choice label, section.other form ul li.choice label, section.other form p.choice label {
+    display: inline;
+    font-weight: bold;
+    font-size: 0.774em
+}
+
+section.main form.inline ul li, section.other form.inline ul li {
+    margin-bottom: 1em
+}
+
+section.main form.inline ul li input[type="text"], section.other form.inline ul li input[type="text"] {
+    width: 13.6em
+}
+
+section.main form.inline ul li textarea, section.other form.inline ul li textarea {
+    width: 14.5em
+}
+
+section.main form.inline ul li label, section.main form.inline ul li strong.label, section.other form.inline ul li label, section.other form.inline ul li strong.label {
+    margin-bottom: 0.8em;
+    margin-bottom: 0.2em
+}
+
+section.main form.inline ul li strong.label, section.other form.inline ul li strong.label {
+    display: block;
+    font-size: 0.774em;
+    font-weight: bold;
+    color: #444
+}
+
+section.main form.inline ul li p, section.main form.inline ul li li, section.other form.inline ul li p, section.other form.inline ul li li {
+    font-size: 0.88em
+}
+
+section.main form.inline ul .choice_group, section.other form.inline ul .choice_group {
+    display: block;
+    clear: both
+}
+
+section.main form.inline ul .choice_group label, section.other form.inline ul .choice_group label {
+    float: none;
+    width: auto;
+    display: inline;
+    margin-right: 1em
+}
+
+section.main form p.buttons a, section.main form p.buttons input, section.other form p.buttons a, section.other form p.buttons input {
+    margin-right: 1.2em
+}
+
+.hide {
+    display: none
+}
+
+#modal-box {
+    -moz-border-radius-topleft: 0.438em;
+    -moz-border-radius-topright: 0.438em;
+    -moz-border-radius-bottomright: 0.438em;
+    -moz-border-radius-bottomleft: 0.438em;
+    -webkit-border-top-left-radius: 0.438em;
+    -webkit-border-top-right-radius: 0.438em;
+    -webkit-border-bottom-right-radius: 0.438em;
+    -webkit-border-bottom-left-radius: 0.438em;
+    border-top-left-radius: 0.438em;
+    border-top-right-radius: 0.438em;
+    border-bottom-right-radius: 0.438em;
+    border-bottom-left-radius: 0.438em
+}
+
+#modal-box .modal-header {
+    position: relative;
+    background: #e5e5e5;
+    -moz-border-radius-topleft: 0.438em;
+    -moz-border-radius-topright: 0.438em;
+    -moz-border-radius-bottomright: 0;
+    -moz-border-radius-bottomleft: 0;
+    -webkit-border-top-left-radius: 0.438em;
+    -webkit-border-top-right-radius: 0.438em;
+    -webkit-border-bottom-right-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    border-top-left-radius: 0.438em;
+    border-top-right-radius: 0.438em;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+#modal-box .modal-header h3 {
+    font-size: 1.45em;
+    font-weight: bold;
+    margin: 0.1em 0
+}
+
+#modal-box .modal-header a.close {
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+    color: #444
+}
+
+#modal-box .modal-header a.close:hover {
+    text-decoration: none;
+    cursor: pointer
+}
+
+#modal-box .modal-body section.main {
+    float: none;
+    padding: 0;
+    width: 100%
+}
+
+#modal-box .modal-body section.main h1 {
+    display: none
+}
+
+#modal-box .modal-body section.main p, #modal-box .modal-body section.main h2 {
+    margin-top: 0
+}
+
+#modal-box .modal-body section.main h4 {
+    font-weight: bold
+}
+
+#modal-box .modal-body section.main .buttons {
+    margin-bottom: 0.5em
+}
+
+#modal-box .modal-body section.main .buttons .button_to {
+    margin-bottom: 0;
+    display: inline-block;
+    margin-top: 1em;
+    margin-right: 1em
+}
+
+#modal-box .modal-body section.main .buttons a {
+    margin-top: 0.5em;
+    display: inline-block
+}
+
+div#toolbar {
+    min-height: 58px
+}
+
+div#toolbar img.logo {
+    position: absolute;
+    top: 20px;
+    left: 2.041%;
+    max-width: 45%;
+    margin-left: 2.041%
+}
+
+div#toolbar nav.links {
+    margin-top: 45px;
+    margin-bottom: 0.5em;
+    float: left
+}
+
+div#toolbar nav.links ul.menu li {
+    padding: 0.5em 1em
+}
+
+div#toolbar nav.links ul.menu li:first-child {
+    padding-left: 0
+}
+
+div#toolbar nav.links ul.menu li:last-child {
+    padding-right: 0
+}
+
+div#toolbar nav.links ul.menu li a {
+    color: #aba2a2
+}
+
+div#toolbar nav.links ul.menu li a:hover {
+    color: #c3bdbd
+}
+
+div#toolbar nav.links ul.menu li.current a {
+    color: #fff
+}
+
+header.banner hgroup h1 {
+    font-weight: bold
+}
+
+div#page {
+    margin-top: 25px
+}
+
+footer.contentinfo {
+    margin-top: 2em;
+    padding-top: 0.4em;
+    padding-bottom: 1.25em;
+    min-height: 8em;
+    background-color: #2e2e2e;
+    color: #fff
+}
+
+footer.contentinfo div {
+    margin: 0 auto;
+    background: url("/assets/oranges-a860499a266f5fa6b0c78e8a13822966.png") no-repeat 97.959% 1em
+}
+
+footer.contentinfo li {
+    margin-top: 0.5em
+}
+
+footer.contentinfo ul.contact-details {
+    font-size: 1em
+}
+
+footer.contentinfo p {
+    margin-top: 2em;
+    padding: 0 0 0 2.041%;
+    color: #6a6a6a;
+    position: relative;
+    font-size: 0.88em
+}
+
+footer.contentinfo p a {
+    margin-left: 1em;
+    width: 109px;
+    height: 45px;
+    background: url("/assets/sm-twitter-off-60d7b316cc7bb032793c39c4312a9d97.png") no-repeat;
+    text-indent: -9999px;
+    position: absolute;
+    top: -14px
+}
+
+footer.contentinfo p a:hover {
+    background: url("/assets/sm-twitter-on-0d7b73cda22c0cb73424ff1fd22dcdb9.png") no-repeat
+}
+
+footer.contentinfo ul.legal {
+    margin-top: 2em
+}
+
+footer.contentinfo ul.legal li, footer.contentinfo ul.legal a {
+    color: #919191
+}
+
+body.home {
+    background-color: #62aa35;
+    background-image: none;
+    background-position: 0 582px
+}
+
+body.home div#swatch {
+    top: 58px;
+    height: 792px;
+    background: url("/assets/pitch-bg-fade-fdc418b4f4e0b646a9ead10c4d6d6950.jpg") no-repeat 50% 0
+}
+
+body.home header.banner {
+    background: none
+}
+
+body.home header.banner h1, body.home header.banner h2 {
+    margin: 0
+}
+
+body.home header.banner h1 {
+    font-weight: bold;
+    -webkit-text-shadow: 0 1px 0 #87df51;
+    -moz-text-shadow: 0 1px 0 #87df51;
+    text-shadow: 0 1px 0 #87df51
+}
+
+body.home header.banner h1 h1 {
+    font-size: 235%
+}
+
+body.home header.banner h1 h2 {
+    font-size: 153.595%
+}
+
+body.home header.banner p {
+    margin: 0 0 1em 0;
+    color: #fff;
+    line-height: 1.5
+}
+
+body.home header.banner p.headline {
+    font-size: 1.45em;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em
+}
+
+body.home header.banner p.buttons {
+    margin-bottom: 2.6em
+}
+
+body.home header.banner p.buttons a {
+    display: block;
+    position: relative;
+    background-color: #dc5900;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff771a), to(#dc5900));
+    background-image: -moz-linear-gradient(top, #ff771a, #dc5900);
+    background-image: linear-gradient(top, #ff771a, #dc5900);
+    -moz-border-radius-topleft: 0.25em;
+    -moz-border-radius-topright: 0.25em;
+    -moz-border-radius-bottomright: 0.25em;
+    -moz-border-radius-bottomleft: 0.25em;
+    -webkit-border-top-left-radius: 0.25em;
+    -webkit-border-top-right-radius: 0.25em;
+    -webkit-border-bottom-right-radius: 0.25em;
+    -webkit-border-bottom-left-radius: 0.25em;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border: 1px solid #e15b00;
+    padding: 0.65em 1em;
+    color: #fff;
+    font-size: 0.774em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    width: 9em;
+    padding: 0.65em 1em 0.5em 1em;
+    font-size: 150%;
+    font-weight: normal
+}
+
+body.home header.banner p.buttons a.add:before {
+    content: "+ "
+}
+
+body.home header.banner p.buttons a.remove:before {
+    content: "- "
+}
+
+body.home header.banner p.buttons a:after {
+    content: " ";
+    width: 98%;
+    height: 1px;
+    position: absolute;
+    left: 1%;
+    top: 0;
+    border-top: 0px solid #ff8f43
+}
+
+body.home header.banner p.buttons a:hover {
+    background-color: #e65d00;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff7d24), to(#e65d00));
+    background-image: -moz-linear-gradient(top, #ff7d24, #e65d00);
+    background-image: linear-gradient(top, #ff7d24, #e65d00);
+    border: 1px solid #d25500
+}
+
+body.home header.banner img.quotes {
+    display: none
+}
+
+body.home header.banner ul li {
+    background-color: #fff;
+    padding: 20px 1em;
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    margin-bottom: 1em
+}
+
+body.home header.banner ul li:first-child aside {
+    display: none
+}
+
+body.home header.banner ul li div.promo-image {
+    max-height: 103px
+}
+
+body.home header.banner ul li div.promo-image#stopwatch {
+    background-color: #e95b52
+}
+
+body.home header.banner ul li div.promo-image#plan {
+    background-color: #78cb44
+}
+
+body.home header.banner ul li div.promo-image#shirts {
+    background-color: #9fdaec
+}
+
+body.home header.banner ul li img {
+    background-color: #fff
+}
+
+body.home header.banner ul li p {
+    color: #444;
+    margin-top: 0.75em;
+    margin-left: 0;
+    margin-bottom: 0;
+    font-size: 130%;
+    font-weight: normal
+}
+
+body.home div#page {
+    background-color: #f6f6f6
+}
+
+body.home section.main {
+    float: none;
+    width: auto;
+    padding: 0
+}
+
+body.home section.main .container {
+    padding: 2em 2.041% 0
+}
+
+body.home section.main section {
+    border-bottom: 1px solid #dedede;
+    border-top: 1px solid #fff;
+    padding: 1em 0
+}
+
+body.home section.main section.testimonials {
+    height: 230px;
+    background-color: #272727;
+    border: 1px solid #f6f6f6;
+    border-bottom: none;
+    -moz-border-radius-topleft: 0.188em;
+    -moz-border-radius-topright: 0.188em;
+    -moz-border-radius-bottomright: 0;
+    -moz-border-radius-bottomleft: 0;
+    -webkit-border-top-left-radius: 0.188em;
+    -webkit-border-top-right-radius: 0.188em;
+    -webkit-border-bottom-right-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    border-top-left-radius: 0.188em;
+    border-top-right-radius: 0.188em;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+body.home section.main section.testimonials::before, body.home section.main section.testimonials::after {
+    position: absolute;
+    font-family: georgia;
+    color: #636363;
+    top: 0.27em;
+    font-size: 64px
+}
+
+body.home section.main section.testimonials::before {
+    content: "\201C";
+    left: 0.2em
+}
+
+body.home section.main section.testimonials::after {
+    content: "\201D";
+    right: 0.2em
+}
+
+body.home section.main section.testimonials ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 2.5em;
+    text-align: center;
+    color: #fff
+}
+
+body.home section.main section.testimonials p:first-child {
+    font-style: italic;
+    font-family: georgia
+}
+
+body.home section.main section.testimonials p.flex-caption {
+    font-size: 0.88em;
+    color: #6a6a6a
+}
+
+body.home section.main section.testimonials img {
+    position: absolute;
+    top: 215px;
+    width: auto;
+    left: 50%;
+    margin-left: -123px
+}
+
+body.home section.main section.testimonials ol.flex-control-nav {
+    position: absolute;
+    top: 325px;
+    margin-left: 0
+}
+
+body.home section.main section.features {
+    padding-top: 0;
+    margin-top: 1em;
+    border-top: 1px solid #dedede
+}
+
+body.home section.main section.features h1 {
+    margin-bottom: 0.5em;
+    font-size: 1.45em;
+    font-weight: bold
+}
+
+body.home section.main section.features ul {
+    list-style: none;
+    margin-left: 0.25em
+}
+
+body.home section.main section.features ul li {
+    margin-bottom: 0.6em
+}
+
+body.home section.main section.features ul li:last-child {
+    margin-bottom: 1em
+}
+
+body.home section.main section.features ul li:before {
+    content: "\002022";
+    padding-right: 2.041%;
+    color: #bdbdbd
+}
+
+body.home section.main section.features img {
+    border: solid 3px #e5e5e5;
+    width: 100%
+}
+
+body.home section.main p.cta {
+    border: 1px solid #f2f2f2;
+    padding-top: 1.2em;
+    margin-bottom: 1em
+}
+
+body.home section.main p.cta a {
+    display: block;
+    position: relative;
+    background-color: #dc5900;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff771a), to(#dc5900));
+    background-image: -moz-linear-gradient(top, #ff771a, #dc5900);
+    background-image: linear-gradient(top, #ff771a, #dc5900);
+    -moz-border-radius-topleft: 0.25em;
+    -moz-border-radius-topright: 0.25em;
+    -moz-border-radius-bottomright: 0.25em;
+    -moz-border-radius-bottomleft: 0.25em;
+    -webkit-border-top-left-radius: 0.25em;
+    -webkit-border-top-right-radius: 0.25em;
+    -webkit-border-bottom-right-radius: 0.25em;
+    -webkit-border-bottom-left-radius: 0.25em;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border: 1px solid #e15b00;
+    padding: 0.65em 1em;
+    color: #fff;
+    font-size: 0.774em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    width: 9em;
+    padding: 0.65em 1em 0.5em 1em;
+    font-size: 150%;
+    font-weight: normal
+}
+
+body.home section.main p.cta a.add:before {
+    content: "+ "
+}
+
+body.home section.main p.cta a.remove:before {
+    content: "- "
+}
+
+body.home section.main p.cta a:after {
+    content: " ";
+    width: 98%;
+    height: 1px;
+    position: absolute;
+    left: 1%;
+    top: 0;
+    border-top: 0px solid #ff8f43
+}
+
+body.home section.main p.cta a:hover {
+    background-color: #e65d00;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff7d24), to(#e65d00));
+    background-image: -moz-linear-gradient(top, #ff7d24, #e65d00);
+    background-image: linear-gradient(top, #ff7d24, #e65d00);
+    border: 1px solid #d25500
+}
+
+body.home section.main section.about {
+    background-color: #cde9ef;
+    margin-top: 1.5em;
+    margin-bottom: 20px;
+    border-bottom: none;
+    padding-bottom: 0.2em;
+    padding-left: 1em;
+    padding-right: 1em
+}
+
+body.home section.main section.about h1 {
+    margin-bottom: 0;
+    font-size: 1.45em;
+    font-weight: bold
+}
+
+body.home section.main section.about p {
+    color: #6a6a6a;
+    font-size: 1em
+}
+
+body.home section.main section.about img {
+    display: none
+}
+
+body.home section.other {
+    display: none
+}
+
+body.pricing {
+    background-color: #62aa35;
+    background-image: none;
+    background-position: 0 582px
+}
+
+body.pricing div#swatch {
+    top: 58px;
+    height: 792px;
+    background: url("/assets/pitch-bg-fade-fdc418b4f4e0b646a9ead10c4d6d6950.jpg") no-repeat 50% 0
+}
+
+body.pricing header.banner {
+    background: none
+}
+
+body.pricing header.banner h1, body.pricing header.banner h2 {
+    margin: 0
+}
+
+body.pricing header.banner h1 {
+    font-weight: bold;
+    -webkit-text-shadow: 0 1px 0 #87df51;
+    -moz-text-shadow: 0 1px 0 #87df51;
+    text-shadow: 0 1px 0 #87df51
+}
+
+body.pricing header.banner h1 {
+    font-size: 235%
+}
+
+body.pricing header.banner h2 {
+    font-size: 153.595%
+}
+
+body.pricing header.banner p {
+    margin: 0 0 1em 0;
+    color: #fff;
+    line-height: 1.5
+}
+
+body.pricing header.banner p.headline {
+    font-size: 1.45em;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em
+}
+
+body.pricing div#page {
+    margin-top: 34px;
+    background-color: transparent;
+    border: none
+}
+
+body.pricing section.main {
+    padding: 0;
+    float: none;
+    width: auto
+}
+
+body.pricing section.main ul {
+    list-style: none;
+    margin-left: 0
+}
+
+body.pricing section.main ul li {
+    background-color: #fff;
+    padding: 20px 1em;
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    margin-bottom: 1.5em
+}
+
+body.pricing section.main ul li h2 {
+    font-size: 175%;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.1em;
+    margin-bottom: 0.7em
+}
+
+body.pricing section.main ul li div.price {
+    -moz-border-radius-topleft: 50%;
+    -moz-border-radius-topright: 50%;
+    -moz-border-radius-bottomright: 50%;
+    -moz-border-radius-bottomleft: 50%;
+    -webkit-border-top-left-radius: 50%;
+    -webkit-border-top-right-radius: 50%;
+    -webkit-border-bottom-right-radius: 50%;
+    -webkit-border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    height: 167px;
+    width: 167px;
+    margin: 0 auto 0.9em;
+    background-color: #6dc155;
+    text-align: center;
+    color: #fff;
+    font-size: 1.18em
+}
+
+body.pricing section.main ul li div.price span.amount, body.pricing section.main ul li div.price span.club {
+    display: block;
+    font-size: 443%;
+    text-align: center;
+    font-weight: bold;
+    height: 50%;
+    padding-top: 11%;
+    color: #fff
+}
+
+body.pricing section.main ul li div.price span.club {
+    font-size: 198%;
+    padding-top: 25%;
+    font-weight: normal;
+    line-height: 1.2
+}
+
+body.pricing section.main ul li div.price span.frequency {
+    position: relative;
+    top: 0.4em
+}
+
+body.pricing section.main ul li p {
+    text-align: center;
+    font-weight: bold;
+    color: #444;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    line-height: 1.3
+}
+
+body.pricing section.main ul li p span {
+    color: #919191;
+    font-weight: normal
+}
+
+body.pricing section.main ul li p.buttons {
+    margin-top: 1em;
+    line-height: 1.5;
+    margin-bottom: 0.2em;
+    font-size: 1em
+}
+
+body.pricing section.main ul li p.buttons a {
+    display: block;
+    position: relative;
+    background-color: #dc5900;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff771a), to(#dc5900));
+    background-image: -moz-linear-gradient(top, #ff771a, #dc5900);
+    background-image: linear-gradient(top, #ff771a, #dc5900);
+    -moz-border-radius-topleft: 0.25em;
+    -moz-border-radius-topright: 0.25em;
+    -moz-border-radius-bottomright: 0.25em;
+    -moz-border-radius-bottomleft: 0.25em;
+    -webkit-border-top-left-radius: 0.25em;
+    -webkit-border-top-right-radius: 0.25em;
+    -webkit-border-bottom-right-radius: 0.25em;
+    -webkit-border-bottom-left-radius: 0.25em;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border: 1px solid #e15b00;
+    padding: 0.65em 1em;
+    color: #fff;
+    font-size: 0.774em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 0.65em 1em 0.5em 1em;
+    font-size: 1em;
+    font-weight: normal
+}
+
+body.pricing section.main ul li p.buttons a.add:before {
+    content: "+ "
+}
+
+body.pricing section.main ul li p.buttons a.remove:before {
+    content: "- "
+}
+
+body.pricing section.main ul li p.buttons a:after {
+    content: " ";
+    width: 98%;
+    height: 1px;
+    position: absolute;
+    left: 1%;
+    top: 0;
+    border-top: 0px solid #ff8f43
+}
+
+body.pricing section.main ul li p.buttons a:hover {
+    background-color: #e65d00;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff7d24), to(#e65d00));
+    background-image: -moz-linear-gradient(top, #ff7d24, #e65d00);
+    background-image: linear-gradient(top, #ff7d24, #e65d00);
+    border: 1px solid #d25500
+}
+
+body.pricing section.main p#vat {
+    margin: 0.6em 0 2.3em 0;
+    text-align: center;
+    color: #fff
+}
+
+body.pricing section.main blockquote {
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    border: 1px solid #fff;
+    background-color: #272727;
+    text-align: center;
+    padding: 20px 2.5em
+}
+
+body.pricing section.main blockquote p {
+    font-family: georgia;
+    font-style: italic;
+    margin-top: 0.8em;
+    color: #fff;
+    font-size: 1.64em
+}
+
+body.pricing section.main blockquote footer {
+    font-size: 1em;
+    color: #6a6a6a;
+    margin-bottom: 1.3em
+}
+
+body.pricing section.other {
+    display: none
+}
+
+body.get-in-touch section.main form textarea {
+    height: 10em
+}
+
+body.set-up section.other {
+    margin-top: 2em
+}
+
+body.set-up section.other h1 {
+    margin-top: 2em;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.88em;
+    font-weight: bold
+}
+
+body.set-up section.other p {
+    margin: 0.5em 0 0 0;
+    font-size: 0.774em;
+    color: #6a6a6a
+}
+
+body.join section.main form {
+    margin: 1em 0;
+    border: 1px solid #d0d0d0;
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    padding: 0 2.041%;
+    background: #fff;
+    padding-top: 1em;
+    margin-top: 0;
+    border-top: none;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em
+}
+
+body.join section.main form li.mobile p.hint {
+    margin-bottom: 0
+}
+
+body.join section.main form p.hint.login {
+    padding-top: 1em;
+    margin-bottom: 0.5em
+}
+
+body.join section.main form p.hint.messages {
+    margin-bottom: 0.5em
+}
+
+body.join section.main form fieldset {
+    border-bottom: 1px solid #d0d0d0
+}
+
+body.join section.main form fieldset:last-child, body.join section.main form fieldset.last {
+    border-bottom: none
+}
+
+body.join section.main section header, body.join section.other section header {
+    padding: 0.5em 2.041%;
+    border-top: 1px solid #d0d0d0;
+    border-left: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+    background-color: #ebfed7
+}
+
+body.join section.main section h1, body.join section.other section h1 {
+    font-weight: bold;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.18em;
+    line-height: 1.4;
+    margin-bottom: 0
+}
+
+body.join section.other section div {
+    margin: 1em 0;
+    border: 1px solid #d0d0d0;
+    -moz-border-radius-topleft: 0.313em;
+    -moz-border-radius-topright: 0.313em;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0.313em;
+    -webkit-border-top-right-radius: 0.313em;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0.313em;
+    border-top-right-radius: 0.313em;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    padding: 0 2.041%;
+    background: #fff;
+    margin-top: 0;
+    border-top: none;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0.313em;
+    -moz-border-radius-bottomleft: 0.313em;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0.313em;
+    -webkit-border-bottom-left-radius: 0.313em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0.313em;
+    border-bottom-left-radius: 0.313em;
+    padding: 1em 0 2em 0
+}
+
+body.join section.other section div p, body.join section.other section div a {
+    margin: auto
+}
+
+body.join section.other section div a {
+    display: block;
+    position: relative;
+    background-color: #69be39;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#8bd064), to(#69be39));
+    background-image: -moz-linear-gradient(top, #8bd064, #69be39);
+    background-image: linear-gradient(top, #8bd064, #69be39);
+    -moz-border-radius-topleft: 0.25em;
+    -moz-border-radius-topright: 0.25em;
+    -moz-border-radius-bottomright: 0.25em;
+    -moz-border-radius-bottomleft: 0.25em;
+    -webkit-border-top-left-radius: 0.25em;
+    -webkit-border-top-right-radius: 0.25em;
+    -webkit-border-bottom-right-radius: 0.25em;
+    -webkit-border-bottom-left-radius: 0.25em;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border: 1px solid #6bc23a;
+    padding: 0.65em 1em;
+    color: #fff;
+    font-size: 0.774em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-weight: normal;
+    width: 65%
+}
+
+body.join section.other section div a.add:before {
+    content: "+ "
+}
+
+body.join section.other section div a.remove:before {
+    content: "- "
+}
+
+body.join section.other section div a:after {
+    content: " ";
+    width: 98%;
+    height: 1px;
+    position: absolute;
+    left: 1%;
+    top: 0;
+    border-top: 1px solid #a2da83
+}
+
+body.join section.other section div a:hover {
+    background-color: #6ec53d;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#91d36c), to(#6ec53d));
+    background-image: -moz-linear-gradient(top, #91d36c, #6ec53d);
+    background-image: linear-gradient(top, #91d36c, #6ec53d);
+    border: 1px solid #65b637
+}
+
+body.join section.other section div p {
+    margin: auto;
+    width: 75%;
+    font-size: 0.88em;
+    text-align: center;
+    padding-top: 1em
+}
+
+body.join span.hint {
+    font-weight: normal;
+    font-size: 0.774em
+}
+
+@media screen and (min-width: 600px) {
+    div#page {
+        -moz-border-radius-topleft: 0.313em;
+        -moz-border-radius-topright: 0.313em;
+        -moz-border-radius-bottomright: 0.313em;
+        -moz-border-radius-bottomleft: 0.313em;
+        -webkit-border-top-left-radius: 0.313em;
+        -webkit-border-top-right-radius: 0.313em;
+        -webkit-border-bottom-right-radius: 0.313em;
+        -webkit-border-bottom-left-radius: 0.313em;
+        border-top-left-radius: 0.313em;
+        border-top-right-radius: 0.313em;
+        border-bottom-right-radius: 0.313em;
+        border-bottom-left-radius: 0.313em
+    }
+
+    section.main form fieldset, section.main form p, section.main form ul, section.main form ul li {
+        clear: both
+    }
+
+    section.main form ul {
+        width: 100%
+    }
+
+    section.main form ul li {
+        float: left;
+        clear: both
+    }
+
+    section.main form ul li.continue {
+        clear: none;
+        margin-left: 2em
+    }
+
+    section.main form ul li.email input {
+        width: 18em
+    }
+
+    section.main form ul li.name.last {
+        clear: none;
+        margin-left: 0.8em
+    }
+}
+
+@media screen and (min-width: 800px) {
+    div#toolbar-wrapper div#toolbar {
+        position: relative
+    }
+
+    section.main {
+        width: 71.429%;
+        float: left
+    }
+
+    section.main form.inline ul li {
+        width: 95.918%
+    }
+
+    section.main form.inline ul li label, section.main form.inline ul li strong.label {
+        float: left;
+        width: 22.449%;
+        padding-top: 0.6em;
+        margin-right: 0.5em
+    }
+
+    section.main form.inline ul li strong.label {
+        padding-top: 0.2em
+    }
+
+    section.main form.inline ul li div {
+        float: left
+    }
+
+    section.main form.inline ul .checkbox>label {
+        float: none;
+        width: auto
+    }
+
+    section.main form.inline ul .checkbox div {
+        margin-left: 22.449%;
+        width: 16em
+    }
+
+    section.main form.inline ul .checkbox div label {
+        width: auto;
+        margin-left: 0.5em
+    }
+
+    section.main form.inline ul .choice_group {
+        clear: none
+    }
+
+    section.other {
+        width: 22.449%;
+        float: right;
+        padding: 20px 1.02%
+    }
+
+    body.other_lhs section.main {
+        float: right
+    }
+
+    body.other_lhs section.other {
+        float: left;
+        padding: 20px 0 20px 2.041%
+    }
+
+    body.full_width_main section.main {
+        float: none;
+        width: 95.918%
+    }
+
+    body.full_width_main section.other {
+        display: none
+    }
+}
+
+@media screen and (min-width: 980px) {
+    div#toolbar-wrapper div#toolbar, header.banner, div#page, footer.contentinfo div {
+        max-width: 980px
+    }
+}
+
+@media screen and (min-width: 500px) {
+    body footer.contentinfo li {
+        float: left;
+        border-right: 1px solid #6a6a6a;
+        padding-right: 0.75em;
+        margin-right: 0.75em
+    }
+
+    body footer.contentinfo li:last-child {
+        border-right: none
+    }
+}
+
+@media screen and (min-width: 600px) {
+    div#toolbar-wrapper {
+        font-size: 1em
+    }
+
+    div#toolbar-wrapper nav.links {
+        float: right;
+        margin-top: 12px
+    }
+
+    body.home header.banner h1, body.pricing header.banner h1 {
+        font-size: 315%
+    }
+
+    body.home header.banner h2, body.pricing header.banner h2 {
+        font-size: 205.882%
+    }
+
+    body.get-in-touch section.main form li.message {
+        width: 30em
+    }
+
+    body.get-in-touch section.main form li.club input, body.get-in-touch section.main form li.email input {
+        width: 18em
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body.home header.banner h1, body.pricing header.banner h1 {
+        width: 95.918%
+    }
+
+    body.home header.banner p.headline, body.pricing header.banner p.headline {
+        font-size: 1.64em;
+        margin-bottom: 1em
+    }
+
+    body.home header.banner h1, body.home header.banner p, body.pricing header.banner h1, body.pricing header.banner p {
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    body.home header.banner h1, body.home header.banner p.headline, body.pricing header.banner h1, body.pricing header.banner p.headline {
+        text-align: center
+    }
+
+    body.home header.banner h1 p.headline, body.home header.banner p.headline p.headline, body.pricing header.banner h1 p.headline, body.pricing header.banner p.headline p.headline {
+        font-size: 1.64em
+    }
+
+    body.home header.banner hgroup {
+        margin-top: 48px
+    }
+
+    body.home header.banner p.headline {
+        width: 89.796%
+    }
+
+    body.home header.banner ul {
+        margin: 0 auto;
+        width: 95.918%
+    }
+
+    body.home header.banner ul li {
+        float: left;
+        min-height: 200px;
+        padding-left: 2.041%;
+        padding-right: 2.041%;
+        width: 27.833%;
+        margin-right: 2.041%
+    }
+
+    body.home header.banner ul li:first-child {
+        position: relative
+    }
+
+    body.home header.banner ul li:first-child aside {
+        position: absolute;
+        display: block;
+        top: -8em;
+        left: 0;
+        height: 8.5em;
+        width: 8.5em;
+        background: #ffc443;
+        text-align: center;
+        -moz-border-radius-topleft: 50%;
+        -moz-border-radius-topright: 50%;
+        -moz-border-radius-bottomright: 50%;
+        -moz-border-radius-bottomleft: 50%;
+        -webkit-border-top-left-radius: 50%;
+        -webkit-border-top-right-radius: 50%;
+        -webkit-border-bottom-right-radius: 50%;
+        -webkit-border-bottom-left-radius: 50%;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%
+    }
+
+    body.home header.banner ul li:first-child aside span {
+        color: #515151;
+        position: relative;
+        top: 25%;
+        line-height: 1.2
+    }
+
+    body.home header.banner ul li:first-child aside span b {
+        -webkit-text-shadow: 0 1px 0 #ffe4a9;
+        -moz-text-shadow: 0 1px 0 #ffe4a9;
+        text-shadow: 0 1px 0 #ffe4a9;
+        color: #444;
+        font-size: 141%
+    }
+
+    body.home header.banner ul li:nth-child(3) {
+        margin-right: 0
+    }
+
+    body.home header.banner ul li div.promo-image#stopwatch, body.home header.banner ul li div.promo-image#plan, body.home header.banner ul li div.promo-image#shirts {
+        background: none
+    }
+
+    body.home header.banner ul img {
+        width: 100%
+    }
+
+    body.home header.banner p.buttons {
+        width: 40.816%
+    }
+
+    body.home header.banner p.buttons a {
+        width: auto
+    }
+
+    body.home section.main section {
+        padding: 1.5em 0
+    }
+
+    body.home section.main section.testimonials {
+        height: 232px;
+        -moz-border-radius-topleft: 0.313em;
+        -moz-border-radius-topright: 0.313em;
+        -moz-border-radius-bottomright: 0;
+        -moz-border-radius-bottomleft: 0;
+        -webkit-border-top-left-radius: 0.313em;
+        -webkit-border-top-right-radius: 0.313em;
+        -webkit-border-bottom-right-radius: 0;
+        -webkit-border-bottom-left-radius: 0;
+        border-top-left-radius: 0.313em;
+        border-top-right-radius: 0.313em;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-width: 2px
+    }
+
+    body.home section.main section.testimonials::before, body.home section.main section.testimonials::after {
+        font-size: 128px;
+        top: 0.18em
+    }
+
+    body.home section.main section.testimonials::before {
+        content: "\201C";
+        left: 0.4em
+    }
+
+    body.home section.main section.testimonials::after {
+        content: "\201D";
+        right: 0.4em
+    }
+
+    body.home section.main section.testimonials ul {
+        padding-left: 18.367%;
+        padding-right: 18.367%
+    }
+
+    body.home section.main section.testimonials p {
+        font-size: 1.64em
+    }
+
+    body.home section.main section.testimonials p.flex-caption {
+        font-size: 1em
+    }
+
+    body.home section.main section.testimonials img {
+        position: absolute;
+        top: 218px;
+        width: auto;
+        left: 50%;
+        margin-left: -123px
+    }
+
+    body.home section.main section.testimonials ol.flex-control-nav {
+        position: absolute;
+        top: 346px;
+        margin-left: 0
+    }
+
+    body.home section.main section.features {
+        margin-top: 1.5em
+    }
+
+    body.home section.main section.features section h1 {
+        margin-top: 1em;
+        margin-bottom: 1em
+    }
+
+    body.home section.main section.features section img {
+        width: 47.98%
+    }
+
+    body.home section.main section.features section.organise h1, body.home section.main section.features section.organise ul {
+        float: left;
+        width: 48.98%;
+        margin-left: 2.041%
+    }
+
+    body.home section.main section.features section.organise ul {
+        clear: left
+    }
+
+    body.home section.main section.features section.develop h1, body.home section.main section.features section.develop ul {
+        width: 40.816%;
+        float: right
+    }
+
+    body.home section.main section.features section.develop ul {
+        position: relative;
+        margin-left: 6.122%;
+        clear: right
+    }
+
+    body.home section.main section.features section.communicate h1, body.home section.main section.features section.communicate ul {
+        float: left;
+        width: 48.98%;
+        margin-left: 2.041%
+    }
+
+    body.home section.main section.features section.communicate ul {
+        clear: left
+    }
+
+    body.home section.main section.features section.manage h1, body.home section.main section.features section.manage ul {
+        width: 40.816%;
+        float: right
+    }
+
+    body.home section.main section.features section.manage ul {
+        position: relative;
+        margin-left: 6.122%;
+        clear: right
+    }
+
+    body.home section.main section.features section.miscellaneous h1, body.home section.main section.features section.miscellaneous ul {
+        float: left;
+        width: 48.98%;
+        margin-left: 2.041%
+    }
+
+    body.home section.main section.features section.miscellaneous ul {
+        clear: left
+    }
+
+    body.home section.main p.cta {
+        position: relative;
+        margin: 0.5em 0;
+        width: 42.857%;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    body.home section.main p.cta a {
+        width: auto
+    }
+
+    body.home section.main section.about h1 {
+        font-size: 1.64em
+    }
+
+    body.pricing header.banner hgroup {
+        margin-top: 24px
+    }
+
+    body.pricing section.main ul {
+        margin: 0 auto;
+        width: 95.918%
+    }
+
+    body.pricing section.main ul li {
+        float: left;
+        padding-left: 2.041%;
+        padding-right: 2.041%;
+        width: 27.833%;
+        margin-right: 2.041%
+    }
+
+    body.pricing section.main ul li:nth-child(3) {
+        margin-right: 0
+    }
+
+    body.pricing section.main ul li div.container {
+        min-height: 300px
+    }
+}
+
+@media screen and (min-width: 800px) {
+    body footer.contentinfo ul.contact-details {
+        float: left;
+        position: relative
+    }
+
+    body footer.contentinfo p {
+        float: right;
+        width: 22.449%;
+        margin-right: 14.286%;
+        padding-left: 0;
+        margin-top: 1.6em
+    }
+
+    body footer.contentinfo ul.legal {
+        clear: both
+    }
+
+    body.home header.banner ul li {
+        min-height: 210px
+    }
+
+    body.home section.main section.about {
+        position: relative;
+        padding-bottom: 1.8em
+    }
+
+    body.home section.main section.about h1 {
+        margin-top: 0.4em
+    }
+
+    body.home section.main section.about p {
+        width: 55.102%
+    }
+
+    body.home section.main section.about img {
+        display: block;
+        width: 44.898%;
+        height: 216px;
+        position: absolute;
+        bottom: -30px;
+        right: 0;
+        max-width: 44.898%
+    }
+
+    body.join section.other {
+        margin-top: 52px
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    body.home header.banner p.buttons a {
+        margin: 0 0 0 0
+    }
+
+    body.home header.banner ul li {
+        min-height: 0
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    body.home section.main section.features section img {
+        width: auto
+    }
+}
