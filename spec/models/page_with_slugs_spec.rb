@@ -100,4 +100,8 @@ describe Page do
     to_parse = 'some [the ref] content here'
     p = page.split_string(to_parse).should == ['some ', '[the ref]', ' content here']
   end
+  it 'should split' do
+    to_parse = ' [the ref] '
+    p = page.split_string(to_parse).should == [' ', '[the ref]', ' ']
+  end
 end

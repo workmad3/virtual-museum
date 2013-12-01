@@ -53,6 +53,12 @@ class Page < ActiveRecord::Base
   end
 
   def parse_content str
+    split_arr = split_string str
+    split_arr.delete ''
+    split_arr.each { |s| s.tokenise}
+  end
+
+=begin
     return [{link: $1}] if str =~ /^\[([^\[\]]*)\]$/
     z = ['not set yet']
     first_result = str.split /\[/, 2
@@ -79,6 +85,7 @@ class Page < ActiveRecord::Base
     z
 
   end
+=end
 
 
 end
