@@ -47,23 +47,35 @@ describe Page do
   end
 
   it 'parse content that has one page reference' do
-    to_parse = "some [#{page.title}] content here"
-    page.parse_content(to_parse).should == [{text: 'some '},
-                                            {link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}},
-                                            {text: ' content here'}]
 
-    to_parse = "[#{page.title}] content here"
-    page.parse_content(to_parse).should == [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}}, {text: ' content here'}]
+    to_parse = "[#{page.title}]"
+    page.parse_content(to_parse).should == [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}}]
 
     to_parse = "some [#{page.title}]"
     page.parse_content(to_parse).should == [{text: 'some '}, {link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}}]
 
-    to_parse = "[#{page.title}]"
-    page.parse_content(to_parse).should == [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}}]
-  end
+    to_parse = "[#{page.title}] content here"
+    page.parse_content(to_parse).should == [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}}, {text: ' content here'}]
+
+    to_parse = "some [#{page.title}] content here"
+    page.parse_content(to_parse).should == [{text: 'some '},
+                                            {link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}},
+                                            {text: ' content here'}]
+    end
 
 
   it 'parse content that has two page references' do
+    to_parse = "[#{page.title}][#{page2.title}]"
+    page.parse_content(to_parse).should ==
+        [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}},
+         {link: {title: "#{page2.title}", slug: "#{page2.slug}", exists: true}}]
+
+    to_parse = "[#{page.title}] [#{page2.title}]"
+    page.parse_content(to_parse).should ==
+        [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}},
+         {text: ' '},
+         {link: {title: "#{page2.title}", slug: "#{page2.slug}", exists: true}}]
+
     to_parse = "some [#{page.title}] content [#{page2.title}] here"
     page.parse_content(to_parse).should ==
         [{text: 'some '},
@@ -72,32 +84,10 @@ describe Page do
          {link: {title: "#{page2.title}", slug: "#{page2.slug}", exists: true}},
          {text: ' here'}]
 
-    to_parse = "[#{page.title}] [#{page2.title}]"
-    page.parse_content(to_parse).should ==
-        [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}},
-         {text: ' '},
-         {link: {title: "#{page2.title}", slug: "#{page2.slug}", exists: true}}]
 
-    to_parse = "[#{page.title}][#{page2.title}]"
-    page.parse_content(to_parse).should ==
-        [{link: {title: "#{page.title}", slug: "#{page.slug}", exists: true}},
-         {link: {title: "#{page2.title}", slug: "#{page2.slug}", exists: true}}]
-
-=begin
-    to_parse = '[the ref] content [other ref] here'
-    p = page.parse_content(to_parse).should ==
-        [{link: 'the ref'}, {text: ' content '}, {link: 'other ref'}, {text: ' here'}]
-
-    to_parse = 'some [the ref] content [other ref]'
-    p = page.parse_content(to_parse).should ==
-        [{text: 'some '}, {link: 'the ref'}, {text: ' content '}, {link: 'other ref'}]
-
-    to_parse = '[the ref] content [other ref]'
-    p = page.parse_content(to_parse).should ==
-        [{link: 'the ref'}, {text: ' content '}, {link: 'other ref'}]
-=end
   end
 
+  #----------------------------------------------------------------------------
 
   it 'should split the empty string' do
     to_parse = ''
@@ -127,18 +117,14 @@ describe Page do
     to_parse = '[the ref][other ref]'
     p = page.split_string(to_parse).should == ['', '[the ref]', '[other ref]']
   end
-  it 'should tokenize' do
+
+  #----------------------------------------------------------------------------
+
+  it 'should tokenize strings' do
     page.tokenize('strr').should == {text: 'strr'}
   end
-=begin
-  it 'should tokenize' do
-    page.tokenize('[strr]').should == {link: 'strr'}
-  end
-  it 'should downcase the target / new'  do
-    page.tokenize('[Strr]')[:link][:title].should == 'strr'
-  end
-=end
-  it 'should link tokenize' do
+
+  it 'should tokenize links' do
     page.tokenize("[#{page2.title}]").should == {link: {
         title: page2.title,
         slug: page2.slug,
@@ -146,7 +132,7 @@ describe Page do
     }}
     page.tokenize('[Doesnt exist title]').should == {link: {
         title: 'Doesnt exist title',
-        slug: 'Doesnt-exist-title---not-created-yet',
+        slug: 'slug-not-used',
         exists: false
     }}
   end

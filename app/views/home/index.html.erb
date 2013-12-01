@@ -1,6 +1,8 @@
 <h1>Home</h1>
 
 <%= link_to 'Add page', new_page_path, class: 'btn btn-large btn-primary' if user_signed_in? %>
+<br>
+<br>
 
 <% @pages.sort{|x,y|x.title.downcase<=>y.title.downcase}.each do |page| %>
     <p><%= link_to page.title, page %></p>

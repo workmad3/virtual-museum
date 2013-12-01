@@ -6,11 +6,11 @@
           <%= token[:text] %>
       <% end %>
       <% if token[:link] %>
-          <% color_style = {:style => 'color: #FF0000'}  %>
+          <% color_style = {:style => 'color: #FF0000'}                                    %>
           <% color_style = {:style => 'color: #0000FF'}           if token[:link][:exists] %>
-          <% url_ending = "/pages/new?title=#{token[:link][:title].gsub(/ /,'%20')}" %>
-          <% url_ending = "/pages/#{token[:link][:slug]}"   if token[:link][:exists] %>
-          <%= link_to("#{token[:link][:title]}", url_ending, color_style) %>
+          <% url_ending = "/pages/new?title=#{token[:link][:title].gsub(/ /,'%20')}"       %>
+          <% url_ending = "/pages/#{token[:link][:slug]}"         if token[:link][:exists] %>
+          <%= link_to("#{token[:link][:title]}", url_ending, color_style)                  %>
       <% end %>
   <% end %>
 </p>

@@ -59,7 +59,7 @@ class Page < ActiveRecord::Base
     if p
       {link: {title: p.title, slug: p.slug, exists: true}}
     else
-      {link: {title: desired_title, slug: "#{desired_title.gsub(/ /, '-')}", exists: false}}
+      {link: {title: desired_title, slug: 'slug-not-used', exists: false}}
     end
   end
 
