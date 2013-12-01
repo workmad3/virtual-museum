@@ -20,33 +20,64 @@ class Page < ActiveRecord::Base
     self.history == [] ? nil : user
   end
 
-  def change_content args     # TODO ? SIMPLIFY ARGS
+  def change_content args # TODO ? SIMPLIFY ARGS
     PreviousPage.create(title: title, content: content, user: user, page: self)
-    self.user =  args[:user]
+    self.user = args[:user]
     self.content = args[:content]
     save
   end
 
-  def change_title args   # TODO ? SIMPLIFY ARGS
+  def change_title args # TODO ? SIMPLIFY ARGS
     PreviousPage.create(title: title, content: content, user: user, page: self)
-    self.user =  args[:user]
+    self.user = args[:user]
     self.title = args[:title] if args[:title]
     save
   end
 
   def change editing_user, args
     PreviousPage.create(title: title, content: content, user: user, page: self)
-    self.user =  editing_user
+    self.user = editing_user
     self.title = args[:title] if args[:title]
     self.content = args[:content] if args[:content]
     save
   end
 
-  def slugged_content
-    self.content.gsub(/\[([a-zA-Z0-9:_ ]*)\]/) do |t|
-      pg = Page.find_by_title( t.chop.reverse.chop.reverse )
-      '['+pg.slug+']'
+  def split_string str
+    first_array = str.split /\[/, 2
+    return ['', str, ''] unless first_array[1]
+    last_array = str.split /\]/, 2
+    first = first_array[0]
+    last = last_array[1]
+    ref = str[first.length..(str.length-last.length)]
+    return [first, ref, last]
+  end
+
+  def parse_content str
+    return [{link: $1}] if str =~ /^\[([^\[\]]*)\]$/
+    z = ['not set yet']
+    first_result = str.split /\[/, 2
+    return [{:text => str}] unless first_result[1]
+
+    z = [{text: first_result[0]},
+         {link: ($1 if first_result[1] =~ /^([^\]]*)/)},
+         {text: ($1 if first_result[1] =~ /^[^\]]*\](.*)/)}
+    ]
+
+    z.delete text: ''
+    tail_str = z[z.count-1][:text]
+    tail_str = '[' +tail_str if tail_str =~ /^[^\[]*\]$/
+
+    if tail_str
+      res = parse_content tail_str
+      if res.count == 1
+        return z
+      else
+        z.delete_at(z.count-1)
+        return z.concat(res)
+      end
     end
+    z
+
   end
 
 
