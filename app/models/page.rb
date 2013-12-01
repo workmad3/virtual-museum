@@ -48,44 +48,39 @@ class Page < ActiveRecord::Base
     last_array = str.split /\]/, 2
     first = first_array[0]
     last = last_array[1]
-    ref = str[first.length..(str.length-last.length)]
-    return [first, ref, last]
+    ref = str[first.length..(str.length-last.length-1)]
+    [first, ref, last]
   end
 
-  def parse_content str
+  def tokenize str
+    return {text: str} unless str =~ /\[/
+    desired_title = str[1..-2]
+    p = Page.find_by_title(desired_title)
+    if p
+      {link: {title: p.title, slug: p.slug, exists: true}}
+    else
+      {link: {title: desired_title, slug: "#{desired_title.gsub(/ /, '-')}", exists: false}}
+    end
+  end
+
+  def parsed_content
+    return parse_content(content)
+  end
+
+  def parse_content str, recurse=nil
     split_arr = split_string str
     split_arr.delete ''
-    split_arr.each { |s| s.tokenise}
+
+    return [] if split_arr.count == 0
+    return [str] if split_arr.count == 1 if recurse
+    return [tokenize(str)] if split_arr.count == 1 && recurse == nil
+
+    last = split_arr.last
+    split_arr.pop
+    split_arr.concat(parse_content(last, true))
+
+    return split_arr if recurse
+    split_arr.collect { |str| tokenize(str) }
   end
-
-=begin
-    return [{link: $1}] if str =~ /^\[([^\[\]]*)\]$/
-    z = ['not set yet']
-    first_result = str.split /\[/, 2
-    return [{:text => str}] unless first_result[1]
-
-    z = [{text: first_result[0]},
-         {link: ($1 if first_result[1] =~ /^([^\]]*)/)},
-         {text: ($1 if first_result[1] =~ /^[^\]]*\](.*)/)}
-    ]
-
-    z.delete text: ''
-    tail_str = z[z.count-1][:text]
-    tail_str = '[' +tail_str if tail_str =~ /^[^\[]*\]$/
-
-    if tail_str
-      res = parse_content tail_str
-      if res.count == 1
-        return z
-      else
-        z.delete_at(z.count-1)
-        return z.concat(res)
-      end
-    end
-    z
-
-  end
-=end
-
 
 end

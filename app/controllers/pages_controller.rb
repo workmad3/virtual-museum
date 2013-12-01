@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def new
+    @new_title=params[:title]
   end
 
   def create
