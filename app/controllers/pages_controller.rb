@@ -23,7 +23,7 @@ class PagesController < ApplicationController
   def update
     current_slug = request.path_info.sub(/.*\//, '')
     page = Page.find_by slug: current_slug
-    page.update(title: params[:title], content: params[:content])
+    page.update(title: params[:title], content: params[:content])   # TODO change to Page#change to turn on page history
     redirect_to '/pages/'+current_slug, status: 301
   end
 end
