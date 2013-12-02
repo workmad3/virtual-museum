@@ -1,4 +1,5 @@
-#demo_parser.rb
+# http://www.sitepoint.com/parsing-parslet-gem/
+
 require 'parslet'
 
 class DemoParser < Parslet::Parser
