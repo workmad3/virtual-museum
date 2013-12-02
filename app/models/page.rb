@@ -20,6 +20,7 @@ class Page < ActiveRecord::Base
     self.history == [] ? nil : user
   end
 
+=begin
   def change_content args # TODO ? SIMPLIFY ARGS
     PreviousPage.create(title: title, content: content, user: user, page: self)
     self.user = args[:user]
@@ -33,6 +34,7 @@ class Page < ActiveRecord::Base
     self.title = args[:title] if args[:title]
     save
   end
+=end
 
   def change editing_user, args
     PreviousPage.create(title: title, content: content, user: user, page: self)
@@ -71,15 +73,15 @@ class Page < ActiveRecord::Base
     split_arr = split_string str
     split_arr.delete ''
 
-    return [] if split_arr.count == 0
-    return [str] if split_arr.count == 1 if recurse
+    return []              if split_arr.count == 0
+    return [str]           if split_arr.count == 1 if recurse
     return [tokenize(str)] if split_arr.count == 1 && recurse == nil
 
     last = split_arr.last
     split_arr.pop
     split_arr.concat(parse_content(last, true))
 
-    return split_arr if recurse
+    return split_arr       if recurse
     split_arr.collect { |str| tokenize(str) }
   end
 
