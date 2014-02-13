@@ -20,23 +20,7 @@ class Page < ActiveRecord::Base
     self.history == [] ? nil : user
   end
 
-=begin
-  def change_content args # TODO ? SIMPLIFY ARGS
-    PreviousPage.create(title: title, content: content, user: user, page: self)
-    self.user = args[:user]
-    self.content = args[:content]
-    save
-  end
-
-  def change_title args # TODO ? SIMPLIFY ARGS
-    PreviousPage.create(title: title, content: content, user: user, page: self)
-    self.user = args[:user]
-    self.title = args[:title] if args[:title]
-    save
-  end
-=end
-
-  def change editing_user, args
+  def change(editing_user, args)
     PreviousPage.create(title: title, content: content, user: user, page: self)
     self.user = editing_user
     self.title = args[:title] if args[:title]

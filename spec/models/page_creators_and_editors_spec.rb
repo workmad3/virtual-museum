@@ -25,13 +25,13 @@ describe Page do
   end
 
   it "editor should be set when page content is changed"  do
-    page.change_content(user: user2, content: 'changed content')
+    page.change(user2, content: 'changed content')
     page.user.should == user2
     page.editor.should == user2
   end
 
   it "editor should be set when page title is changed" do
-    page.change_title(user: user2, content: 'changed title')
+    page.change(user2, content: 'changed title')
     page.user.should == user2
     page.editor.should == user2
   end
@@ -44,17 +44,17 @@ describe Page do
 
   it "creator should not vary when successively changing content" do
     page.creator.should == user
-    page.change_content(user: user2, content: 'changed content')
+    page.change(user2, content: 'changed content')
     page.creator.should == user
-    page.change_content(user: user2, content: 'changed content')
+    page.change(user2, content: 'changed content')
     page.creator.should == user
   end
 
   it "creator should not vary when successively changing title"  do
     page.creator.should == user
-    page.change_title(user: user2, content: 'changed title')
+    page.change(user2, content: 'changed title')
     page.creator.should == user
-    page.change_title(user: user2, content: 'changed title')
+    page.change(user2, content: 'changed title')
     page.creator.should == user
   end
 

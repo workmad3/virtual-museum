@@ -4,10 +4,11 @@ Given(/^I am signed in$/) do
   visit new_user_session_path
   fill_in 'user_email', :with => @user.email
   fill_in('user_password', :with => @user.password)
-  click_button('Sign in')
+  # fill_in('user_password_confirmation', :with => @user.password)
+  click_button('Sign up')
 
   current_path.should == '/'
-  page.should have_content('Sign out')
+  page.should have_content('Logout')
 end
 
 When(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|

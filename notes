@@ -1,0 +1,6 @@
+$   rake db:create:all db:test:prepare
+virtual-museum_development already exists
+virtual-museum_test already exists
+virtual-museum_production already exists
+virtual-museum_test already exists
+

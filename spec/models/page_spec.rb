@@ -20,7 +20,7 @@ describe Page do
     original_title = page.title
     original_creator = page.user
 
-    page.change_content(user: user, content: 'check me')
+    page.change(user, content: 'check me')
     page.content.should == 'check me'
     page.title.should == original_title
     page.user == original_creator
@@ -33,7 +33,7 @@ describe Page do
     original_content = page.content
     original_creator = page.user
 
-    page.change_title(user: user, title: 'check me')
+    page.change(user, title: 'check me')
     page.title.should == 'check me'
     page.content.should == original_content
     page.user == original_creator
@@ -47,7 +47,7 @@ describe Page do
     PreviousPage.count.should == 0
     original_content = page.content
 
-    page.change_content(user: user2, content: ' xxx ')
+    page.change(user2, content: ' xxx ')
     PreviousPage.count.should == 1
     prev_page = PreviousPage.first
 
@@ -59,13 +59,13 @@ describe Page do
   end
 
   it "should have one past page after one change" do
-    page.change_content(user: user, content: ' xxx ')
+    page.change(user, content: ' xxx ')
     page.history.count.should == 1
   end
 
   it "should have two past pages after two changes" do
-    page.change_content(user: user, content: ' xxx ')
-    page.change_content(user: user, content: ' zzzz ')
+    page.change(user, content: ' xxx ')
+    page.change(user, content: ' zzzz ')
     Page.first.history.count.should == 2
   end
 
@@ -73,9 +73,9 @@ describe Page do
     original_page_content = page.content
     original_page2_content = page2.content
 
-    page.change_content(user: user, content: 'first content change')
-    page.change_content(user: user, content: 'second content change, not tested')
-    page2.change_content(user: user, content: 'first content change, also not tested')
+    page.change(user, content: 'first content change')
+    page.change(user, content: 'second content change, not tested')
+    page2.change(user, content: 'first content change, also not tested')
 
     history = Page.first.history
     history.count.should == 2
