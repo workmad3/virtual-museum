@@ -50,7 +50,7 @@ class Page < ActiveRecord::Base
   end
 
   def parsed_content
-    return parse_content(content)
+    parse_content(content)
   end
 
   def parse_content str, recurse=nil
