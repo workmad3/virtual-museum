@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-
-
-
 describe Page do
   def user() @user end
   def page() @page end
@@ -15,8 +12,6 @@ describe Page do
     @page = FactoryGirl.create(:page)
     @page_state = FactoryGirl.create(:page_state, title: @page.original_title, user: @user, page: @page)
     @user2 = FactoryGirl.create(:user)
-    #@page2 = FactoryGirl.create(:page)
-    #@page_state2 = FactoryGirl.create(:page_state, title: @page2.original_title, user: @user2, page: @page2)
     subject {@page}
   end
 
