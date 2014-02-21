@@ -8,7 +8,7 @@ describe 'Previous Page' do
     before(:each) do
       user
       page
-      @previous_page = FactoryGirl.create(:previous_page, page: page, user: user)
+      @previous_page = FactoryGirl.create(:page_state, page: page, user: user)
     end
 
   it { @previous_page.should validate_presence_of(:page_id) }

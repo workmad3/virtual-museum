@@ -26,4 +26,4 @@ class Page < ActiveRecord::Migration
   end
 end
 
-rails generate model PreviousPage name: string content : text creator: user
+rails generate model PageState name: string content : text creator: user

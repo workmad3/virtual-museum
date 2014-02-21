@@ -1,10 +1,6 @@
 FactoryGirl.define do
 
   factory :page do
-
-    sequence(:title) {|n| "Page Title #{n}" }
-    sequence(:content) {|n| "Page Content #{n}" }
-
-    association :user
+    sequence(:original_title) {|n| "Post Title #{n}" }
   end
 end

@@ -44,12 +44,12 @@ describe Page do
   end
 
   it "should create a past page after a change" do
-    PreviousPage.count.should == 0
+    PageState.count.should == 0
     original_content = page.content
 
     page.change(user2, content: ' xxx ')
-    PreviousPage.count.should == 1
-    prev_page = PreviousPage.first
+    PageState.count.should == 1
+    prev_page = PageState.first
 
     prev_page.title.should == page.title
     prev_page.content.should == original_content

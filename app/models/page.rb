@@ -1,31 +1,32 @@
 class Page < ActiveRecord::Base
   extend FriendlyId
   # TODO has to become original_title
-  friendly_id :title, use: :slugged
+  friendly_id :original_title, use: :slugged
 
-  belongs_to :user
-  validates :user_id, presence: true
+  has_many :page_states
 
-  has_many :previous_pages
+  def original_title=(arg)
+    @original_title = arg
+  end
+
+  def original_title
+    @original_title
+  end
 
   def history
-    PreviousPage.where(page: self)
+    PageState.where(page: self)
   end
 
   def creator
-    history == [] ? user : history.last.user
+    history.last.user
   end
 
   def editor
-    self.history == [] ? nil : user
+    self.history.length == 1 ? nil : history.first.user
   end
 
   def change(editing_user, args)
-    PreviousPage.create(title: title, content: content, user: user, page: self)
-    self.user = editing_user
-    self.title = args[:title] if args[:title]
-    self.content = args[:content] if args[:content]
-    save
+    PageState.create(title: args[:title], content: args[:content], user: editing_user, page: self)
   end
 
   def split_string str
@@ -50,7 +51,7 @@ class Page < ActiveRecord::Base
   end
 
   def parsed_content
-    parse_content(content)
+    parse_content(PageState.find_by_page_id(id).content)
   end
 
   def parse_content str, recurse=nil
