@@ -25,6 +25,14 @@ class Page < ActiveRecord::Base
     self.history.length == 1 ? nil : history.first.user
   end
 
+  def content
+    history.first.content
+  end
+
+  def title
+     history.first.title
+  end
+
   def change(editing_user, args)
     PageState.create(title: args[:title], content: args[:content], user: editing_user, page: self)
   end

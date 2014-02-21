@@ -8,7 +8,6 @@ describe Page do
     @user2 = FactoryGirl.create(:user)
     @page2 = FactoryGirl.create(:page)
     @page_state2 = FactoryGirl.create(:page_state, title: @page2.original_title, user: @user2, page: @page2)
-    #subject { page }
   end
 
   it "creator should be set when page first created" do
