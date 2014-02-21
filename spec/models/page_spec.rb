@@ -5,7 +5,6 @@ describe Page do
   def page() @page end
   def page_state() @page_state end
   def user2() @user2 end
-  def page2() @page2 end
 
   before(:each) do
     @user = FactoryGirl.create(:user)
@@ -17,24 +16,6 @@ describe Page do
 
   it { page_state.should validate_presence_of(:user_id) }
   it { page_state.should validate_presence_of(:page_id) }
-
-
-  it "should be able to change content" do
-    original_title = page_state.title
-
-    page.change(user, content: 'check me', title: original_title)
-    PageState.count.should == 2
-    page.content.should == 'check me'
-    page.title.should == original_title
-  end
-
-  it "should be able to change title" do
-    original_content = page_state.content
-
-    page.change(user, title: 'check me', content: original_content)
-    page.title.should == 'check me'
-    page.content.should == original_content
-  end
 
   it "should have only the original page state after creation" do
     page.history.should == [page_state]
@@ -82,12 +63,29 @@ describe Page do
 
     history = Page.first.history
     history.count.should == 3
-    history[-1].content.should == original_page_content
-    history[ 2].content.should == original_page_content
 
+    history[-1].content.should == original_page_content
+
+    history[2].content.should == original_page_content
     history[1].content.should == 'first content change'
     history[0].content.should == 'second content change'
+  end
 
+  it "should be able to change content" do
+    original_title = page_state.title
+
+    page.change(user, content: 'check me', title: original_title)
+    PageState.count.should == 2
+    page.content.should == 'check me'
+    page.title.should == original_title
+  end
+
+  it "should be able to change title" do
+    original_content = page_state.content
+
+    page.change(user, title: 'check me', content: original_content)
+    page.title.should == 'check me'
+    page.content.should == original_content
   end
 end
 
