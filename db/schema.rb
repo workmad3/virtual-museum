@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 20140221143215) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "page_histories", force: true do |t|
-    t.text     "title"
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "page_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "page_states", force: true do |t|
     t.text     "title"
     t.text     "content"
