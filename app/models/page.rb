@@ -5,6 +5,12 @@ class Page < ActiveRecord::Base
 
   has_many :page_states
 
+  def self.find_by_title(possible_title)
+    #TODO make sure duplicate titles cant be created
+    Page.all.each { |p| return p if p.title == possible_title }
+  end
+
+
   def original_title=(arg)
     @original_title = arg
   end
