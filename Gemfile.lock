@@ -34,6 +34,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    blankslate (2.1.2.4)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.1.4)
@@ -111,6 +112,8 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
+    parslet (1.5.0)
+      blankslate (~> 2.0)
     pg (0.17.1)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
@@ -202,6 +205,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  parslet
   pg
   quiet_assets
   rails (= 4.0.1)
