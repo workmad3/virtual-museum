@@ -4,7 +4,7 @@ require './lib/parsing/link_interpreter'
 describe LinkInterpreter do
   it "should recognise a URL" do
     li = LinkInterpreter.new('http://hedtek.com')
-    li.url?.should == true
+    li.url?.should be_true
     li = LinkInterpreter.new('http://www.hedtek.com')
     li.url?.should == true
     li = LinkInterpreter.new('http://hedtek.com/')
@@ -21,10 +21,14 @@ describe LinkInterpreter do
     li = LinkInterpreter.new('http:/hedtek.com')
     li.url?.should == false
   end
+
   it "should recognise a bad URL 2" do
     li = LinkInterpreter.new('ftp://hedtek.com')
-    li.url?.should == false
+    expect(li.url?).to be_false
   end
+
+  #TODO think about the phrasing above
+
   it "should recognise a bad URL 3" do
     li = LinkInterpreter.new('http://hedtek..com')
     li.url?.should == false

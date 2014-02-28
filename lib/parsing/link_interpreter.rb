@@ -9,16 +9,19 @@ class LinkInterpreter
   end
 
   def url?
-    return false if ((@first =~ /^http\:\/\//) == nil) && ((@first =~ /^https\:\/\//) == nil)
-    return false if (@first =~ /\.\./) != nil
-    uri = URI.parse(@first)
-    %w( http https ).include?(uri.scheme)
-  rescue URI::BadURIError
-    false
-  rescue URI::InvalidURIError
+    @uri = URI.parse(@first)
+    valid_scheme? && valid_host?
+  rescue URI::BadURIError, URI::InvalidURIError
     false
   end
 
+  def valid_scheme?
+    %w( http https ).include?(@uri.scheme)
+  end
+
+  def valid_host?
+    !(@uri.host.nil? || @uri.host.include?(".."))
+  end
   def url_suffix?
     url? && ((@first =~ /\/\/[^\/]+\/[^\/]+/) != nil)
   end
@@ -51,12 +54,12 @@ class LinkInterpreter
   def process_bracket_contents
   end
 
-  def process page_name
-    pg = Page.find_by_title page_name
+  def process_page_title  page_title
+    pg = Page.find_by_title page_title
     if pg
-      pg.current_slug
+      "<a href='/pages/#{pg.slug}' style='color: #0000FF'>#{page_title}</a>"
     else
-      nil
+      "<a href='/pages/#{pg.slug}/new' style='color: #0000FF'>#{page_title}</a>"
     end
   end
 

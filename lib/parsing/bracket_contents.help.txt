@@ -1,0 +1,9 @@
+[page name] -> hyperlink to the page, hyperlink text is the page name
+[url] -> external hyperlink, text is the url
+[url trailing text] eternal hyperlink, htext is the trailing test
+[urlforimage width height] show image on page at specified size
+[urlforimage] show image at default size
+[youtubeurl] etc
+[youtubeurl width] etc preserving aspect ration
+[vimeourl] etc
+[vimeourl width] etc
