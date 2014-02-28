@@ -30,4 +30,5 @@ group :development, :test do
   gem 'email_spec'
   gem 'launchy'
   gem 'shoulda-matchers'
+
 end
