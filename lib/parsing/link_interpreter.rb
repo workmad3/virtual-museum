@@ -33,14 +33,16 @@ class LinkInterpreter
   end
 
   def domain
-    return nil if url? == false
+    return nil unless url?
     d = @first.gsub(/https?\:\/\//, '')
     d.gsub!(/\/.*/, '')
     d
   end
 
+  #TODO test this
   def is_domain? domain_to_match
-    domain.match(domain_to_match) != nil
+    return nil if (@first  =~ /https?\:\/\//) != 0
+    domain.match(domain_to_match)
   end
 
   #TODO refine checking of these URLs to see that they look good for vids
@@ -55,7 +57,7 @@ class LinkInterpreter
 
   def process_page_title
     pg = Page.find_by_title @text
-    if pg != [] #TODO make find_by_title mroe friendly if page not found
+    if pg != nil
       "<a href='/pages/#{pg.slug}' data-page>#{@text}</a>"
     else
       "<a href='/pages/new?page_title=#{@text}' data-new-page>#{@text}</a>"
@@ -63,38 +65,47 @@ class LinkInterpreter
   end
 
   def process_url_without_text
-    "<a href='#{@text}' external-link>#{@text}</a>"
+    "<a href='#{@text}' vm-external-link>#{@text}</a>"
   end
 
   def process_url_with_text
-    "<a href='#{@first}' external-link>#{@rest}</a>"
+    "<a href='#{@first}' vm-external-link>#{@rest}</a>"
   end
 
-#TODO untested
   def process_url
-    @rest == '' ? process_url_without_text : process_url_with_text
+    @rest ? process_url_with_text : process_url_without_text
   end
 
   def process_image_url_without_width
-    "<div><img href='#{@text}'></div>"
+    "<div><img src='#{@text}'/></div>"
   end
 
   def process_image_url_with_width
-    "<div><img href='#{@first}' style='width: #{@rest}px;'></div>"
+    "<div><img src='#{@first}' style='width: #{@rest}px;' /></div>"
   end
 
-#TODO untested
   def process_image_url
-    @rest == '' ? process_image_url_without_width : process_image_url_with_width
+    @rest ? process_image_url_with_width : process_image_url_without_width
   end
 
-#TODO untested
+  #TODO test and refine
+  def process_youtube_url
+    youtube_id = @first.gsub(/.*=/,'')
+    "<div><iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/#{youtube_id}\" frameborder=\"0\" allowfullscreen></iframe></div>"
+  end
+
+  def output_type
+    return :in_div__hyperlink if image_url? || is_youtube_url? || is_vimeo_url?
+    :in_line_hyperlink
+  end
+
+#TODO untested  write embed code for youtube and vimeo
   def process_bracket_contents
     return process_page_title if !url?
     return process_image_url if image_url?
-    return 'youtube' if is_youtube_url?
-    return 'vimeo' if is_vimeo_url?
-    return process_image_url if image_url?
+    return process_youtube_url if is_youtube_url?
+    #return 'vimeo' if is_vimeo_url?
+    process_url
   end
 
 

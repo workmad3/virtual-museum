@@ -33,6 +33,17 @@ describe LinkInterpreter do
         "<a href='http://hedtek.com/some/page' external-link>funny money</a>"
   end
 
+  it "should output url or text as a hyperlink" do
+    title= 'http://hedtek.com/some/page'
+    li=LinkInterpreter.new(title)
+    li.process_url.should ==
+        "<a href='#{title}' external-link>#{title}</a>"
+    title= 'http://hedtek.com/some/page funny money'
+    li=LinkInterpreter.new(title)
+    li.process_url.should ==
+        "<a href='http://hedtek.com/some/page' external-link>funny money</a>"
+  end
+
   it "should output an image at default size" do
     image_url= 'http://hedtek.com/some/page.png'
     li=LinkInterpreter.new(image_url)
@@ -44,6 +55,17 @@ describe LinkInterpreter do
     image_url_and_width= 'http://hedtek.com/some/page.png  300'
     li=LinkInterpreter.new(image_url_and_width)
     li.process_image_url_with_width.should ==
+        "<div><img href='http://hedtek.com/some/page.png' style='width: 300px;'></div>"
+  end
+
+  it "should output an image with or without a width"  do
+    image_url= 'http://hedtek.com/some/page.png'
+    li=LinkInterpreter.new(image_url)
+    li.process_image_url.should ==
+        "<div><img href='#{image_url}'></div>"
+    image_url_and_width= 'http://hedtek.com/some/page.png  300'
+    li=LinkInterpreter.new(image_url_and_width)
+    li.process_image_url.should ==
         "<div><img href='http://hedtek.com/some/page.png' style='width: 300px;'></div>"
   end
 
