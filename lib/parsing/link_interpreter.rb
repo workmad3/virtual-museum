@@ -41,8 +41,8 @@ class LinkInterpreter
 
   #TODO test this
   def is_domain? domain_to_match
-    return nil if (@first  =~ /https?\:\/\//) != 0
-    domain.match(domain_to_match)
+    return false if (@first  =~ /https?\:\/\//) != 0
+    !!(domain.match(domain_to_match))
   end
 
   #TODO refine checking of these URLs to see that they look good for vids
@@ -65,11 +65,11 @@ class LinkInterpreter
   end
 
   def process_url_without_text
-    "<a href='#{@text}' vm-external-link>#{@text}</a>"
+    "<a href='#{@text}' external-link>#{@text}</a>"
   end
 
   def process_url_with_text
-    "<a href='#{@first}' vm-external-link>#{@rest}</a>"
+    "<a href='#{@first}' external-link>#{@rest}</a>"
   end
 
   def process_url
@@ -81,7 +81,7 @@ class LinkInterpreter
   end
 
   def process_image_url_with_width
-    "<div><img src='#{@first}' style='width: #{@rest}px;' /></div>"
+    "<div><img src='#{@first}' style='width: #{@rest}px;'/></div>"
   end
 
   def process_image_url

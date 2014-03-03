@@ -8,7 +8,7 @@ describe LinkInterpreter do
     @page_state = FactoryGirl.create(:page_state, title: @page.original_title, user: @user, page: @page)
     li=LinkInterpreter.new(@page.title)
     li.process_page_title.should ==
-        "<a href='/pages/post-title-1' data-page>Post Title 1</a>"
+        "<a href='/pages/#{@page.title.downcase.gsub(/ /,'-')}' data-page>#{@page.title}</a>"
 
   end
 
@@ -44,32 +44,29 @@ describe LinkInterpreter do
         "<a href='http://hedtek.com/some/page' external-link>funny money</a>"
   end
 
-  it "should output an image at default size" do
+  it "should output an image at the image's given size" do
     image_url= 'http://hedtek.com/some/page.png'
     li=LinkInterpreter.new(image_url)
     li.process_image_url_without_width.should ==
-        "<div><img href='#{image_url}'></div>"
+        "<div><img src='#{image_url}'/></div>"
   end
 
-  it "should output an image at a given width" do
+  it "should output an image scaled to a given width" do
     image_url_and_width= 'http://hedtek.com/some/page.png  300'
     li=LinkInterpreter.new(image_url_and_width)
     li.process_image_url_with_width.should ==
-        "<div><img href='http://hedtek.com/some/page.png' style='width: 300px;'></div>"
+        "<div><img src='http://hedtek.com/some/page.png' style='width: 300px;'/></div>"
   end
 
   it "should output an image with or without a width"  do
     image_url= 'http://hedtek.com/some/page.png'
     li=LinkInterpreter.new(image_url)
     li.process_image_url.should ==
-        "<div><img href='#{image_url}'></div>"
+        "<div><img src='#{image_url}'/></div>"
     image_url_and_width= 'http://hedtek.com/some/page.png  300'
     li=LinkInterpreter.new(image_url_and_width)
     li.process_image_url.should ==
-        "<div><img href='http://hedtek.com/some/page.png' style='width: 300px;'></div>"
+        "<div><img src='http://hedtek.com/some/page.png' style='width: 300px;'/></div>"
   end
 
-  it "should appropriately deal with an image url with or without a width" do
-    pending
-  end
 end

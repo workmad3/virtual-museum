@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-RSpec.configure do |config|
-  config.include(UserAndPageHelpers)
-end
-
 describe 'Previous Page' do
 
   def user() @user end
