@@ -1,7 +1,35 @@
-<h1><%= @page.title %></h1>
+<div class="container">
 
-#TODO eliminate cross site scripting (html_safe it is not as yet)
+  <h1><%= @page.title %></h1>
 
-<%= ContentHtmlGenerator.generate(@page).html_safe %>
+  <div id="content">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+      <li class="active"><a href="#content_tab" data-toggle="tab">Page</a></li>
+      <li><a href="#history_tab" data-toggle="tab">History</a></li>
+    </ul>
 
-<%= link_to "Edit", @edit_url, class: "btn btn-primary" if user_signed_in? %>
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="content_tab">
+        <%= ContentHtmlGenerator.generate(@page).html_safe %>
+        <br>
+        <%= link_to "Edit", @edit_url, class: "btn btn-primary" if user_signed_in? %>
+      </div>
+
+      <div class="tab-pane" id="history_tab">
+        <p>History goes here</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+          $('#tabs').tab();
+      });
+  </script>
+</div>
+
+
+
+

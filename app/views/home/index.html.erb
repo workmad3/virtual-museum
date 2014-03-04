@@ -1,9 +1,11 @@
-<h1>Home</h1>
+<img src='http://media.rhizome.org/blog/8922/qc4.jpeg'  width='840'\>
+<br/>
+<p>A community project documenting the University of Manchester's role in the development of early computing, in honour of Alan Turing.<br/>
+Currently our prime focus is to document the physical artifacts held by the School of Computer Science.</p>
 
-<%= link_to 'Add page', new_page_path, class: 'btn btn-large btn-primary' if user_signed_in? %>
-<br>
-<br>
+<p bold>Content</p>
 
-<% @pages.sort{|x,y|x.title.downcase<=>y.title.downcase}.each do |page| %>
-    <p><%= link_to page.title, page %></p>
+<ul><% @pages.sort{|x,y|x.title.downcase<=>y.title.downcase}.each do |page| %>
+    <li><%= link_to page.title, page %></li>
 <% end %>
+</ul>

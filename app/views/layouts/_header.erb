@@ -2,12 +2,13 @@
   <div class="navbar-inner">
     <div class="container">
       <div style='font-family: arial; font-size: 20pt;'>
-        <%= link_to 'UofM Virtual Museum', root_path, id: 'logo' %>
+        <%= link_to 'UMCS Early Computer Artefacts', root_path, id: 'logo' %>
       </div>
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to 'Home', root_path %></li>
           <%- if current_user %>
+              <li><%= link_to 'New Page', new_page_path %></li>
               <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
               <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           <%- else %>
