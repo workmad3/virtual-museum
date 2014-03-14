@@ -28,7 +28,7 @@ end
 def create_user
   create_visitor
   delete_user
-  FactoryGirl.create(:user, email: @visitor[:email])
+  user = FactoryGirl.create(:user, :email => @visitor[:email], :password => @visitor[:password] )
 end
 
 def delete_user
@@ -159,11 +159,11 @@ Then /^I see an unconfirmed account message$/ do
 end
 
 Then /^I see a successful sign in message$/ do
-  page.should have_content "Signed in successfully."
+  page.should have_content "Logout"
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "Welcome! You have signed up successfully."
+  page.should have_content "Logout"
 end
 
 Then /^I should see an invalid email message$/ do
@@ -175,11 +175,11 @@ Then /^I should see a missing password message$/ do
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Passworddoesn't match confirmation"
+  page.should have_content "doesn't match Password"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Passworddoesn't match confirmation"
+  page.should have_content "doesn't match Password"
 end
 
 Then /^I should see a signed out message$/ do

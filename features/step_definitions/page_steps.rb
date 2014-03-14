@@ -12,7 +12,7 @@ Given(/^I am signed in$/) do
 end
 
 When(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
-  click_link('Add page')
+  click_link('add_page_link')
   current_path.should == new_page_path
 
   fill_in('title', :with => title)

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def create
 
     p = Page.create(original_title: params[:title])
-    pp = PageState.create(page_id: p.id,
+    PageState.create(page_id: p.id,
                              user_id: current_user.id, title: params[:title], content: params[:content])
     redirect_to '/pages/' + p.slug, status: 301
   end

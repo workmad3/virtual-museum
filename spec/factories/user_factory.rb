@@ -5,7 +5,7 @@ FactoryGirl.define do
     sequence(:name) {|n| "Andy Warhol #{n}" }
     sequence(:email) {|n| "andy#{n}@factory.com" }
 
-    password 11111111
+    password "changeme"
     password_confirmation { |usr| usr.password }
   end
 end
