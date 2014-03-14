@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1><%= @page.title %></h1>
+  <h1><%= page.title %></h1>
 
   <div id="content">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
@@ -10,9 +10,9 @@
 
     <div id="my-tab-content" class="tab-content">
       <div class="tab-pane active" id="content_tab">
-        <%= ContentHtmlGenerator.generate(@page).html_safe %>
+        <%= ContentHtmlGenerator.generate(page).html_safe %>
         <br>
-        <%= link_to "Edit", @edit_url, class: "btn btn-primary" if user_signed_in? %>
+        <%= link_to "Edit", edit_url, class: "btn btn-primary" if user_signed_in? %>
       </div>
 
       <div class="tab-pane" id="history_tab">

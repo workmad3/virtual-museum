@@ -2,9 +2,9 @@
 
 <%= form_tag("/pages", method: "post") do %>
     <%= label_tag(:content, "Title") %>
-    <%= text_field_tag(:title, params[:page_title], class: "span6") %>
+    <%= text_field_tag(:title, params[:page_title], class: "span7") %>
     <%= label_tag(:content, "Content") %>
-    <%= text_area_tag(:content, '', class: "span6", rows: "5") %>
+    <%= text_area_tag(:content, '', class: "span7", rows: "20") %>
     <br>
     <%= submit_tag("Create") %>
 <% end %>

@@ -66,6 +66,7 @@ GEM
       rails (>= 3.0.0)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
+    decent_exposure (2.3.1)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -199,6 +200,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner
+  decent_exposure
   devise
   email_spec
   factory_girl_rails
