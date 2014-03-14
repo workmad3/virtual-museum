@@ -1,11 +1,15 @@
-require 'database_cleaner'
-
-begin
-  DatabaseCleaner.strategy = :truncation
-rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
-end
+require 'cucumber/rails'
 
 Before do
+  DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean
+end
+
+# mvh Daves addition to overcome the mysterious pg disconnect problem
+After do
+  begin
+    ActiveRecord::Base.connection.disconnect!
+  rescue
+  end
+  ActiveRecord::Base.establish_connection
 end

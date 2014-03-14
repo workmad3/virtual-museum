@@ -1,11 +1,11 @@
 Given(/^I am signed in$/) do
-  @user = FactoryGirl.create(:user)
+  @user = FactoryGirl. build(:user)
 
-  visit new_user_session_path
+  visit '/users/sign_up' # new_user_session_path
   fill_in 'user_email', :with => @user.email
   fill_in('user_password', :with => @user.password)
-  # fill_in('user_password_confirmation', :with => @user.password)
-  click_button('Sign up')
+  fill_in('user_password_confirmation', :with => @user.password)
+  click_button('sign_up_button')
 
   current_path.should == '/'
   page.should have_content('Logout')

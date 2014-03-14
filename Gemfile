@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-gem 'rails', '4.0.1'
+gem 'activesupport', '4.0.3'
+gem 'rails', '4.0.3'
+gem 'rake', '10.1.1'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -12,6 +14,7 @@ gem 'cancan'
 gem 'devise'
 gem 'figaro'
 gem 'pg'
+#gem 'mysql2'
 gem 'rolify'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
@@ -25,10 +28,13 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'cucumber-rails', :require => false
-  gem 'database_cleaner'
   gem 'email_spec'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
+end
+
+group :test do
+  gem 'cucumber-rails'
 
 end

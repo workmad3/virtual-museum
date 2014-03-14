@@ -26,6 +26,9 @@ require 'cucumber/rails'
 # 2) Set the value below to true. Beware that doing this globally is not
 # recommended as it will mask a lot of errors for you!
 #
+# mvh this file was maybe changed as part of Daves fix re
+# mvh Daves addition to overcome the mysterious pg disconnect problem
+
 ActionController::Base.allow_rescue = false
 
 # Remove/comment out the lines below if your app doesn't have a database.
@@ -56,4 +59,3 @@ end
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
-Cucumber::Rails::Database.javascript_strategy = :truncation

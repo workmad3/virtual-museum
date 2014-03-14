@@ -1,4 +1,13 @@
 ### UTILITY METHODS ###
+Before do
+  @visitor = nil
+  @user = nil
+end
+
+After do
+  @visitor = nil
+  @user = nil
+end
 
 def create_visitor
   @visitor ||= {:name => "Testy McUserton", :email => "example@example.com",
@@ -6,7 +15,7 @@ def create_visitor
 end
 
 def find_user
-  @user ||= User.first conditions: {:email => @visitor[:email]}
+  @user ||= User.where(email: @visitor[:email]).first
 end
 
 def create_unconfirmed_user
@@ -19,11 +28,11 @@ end
 def create_user
   create_visitor
   delete_user
-  @user = FactoryGirl.create(:user, email: @visitor[:email])
+  FactoryGirl.create(:user, email: @visitor[:email])
 end
 
 def delete_user
-  @user ||= User.first conditions: {:email => @visitor[:email]}
+  @user ||= User.where(email: @visitor[:email]).first
   @user.destroy unless @user.nil?
 end
 
