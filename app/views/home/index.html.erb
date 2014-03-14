@@ -7,13 +7,13 @@
   Pictured above, Alan Turing, without whom all this would have been much more difficult.</p>
 <br/>
 
-<% if @pages == [] %>
+<% if pages == [] %>
       <p hint-color>No content yet<br/>Add a page by clicking New Page at the top right of this page</p>
 <% else %>
     <p bold>Content</p>
 
     <ul>
-      <% @pages.sort { |x, y| x.title.downcase<=>y.title.downcase }.each do |page| %>
+      <% pages.sort { |x, y| x.title.downcase<=>y.title.downcase }.each do |page| %>
           <li><%= link_to page.title, page %></li>
       <% end %>
     </ul>

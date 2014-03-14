@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
+  expose(:pages)
   def index
-    @pages = Page.all
   end
 end
