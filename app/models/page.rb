@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
 
   def self.find_by_title(possible_title)
     #TODO make sure duplicate titles cant be created
-    #TODO find out the effect of Page.all iwth a large table, ie large array yielded by evaluating next expr
+    #TODO find out the effect of Page.all with a large table, ie large array yielded by evaluating next expr
     Page.all.each { |p| return p if p.title == possible_title }
     return nil
   end
