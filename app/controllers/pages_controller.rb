@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    page.change(current_user, params)   # TODO change to Page#change to turn on page history
+    page.change(current_user, params)
     redirect_to '/pages/'+current_slug, status: 301
   end
 end

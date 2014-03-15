@@ -9,12 +9,12 @@ class PageDecorator < Draper::Decorator
     <li>
     <a href="#history_tab" data-toggle="tab">History</a>
       </li>
-    </ul>'.html_safe
+    </ul>'
   end
 
   def content_tab(signed_in,e_url)
     '<div id="content_tab" class="tab-pane active" >'+
-        contents_to_safe_html+
+        contents_to_html(model)+
         edit_button_if(signed_in,e_url)+'
     </div>'
 
@@ -30,25 +30,25 @@ class PageDecorator < Draper::Decorator
 
   private
 
-  def contents_to_safe_html
-    h.safe_html(self).html_safe
-  end
-
   def edit_button_if(signed_in,e_url)
     signed_in ? h.link_to("Edit", e_url, class: "btn btn-primary") : ''
   end
 
   def show_history
-    x = self.history.collect do |ps|
+    x = model.history.collect do |ps|
              '<li>
                 <span time-and-user>'+ps.created_at.to_s+' by '+User.find(ps.user_id).email+'</span>
                 <br/>
                 <span bold>'+ps.title+'</span>
                 <br/>'+
-                 h.safe_html(ps)+'
+                contents_to_html(ps)+'
              </li>'
     end
     x.join('')
+  end
+
+  def contents_to_html(thing)
+    ContentHtmlGenerator.generate(thing)
   end
 
 end

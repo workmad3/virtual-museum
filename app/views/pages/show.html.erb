@@ -3,11 +3,11 @@
   <h1><%= page.title %></h1>
 
   <div id="content">
-    <%= page.tab_nav %>
+    <%= raw page.tab_nav %>
 
     <div id="my-tab-content" class="tab-content">
-      <%= page.content_tab(user_signed_in?,edit_page_url).html_safe %>
-      <%= page.history_tab.html_safe %>
+      <%= raw page.content_tab(user_signed_in?,edit_page_url) %>
+      <%= raw page.history_tab %>
     </div>
   </div>
 
