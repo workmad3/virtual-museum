@@ -3,41 +3,19 @@
   <h1><%= page.title %></h1>
 
   <div id="content">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-      <li class="active"><a href="#content_tab" data-toggle="tab">Page</a></li>
-      <li><a href="#history_tab" data-toggle="tab">History</a></li>
-    </ul>
-
+    <%= page.tab_nav %>
 
     <div id="my-tab-content" class="tab-content">
-      <div class="tab-pane active" id="content_tab">
-        <%=  safe_html(page) %>
-        <br>
-        <%= link_to "Edit", edit_url, class: "btn btn-primary" if user_signed_in? %>
-      </div>
-
-      <div class="tab-pane" id="history_tab">
-         <ul no-bullets>
-           <% page.history.each do |ps| %>
-             <li>
-               <span time-and-user><%= "#{ps.created_at} by #{User.find(ps.user_id).email}" %></span>
-               <br/>
-               <span bold><%= "#{ps.title}" %></span>
-               <br/>
-               <%=  safe_html(ps) %>
-             </li>
-           <% end %>
-         </ul>
-      </div>
+      <%= page.content_tab(user_signed_in?,edit_page_url).html_safe %>
+      <%= page.history_tab.html_safe %>
     </div>
   </div>
 
-
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    $('#tabs').tab();
-                });
-            </script>
+  <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+  </script>
 </div>
 
 

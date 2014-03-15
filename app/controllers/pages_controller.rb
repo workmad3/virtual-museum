@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   expose(:current_slug) { request.path_info.gsub(/.*pages\//,'').gsub(/\/.*/,'') }
-  expose(:page)         { Page.find_by :slug => current_slug }
+  expose(:page)         { Page.find_by(:slug => current_slug).decorate }
   expose(:edit_url)     { '/pages/'+current_slug+'/edit' }
   expose(:update_url)   { '/pages/'+current_slug }
 
