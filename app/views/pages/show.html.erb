@@ -8,9 +8,10 @@
       <li><a href="#history_tab" data-toggle="tab">History</a></li>
     </ul>
 
+    #TODO Better sanetization
     <div id="my-tab-content" class="tab-content">
       <div class="tab-pane active" id="content_tab">
-        <%= ContentHtmlGenerator.generate(page).html_safe %>
+        <%= ContentHtmlGenerator.generate(page).to_s.gsub(/\<script>/,'&lt;script&gt;').gsub(/\<\/script>/,'&lt;/script&gt;').html_safe %>
         <br>
         <%= link_to "Edit", edit_url, class: "btn btn-primary" if user_signed_in? %>
       </div>
@@ -20,7 +21,7 @@
            <% page.history.each do |ps| %>
              <li><span time-and-user><%= "#{ps.created_at} by #{User.find(ps.user_id).email.to_s}" %></span><br/>
                <span bold><%= "#{ps.title}" %></span><br/>
-               <%= ContentHtmlGenerator.generate(ps).html_safe %>
+               <%=  ContentHtmlGenerator.generate(ps).to_s.gsub(/\<script>/,'&lt;script&gt;').gsub(/\<\/script>/,'&lt;/script&gt;').html_safe %>
 
              </li>
            <% end %>

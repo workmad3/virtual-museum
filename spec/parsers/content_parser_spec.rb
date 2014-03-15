@@ -8,6 +8,12 @@ describe ContentParser do
     parsed.should == [{:start => nil}, {:text => "this is a string"}, {:end => nil}]
   end
 
+  it "should deal with a string with angle barackets" do
+    str = '<script></script>this <is> a string'
+    parsed = ContentParser.new.parse(str)
+    parsed.should == [{:start => nil}, {:text => "<script></script>this <is> a string"}, {:end => nil}]
+  end
+
   it "should deal with bracket contents that are a page hyperlink" do
     str = 'this is a [hyperlinked] string'
     parsed = ContentParser.new.parse(str)

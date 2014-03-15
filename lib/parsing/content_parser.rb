@@ -11,7 +11,7 @@ class ContentParser < Parslet::Parser
   rule(:contents) { open_bracket >> contents_text.as(:contents) >> close_bracket }
 
 
-  rule(:text_char) { match('[a-zA-Z0-9 ,.;:\'\"=\(\)#-/\|\]]') }
+  rule(:text_char) { match('[<>a-zA-Z0-9 ,.;:\'\"=\(\)#-/\|\]]') }
   rule(:text) { text_char.repeat(1) }
 
   rule(:element) { text.as(:text)| contents | escaped_char }
