@@ -1,10 +1,8 @@
 <h1>Create a page</h1>
 
-<%= form_tag("/pages", method: "post") do %>
-    <%= label_tag(:content, "Title") %>
-    <%= text_field_tag(:title, params[:page_title], class: "span7") %>
-    <%= label_tag(:content, "Content") %>
-    <%= text_area_tag(:content, '', class: "span7", rows: "20") %>
-    <br/>
-    <%= submit_tag("Create", class: "btn btn-primary") %>
-<% end %>
+<%= render :partial => 'layouts/page_form', :locals => {
+        f_url:     '/pages',
+        f_method:  'post',
+        f_title:   params[:page_title],
+        f_content: '' }
+%>

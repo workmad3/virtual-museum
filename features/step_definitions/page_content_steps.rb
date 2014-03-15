@@ -5,9 +5,7 @@ Then(/^I can see a hyperlink to a "(.*?)" page$/) do |arg1|
 end
 
 Then(/^I can see a rendition of an image$/) do
-  within(:xpath, "id('content_tab')/div/img") do
-    page.should have_content('')
-  end
+    page.should have_xpath("id('content_tab')/div/img")
 end
 
 Then(/^I can see a You Tube video$/) do

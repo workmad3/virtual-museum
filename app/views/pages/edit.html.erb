@@ -1,11 +1,8 @@
 <h1>Edit <%= page.title %></h1>
 
-<%= form_tag(update_url, method: "put") do %>
-    <%= label_tag(:title) %>
-    <%= text_field_tag(:title, page.title, class: "span7") %>
-    <%= label_tag(:content) %>
-    <%= text_area_tag(:content, page.content, class: "span7", rows: "20") %>
-    <br/>
-    <%= submit_tag("Save" , class: "btn btn-primary") %>
-
-<% end %>
+<%= render :partial => 'layouts/page_form', :locals => {
+        f_url:     update_url,
+        f_method:  'put',
+        f_title:   page.title,
+        f_content: page.content }
+%>

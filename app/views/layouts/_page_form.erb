@@ -1,0 +1,8 @@
+<%= form_tag(f_url, method: f_method) do %>
+    <%= label_tag(:title) %>
+    <%= text_field_tag(:title, f_title, class: "span7") %>
+    <%= label_tag(:content) %>
+    <%= text_area_tag(:content, f_content, class: "span7", rows: "20") %>
+    <br/>
+    <%= submit_tag("Save" , class: "btn btn-primary") %>
+<% end %>
