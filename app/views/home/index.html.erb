@@ -10,11 +10,11 @@
 <% if pages == [] %>
       <p hint-color>No content yet<br/>Add a page by clicking New Page at the top right of this page</p>
 <% else %>
-    <p bold>Content</p>
+    <p bold>Contents</p>
 
-    <ul>
-      <% pages.sort { |x, y| x.title.downcase<=>y.title.downcase }.each do |page| %>
-          <li><%= link_to page.title, page %></li>
+    <ul no-bullets>
+      <% pages.sort { |x, y| x.title.downcase<=>y.title.downcase }.each do |pg| %>
+          <li li-text-spacing><%= link_to pg.title, pg %></li>
       <% end %>
     </ul>
 <% end %>

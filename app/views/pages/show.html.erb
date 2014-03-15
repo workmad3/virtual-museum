@@ -20,7 +20,7 @@
            <% page.history.each do |ps| %>
              <li><span time-and-user><%= "#{ps.created_at} by #{User.find(ps.user_id).email.to_s}" %></span><br/>
                <span bold><%= "#{ps.title}" %></span><br/>
-               <%= ContentHtmlGenerator.generate(ps).html_safe %><br/>&nbsp;
+               <%= ContentHtmlGenerator.generate(ps).html_safe %>
 
              </li>
            <% end %>
