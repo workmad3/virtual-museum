@@ -11,7 +11,7 @@
 
     <div id="my-tab-content" class="tab-content">
       <div class="tab-pane active" id="content_tab">
-        <%= ContentHtmlGenerator.generate(page).html_safe %>
+        <%=  safe_html(page) %>
         <br>
         <%= link_to "Edit", edit_url, class: "btn btn-primary" if user_signed_in? %>
       </div>
@@ -24,7 +24,7 @@
                <br/>
                <span bold><%= "#{ps.title}" %></span>
                <br/>
-               <%=  ContentHtmlGenerator.generate(ps).html_safe %>
+               <%=  safe_html(ps) %>
              </li>
            <% end %>
          </ul>
