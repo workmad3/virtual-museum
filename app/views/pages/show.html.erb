@@ -16,18 +16,25 @@
       </div>
 
       <div class="tab-pane" id="history_tab">
-        <p>History goes here</p>
-      </div>
+         <ul no-bullets>
+           <% page.history.each do |ps| %>
+             <li><span time-and-user><%= "#{ps.created_at} by #{User.find(ps.user_id).email.to_s}" %></span><br/>
+               <span bold><%= "#{ps.title}" %></span><br/>
+               <%= ContentHtmlGenerator.generate(ps).html_safe %><br/>&nbsp;
 
+             </li>
+           <% end %>
+         </ul>
+      </div>
     </div>
   </div>
 
 
-  <script type="text/javascript">
-      jQuery(document).ready(function ($) {
-          $('#tabs').tab();
-      });
-  </script>
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    $('#tabs').tab();
+                });
+            </script>
 </div>
 
 
