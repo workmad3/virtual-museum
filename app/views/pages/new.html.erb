@@ -1,8 +1,9 @@
 <h1>Create a page</h1>
 
 <%= render :partial => 'layouts/page_form', :locals => {
-        f_url:     '/pages',
-        f_method:  'post',
-        f_title:   params[:page_title],
-        f_content: '' }
+        form_submit_url:     '/pages',
+        form_submit_method:  'post',
+        page_title:   params[:page_title],
+        page_content: '' }
 %>
+
