@@ -17,7 +17,7 @@ When(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, conte
 
   fill_in('title', :with => title)
   fill_in('content', :with => content)
-  click_button('Create')
+  click_button('Save')
 end
 
 Then(/^I can see a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
