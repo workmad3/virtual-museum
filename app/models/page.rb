@@ -20,10 +20,6 @@ class Page < ActiveRecord::Base
     ! Page.title_used?(possible_title)
   end
 
-  def original_title=(arg)
-    @original_title = arg
-  end
-
   def original_title
     @original_title
   end
@@ -55,11 +51,5 @@ class Page < ActiveRecord::Base
   def change(editing_user, args)
     PageState.create(title: args[:title], content: args[:content], user: editing_user, page: self)
   end
-
-  def parsed_content
-    parse_content(PageState.find_by_page_id(id).content)
-  end
-
-
 
 end

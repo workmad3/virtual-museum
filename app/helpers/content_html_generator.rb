@@ -15,7 +15,7 @@ class ContentHtmlGenerator
           "<p yellow-background>Fix this paragraph: #{s}</p>"
         end
 
-      end
+      end 
     end
     arry_of_paragraphs.join('    ')
     #page.content
