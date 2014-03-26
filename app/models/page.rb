@@ -44,9 +44,8 @@ class Page < ActiveRecord::Base
     history.last.content
   end
 
-  def prev_content
-    #TODO SORT PREV CONTENT ****************
-    history.last.content
+  def previous_content
+    history.length == 1 ? nil : history[-2].content
   end
 
   def title

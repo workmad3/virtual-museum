@@ -3,11 +3,14 @@ class PageDecorator < Draper::Decorator
 
   def tab_nav
     '<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-    <li class="active">
-    <a href="#content_tab" data-toggle="tab">Page</a>
+      <li class="active">
+        <a href="#content_tab" data-toggle="tab">Page</a>
       </li>
-    <li>
-    <a href="#history_tab" data-toggle="tab">History</a>
+      <li>
+        <a href="#history_tab" data-toggle="tab">History</a>
+      </li>
+      <li>
+        <a href="#last_change_tab" data-toggle="tab">Last change</a>
       </li>
     </ul>'
   end
@@ -28,6 +31,14 @@ class PageDecorator < Draper::Decorator
     </div>'
   end
 
+  def last_change_tab
+    '<div id="last_change_tab" class="tab-pane" >
+        <ul no-bullets>'+
+          show_last_change+
+        '</ul>
+    </div>'
+  end
+
   private
 
   def edit_button_if(signed_in,e_url)
@@ -42,9 +53,23 @@ class PageDecorator < Draper::Decorator
                 <span bold>'+ps.title+'</span>
                 <br/>'+
                 contents_to_html(ps)+'
+                <hr/>
              </li>'
+
     end
+
     x.join('')
+  end
+
+  def show_last_change
+    previous_content = page.previous_content
+    if previous_content
+      '<span time-and-user>'+page.created_at.to_s+' by '+page.editor.email+'</span>'+
+      Diffy::Diff.new(page.previous_content, page.content).to_s(:html)
+    else
+      'No previous edit'
+    end
+
   end
 
   def contents_to_html(thing)

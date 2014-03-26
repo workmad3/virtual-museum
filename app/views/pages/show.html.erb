@@ -9,12 +9,10 @@
     <div id="my-tab-content" class="tab-content">
       <%= raw page.content_tab(user_signed_in?, edit_page_url) %>
       <%= raw page.history_tab %>
+      <%= raw page.last_change_tab %>
     </div>
   </div>
-<br/><hr/>
-  <div>
-    <%= raw Diffy::Diff.new(page.history[-2].content, page.content).to_s(:html) %>
-  </div>
+<br/>
 
   <script type="text/javascript">
     jQuery(document).ready(function ($) {
