@@ -13,7 +13,7 @@
   </div>
 <br/><hr/>
   <div>
-    <%= raw Diffy::Diff.new(page.content, page.content+'x').to_s(:html) %>
+    <%= raw Diffy::Diff.new(page.history[-2].content, page.content).to_s(:html) %>
   </div>
 
   <script type="text/javascript">
