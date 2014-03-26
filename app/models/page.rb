@@ -44,6 +44,10 @@ class Page < ActiveRecord::Base
     history.first.content
   end
 
+  def prev_content
+    history.first.content
+  end
+
   def title
      history.first.title
   end

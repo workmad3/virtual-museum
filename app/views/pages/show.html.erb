@@ -11,6 +11,10 @@
       <%= raw page.history_tab %>
     </div>
   </div>
+<br/><hr/>
+  <div>
+    <%= raw Diffy::Diff.new(page.content, page.content+'x').to_s(:html) %>
+  </div>
 
   <script type="text/javascript">
     jQuery(document).ready(function ($) {
