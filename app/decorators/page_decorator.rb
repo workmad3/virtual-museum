@@ -35,7 +35,7 @@ class PageDecorator < Draper::Decorator
   end
 
   def show_history
-    x = model.history.collect do |ps|
+    x = model.history.reverse.collect do |ps|
              '<li>
                 <span time-and-user>'+ps.created_at.to_s+' by '+User.find(ps.user_id).email+'</span>
                 <br/>
