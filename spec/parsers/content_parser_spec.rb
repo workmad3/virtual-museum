@@ -5,13 +5,21 @@ describe ContentParser do
   it "should deal with a plain string" do
     str = 'this is a string'
     parsed = ContentParser.new.parse(str)
-    parsed.should == [{:start => nil}, {:text => "this is a string"}, {:end => nil}]
+    puts parsed[1][:text].line_and_column.class
+    puts parsed[1][:text].line_and_column.to_s
+    puts parsed[1][:text].offset.to_s
+
+    #TODO a pretty schleppy example of what one has to do to create a Parselet::Slice
+    parsed.should == [{:start => ''}, {:text => Parslet::Slice.new("this is a string", 0, [1,1])}, {:end => ''}]
   end
 
   it "should deal with a string with angle barackets" do
     str = '<script></script>this <is> a string'
     parsed = ContentParser.new.parse(str)
-    parsed.should == [{:start => nil}, {:text => "<script></script>this <is> a string"}, {:end => nil}]
+
+    #TODO the kludge to fix schlep, less brittle I think, but i dont know what the tuple is for in the Slice
+    parsed[1][:text] = parsed[1][:text].to_s
+    parsed.should == [{:start => ''}, {:text => "<script></script>this <is> a string"}, {:end => ''}]
   end
 
   it "should deal with bracket contents that are a page hyperlink" do

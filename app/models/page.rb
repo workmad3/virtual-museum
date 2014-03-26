@@ -33,23 +33,24 @@ class Page < ActiveRecord::Base
   end
 
   def creator
-    history.last.user
+    history.first.user
   end
 
   def editor
-    self.history.length == 1 ? nil : history.first.user
+    self.history.length == 1 ? nil : history.last.user
   end
 
   def content
-    history.first.content
+    history.last.content
   end
 
   def prev_content
-    history.first.content
+    #TODO SORT PREV CONTENT ****************
+    history.last.content
   end
 
   def title
-     history.first.title
+     history.last.title
   end
 
   def change(editing_user, args)

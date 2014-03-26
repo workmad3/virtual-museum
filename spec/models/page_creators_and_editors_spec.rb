@@ -20,12 +20,12 @@ describe Page do
   end
 
   it "editor should be set when page content is changed"  do
-    @page.change(@user2, content: 'changed content')
+    @page.change(@user2, title: @page.title, content: 'changed content')
     @page.editor.should == @user2
   end
 
   it "editor should be set when page title is changed" do
-    @page.change(@user2, title: 'changed title')
+    @page.change(@user2, title: 'changed title', content: @page.content)
     @page.editor.should == @user2
   end
 
@@ -36,21 +36,21 @@ describe Page do
 
   it "creator should not vary when successively changing content and/or title" do
     @page.creator.should == @user
-    @page.change(@user2, content: 'changed content')
+    @page.change(@user2, title: @page.title, content: 'changed content')
     @page.creator.should == @user
-    @page.change(@user2, content: 'changed content')
+    @page.change(@user2, title: @page.title, content: 'changed content')
     @page.creator.should == @user
-    @page.change(@user2, content: 'changed title again', title: 'changed title again')
+    @page.change(@user2, title: 'changed title', content: 'changed content again')
     @page.creator.should == @user
   end
 
   it "editor should vary appropriately when successively changing content and/or title" do
     @page.editor.should == nil
-    @page.change(@user2, content: 'changed content')
+    @page.change(@user2, title: @page.title, content: 'changed content')
     @page.editor.should == @user2
-    @page.change(@user, content: 'changed content')
+    @page.change(@user, title: @page.title, content: 'changed content')
     @page.editor.should == @user
-    @page.change(@user2, content: 'changed title again', title: 'changed title again')
+    @page.change(@user2, title: 'changed title', content: 'changed content again')
     @page.editor.should == @user2
   end
 
