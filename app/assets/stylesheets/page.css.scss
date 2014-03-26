@@ -27,3 +27,8 @@
 #history_tab li {
   margin-bottom: 40px;
 }
+
+.field_with_errors {
+  border-color: red;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}

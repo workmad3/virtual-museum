@@ -29,7 +29,7 @@ class LinkInterpreter
   end
 
   def image_url?
-    url_suffix? && ((@first =~ /\.png$/) || (@first =~ /\.jpg$/))
+    url_suffix? && ((@first =~ /\.png$/) || (@first =~ /\.jpg$/) || (@first =~ /\.jpeg$/))
   end
 
   def domain

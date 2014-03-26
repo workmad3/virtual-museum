@@ -9,46 +9,65 @@ class Page
   end
 end
 
-class DemoTransformer < Parslet::Transform
+class ContentTransformer < Parslet::Transform
+
   rule(:start => simple(:start)) { '<p>' }
 
+  rule(:newline => simple(:newline)) { ''}
+
   rule(:text => simple(:text)) { text.to_s }
+
   rule(:esc => simple(:esc)) { esc.to_s }
+
+  #TODO not bothered about empty paras atm
+  #TODO but could factor out li#output_type by seeing if output starts <div> -- hmm  is this wise to do?
+
   rule(:contents => simple(:contents)) do
     li = LinkInterpreter.new(contents.to_s)
-    li.process_bracket_contents
+    output = li.process_bracket_contents
+    if li.output_type == :in_line_hyperlink
+      output
+    else
+      '</p>' + output + '<p>'
+    end
   end
 
   rule(:end => simple(:end)) { '</p>' }
+
 end
 
-class DemoParser < Parslet::Parser
-  rule(:space) { (match('\s')).repeat(1) }
+class ContentParser < Parslet::Parser
+  rule(:space) { (match('\s')).repeat(0) }
   rule(:space?) { space.maybe }
 
-  rule(:escaped_char) { str('\\') >> any.as(:esc) }
+  rule(:newline) { str("*[[[").as(:newline) }
+  #rule(:escaped_char) { str('\\') >> any.as(:newline) }
 
   rule(:open_bracket) { match('\[') }
   rule(:close_bracket) { match('\]') }
 
-  rule(:contents_text) { match('[a-zA-Z0-9 \:\\\/\. \-\_]').repeat(1) }
-  rule(:contents) { open_bracket >> contents_text.as(:contents) >> close_bracket }
+  rule(:text) { match('[a-zA-Z0-9 \:\/\. \-\_\?\=\.,:{}<>\'\"\+\-!@#\$\%^&\(\)\~\`\|`]').repeat(1) }
+  rule(:contents) { open_bracket >> text.as(:contents) >> close_bracket }
 
-
-  rule(:text_char) { match('[a-zA-Z0-9 ,.;:\'\"=\(\)#-/\|\]]') }
-  rule(:text) { text_char.repeat(1) }
-
-  rule(:element) { text.as(:text)| contents | escaped_char }
+  rule(:element) { text.as(:text)| contents } # | escaped_char }
 
   rule(:elements) { space?.as(:start) >> element.repeat(0) >> space?.as(:end) }
 
-  root(:elements)
+  rule(:paragraphs) { elements >> (newline >> elements).repeat(0) >> newline.repeat(0) }
+
+  root(:paragraphs)
 end
 
-demo_parser = DemoParser.new
-result = demo_parser.parse("xxxx [http://hedtek.com] iiii")
+begin
+  demo_parser = ContentParser.new
+  str = "xxxx [http://hedtek.com word] niiii second*[[[ line"
+  puts str
+  result = demo_parser.parse(str)
+  pp result
+  result = ContentTransformer.new.apply(result).join
+  p result
+  #result.each { |thing|  puts "#{thing[:type]}  #{thing[:value]}"  }
+end
 
-pp result
-result = DemoTransformer.new.apply(result)
-pp result
-#result.each { |thing|  puts "#{thing[:type]}  #{thing[:value]}"  }
+
+

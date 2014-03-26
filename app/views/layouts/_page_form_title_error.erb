@@ -1,6 +1,6 @@
 <%= form_tag(form_submit_url, method: form_submit_method) do %>
     <%= label_tag(:title) %>
-    <%= text_field_tag(:title, page_title, class: 'span7 uneditable' ) %>
+    <%= text_field_tag(:title, page_title, class: 'span7 uneditable', style: 'border-color: red;') %>
     <%= label_tag(:content) %>
     <%= text_area_tag(:content, page_content, class: 'span7', rows: '20') %>
     <br/>

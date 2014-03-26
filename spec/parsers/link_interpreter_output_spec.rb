@@ -46,8 +46,15 @@ describe LinkInterpreter do
 
   it "should output an image at the image's given size" do
     image_url= 'http://hedtek.com/some/page.png'
-    li=LinkInterpreter.new(image_url)
-    li.process_image_url_without_width.should ==
+    LinkInterpreter.new(image_url).process_image_url_without_width.should ==
+        "<div><img src='#{image_url}'/></div>"
+
+    image_url= 'http://hedtek.com/some/page.jpg'
+    LinkInterpreter.new(image_url).process_image_url_without_width.should ==
+        "<div><img src='#{image_url}'/></div>"
+
+    image_url= 'http://hedtek.com/some/page.jpeg'
+    LinkInterpreter.new(image_url).process_image_url_without_width.should ==
         "<div><img src='#{image_url}'/></div>"
   end
 

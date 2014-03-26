@@ -1,22 +1,21 @@
 class ContentParser < Parslet::Parser
-  rule(:space) { (match('\s')).repeat(1) }
+  rule(:space) { (match('\s')).repeat(0) }
   rule(:space?) { space.maybe }
 
-  rule(:escaped_char) { str('\\') >> any.as(:esc) }
+  rule(:newline) { str("\r\n").as(:newline) }
+  #rule(:escaped_char) { str('\\') >> any.as(:newline) }
 
   rule(:open_bracket) { match('\[') }
   rule(:close_bracket) { match('\]') }
 
-  rule(:contents_text) { match('[a-zA-Z0-9 \:\\\/\. \-\_\?\=]').repeat(1) }
-  rule(:contents) { open_bracket >> contents_text.as(:contents) >> close_bracket }
+  rule(:text) { match('[a-zA-Z0-9 \:\/\. \-\_\?\=\.,:{}<>\'\"\+\-!@#\$\%^&*\(\)\~\`\|`]').repeat(1) }
+  rule(:contents) { open_bracket >> text.as(:contents) >> close_bracket }
 
-
-  rule(:text_char) { match('[<>a-zA-Z0-9 ,.;:\'\"=\(\)#-/\|\]]') }
-  rule(:text) { text_char.repeat(1) }
-
-  rule(:element) { text.as(:text)| contents | escaped_char }
+  rule(:element) { text.as(:text)| contents } # | escaped_char }
 
   rule(:elements) { space?.as(:start) >> element.repeat(0) >> space?.as(:end) }
 
-  root(:elements)
+  rule(:paragraphs) { elements >> (newline >> elements).repeat(0) >> newline.repeat(0) }
+
+  root(:paragraphs)
 end

@@ -12,6 +12,14 @@ class Page < ActiveRecord::Base
     return nil
   end
 
+  def self.title_used?(possible_title)
+    !! Page.find_by_title(possible_title)
+  end
+
+  def self.title_unused?(possible_title)
+    ! Page.title_used?(possible_title)
+  end
+
   def original_title=(arg)
     @original_title = arg
   end

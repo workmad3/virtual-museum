@@ -4,6 +4,8 @@ class ContentTransformer < Parslet::Transform
 
   rule(:start => simple(:start)) { '<p>' }
 
+  rule(:newline => simple(:newline)) { ''}
+
   rule(:text => simple(:text)) { text.to_s }
 
   rule(:esc => simple(:esc)) { esc.to_s }
