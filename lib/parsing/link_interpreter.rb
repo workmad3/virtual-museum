@@ -16,6 +16,10 @@ class LinkInterpreter
     false
   end
 
+  def page_title?
+    ! url?
+  end
+
   def valid_scheme?
     %w( http https ).include?(@uri.scheme)
   end
@@ -41,7 +45,7 @@ class LinkInterpreter
 
   #TODO test this
   def is_domain? domain_to_match
-    return false if (@first  =~ /https?\:\/\//) != 0
+    return false if (@first =~ /https?\:\/\//) != 0
     !!(domain.match(domain_to_match))
   end
 
@@ -57,6 +61,7 @@ class LinkInterpreter
 
   def process_page_title
     pg = Page.find_by_title @text
+    puts '>>>>>>>>>>>>>>>>>>>> process_page_title'; puts @text; puts '<<<<<<<<<<<<<<<<<<<<< process_page_title'
     if pg != nil
       "<a href='/pages/#{pg.slug}' data-page>#{@text}</a>"
     else
@@ -90,7 +95,7 @@ class LinkInterpreter
 
   #TODO test and refine
   def process_youtube_url
-    youtube_id = @first.gsub(/.*=/,'')
+    youtube_id = @first.gsub(/.*=/, '')
     "<div><iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/#{youtube_id}\" frameborder=\"0\" allowfullscreen></iframe></div>"
   end
 
@@ -100,8 +105,8 @@ class LinkInterpreter
   end
 
 #TODO untested  write embed code for youtube and vimeo
-  def process_bracket_contents
-    return process_page_title if !url?
+  def process
+    return process_page_title if page_title?
     return process_image_url if image_url?
     return process_youtube_url if is_youtube_url?
     #return 'vimeo' if is_vimeo_url?

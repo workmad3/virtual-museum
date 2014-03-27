@@ -15,7 +15,7 @@ class ContentTransformer < Parslet::Transform
 
   rule(:contents => simple(:contents)) do
     li = LinkInterpreter.new(contents.to_s)
-    output = li.process_bracket_contents
+    output = li.process
     if li.output_type == :in_line_hyperlink
       output
     else

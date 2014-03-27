@@ -3,8 +3,8 @@ in text
 
 [page name] -> hyperlink to the page, hyperlink text is the page name
 
-[url] -> external hyperlink, text is the url
-[url trailing text] eternal hyperlink, htext is the trailing test
+[url] -> external hyperlink, hyperlink text is the url
+[url trailing text] -> eternal hyperlink, hyperlink text is the trailing test
 
 not in txt
 ----------

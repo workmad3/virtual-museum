@@ -16,7 +16,10 @@ class PageState < ActiveRecord::Base
 
   private
   def cleanit(str)
+=begin
     semi_cleaned_str = ( str.gsub(/\>/,'&gt;') || str )
     semi_cleaned_str.gsub(/\</,'&lt;') || semi_cleaned_str
+=end
+str
   end
 end

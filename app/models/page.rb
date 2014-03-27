@@ -24,6 +24,10 @@ class Page < ActiveRecord::Base
     @original_title
   end
 
+  def original_title=(original_title)
+    @original_title = original_title
+  end
+
   def history
     PageState.where(page: self)
   end

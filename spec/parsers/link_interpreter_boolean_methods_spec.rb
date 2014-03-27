@@ -2,19 +2,33 @@ require 'spec_helper'
 require './lib/parsing/link_interpreter'
 
 describe LinkInterpreter do
-  it "should recognise a URL" do
+
+  it "should recognise a page title" do
+    li = LinkInterpreter.new('Some title')
+    li.page_title?.should be_true
+  end
+
+  it "should not recognise a page title as a url" do
+    li = LinkInterpreter.new('Some title')
+    li.url?.should be_false
+  end
+
+  it "should recognise a URL as a URL and not a page title" do
     li = LinkInterpreter.new('http://hedtek.com')
     li.url?.should be_true
+    li.page_title?.should be_false
     li = LinkInterpreter.new('http://www.hedtek.com')
-    li.url?.should == true
-    li = LinkInterpreter.new('http://hedtek.com/')
-    li.url?.should == true
+    li.url?.should be_true
+    li.page_title?.should be_false
     li = LinkInterpreter.new('http://hedtek.com/xx')
-    li.url?.should == true
+    li.url?.should be_true
+    li.page_title?.should be_false
     li = LinkInterpreter.new('http://hedtek.com/xx/y-y')
-    li.url?.should == true
+    li.url?.should be_true
+    li.page_title?.should be_false
     li = LinkInterpreter.new('http://hedtek.com/xx/y-y/img.png')
-    li.url?.should == true
+    li.url?.should be_true
+    li.page_title?.should be_false
   end
 
   it "should recognise a bad URL 1" do
@@ -33,15 +47,23 @@ describe LinkInterpreter do
     li = LinkInterpreter.new('http://hedtek..com')
     li.url?.should == false
   end
+
   it "should recognise a bad URL 4" do
     li = LinkInterpreter.new('http:/hedtek.com')
     li.url?.should == false
   end
 
+  it "should recognise a bad URL 5" do
+    li = LinkInterpreter.new('My page')
+    li.url?.should == false
+  end
+
   it "should recognise url suffix" do
     li = LinkInterpreter.new('http://hedtek.com/x')
+    li.url?.should == true
     li.url_suffix?.should == true
   end
+
   it "should recognise no url suffix" do
     li = LinkInterpreter.new('http://hedtek.com/')
     li.url_suffix?.should == false

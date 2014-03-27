@@ -40,20 +40,36 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-h1 {
+#top {
   font-size: 3em;
   letter-spacing: -2px;
   margin: 14px 0 8px 0;
   text-align: left;
 }
 
-h2 {
-  font-size: 1.2em;
+h1 {
+  font-size: 1.5em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: left;
-  font-weight: normal;
-  color: #999;
+  font-weight: bold;
+  color: #000;
+}
+h2 {
+  font-size: 1.25em;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+  text-align: left;
+  font-weight: bold;
+  color: #000;
+}
+h3 {
+  font-size: 1.1em;
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+  text-align: left;
+  font-weight: bold;
+  color: #000;
 }
 
 p {
