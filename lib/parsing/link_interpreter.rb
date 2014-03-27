@@ -61,7 +61,6 @@ class LinkInterpreter
 
   def process_page_title
     pg = Page.find_by_title @text
-    puts '>>>>>>>>>>>>>>>>>>>> process_page_title'; puts @text; puts '<<<<<<<<<<<<<<<<<<<<< process_page_title'
     if pg != nil
       "<a href='/pages/#{pg.slug}' data-page>#{@text}</a>"
     else

@@ -30,13 +30,24 @@ describe Page do
 
   it "should be able to change content" do
     original_title = page_state.title
-    page.change(user, content: 'check me', title: original_title)
+    page.change(user, title: original_title, content: 'check me')
     PageState.count.should == 2
-    page.content.should == 'check me'
     page.title.should == original_title
+    page.content.should == 'check me'
   end
 
+  it "should have one past page after one change" do
+    original_title = page_state.title
+    page.change(user, title: original_title, content: ' xxx ')
+    page.history.count.should == 2
+  end
 
+  it "should have two past pages after two changes" do
+    original_title = page_state.title
+    page.change(user, title: original_title, content: ' xxx ')
+    page.change(user, title: original_title, content: ' zzzz ')
+    Page.first.history.count.should == 3
+  end
 
   it "page state should be correct after a change" do
     PageState.count.should == 1
@@ -55,36 +66,6 @@ describe Page do
     current_page_state.title.should == 'New title'
     current_page_state.content.should == 'New content'
     current_page_state.user.should == user2
-
-  end
-
-  it "should have one past page after one change" do
-    original_title = page_state.title
-    page.change(user, title: original_title, content: ' xxx ')
-    page.history.count.should == 2
-  end
-
-  it "should have two past pages after two changes" do
-    original_title = page_state.title
-    page.change(user, title: original_title, content: ' xxx ')
-    page.change(user, title: original_title, content: ' zzzz ')
-    Page.first.history.count.should == 3
-  end
-
-  it "page history should only contain the page's past" do
-    original_content = page.content
-    original_title = page_state.title
-    page.change(user, title: original_title, content: 'first content change')
-    page.change(user, title: original_title, content: 'second content change')
-
-    @page2 = FactoryGirl.create(:page)
-    @page_state2 = FactoryGirl.create(:page_state, title: @page2.original_title, user: @user, page: @page2)
-
-    history = Page.first.history
-    history.count.should == 3
-    history[0].content.should == original_content
-    history[1].content.should == 'first content change'
-    history[2].content.should == 'second content change'
   end
 
   it "page title and content should reflect with sucessive changes" do
@@ -98,6 +79,22 @@ describe Page do
     page.change(user, title: 'second title change', content: 'second content change')
     page.title.should == 'second title change'
     page.content.should == 'second content change'
+  end
+
+  it "a page's history should only contain the page's past" do
+    original_content = page.content
+    original_title = page_state.title
+    page.change(user, title: original_title, content: 'first content change')
+    page.change(user, title: original_title, content: 'second content change')
+
+    @page2 = FactoryGirl.create(:page)
+    @page_state2 = FactoryGirl.create(:page_state, title: @page2.original_title, user: @user, page: @page2)
+
+    history = Page.first.history
+    history.count.should == 3
+    history[0].content.should == original_content
+    history[1].content.should == 'first content change'
+    history[2].content.should == 'second content change'
   end
 
 end
