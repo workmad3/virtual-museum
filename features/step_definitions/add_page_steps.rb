@@ -11,13 +11,13 @@ Given(/^I am signed in$/) do
   page.should have_content('Logout')
 end
 
-When(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
+When(/^I createx a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
   click_link('add_page_link')
   current_path.should == new_page_path
 
-  fill_in('title', :with => title)
-  fill_in('content', :with => content)
-  click_button('Save')
+  fill_in('Title', :with => title)
+  fill_in('Content', :with => content)
+  click_button('Create Page')
 end
 
 Then(/^I can see a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|

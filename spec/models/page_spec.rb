@@ -24,7 +24,7 @@ describe Page do
   it "should be able to change title" do
     original_content = page_state.content
     page.update_attributes(creator: user, title: 'check me', content: original_content)
-    page.title.should == 'check me'
+    expect(page.title).to eq('check me')
     page.content.should == original_content
   end
 
