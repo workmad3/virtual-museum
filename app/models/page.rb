@@ -1,39 +1,21 @@
 class Page < ActiveRecord::Base
   extend FriendlyId
-  # TODO has to become original_title
   friendly_id :original_title, use: :slugged
 
-  has_many :page_states
+  has_many :history, class_name: "PageState"
 
-  def self.find_by_title(possible_title)
-    #TODO make sure duplicate titles cant be created
-    #TODO find out the effect of Page.all with a large table, ie large array yielded by evaluating next expr
-    Page.all.each { |p| return p if p.title == possible_title }
-    return nil
-  end
-
-  def self.title_used?(possible_title)
-    !! Page.find_by_title(possible_title)
-  end
-
-  def self.title_unused?(possible_title)
-    ! Page.title_used?(possible_title)
-  end
-
-  def original_title
-    @original_title
-  end
-
-  def original_title=(original_title)
-    @original_title = original_title
-  end
-
-  def history
-    PageState.where(page: self)
-  end
+  validates_associated :history
 
   def creator
     history.first.user
+  end
+
+  def creator=(c)
+    if history.last.try(:new_record?)
+      history.last.user = c
+    else
+      history.new(user: c)
+    end
   end
 
   def editor
@@ -41,7 +23,15 @@ class Page < ActiveRecord::Base
   end
 
   def content
-    history.last.content
+    history.last.try(:content)
+  end
+
+  def content=(new_content)
+    if history.last.try(:new_record?)
+      history.last.content = new_content
+    else
+      history.new(content: content)
+    end
   end
 
   def previous_content
@@ -49,11 +39,24 @@ class Page < ActiveRecord::Base
   end
 
   def title
-     history.last.title
+    history.last.try(:title)
+  end
+
+  def title=(new_title)
+    self.original_title ||= new_title
+    if history.last.try(:new_record?)
+      history.last.title = new_title
+    else
+      history.new(title: new_title)
+    end
+  end
+
+  def original_title=(new_title)
+    super
+    self.title = new_title
   end
 
   def change(editing_user, args)
     PageState.create(title: args[:title], content: args[:content], user: editing_user, page: self)
   end
-
 end

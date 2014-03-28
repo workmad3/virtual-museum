@@ -6,21 +6,26 @@ in text
 [url] -> external hyperlink, hyperlink text is the url
 [url trailing text] -> eternal hyperlink, hyperlink text is the trailing test
 
-not in txt
+on lines with no other content
 ----------
 
-<img>
+* Images
 [urlforimage] show image at default size
 [urlforimage width] show image on page at specified width reserving aspect ratio
 
-<iframe>
-[youtubeurl] etc
-[youtubeurl width] etc preserving aspect ration
+* You Tube videos
+
+[youtubeurl] to show video at default size
+[youtubeurl width] to show video with secified width, preserving aspect ratio
+
 <iframe width='560' height='315' src='//www.youtube.com/embed/McpQ3w0O14w?vq=hd720'
 frameborder='0' allowfullscreen></iframe>
 
-[vimeourl] etc
-[vimeourl width] etc
+* Vimeo videos
+
+[vimeourl] to show video at default size
+[vimeourl width] to show video with specified width, preserving aspect ratio
+
 <iframe src="//player.vimeo.com/video/87798784" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
 </iframe>
 <p><a href="http://vimeo.com/87798784">Metropolis II (The Movie)</a>

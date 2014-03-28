@@ -1,8 +1,14 @@
-<%= form_tag(form_submit_url, method: form_submit_method) do %>
-    <%= label_tag(:title) %>
-    <%= text_field_tag(:title, page_title, class: 'span7 uneditable' ) %>
-    <%= label_tag(:content) %>
-    <%= text_area_tag(:content, page_content, class: 'span7', rows: '20') %>
-    <br/>
-    <%= submit_tag('Save', class: 'btn btn-primary') %>
+<%= form_for(page) do |f| %>
+    <ul>
+      <% if page.history.last %>
+      <% page.history.last.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+        <% end %>
+       <% end %>
+    </ul>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
 <% end %>

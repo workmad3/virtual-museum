@@ -1,0 +1,8 @@
+<li>
+  <span time-and-user><%= history.created_at.to_s %> by <%= history.user.email %></span>
+  <br/>
+  <span bold><%= history.title %></span>
+  <br/>
+  <%= decorator.send(:contents_to_html, history) %>
+  <hr/>
+</li>

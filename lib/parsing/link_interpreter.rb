@@ -60,8 +60,9 @@ class LinkInterpreter
   end
 
   def process_page_title
-    pg = Page.find_by_title @text
-    if pg != nil
+    #TODO change needed here if want to allow re-use of old titles that aren't currently in use
+    pg = Page.joins(:history).where(page_states: {title: @text}).first
+    if pg
       "<a href='/pages/#{pg.slug}' data-page>#{@text}</a>"
     else
       "<a href='/pages/new?page_title=#{@text}' data-new-page>#{@text}</a>"

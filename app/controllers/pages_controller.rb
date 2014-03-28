@@ -1,30 +1,36 @@
 class PagesController < ApplicationController
-  expose(:current_slug) { request.path_info.gsub(/.*pages\//,'').gsub(/\/.*/,'') }
-  expose(:page)         { Page.find_by_slug(current_slug).decorate }
-  expose(:edit_url)     { '/pages/'+current_slug+'/edit' }
-  expose(:update_url)   { '/pages/'+current_slug }
-
+  expose(:page)         { Page.friendly.find(params[:id]).decorate }
 
   def new
+    self.page = Page.new.decorate
   end
 
   def create
-
-      p = Page.create(original_title: params[:title])
-      PageState.create(page_id: p.id,
-                             user_id: current_user.id, title: params[:title], content: params[:content])
-    redirect_to '/pages/'+p.slug, status: 301
-
+    self.page = Page.new(page_params.merge(creator: current_user))
+    if page.save
+      redirect_to page_url(page), status: 301
+    else
+      self.page = page.decorate
+      render :new
+    end
   end
 
   def show
   end
 
+
   def edit
   end
 
   def update
-    page.change(current_user, params)
-    redirect_to '/pages/'+current_slug, status: 301
+    if page.update_attributes(page_params.merge(creator: current_user))
+      redirect_to page_url(page), status: 301
+    else
+      render :edit
+    end
+  end
+
+  def page_params
+    params.require(:page).permit(:title, :content)
   end
 end
