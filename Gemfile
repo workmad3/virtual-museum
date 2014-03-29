@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-gem 'activesupport', '4.0.3'
+gem 'activesupport'  #, '4.0.3'
 gem 'rails', '4.0.3'
 gem 'rake', '10.1.1'
 gem 'sass-rails', '~> 4.0.0'
@@ -23,6 +23,9 @@ gem 'decent_exposure'
 gem 'draper'
 gem 'diffy'
 gem 'redcarpet'
+gem 'activeadmin', github: 'gregbell/active_admin'
+
+
 
 group :development, :test do
   gem 'better_errors'

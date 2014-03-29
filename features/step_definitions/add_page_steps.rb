@@ -11,7 +11,7 @@ Given(/^I am signed in$/) do
   page.should have_content('Logout')
 end
 
-When(/^I createx a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
+When(/^I create a page entitled "(.*?)" with content "(.*?)"$/) do |title, content|
   click_link('add_page_link')
   current_path.should == new_page_path
 
