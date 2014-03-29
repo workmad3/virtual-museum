@@ -3,6 +3,8 @@ class PageState < ActiveRecord::Base
   default_scope -> { order('created_at ASC') }
 
   belongs_to :page
+  has_one :tag_set
+  has_many :tags, :through => :tag_set
 
   before_validation(:on => :create) do
     #TODO dave changed here - think about
