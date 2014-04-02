@@ -13,19 +13,31 @@ class PageState < ActiveRecord::Base
   validate :uniqueish_title
   validates :title,   presence: {allow_blank: false }
   validates :content, presence: {allow_blank: false }
-  validates :tags,    presence: {allow_blank: false }
-
+  validates :tags,    presence: {allow_blank: true }
 
   belongs_to :user
+=begin
+
+  def tags
+    @tags
+  end
+
+  def tags=(t)
+    @tags = t
+  end
+=end
 
   private
+
   def cleanit(str)
 =begin
     semi_cleaned_str = ( str.gsub(/\>/,'&gt;') || str )
     semi_cleaned_str.gsub(/\</,'&lt;') || semi_cleaned_str
 =end
-str
+    str
   end
+
+
 
   #TODO change needed here if want to allow re-use of old titles that aren't currently in use
   def uniqueish_title

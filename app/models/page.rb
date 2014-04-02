@@ -1,3 +1,5 @@
+require 'set'
+
 class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :original_title, use: :slugged
@@ -23,11 +25,16 @@ class Page < ActiveRecord::Base
   end
 
   def tags=(t)
+    cleaned = t ? clean_tags(t) : t
     if history.last.try(:new_record?)
-      history.last.tags = t
+      history.last.tags = cleaned
     else
-      history.new(tags: t)
+      history.new(tags: cleaned)
     end
+  end
+
+  def has_tag?(t)
+    tags.split(',').collect{|t| t.strip }.include?(t) if tags
   end
 
   def editor
@@ -71,4 +78,17 @@ class Page < ActiveRecord::Base
   def change(editing_user, args)
     PageState.create(title: args[:title], content: args[:content], user: editing_user, page: self)
   end
+
+  private
+
+  def clean_tags raw_tags
+    # only call if raw_tags contains tags
+    with_poss_dups = raw_tags.split(',').collect{|t| t.strip }
+    s = Set::new
+    with_poss_dups.each {|t| s << t }
+    a = []
+    s.sort.each{|elem| a<<elem}
+    a.join(',  ')
+  end
+
 end

@@ -97,6 +97,10 @@ describe Page do
     history[2].content.should == 'second content change'
   end
 
+  it "should split tags properly"
+  page.tags='a,b,c'
+
+
 end
 
 

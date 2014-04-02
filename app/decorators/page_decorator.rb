@@ -80,7 +80,14 @@ class PageDecorator < Draper::Decorator
   end
 
   def tags_to_html
-    ('<p>Tags:' + model.tags + '</p>').html_safe if model.tags
+    if model.tags
+      tags = model.tags
+      tarr = tags.split(',').collect{|t| t.strip!; " <a href='/tags/#{t}'>#{t}</a>"}
+      out = 'Tags: '+tarr.join(', ')+'<br/><br/>'
+      out.html_safe
+    else
+      'No tags<br/><br/>'.html_safe
+    end
   end
 
 end
