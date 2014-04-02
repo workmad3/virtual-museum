@@ -1,9 +1,9 @@
 <li>
   <span time-and-user><%= page_state.created_at.to_s %> by <%= page_state.user.name %></span>
   <br/>
-  <span bold><%= page_state.title %></span>
-  <br/>
-  <%= ContentHtmlGenerator.generate(page_state).html_safe %>
-  <%= "Tags: #{page_state.tags}"  %>
+  <div bold  class='history_title'><%= page_state.title %></div>
+
+  <div   class='history_content'><%= ContentHtmlGenerator.generate(page_state).html_safe %></div>
+  <div   class='history_tags'><%= "Tags: #{page_state.tags}"  %></div>
   <hr/>
 </li>

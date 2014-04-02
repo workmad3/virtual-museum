@@ -1,10 +1,12 @@
 <div class="container">
 
-  <h1 id="top"><%= page.title %></h1>
+
 
 
   <div id="content">
     <%= raw page.tab_nav %>
+
+    <h1 id="top"><%= page.title %></h1>
 
     <div id="my-tab-content" class="tab-content">
       <%= raw page.content_tab(user_signed_in?, edit_page_url) %>
