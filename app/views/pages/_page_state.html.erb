@@ -4,5 +4,6 @@
   <span bold><%= page_state.title %></span>
   <br/>
   <%= ContentHtmlGenerator.generate(page_state).html_safe %>
+  <%= "Tags: #{page_state.tags}"  %>
   <hr/>
 </li>

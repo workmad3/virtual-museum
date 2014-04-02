@@ -55,6 +55,17 @@ class PageDecorator < Draper::Decorator
     end
   end
 
+  def tags_to_html
+    if model.tags
+      tags = model.tags
+      tarr = tags.split(',').collect{|t| t.strip!; " <a href='/tags/#{t}'>#{t}</a>"}
+      out = 'Tags: '+tarr.join(', ')+'<br/><br/>'
+      out.html_safe
+    else
+      'No tags<br/><br/>'.html_safe
+    end
+  end
+
   private
 
   def edit_button_if(signed_in, edit_url)
@@ -79,15 +90,6 @@ class PageDecorator < Draper::Decorator
     ContentHtmlGenerator.generate(thing).html_safe
   end
 
-  def tags_to_html
-    if model.tags
-      tags = model.tags
-      tarr = tags.split(',').collect{|t| t.strip!; " <a href='/tags/#{t}'>#{t}</a>"}
-      out = 'Tags: '+tarr.join(', ')+'<br/><br/>'
-      out.html_safe
-    else
-      'No tags<br/><br/>'.html_safe
-    end
-  end
+
 
 end

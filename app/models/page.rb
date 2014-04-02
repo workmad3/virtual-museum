@@ -8,6 +8,10 @@ class Page < ActiveRecord::Base
 
   validates_associated :history
 
+  def self.find_with_tag(tag)
+    Page.all.collect{ |p| p.has_tag?( tag ) ? p : nil}.compact
+  end
+
   def creator
     history.first.user
   end

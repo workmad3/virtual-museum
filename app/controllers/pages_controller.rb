@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   expose(:page)         { Page.friendly.find(params[:id]).decorate }
 
   def new
+    #TODO only if logged in, redirect to login
     self.page = Page.new.decorate
   end
 
