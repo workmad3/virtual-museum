@@ -33,8 +33,12 @@ class PageDecorator < Draper::Decorator
 
   def content_tab(signed_in, e_url)
     h.content_tag :div, id: 'content_tab', class: 'tab-pane active' do
-      contents_to_html(model) +
-      tags_to_html +
+      (h.content_tag :div, class: 'content_content' do
+        contents_to_html(model)
+      end)+
+      (h.content_tag :div, class:'content_tags'do
+        tags_to_html
+      end )  +
       edit_button_if(signed_in, e_url)
     end
   end
