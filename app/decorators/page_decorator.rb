@@ -34,6 +34,7 @@ class PageDecorator < Draper::Decorator
   def content_tab(signed_in, e_url)
     h.content_tag :div, id: 'content_tab', class: 'tab-pane active' do
       contents_to_html(model) +
+      tags_to_html +
       edit_button_if(signed_in, e_url)
     end
   end
@@ -76,6 +77,10 @@ class PageDecorator < Draper::Decorator
 
   def contents_to_html(thing)
     ContentHtmlGenerator.generate(thing).html_safe
+  end
+
+  def tags_to_html
+    ('<p>Tags:' + model.tags + '</p>').html_safe if model.tags
   end
 
 end

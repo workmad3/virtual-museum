@@ -18,6 +18,18 @@ class Page < ActiveRecord::Base
     end
   end
 
+  def tags
+    history.last.try(:tags)
+  end
+
+  def tags=(t)
+    if history.last.try(:new_record?)
+      history.last.tags = t
+    else
+      history.new(tags: t)
+    end
+  end
+
   def editor
     self.history.length == 1 ? nil : history.last.user
   end

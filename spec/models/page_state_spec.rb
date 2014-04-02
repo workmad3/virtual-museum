@@ -10,7 +10,7 @@ describe 'Previous Page' do
     @user = FactoryGirl.create(:user)
     @page = FactoryGirl.create(:page)
     @page_state = FactoryGirl.create(:page_state, title: page.original_title, content: 'the content',
-                                     user: user, page: page)
+                                     user: user, page: page, tags: 'tag1, tag2')
   end
 
   it { page_state.should validate_presence_of(:page_id) }
@@ -26,5 +26,11 @@ describe 'Previous Page' do
 
   it "should return the correct content" do
     page_state.content.should == 'the content'
+  end
+
+  it "should return the tags" do
+    page_state.tags.should == 'tag1, tag2'
+    page_state.tags = 'tag3'
+    page_state.tags.should == 'tag3'
   end
 end
