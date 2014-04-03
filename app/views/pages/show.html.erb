@@ -15,15 +15,13 @@
 
   <h2>Comments</h2>
   <% page.comments.each do |comment| %>
-      <p>
-        <strong>Commenter:</strong>
-        <%= comment.commenter %>
-      </p>
+      <div class="comment_commenter">
+        <%= "#{comment.commenter} at #{comment.created_at.strftime("%H:%M on %e %B %Y")}" %>
+      </div>
 
-      <p>
-        <strong>Comment:</strong>
+      <div class="comment_content">
         <%= comment.content %>
-      </p>
+      </div>
   <% end %>
 
   <h2>Add a comment:</h2>
