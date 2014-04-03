@@ -5,6 +5,7 @@ class Page < ActiveRecord::Base
   friendly_id :original_title, use: :slugged
 
   has_many :history, class_name: "PageState"
+  has_many :comments
 
   validates_associated :history
 

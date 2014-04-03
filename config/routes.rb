@@ -4,6 +4,9 @@ VirtualMuseum::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
   resources :pages
-  resources :tags
+  resources :tags, only: [:index, :create]
+  resources :pages do
+    resources :comments
+  end
 
 end
