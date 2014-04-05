@@ -1,0 +1,20 @@
+.container
+  .content
+    = page.tab_nav
+
+    #my-tab-content.tab-content
+
+      #content_tab.tab-pane.active
+        .content_content
+          = page.content_as_html(page)
+        .content_tags
+          = page.tags_as_html.join(', ').html_safe
+          = page.edit_button_as_html(!!current_user, 'x')
+
+      #history_tab.tab-pane
+        %ul{'no-bullets'.to_sym => true}
+          = page.history_as_html   #pluralised
+
+      #last_change_tab.tab-pane
+        %ul{'no-bullets'.to_sym => true}
+          = page.last_change_as_html
