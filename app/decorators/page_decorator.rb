@@ -15,38 +15,65 @@ class PageDecorator < Draper::Decorator
     end
   end
 
-
-=begin
-    '<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-      <li class="active">
-        <a href="#content_tab" data-toggle="tab">Page</a>
-      </li>
-      <li>
-        <a href="#history_tab" data-toggle="tab">History</a>
-      </li>
-      <li>
-        <a href="#last_change_tab" data-toggle="tab">Last change</a>
-      </li>
-    </ul>'
-  end
-=end
-
-  def content_tab(signed_in, e_url)
+  def content_tab(signed_in, e_url, vv)
     h.content_tag :div, id: 'content_tab', class: 'tab-pane active' do
-      (h.content_tag :div, class: 'content_content' do
-        contents_to_html(model)
-      end)+
-      (h.content_tag :div, class:'content_tags'do
-        tags_to_html
-      end )  +
-      edit_button_if(signed_in, e_url)
+      ( h.content_tag :div, class: 'page-width' do
+        ( h.content_tag :div, class: 'content_block' do
+
+          ( h.content_tag :h1, id: "top" do
+              page.title
+            end ) +
+          ( h.content_tag :div, class: 'content_content' do
+              contents_to_html(model)
+          end ) +
+          ( h.content_tag :div do
+            (  h.content_tag :div, class:'content_tags' do
+                h.render 'tags/tags', tags: model.tags
+            end ) +
+            (  h.content_tag :div, class:'content-edit' do
+              edit_button_if(signed_in, e_url)
+            end )
+          end)
+        end)
+      end)  +
+      #edit_button_if(signed_in, e_url) +
+      comment_heading +
+      ( h.content_tag :div, class: 'convenient-box' do
+        ( h.content_tag :div, class: 'comment-block' do
+            new_comment_if(signed_in)
+        end ) +
+        show_comments
+      end )
     end
   end
+
+  def comment_heading
+    h.content_tag :h2 do 'Comments' end
+  end
+
+  def new_comment_if(signed_in)
+    if signed_in
+      h.content_tag :div, class: 'comment-form' do
+        h.render :partial => 'layouts/comment_form'
+      end
+    end
+  end
+
+  def show_comments
+    if model.comments
+      h.content_tag :ul, 'no-bullets' => true do
+        h.render(partial: 'pages/comment', collection: model.comments)
+      end
+    else
+      'No comments so far'
+    end
+  end
+
 
   def history_tab
     h.content_tag :div, id: 'history_tab', class: 'tab-pane' do
       h.content_tag :ul, 'no-bullets' => true do
-        show_page_state
+        h.render(partial: 'pages/page_state', collection: model.history.reverse)
       end
     end
   end
@@ -60,6 +87,14 @@ class PageDecorator < Draper::Decorator
   end
 
   def tags_to_html
+    content = if model.tags.empty?
+                "No tags"
+              else
+                model.tags.map{|t| h.link_to(t, tag_path(t))}
+              end
+
+    tag_links =
+
     if model.tags
       tags = model.tags
       tarr = tags.split(',').collect{|t| t.strip!; " <a href='/tags/#{t}'>#{t}</a>"}
@@ -76,9 +111,6 @@ class PageDecorator < Draper::Decorator
     signed_in ? h.link_to("Edit", edit_url, class: "btn btn-primary") : ''
   end
 
-  def show_page_state
-    h.render(partial: 'pages/page_state', collection: model.history.reverse)
-  end
 
   def show_last_change
     previous_content = page.previous_content

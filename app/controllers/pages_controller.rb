@@ -24,6 +24,7 @@ class PagesController < ApplicationController
   end
 
   def update
+    # this assigns attributes using setters that are either provided by active record or explicitly
     if page.update_attributes(page_params.merge(creator: current_user))
       redirect_to page_url(page), status: 301
     else

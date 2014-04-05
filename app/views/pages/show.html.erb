@@ -3,41 +3,13 @@
   <div id="content">
     <%= raw page.tab_nav %>
 
-    <h1 id="top"><%= page.title %></h1>
-
     <div id="my-tab-content" class="tab-content">
-      <%= raw page.content_tab(user_signed_in?, edit_page_url) %>
+      <%= raw page.content_tab(user_signed_in?, edit_page_url, 'x') %>
       <%=  page.history_tab %>
       <%= raw page.last_change_tab %>
     </div>
   </div>
 <br/>
-
-  <h2>Comments</h2>
-  <% page.comments.each do |comment| %>
-      <div class="comment_commenter">
-        <%= "#{comment.commenter} at #{comment.created_at.strftime("%H:%M on %e %B %Y")}" %>
-      </div>
-
-      <div class="comment_content">
-        <%= comment.content %>
-      </div>
-  <% end %>
-
-  <h2>Add a comment:</h2>
-  <%= form_for([page, page.comments.build]) do |f| %>
-      <p>
-        <%= f.label :commenter %><br />
-        <%= f.text_field :commenter %>
-      </p>
-      <p>
-        <%= f.label :content %><br />
-        <%= f.text_area :content %>
-      </p>
-      <p>
-        <%= f.submit %>
-      </p>
-  <% end %>
 
   <script type="text/javascript">
     jQuery(document).ready(function ($) {

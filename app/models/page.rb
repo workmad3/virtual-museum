@@ -25,21 +25,24 @@ class Page < ActiveRecord::Base
     end
   end
 
+  def raw_tags
+    history.last.try(:raw_tags) || ''
+  end
+
   def tags
-    history.last.try(:tags)
+    history.last.try(:tags) || []
   end
 
   def tags=(t)
-    cleaned = t ? clean_tags(t) : t
     if history.last.try(:new_record?)
-      history.last.tags = cleaned
+      history.last.tags = t
     else
-      history.new(tags: cleaned)
+      history.new(tags: t)
     end
   end
 
   def has_tag?(t)
-    tags.split(',').collect{|t| t.strip }.include?(t) if tags
+    history.last.try(:has_tag?, t)
   end
 
   def editor
@@ -85,15 +88,5 @@ class Page < ActiveRecord::Base
   end
 
   private
-
-  def clean_tags raw_tags
-    # only call if raw_tags contains tags
-    with_poss_dups = raw_tags.split(',').collect{|t| t.strip }
-    s = Set::new
-    with_poss_dups.each {|t| s << t }
-    a = []
-    s.sort.each{|elem| a<<elem}
-    a.join(',  ')
-  end
 
 end
