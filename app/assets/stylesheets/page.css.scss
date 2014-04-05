@@ -2,45 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-[data-new-page]
-{
-  color:red;
-}
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
 
-[data-page]
-{
-  color:blue
-}
-
-[time-and-user]
-{
-  color: lightseagreen;
-  font-size: 0.8em;
-  margin: 0 0 6px 0;
-}
-
-[no-bullets]
-{
-  list-style-type: none;
-  margin-left: 0px;
-}
-
+[data-new-page] { color:red; }
+[data-page] { color:blue }
+[no-bullets] { list-style-type: none; margin-left: 0px; }
 [yellow-background] {background-color: yellow}
 
-.field_with_errors {
-  border-color: red;
-  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-}
-#history-tab li {
-  margin-bottom: 40px;
-}
+.field_with_errors { border-color: red; box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
 
+.time-and-user { color: lightseagreen; font-size: 0.8em; margin: 0 0 6px 0;}
+.bold          { font-weight: bold}
+.clear         { clear: both;}
+.float-left    { float: left;}
+.float-right   { float: right;}
 
-
-div.clear       {clear: both;}
-div.float-left  {float: left;}
-div.float-right {float: right;}
-
+#content-tab   { }
+#history-tab   { }
+#history-tab li   { margin-bottom: 40px; }
+#last-change-tab {}
 
 #page-title   { width: 600px; height: 20px; }
 #page-content { width: 600px; height: 350px; }
@@ -74,16 +66,4 @@ margin: 0 0 0 20px;
 .comment-commenter { margin: 10px 0 6px 20px;   color: lightseagreen;}
 .comment-content   { margin: 0 0 0 20px;  width: 620px; }
 
-.diff{overflow:auto;}
-.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
-.diff del, .diff ins{display:block;text-decoration:none;}
-.diff li{padding:0; display:table-row;margin: 0;height:1em;}
-.diff li.ins{background:#dfd; color:#080}
-.diff li.del{background:#fee; color:#b00}
-.diff li:hover{background:#ffc}
-/* try 'whitespace:pre;' if you don't want lines to wrap */
-.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
-.diff del strong{font-weight:normal;background:#fcc;}
-.diff ins strong{font-weight:normal;background:#9f9;}
-.diff li.diff-comment { display: none; }
-.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
