@@ -24,14 +24,14 @@ class PageDecorator < Draper::Decorator
               page.title
             end ) +
           ( h.content_tag :div, class: 'content_content' do
-              contents_to_html(model)
+              content_as_html(model)
           end ) +
           ( h.content_tag :div do
             (  h.content_tag :div, class:'content_tags' do
                 h.render 'tags/tags', tags: model.tags
             end ) +
             (  h.content_tag :div, class:'content-edit' do
-              edit_button_if(signed_in, e_url)
+              edit_button_as_html(signed_in, e_url)
             end )
           end)
         end)
@@ -42,9 +42,10 @@ class PageDecorator < Draper::Decorator
         ( h.content_tag :div, class: 'comment-block' do
             new_comment_if(signed_in)
         end ) +
-        show_comments
+        comments_as_html
       end )
     end
+
   end
 
   def comment_heading
@@ -59,7 +60,7 @@ class PageDecorator < Draper::Decorator
     end
   end
 
-  def show_comments
+  def comments_as_html
     if model.comments
       h.content_tag :ul, 'no-bullets' => true do
         h.render(partial: 'pages/comment', collection: model.comments)
@@ -81,19 +82,24 @@ class PageDecorator < Draper::Decorator
   def last_change_tab
     h.content_tag :div, id: 'last_change_tab', class: 'tab-pane' do
       h.content_tag :ul, 'no-bullets' => true do
-        show_last_change
+        last_change_as_html
       end
     end
   end
 
-  def tags_to_html
-    content = if model.tags.empty?
+  def history_as_html
+    h.render(partial: 'pages/page_state', collection: model.history.reverse)
+  end
+
+  def tags_as_html
+    if model.tags.empty?
                 "No tags"
               else
-                model.tags.map{|t| h.link_to(t, tag_path(t))}
+                model.tags.map{|t| h.link_to(t, "/tags/#{t}")}
               end
 
-    tag_links =
+=begin
+    #tag_links =
 
     if model.tags
       tags = model.tags
@@ -103,16 +109,16 @@ class PageDecorator < Draper::Decorator
     else
       'No tags<br/><br/>'.html_safe
     end
+=end
   end
 
-  private
 
-  def edit_button_if(signed_in, edit_url)
+  def edit_button_as_html(signed_in, edit_url)
     signed_in ? h.link_to("Edit", edit_url, class: "btn btn-primary") : ''
   end
 
 
-  def show_last_change
+  def last_change_as_html
     previous_content = page.previous_content
     if previous_content
       ('<span time-and-user>'+page.created_at.to_s+' by '+page.editor.email+'</span>'+
@@ -122,7 +128,7 @@ class PageDecorator < Draper::Decorator
     end
   end
 
-  def contents_to_html(thing)
+  def content_as_html(thing)
     ContentHtmlGenerator.generate(thing).html_safe
   end
 

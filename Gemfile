@@ -23,7 +23,7 @@ gem 'decent_exposure'
 gem 'draper'
 gem 'diffy'
 gem 'haml'
-#gem 'redcarpet'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'better_errors'
