@@ -5,15 +5,23 @@
     #my-tab-content.tab-content
 
       #content-tab.tab-pane.active
-        .content-content
-          = page.content_as_html(page)
-        .div
-          .content-tags.float-left
-            = page.tags_as_html.join(', ').html_safe
-          .float-right
-            = page.edit_button_as_html(current_user, 'x')
+
+        #content-width
+          .content-title
+            = page.title
+          .content-content
+            = page.content_as_html(page)
+          .div
+            .content-tags.float-left
+              = page.tags_as_html.join(', ').html_safe
+            .content-edit-button.float-right
+              = page.edit_button_as_html(current_user, "/pages/1/edit")
+
         .clear
-          %h2 Comments
+
+        #comment-width
+          %h2
+            Content
           = page.new_comment_form_as_html(current_user)
           = page.comments_as_html
 

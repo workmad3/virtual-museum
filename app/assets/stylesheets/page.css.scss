@@ -38,32 +38,24 @@
 #page-content { width: 600px; height: 350px; }
 .page-width   { width: 640; }
 
-.content-block {
-  margin-bottom: 20px;
-  background-color: #fafafa;
-  padding: 0.2em 1.4em 0.4em 1.4em;
-  overflow: hidden;
-  width: 640px;
-}
+#content-width { width: 640px; border-bottom: 1px solid #999; padding-bottom: 100px;}
+.content-title       { margin: 10px 0 0.8em 0; font-size: 3em; font-weight: bold; }
+.content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
+.content-tags        { float: left; margin: 40px 0 0 0;  }
+.content-edit-button { float: right; margin: 38px 0 0 0; }
 
-.content-title   { margin: 10px 0 6px 0; font-size: 1.3em; }
-.content-content { margin: 0 0 0 0; width: 620px; }
-.content-content p { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
-.content-tags    { float: left; margin: 40px 0 0 0;  }
-.content-edit    { float: right; margin: 38px 0 0 0;  }
-
-.history-title   { margin: 10px 0 3px 0; font-size: 1em; }
-.history-content  { margin: 0 0 0 0; width: 500px}
-.history-content p { margin: 0 0 1.4em 0; font-size: 0.95em; width: 500px}
-.history-tags    { margin: 0px 0 0 0; font-size: 0.8em; }
-
-.convenient-box {width: 680px}
-.comment-block {
-margin: 0 0 0 20px;
-  }
-
+#comment-width { width: 640px; padding-top: 15px;}
 .comment-form      { }
 .comment-commenter { margin: 10px 0 6px 20px;   color: lightseagreen;}
 .comment-content   { margin: 0 0 0 20px;  width: 620px; }
+.comment-block     { margin: 0 0 0 20px; }
+
+.history-title     { margin: 10px 0 3px 0; font-size: 1em; font-weight: bold; }
+.history-content   { margin: 0 0 0 0; width: 500px}
+.history-content p { margin: 0 0 1.4em 0; font-size: 0.95em; width: 500px}
+.history-tags      { margin: 0px 0 0 0; font-size: 0.8em; }
+
+
+
 
 
