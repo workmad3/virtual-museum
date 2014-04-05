@@ -7,6 +7,7 @@
       #content-tab.tab-pane.active
 
         #content-width
+
           .content-title
             = page.title
           .content-content
@@ -21,8 +22,11 @@
 
         #comment-width
           %h2
-            Content
-          = page.new_comment_form_as_html(current_user)
+            Comments
+          #button-to-hide
+            = link_to("Add a comment", 'x', class: "btn btn-primary", onclick: "hide_and_show();")
+          #new-comment-form-to-show.hiddenx
+            = page.new_comment_form_as_html(current_user)
           = page.comments_as_html
 
       #history-tab.tab-pane
