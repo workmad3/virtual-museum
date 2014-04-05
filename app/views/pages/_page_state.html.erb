@@ -1,7 +1,7 @@
 <li>
   <%= "<div time-and-user>#{page_state.user.name} at #{page_state.created_at.strftime("%H:%M on %e %B %Y")}</div>".html_safe %>
-  <div bold  class='history_title'><%= page_state.title %></div>
-  <div   class='history_content'><%= ContentHtmlGenerator.generate(page_state).html_safe %></div>
-  <div   class='history_tags'><%= render 'tags/tags', tags: page_state.tags %></div>
+  <div bold  class='history-title'><%= page_state.title %></div>
+  <div   class='history-content'><%= ContentHtmlGenerator.generate(page_state).html_safe %></div>
+  <div   class='history-tags'><%= render 'tags/tags', tags: page_state.tags %></div>
   <hr/>
 </li>

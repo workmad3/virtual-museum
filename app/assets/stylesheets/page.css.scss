@@ -27,22 +27,26 @@
 
 [yellow-background] {background-color: yellow}
 
-#history_tab li {
-  margin-bottom: 40px;
-}
-
 .field_with_errors {
   border-color: red;
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
-
-
-#page_title   { width: 600px; height: 20px; }
-#page_content { width: 600px; height: 350px; }
-.page-width {
-  width: 640;
+#history-tab li {
+  margin-bottom: 40px;
 }
-.content_block {
+
+
+
+div.clear       {clear: both;}
+div.float-left  {float: left;}
+div.float-right {float: right;}
+
+
+#page-title   { width: 600px; height: 20px; }
+#page-content { width: 600px; height: 350px; }
+.page-width   { width: 640; }
+
+.content-block {
   margin-bottom: 20px;
   background-color: #fafafa;
   padding: 0.2em 1.4em 0.4em 1.4em;
@@ -50,16 +54,16 @@
   width: 640px;
 }
 
-.content_title   { margin: 10px 0 6px 0; font-size: 1.3em; }
-.content_content { margin: 0 0 0 0; width: 620px; }
-.content_content p { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
-.content_tags    { float: left; margin: 40px 0 0 0;  }
+.content-title   { margin: 10px 0 6px 0; font-size: 1.3em; }
+.content-content { margin: 0 0 0 0; width: 620px; }
+.content-content p { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
+.content-tags    { float: left; margin: 40px 0 0 0;  }
 .content-edit    { float: right; margin: 38px 0 0 0;  }
 
-.history_title   { margin: 10px 0 3px 0; font-size: 1em; }
-.history_content  { margin: 0 0 0 0; width: 500px}
-.history_content p { margin: 0 0 1.4em 0; font-size: 0.95em; width: 500px}
-.history_tags    { margin: 0px 0 0 0; font-size: 0.8em; }
+.history-title   { margin: 10px 0 3px 0; font-size: 1em; }
+.history-content  { margin: 0 0 0 0; width: 500px}
+.history-content p { margin: 0 0 1.4em 0; font-size: 0.95em; width: 500px}
+.history-tags    { margin: 0px 0 0 0; font-size: 0.8em; }
 
 .convenient-box {width: 680px}
 .comment-block {
@@ -67,8 +71,8 @@ margin: 0 0 0 20px;
   }
 
 .comment-form      { }
-.comment_commenter { margin: 10px 0 6px 20px;   color: lightseagreen;}
-.comment_content   { margin: 0 0 0 20px;  width: 620px; }
+.comment-commenter { margin: 10px 0 6px 20px;   color: lightseagreen;}
+.comment-content   { margin: 0 0 0 20px;  width: 620px; }
 
 .diff{overflow:auto;}
 .diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}

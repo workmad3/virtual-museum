@@ -1,20 +1,26 @@
 .container
   .content
-    = page.tab_nav
+    = render partial: 'tab_nav'
 
     #my-tab-content.tab-content
 
-      #content_tab.tab-pane.active
-        .content_content
+      #content-tab.tab-pane.active
+        .content-content
           = page.content_as_html(page)
-        .content_tags
-          = page.tags_as_html.join(', ').html_safe
-          = page.edit_button_as_html(!!current_user, 'x')
+        .div
+          .content-tags.float-left
+            = page.tags_as_html.join(', ').html_safe
+          .float-right
+            = page.edit_button_as_html(current_user, 'x')
+        .clear
+          %h2 Comments
+          = page.new_comment_form_as_html(current_user)
+          = page.comments_as_html
 
-      #history_tab.tab-pane
+      #history-tab.tab-pane
         %ul{'no-bullets'.to_sym => true}
           = page.history_as_html   #pluralised
 
-      #last_change_tab.tab-pane
+      #last-change-tab.tab-pane
         %ul{'no-bullets'.to_sym => true}
           = page.last_change_as_html
