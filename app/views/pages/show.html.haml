@@ -16,7 +16,7 @@
             .content-tags.float-left
               = page.tags_as_html.join(', ').html_safe
             .content-edit-button.float-right
-              = page.edit_button_as_html(current_user, "/pages/1/edit")
+              = page.edit_button_as_html(current_user, "/pages/#{params[:id]}/edit")
 
         .clear
 

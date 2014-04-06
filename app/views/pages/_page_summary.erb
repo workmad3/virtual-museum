@@ -1,6 +1,7 @@
 <p>
-  <%=  "<h2'><a href='/pages/#{p.slug}'> #{p.title} </a></h2>".html_safe %>
+  <%=  "<a href='/pages/#{p.slug}'> #{p.title} </a>".html_safe %>
   <br/>
   <%= "#{p.content}" %><br/>
   <%= render 'tags/tags', tags: p.tags %></p>
+
 <hr/>

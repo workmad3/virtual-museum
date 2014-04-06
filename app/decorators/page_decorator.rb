@@ -22,7 +22,7 @@ class PageDecorator < Draper::Decorator
   def new_comment_form_as_html(signed_in)
     if signed_in
       h.content_tag :div, class: 'comment-form' do
-        h.render :partial => 'layouts/comment_form'
+        h.render :partial => 'comments/comment_form'
       end
     end
   end
@@ -30,7 +30,7 @@ class PageDecorator < Draper::Decorator
   def comments_as_html
     if model.comments
       h.content_tag :ul, 'no-bullets' => true do
-        h.render(partial: 'pages/comment', collection: model.comments)
+        h.render(partial: 'comments/comment', collection: model.comments)
       end
     else
       'No comments so far'
@@ -40,7 +40,7 @@ class PageDecorator < Draper::Decorator
 # history tab
 
   def history_as_html
-    h.render(partial: 'pages/page_state', collection: model.history.reverse)
+    h.render(partial: 'page_states/page_state', collection: model.history.reverse)
   end
 
 # last change tab
