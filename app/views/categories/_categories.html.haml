@@ -1,3 +1,5 @@
 %span.tags
-  = (render  partial: 'categories/category', collection: categories, spacer_template: 'categories/trail_spacer').html_safe if  categories != []
-  = 'No categories' if categories == []
+  = if categories != []
+    = render  partial: 'categories/category', collection: categories, spacer_template: 'categories/trail_spacer'.html_safe
+  = if categories == []
+    = 'No categories'

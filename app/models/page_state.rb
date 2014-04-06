@@ -50,8 +50,12 @@ class PageState < ActiveRecord::Base
     categories == '' ? [] : tags.split(',').collect{|t| t.strip}
   end
 
-  def has_category?(tag)
-    categories.include?(tag)
+  def has_category?(cat)
+    categories.include?(cat)
+  end
+
+  def trail_for_cat(cat)
+    trail(cat, :isa)
   end
 
 

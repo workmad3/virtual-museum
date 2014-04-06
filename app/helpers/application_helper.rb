@@ -28,4 +28,14 @@ module ApplicationHelper
       ['zort', :isa, 'MU6G'] ]
   end
 
+  def trail(arr, relation)
+    arr = [arr] unless arr.class == :Array
+    triple = :start_the_loop
+    while triple
+      triple = linked_data.find{|t| t[0]==arr.last &&  t[1] == relation}
+      arr << triple[2] if triple
+    end
+    arr.reverse
+  end
+
 end

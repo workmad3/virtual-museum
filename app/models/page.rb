@@ -61,6 +61,10 @@ class Page < ActiveRecord::Base
     history.last.try(:has_category?, c)
   end
 
+  def trail_for_cat(c)
+    history.last.try(:trail_for_cat, c)
+  end
+
   def editor
     self.history.length == 1 ? nil : history.last.user
   end
