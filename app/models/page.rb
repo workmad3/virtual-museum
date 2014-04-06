@@ -26,7 +26,7 @@ class Page < ActiveRecord::Base
   end
 
   def tags
-    history.last.try(:tags) || []
+    history.last.try(:tags)
   end
 
   def tags=(t)
