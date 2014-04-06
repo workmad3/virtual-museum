@@ -20,18 +20,20 @@ class PageState < ActiveRecord::Base
   belongs_to :user
 
   def tags=(new_tags)
-    if new_tags.is_a?(String)
+    begin
       new_tags = new_tags.split(',')
-    end
-    if new_tags == []
-      ''
-    else
-      self['tags'] = new_tags.map(&:strip).uniq.sort{|a,b|a.downcase<=>b.downcase}.join(',')
+      self['tags'] = new_tags.map(&:strip).uniq.sort{|a,b|a.downcase<=>b.downcase}.join(', ')
+    rescue
+      self['tags'] = ''
     end
   end
 
   def has_tag?(tag)
     tags.include?(tag)
+  end
+
+  def tags_as_arr
+    tags == '' ? [] : tags.split(',').collect{|t| t.strip}
   end
 
   private
