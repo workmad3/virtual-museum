@@ -1,6 +1,6 @@
 .container
   .content
-    = render partial: 'tab_nav'
+    = render partial: 'layouts/tab_nav'
 
     #my-tab-content.tab-content
 
@@ -8,6 +8,8 @@
 
         #content-width
 
+          .content-categories
+            = page.categories_as_html.html_safe
           .content-title
             = page.title
           .content-content

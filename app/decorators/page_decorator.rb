@@ -7,6 +7,22 @@ class PageDecorator < Draper::Decorator
     ContentHtmlGenerator.generate(thing).html_safe
   end
 
+  def categories_as_html
+    if model.categories.empty?
+      "No categories"
+    else
+      h.render partial: 'categories/category', collection: categories_as_arr, spacer_template: 'categories/trail_spacer'
+    end
+  end
+
+  def categories_as_str
+    categories
+  end
+
+  def categories_as_arr
+    categories == '' ? [] : categories.split(',').collect{|t| t.strip}
+  end
+
   def tags_as_html
     if model.tags.empty?
       "No tags"
@@ -56,8 +72,8 @@ class PageDecorator < Draper::Decorator
   def last_change_as_html
     previous_content = page.previous_content
     if previous_content
-      ('<span time-and-user>'+page.created_at.to_s+' by '+page.editor.email+'</span>'+
-          Diffy::Diff.new(page.previous_content, page.content).to_s(:html)).html_safe
+      (h.render 'users/user_and_time', user: page.history.last.user.name, thing: page.history.last) +
+          Diffy::Diff.new(page.previous_content, page.content).to_s(:html).html_safe
     else
       'No previous edit'
     end

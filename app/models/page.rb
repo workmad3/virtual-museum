@@ -13,6 +13,10 @@ class Page < ActiveRecord::Base
     Page.all.collect{ |p| p.has_tag?( tag ) ? p : nil}.compact
   end
 
+  def self.find_with_category(cat)
+    Page.all.collect{ |p| p.has_category?( cat ) ? p : nil}.compact
+  end
+
   def creator
     history.first.user
   end
@@ -39,6 +43,22 @@ class Page < ActiveRecord::Base
 
   def has_tag?(t)
     history.last.try(:has_tag?, t)
+  end
+
+  def categories
+    history.last.try(:categories)
+  end
+
+  def categories=(c)
+    if history.last.try(:new_record?)
+      history.last.categories = c
+    else
+      history.new(categories: c)
+    end
+  end
+
+  def has_category?(c)
+    history.last.try(:has_category?, c)
   end
 
   def editor

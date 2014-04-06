@@ -1,0 +1,7 @@
+<h1 id="top"> <%= "Pages categorised #{params[:id]}" %> </h1>
+
+  <% categorized_pages.sort { |a, b| a.title.downcase<=>b.title.downcase }.each do |p| %>
+      <%= render :partial => 'pages/page_summary', :locals => {:page => p} %>
+      <br/>
+  <% end %>
+

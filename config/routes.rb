@@ -4,6 +4,7 @@ VirtualMuseum::Application.routes.draw do
   resources :users
   resources :pages
   resources :tags, only: [:index, :create, :show]
+  resources :categories, only: [:index, :create, :show]
   resources :pages do
     resources :comments
   end

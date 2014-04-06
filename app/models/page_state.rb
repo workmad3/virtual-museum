@@ -28,13 +28,33 @@ class PageState < ActiveRecord::Base
     end
   end
 
+  def tags_as_arr
+    tags == '' ? [] : tags.split(',').collect{|t| t.strip}
+  end
+
   def has_tag?(tag)
     tags.include?(tag)
   end
 
-  def tags_as_arr
-    tags == '' ? [] : tags.split(',').collect{|t| t.strip}
+
+  def categories=(new_categories)
+    begin
+      new_categories = new_categories.split(',')
+      self['categories'] = new_categories.map(&:strip).uniq.sort{|a,b|a.downcase<=>b.downcase}.join(', ')
+    rescue
+      self['categories'] = ''
+    end
   end
+
+  def categories_as_arr
+    categories == '' ? [] : tags.split(',').collect{|t| t.strip}
+  end
+
+  def has_category?(tag)
+    categories.include?(tag)
+  end
+
+
 
   private
 
