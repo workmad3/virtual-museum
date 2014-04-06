@@ -17,6 +17,46 @@ class Page < ActiveRecord::Base
     Page.all.collect{ |p| p.has_category?( cat ) ? p : nil}.compact
   end
 
+  def self.linked_data
+    [ ['MU5', :isa, 'Computer'],
+      ['atlas', :isa, 'Computer'],
+      ['MU6G', :isa, 'Computer'],
+      ['The baby', :isa, 'Computer'],
+      ['Manchester Mark 1', :isa, 'Computer'],
+      ['Hardware', :is_part_of, 'Computer'],
+      ['Software', :is_part_of, 'Computer'],
+      ['Memory', :is_part_of, 'Hardware'],
+      ['Disc Drive', :is_part_of, 'Hardware'],
+      ['CPU', :is_part_of, 'Hardware'],
+      ['zorg', :isa, 'atlas'],
+      ['zorb', :isa, 'atlas'],
+      ['zort', :isa, 'MU6G'] ]
+  end
+
+  def self.all_included_pages(cat, relationship)
+    linked_data.find_all{|t| t[1] == relationship && t[1] == cat }
+
+  end
+
+  def self.trail(arr, relation)
+    arr = [arr] unless arr.class == :Array
+    triple = :start_the_loop
+    while triple
+      triple = linked_data.find{|t| t[0]==arr.last &&  t[1] == relation}
+      arr << triple[2] if triple
+    end
+    arr.reverse
+  end
+
+  def self.inverse_set(cat_in, rel)
+    cats = linked_data.find_all{|t| t[1] == rel && t[2] == cat_in}
+    res = cats.collect{|t| t[0]}
+    p res
+    #return nil if res == [] || res == nil
+    #TODO sort put uniq - remove it and see what happens
+    ret = [cat_in].concat(res.concat(res.each.collect{|c| inverse_set(c, rel)}.flatten.reject{|c| c == nil})).uniq
+  end
+
   def creator
     history.first.user
   end

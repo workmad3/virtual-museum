@@ -1,0 +1,8 @@
+%h1#top
+  = "Pages categorised #{params[:id]}"
+
+-  pages.each do |p|
+  = render :partial => 'pages/page_summary', :locals => {:page => p}
+
+
+

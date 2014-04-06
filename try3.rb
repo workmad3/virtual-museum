@@ -26,14 +26,22 @@ class Try
     end
     arr.reverse
   end
+  def inverse_set(cat_in, rel)
+    cats = @ld.find_all{|t| t[1] == rel && t[2] == cat_in}
+    res = cats.collect{|t| t[0]}
+    p res
+    #return nil if res == [] || res == nil
+    #TODO sort put uniq - remove it and see what happens
+    ret = [cat_in].concat(res.concat(res.each.collect{|c| inverse_set(c, rel)}.flatten.reject{|c| c == nil})).uniq
+  end
 end
+
 
 class Page
   def initialize
-    @page_category = 'zorg'
+    @page_category = 'atlas'
   end
   def is_in_category(cat, rooter)
-    p rooter.trail(@page_category, :isa).include?(cat)
     rooter.trail(@page_category, :isa).include?(cat)
   end
 end
@@ -45,6 +53,16 @@ describe Try do
     @p = Page.new
   end
 
+  it 'should return the inverse set' do
+    @rooter.inverse_set('Computerx', :isa).should == 0
+  end
+end
+
+
+=begin
+
+
+
   it "should return trails" do
     @rooter.trail('zorb', :isa).should == ["Computer", "atlas", "zorb"]
   end
@@ -54,7 +72,6 @@ describe Try do
   end
 end
 
-=begin
 def get_next(start_token, relation)
     res = @ld.find_all{|triple| triple[0]==start_token &&  triple[1] == relation}.collect{|triple|triple[2]}
     res == [] ? nil : res
