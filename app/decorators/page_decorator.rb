@@ -11,8 +11,16 @@ class PageDecorator < Draper::Decorator
     if model.tags.empty?
       "No tags"
     else
-      model.tags.map{|t| h.link_to(t, "/tags/#{t}")}
+      h.render partial: 'tags/tag', collection: tags_as_arr, spacer_template: 'tags/tag_spacer'
     end
+  end
+
+  def tags_as_str
+    tags
+  end
+
+  def tags_as_arr
+    tags == '' ? [] : tags.split(',').collect{|t| t.strip}
   end
 
   def edit_button_as_html(signed_in, edit_url)

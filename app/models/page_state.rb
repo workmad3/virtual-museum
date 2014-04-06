@@ -19,23 +19,19 @@ class PageState < ActiveRecord::Base
 
   belongs_to :user
 
-  def raw_tags
-    self['tags'] || ''
-  end
-
-  def tags
-    super.try(:split, ',') || []
-  end
-
-  def has_tag?(tag)
-    tags.include?(tag)
-  end
-
   def tags=(new_tags)
     if new_tags.is_a?(String)
       new_tags = new_tags.split(',')
     end
-    self['tags'] = new_tags.map(&:strip).uniq.sort.join(',')
+    if new_tags == []
+      ''
+    else
+      self['tags'] = new_tags.map(&:strip).uniq.sort{|a,b|a.downcase<=>b.downcase}.join(',')
+    end
+  end
+
+  def has_tag?(tag)
+    tags.include?(tag)
   end
 
   private

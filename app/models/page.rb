@@ -25,10 +25,6 @@ class Page < ActiveRecord::Base
     end
   end
 
-  def raw_tags
-    history.last.try(:raw_tags) || ''
-  end
-
   def tags
     history.last.try(:tags) || []
   end
