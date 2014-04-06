@@ -1,0 +1,8 @@
+.tag-search
+  .tag-heading
+    = "<a href='/pages/#{page.slug}'> #{page.title} </a>".html_safe
+  %div
+    = page.content
+  %div
+    = render 'tags/tags', tags: page.tags
+%hr
