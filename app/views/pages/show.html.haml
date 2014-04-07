@@ -13,7 +13,7 @@
             = page.title
           .content-content
             = page.content_as_html(page)
-          #parent-div.content-footer
+          .content-footer.parent-div
             .content-t-and-c.float-left
               Tags
               .content-tags
@@ -28,10 +28,12 @@
         .clear
 
         #comment-width
-          %h2
-            Comments
-          #button-to-hide
-            = link_to("Add a comment", 'x', class: "btn btn-primary", onclick: "hide_and_show();")
+
+          .parent-div
+            %h2#comment-title.float-left
+              Comments
+            #button-to-hide.float-right
+              = link_to("Add a comment", 'x', class: "btn btn-primary", onclick: "hide_and_show();")
           #new-comment-form-to-show.hiddenx
             = page.new_comment_form_as_html(current_user)
           = page.comments_as_html
