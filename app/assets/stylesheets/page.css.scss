@@ -79,6 +79,21 @@
 #page_content { width:  500px; height: 450px; }
 #page_tags { width:  500px; }
 
+//.search-results  div {
+//  white-space: nowrap;
+//  overflow: hidden;
+//  text-overflow: ellipsis; }
+
+.relative{
+  position: relative;
+}
+
+.fixed-height-box-for-truncated-page-text {
+  height: 40px;
+  width: 95%;
+  display: block;
+  overflow: hidden;
+}
 
 
 

@@ -1,12 +1,11 @@
 .search-results
 
-
-
   %a.page-heading-in-page-summary{href: page_url(page)}
     = page.title
 
-  %div
-    = page.content
+  .relative
+    .fixed-height-box-for-truncated-page-text
+      = page.content
 
   .history-t-and-c
     .history-tags

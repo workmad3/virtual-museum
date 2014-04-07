@@ -63,9 +63,6 @@ class PageDecorator < Draper::Decorator
 
 # history tab
 
-  def history_as_html
-    h.render(partial: 'page_states/page_state', collection: model.history.reverse)
-  end
 
 # last change tab
 

@@ -5,29 +5,7 @@
     #my-tab-content.tab-content
 
       #content-tab.tab-pane.active
-
-        #content-width
-
-
-          .content-title
-            = page.title
-          .content-content
-            = page.content_as_html(page)
-
-          .content-footer.parent-div
-            .content-t-and-c.float-left
-              Tags
-              .content-tags
-                = page.tags_as_html.html_safe
-              Categories
-              .content-categories
-                = page.categories_as_html.html_safe
-            .content-edit-button.float-right
-              = page.edit_button_as_html(current_user, "/pages/#{params[:id]}/edit")
-        .clear
-          
-        #comment-width
-          = render partial: 'comments/comments_page_tab'
+        = render partial: 'pages/page_tab_content'
 
       #history-tab.tab-pane
         = render partial: 'pages/page_history'
