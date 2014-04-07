@@ -30,6 +30,7 @@
         #comment-width
 
           .parent-div
+
             %h2#comment-title.float-left
               Comments
             #button-to-hide.float-right
@@ -39,8 +40,7 @@
           = page.comments_as_html
 
       #history-tab.tab-pane
-        %ul{'no-bullets'.to_sym => true}
-          = page.history_as_html
+        = render partial: 'pages/page_history'
 
       #last-change-tab.tab-pane
         = page.last_change_as_html
