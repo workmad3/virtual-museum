@@ -1,3 +1,3 @@
-= render partial: 'categories/category_final', collection: Page.trail(category, :isa), spacer_template: 'categories/category_spacer'
+= render partial: 'categories/category_final', collection: Page.first.ld_trail(category, :isa), spacer_template: 'categories/category_spacer'
 = ' > '
 

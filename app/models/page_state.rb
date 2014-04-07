@@ -56,7 +56,7 @@ class PageState < ActiveRecord::Base
   end
 
   def trail_for_cat(cat)
-    trail(cat, :isa)
+    ld_trail(cat, :isa)
   end
 
 

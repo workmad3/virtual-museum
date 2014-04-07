@@ -42,7 +42,7 @@ class Page
     @page_category = 'atlas'
   end
   def is_in_category(cat, rooter)
-    rooter.trail(@page_category, :isa).include?(cat)
+    rooter.ld_trail(@page_category, :isa).include?(cat)
   end
 end
 

@@ -40,7 +40,7 @@ class PageDecorator < Draper::Decorator
   end
 
   def edit_button_as_html(signed_in, edit_url)
-    signed_in ? h.link_to("Edit", edit_url, class: "btn btn-primary") : ''
+    signed_in ? h.link_to("Edit page", edit_url, class: "btn btn-primary") : ''
   end
 
   def new_comment_form_as_html(signed_in)

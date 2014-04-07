@@ -38,11 +38,16 @@
 #page-content { width: 600px; height: 350px; }
 .page-width   { width: 640; }
 
-#content-width { width: 640px; border-bottom: 1px solid #999; padding-bottom: 100px;}
-.content-title       { margin: 0.6em 0 0.8em 0; font-size: 3em; font-weight: bold; }
+#content-width { width: 640px; }
+.content-title       { margin: 0.6em 0 0.8em 0; font-size: 3em; font-weight: bold; line-height: 1.2em }
+.content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1.2em}
 .content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
-.content-tags        { float: left; margin: 40px 0 0 0;  }
-.content-edit-button { float: right; margin: 38px 0 0 0; }
+
+.content-footer      { font-size: 0.95em; color: darkgray; background-color: rgba(135, 202, 250, 0.18); padding: 0.7em 1em 0.7em 1em ; }
+.content-t-and-c     { width: 450px; height: auto }
+.content-tags        { margin: 0px 0 0 0;  }
+.content-categories  { }
+.content-edit-button { float: right;  margin: 5px 10px 0 0; }
 
 #comment-width { width: 640px; padding-top: 15px;}
 #new-comment-form-to-show { margin: 20px 13px 10px 20px; }
@@ -60,6 +65,8 @@
 
 
 .hiddenx { display: none;  height: 200px}
+// make div have height of child floats
+#parent-div:after { content: " "; display: block; clear: both;}
 
 
 
