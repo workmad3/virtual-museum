@@ -74,6 +74,11 @@
 // make div have height of child floats
 .parent-div:after { content: " "; display: block; clear: both;}
 
+#page_title { width:  500px; }
+#page_categories { width:  500px; }
+#page_content { width:  500px; height: 450px; }
+#page_tags { width:  500px; }
+
 
 
 

@@ -1,7 +1,6 @@
 .search-results
 
-  .category-trails
-    = render partial: 'categories/categories', locals: {categories: page.history.last.categories_as_arr}
+
 
   %a.page-heading-in-page-summary{href: page_url(page)}
     = page.title
@@ -9,6 +8,11 @@
   %div
     = page.content
 
-  %div
-    = render 'tags/tags', tags: page.history.last.tags_as_arr
+  .history-t-and-c
+    .history-tags
+      = render 'tags/tags', tags: page.history.last.tags_as_arr
+    .history-tags
+      = render partial: 'categories/categories', locals: {categories: page.history.last.categories_as_arr}
 %hr
+
+
