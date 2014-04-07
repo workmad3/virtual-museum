@@ -12,30 +12,6 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def linked_data
-    [ ['MU5', :isa, 'Computer'],
-      ['atlas', :isa, 'Computer'],
-      ['MU6G', :isa, 'Computer'],
-      ['The baby', :isa, 'Computer'],
-      ['Manchester Mark 1', :isa, 'Computer'],
-      ['Hardware', :is_part_of, 'Computer'],
-      ['Software', :is_part_of, 'Computer'],
-      ['Memory', :is_part_of, 'Hardware'],
-      ['Disc Drive', :is_part_of, 'Hardware'],
-      ['CPU', :is_part_of, 'Hardware'],
-      ['zorg', :isa, 'atlas'],
-      ['zorb', :isa, 'atlas'],
-      ['zort', :isa, 'MU6G'] ]
-  end
 
-  def trail(arr, relation)
-    arr = [arr] unless arr.class == :Array
-    triple = :start_the_loop
-    while triple
-      triple = linked_data.find{|t| t[0]==arr.last &&  t[1] == relation}
-      arr << triple[2] if triple
-    end
-    arr.reverse
-  end
 
 end

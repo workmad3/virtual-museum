@@ -19,7 +19,7 @@ class Page < ActiveRecord::Base
 
   def self.linked_data
     [ ['MU5', :isa, 'Computer'],
-      ['atlas', :isa, 'Computer'],
+      ['Atlas', :isa, 'Computer'],
       ['MU6G', :isa, 'Computer'],
       ['The baby', :isa, 'Computer'],
       ['Manchester Mark 1', :isa, 'Computer'],
@@ -28,9 +28,9 @@ class Page < ActiveRecord::Base
       ['Memory', :is_part_of, 'Hardware'],
       ['Disc Drive', :is_part_of, 'Hardware'],
       ['CPU', :is_part_of, 'Hardware'],
-      ['zorg', :isa, 'atlas'],
-      ['zorb', :isa, 'atlas'],
-      ['zort', :isa, 'MU6G'] ]
+      ['Zorg', :isa, 'Atlas'],
+      ['Zorb', :isa, 'Atlas'],
+      ['Zort', :isa, 'MU6G'] ]
   end
 
   def self.all_included_pages(cat, relationship)
