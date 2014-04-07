@@ -17,8 +17,15 @@ class Page < ActiveRecord::Base
     Page.all.collect{ |p| p.has_category?( cat ) ? p : nil}.compact
   end
 
+  def self.page_type_ld
+    [ ['CollectionItem', :isa, 'Page Type'],
+      ['Person', :isa, 'Page Type'],
+      ['Resource', :isa, 'Page Type']]
+  end
+
   def self.linked_data
-    [ ['MU5', :isa, 'Computer'],
+    [ ['Computer', :isa, 'ROOT'],
+      ['MU5', :isa, 'Computer'],
       ['Atlas', :isa, 'Computer'],
       ['MU6G', :isa, 'Computer'],
       ['The baby', :isa, 'Computer'],
@@ -38,8 +45,8 @@ class Page < ActiveRecord::Base
 
   end
 
-  def self.trail(arr, relation)
-    arr = [arr] unless arr.class == :Array
+  def self.trail(cat, relation)
+    arr = [cat]
     triple = :start_the_loop
     while triple
       triple = linked_data.find{|t| t[0]==arr.last &&  t[1] == relation}

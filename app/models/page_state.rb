@@ -52,6 +52,7 @@ class PageState < ActiveRecord::Base
 
   def has_category?(cat)
     categories.include?(cat)
+
   end
 
   def trail_for_cat(cat)
