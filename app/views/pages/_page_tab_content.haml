@@ -13,6 +13,9 @@
       Categories
       .content-categories
         = page.categories_as_html.html_safe
+      .div
+        - if page.categories.include?('Collection item')
+          Catalogue number: 101       Location: Shelf 16
     .content-edit-button.float-right
       = page.edit_button_as_html(current_user, "/pages/#{params[:id]}/edit")
   .clear

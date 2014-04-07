@@ -1,6 +1,6 @@
 module LinkedData
   def ld_page_type
-    [ ['CollectionItem', :isa, 'Type'],
+    [ ['Collection item', :isa, 'Type'],
       ['Person', :isa, 'Type'],
       ['Resource', :isa, 'Type']]
   end
