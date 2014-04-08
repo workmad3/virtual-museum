@@ -19,17 +19,24 @@ class PageState < ActiveRecord::Base
 
   belongs_to :user
 
+  def categories=(new_categories)
+    begin
+      self['categories'] = clean(new_categories)
+    rescue
+      self['categories'] = ''
+    end
+  end
+
   def tags=(new_tags)
     begin
-      new_tags = new_tags.split(',')
-      self['tags'] = new_tags.map(&:strip).uniq.sort{|a,b|a.downcase<=>b.downcase}.join(', ')
+      self['tags'] =  clean(new_tags)
     rescue
       self['tags'] = ''
     end
   end
 
   def tags_as_arr
-    tags == '' ? [] : tags.split(',').collect{|t| t.strip}
+    tags == '' ? [] : tags.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
   end
 
   def has_tag?(tag)
@@ -37,14 +44,6 @@ class PageState < ActiveRecord::Base
   end
 
 
-  def categories=(new_categories)
-    begin
-      new_categories = new_categories.split(',')
-      self['categories'] = new_categories.map(&:strip).uniq.sort{|a,b|a.downcase<=>b.downcase}.join(', ')
-    rescue
-      self['categories'] = ''
-    end
-  end
 
   def categories_as_arr
     categories == '' ? [] : categories.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
@@ -52,16 +51,17 @@ class PageState < ActiveRecord::Base
 
   def has_category?(cat)
     categories.include?(cat)
-
   end
 
   def trail_for_cat(cat)
     ld_trail(cat, :isa)
   end
 
-
-
   private
+
+  def clean(str)
+    str.split(',').map(&:strip).uniq.delete_if{|t| t == ''}.sort{|a,b|a.downcase<=>b.downcase}.join(', ')
+  end
 
   def cleanit(str)
     #TODO improve sanitisation

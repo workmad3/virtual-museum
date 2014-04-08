@@ -72,13 +72,9 @@ class Page < ActiveRecord::Base
     self.history.length == 1 ? nil : history.last.user
   end
 
-
-
-
   # used when invoking diffy
   def previous_content
     history.length == 1 ? nil : history[-2].content
   end
-
 
 end
