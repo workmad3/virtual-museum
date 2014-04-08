@@ -3,9 +3,8 @@ class FileHierarchy
   def initialize
     @root = '/ust/home/mark/Pictures'
     @dir_stack = []
-    ls(@root)
+    ls(@root)                                      # ls
   end
-  def dir_contents() @dir_contents end
   def ls dir
     @ptr = 0
     if dir
@@ -17,23 +16,28 @@ class FileHierarchy
 
   def next
     if @ptr == @dir_contents.count
-      if @dir_stack.count == 0
-        return nil
-      else
-        @dir_contents, @ptr = @dir_stack.pop
-        puts "POPPED @dir_contents #{@dir_contents} @ptr #{@ptr}"
-        return self.next
-      end
+      return come_out_of_dir
     end
     res = @dir_contents[@ptr]
     @ptr = @ptr+ 1
     puts " res is #{res} @ptr is #{@ptr}"
     if res[:dir]
-      @dir_stack.push [@dir_contents.dup, @ptr]
-      ls(nil)
-      return self.next
+      return go_into_dir
     end
     res
+  end
+
+  def come_out_of_dir
+      if @dir_stack.count == 0
+        return nil
+      end
+      @dir_contents, @ptr = @dir_stack.pop
+      self.next
+  end
+  def go_into_dir
+    @dir_stack.push [@dir_contents.dup, @ptr]
+    ls(nil)                                          # ls
+    self.next
   end
 end
 
@@ -50,6 +54,10 @@ describe 'File hierarchy traversal' do
     f.next.should == {:name=>"z.png", :resource=>nil, :dir=>false}
     f.next.should == {:name=>"d.png", :resource=>nil, :dir=>false}
     f.next.should == nil
+  end
+
+  it 'should yield next files correctly with empty dir and empty subdir cases' do
+    true.should == false
   end
 
   it 'should yield next unprocessed files correctly' do
