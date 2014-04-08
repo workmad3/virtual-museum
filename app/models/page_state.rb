@@ -47,7 +47,7 @@ class PageState < ActiveRecord::Base
   end
 
   def categories_as_arr
-    categories == '' ? [] : categories.split(',').collect{|t| t.strip}
+    categories == '' ? [] : categories.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
   end
 
   def has_category?(cat)

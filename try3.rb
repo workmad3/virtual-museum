@@ -1,3 +1,4 @@
+=begin
 class ClassToAddMethodsTo
 
   def attr_with_special_handling(args)
@@ -39,3 +40,25 @@ obj.print
 
 puts 'asking to set o.y to "Mark" results in it being set to "mark"'
 obj.print
+=end
+class ClassToAddMethodsTo
+  def self.special_attr_accessor(attr, set: ->(val){val}, get: ->(val){val})
+    define_method attr do
+      get.(instance_variable_get "@#{attr}")
+    end
+    define_method "#{attr}=" do |rhs|
+      instance_variable_set "@#{attr}", set.(rhs)
+    end
+  end
+
+  special_attr_accessor :x, set: ->(val){val+3}, get: ->(val){val}
+
+  def initialize(x)
+    self.x = x
+  end
+end
+
+foo = ClassToAddMethodsTo.new(1)
+puts "starting x: #{foo.x}"
+foo.x = 30
+puts "new x: #{foo.x}"

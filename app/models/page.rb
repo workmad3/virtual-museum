@@ -1,64 +1,47 @@
 require 'set'
 
 class Page < ActiveRecord::Base
-  include LinkedData
 
+  include LinkedData
   extend FriendlyId
   friendly_id :original_title, use: :slugged
+  extend HistoryControl
 
   has_many :history, class_name: "PageState"
   has_many :comments
+
+  history_attr :content
+  history_attr :categories
+  history_attr :tags
 
   validates_associated :history
 
   #---------------------------------------------------------
 
-  def self.find_with_tag(tag)
-    Page.all.collect{ |p| p.has_tag?( tag ) ? p : nil}.compact
-  end
-
   def self.find_with_category(cat)
     Page.all.collect{ |p| p.has_category?( cat ) ? p : nil}.compact
   end
 
+  def has_category?(c)
+    history.last.try(:has_category?, c)
+  end
+
+  def self.find_with_tag(tag)
+    Page.all.collect{ |p| p.has_tag?( tag ) ? p : nil}.compact
+  end
+
+  def has_tag?(t)
+    history.last.try(:has_tag?, t)
+  end
+
   #---------------------------------------------------------
 
-  def categories
-    history.last.try(:categories)
-  end
-
-  def content
-    history.last.try(:content)
-  end
-
   def creator
-    history.first.user
-  end
-
-  def tags
-    history.last.try(:tags)
+    history.last.try(:creator)
   end
 
   def title
     history.last.try(:title)
-  end
-
-  #---------------------------------------------------------
-
-  def categories=(c)
-    if history.last.try(:new_record?)
-      history.last.categories = c
-    else
-      history.new(categories: c)
-    end
-  end
-
-  def content=(new_content)
-    if history.last.try(:new_record?)
-      history.last.content = new_content
-    else
-      history.new(content: content)
-    end
   end
 
   def creator=(c)
@@ -66,14 +49,6 @@ class Page < ActiveRecord::Base
       history.last.user = c
     else
       history.new(user: c)
-    end
-  end
-
-  def tags=(t)
-    if history.last.try(:new_record?)
-      history.last.tags = t
-    else
-      history.new(tags: t)
     end
   end
 
@@ -97,26 +72,13 @@ class Page < ActiveRecord::Base
     self.history.length == 1 ? nil : history.last.user
   end
 
-  def has_category?(c)
-    history.last.try(:has_category?, c)
-  end
 
-  def has_tag?(t)
-    history.last.try(:has_tag?, t)
-  end
 
-  def original_title=(new_title)
-    super
-    self.title = new_title
-  end
 
+  # used when invoking diffy
   def previous_content
     history.length == 1 ? nil : history[-2].content
   end
 
-  # unused?
-  def trail_for_cat(c)
-    history.last.try(:trail_for_cat, c)
-  end
 
 end
