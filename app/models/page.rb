@@ -88,7 +88,7 @@ class Page < ActiveRecord::Base
 
   #------------------------------------------------------------------
 
-  # now only used in tests, refactor to not exist
+  # Page#change now only used in tests, refactor to not exist
   def change(editing_user, args)
     PageState.create(title: args[:title], content: args[:content], user: editing_user, page: self)
   end
