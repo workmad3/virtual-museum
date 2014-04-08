@@ -15,6 +15,7 @@ class PageState < ActiveRecord::Base
   validate :uniqueish_title
   validates :title,   presence: {allow_blank: false }
   validates :content, presence: {allow_blank: false }
+  #TODO is this meaningless?
   validates :tags,    presence: {allow_blank: true }
 
   belongs_to :user
