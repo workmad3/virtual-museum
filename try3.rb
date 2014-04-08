@@ -1,18 +1,22 @@
-class X
-  #attr_accessor :x, :y
+class ClassToAddMethodsTo
 
-  def attr_my_accessor(args)
-    args.each do |name, proc|
-      self.class.send :define_method, "#{name}", Proc.new{instance_variable_get("@#{name}") }
-      self.class.send :define_method, "#{name}=", Proc.new { |rhs_of_equals|
-        instance_variable_set("@#{name}", proc.call(rhs_of_equals))
+  def attr_with_special_handling(args)
+    args.each do |base_method_name, proc_to_apply_in_the_setter|
+      # the GETTER doesn't do anything special, the intent is that the Proc becomes more complex
+      self.class.send :define_method, "#{base_method_name}", Proc.new{instance_variable_get("@#{base_method_name}") }
+      # the SETTER has a more complex Proc, that
+      # applies the Proc supplied in the call to attr_my_acessor and then saves in the instance var
+      self.class.send :define_method, "#{base_method_name}=", Proc.new { |rhs_of_equals|
+        instance_variable_set("@#{base_method_name}", proc_to_apply_in_the_setter.call(rhs_of_equals))
       }
     end
   end
 
-  def initialize
-    attr_my_accessor(x: lambda {|val| val+100;}, y: lambda {|val| val.downcase;})
 
+  def initialize
+    #Q1: t would be nice to move the next send out of a method and be able to put it in a class body like attr_*
+    #Q2: and it would be nice not to have to mention labda in the line too
+    attr_with_special_handling x: lambda {|val| val+300;}, y: lambda {|val| val.downcase;}
     @x='hi'
     @y='Si'
   end
@@ -24,22 +28,14 @@ class X
   end
 end
 
-o=X.new
-puts 'after initialisation'
-o.print
-puts 'set o.x to 3'
-o.x = 30000
+obj = ClassToAddMethodsTo.new
 
-o.print
+puts 'after initialisation our values for x and y are "hi" "Si"'
+obj.print
 
+puts 'asking to set o.x to 3 results in it being set to 303'
+obj.x = 3
+obj.print
 
-
-=begin
-  [
-    ['x', lambda {|val| val+100;}],
-    ['y', lambda {|val| val.downcase;}]
-  ].each do |name, proc|
-    define_method("#{name}="){|v| instance_variable_set("@#{name}", proc.call(v)) }
-    define_method("#{name}") {    instance_variable_get("@#{name}") }
-  end
-=end
+puts 'asking to set o.y to "Mark" results in it being set to "mark"'
+obj.print
