@@ -15,29 +15,41 @@ class FileHierarchy
   end
 
   def next
-    if @ptr == @dir_contents.count
+    if at_end_of_directory?
       return come_out_of_dir
     end
     res = @dir_contents[@ptr]
     @ptr = @ptr+ 1
-    puts " res is #{res} @ptr is #{@ptr}"
     if res[:dir]
       return go_into_dir
     end
     res
   end
 
+  private
+  def at_end_of_directory?
+    @ptr == @dir_contents.count
+  end
   def come_out_of_dir
       if @dir_stack.count == 0
         return nil
       end
-      @dir_contents, @ptr = @dir_stack.pop
+      pop_dir
       self.next
   end
+
   def go_into_dir
+    push_dir_and_get_sub_dir
+    self.next
+  end
+
+  def push_dir_and_get_sub_dir
     @dir_stack.push [@dir_contents.dup, @ptr]
     ls(nil)                                          # ls
-    self.next
+  end
+
+  def pop_dir
+    @dir_contents, @ptr = @dir_stack.pop
   end
 end
 
