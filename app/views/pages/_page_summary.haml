@@ -9,9 +9,9 @@
 
   .history-t-and-c
     .history-tags
-      = render 'tags/tags', tags: page.history.last.tags_as_arr
+      = render 'tags/tags', tags: page.history.last.tags_as_array
     .history-tags
-      = render partial: 'categories/categories', locals: {categories: page.history.last.categories_as_arr}
+      = render partial: 'categories/categories', locals: {categories: page.history.last.categories_as_array}
 %hr
 
 

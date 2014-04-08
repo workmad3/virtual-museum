@@ -35,32 +35,30 @@ class PageState < ActiveRecord::Base
     end
   end
 
-  def tags_as_arr
-    tags == '' ? [] : tags.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
+  def categories_as_array
+    as_array(categories)
   end
 
-  def has_tag?(tag)
-    tags.include?(tag)
-  end
-
-
-
-  def categories_as_arr
-    categories == '' ? [] : categories.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
+  def tags_as_array
+    as_array(tags)
   end
 
   def has_category?(cat)
     categories.include?(cat)
   end
 
-  def trail_for_cat(cat)
-    ld_trail(cat, :isa)
+  def has_tag?(tag)
+    tags.include?(tag)
   end
 
   private
 
   def clean(str)
     str.split(',').map(&:strip).uniq.delete_if{|t| t == ''}.sort{|a,b|a.downcase<=>b.downcase}.join(', ')
+  end
+
+  def as_array(str)
+    str == '' ? [] : str.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
   end
 
   def cleanit(str)
