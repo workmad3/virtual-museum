@@ -1,35 +1,31 @@
-require 'spec_helper'
+#require 'spec_helper'
 class FileHierarchy
   def initialize
-    @root = '/ust/home/mark/Pictures'
+    @root = '/home/mark/Pictures'
     @dir_stack = []
-    ls(@root)                                      # ls
-  end
-  def ls dir
+    @files = Dir.entries(@root)
     @ptr = 0
-    if dir
-      @dir_contents = [ {name: 'a.png', resource: nil, dir: false}, {name: 'b.png', resource: nil, dir: false}, {name: 'dirname', resource: nil, dir: true}, {name: 'd.png', resource: nil, dir: false} ]
-    else
-      @dir_contents = [ {name: 'y.png', resource: nil, dir: false}, {name: 'z.png', resource: nil, dir: false} ]
-    end
   end
 
+
   def next
-    if at_end_of_directory?
+    if at_end_of_dir?
       return come_out_of_dir
     end
-    res = @dir_contents[@ptr]
-    @ptr = @ptr+ 1
-    if res[:dir]
+    file_name = @files[@ptr]
+    @ptr = @ptr + 1
+    self.next if !! (/^\./ =~ file_name)
+    if File.directory?(@root+file_name)
       return go_into_dir
     end
-    res
+    file_name
   end
 
   private
-  def at_end_of_directory?
-    @ptr == @dir_contents.count
+  def at_end_of_dir?
+    @ptr == @files.length
   end
+
   def come_out_of_dir
       if @dir_stack.count == 0
         return nil
@@ -44,15 +40,43 @@ class FileHierarchy
   end
 
   def push_dir_and_get_sub_dir
-    @dir_stack.push [@dir_contents.dup, @ptr]
-    ls(nil)                                          # ls
+    @dir_stack.push [@files.dup, @ptr]
+    @dir_contents = Dir.entries("./jap")
+    @ptr = 0
   end
 
   def pop_dir
-    @dir_contents, @ptr = @dir_stack.pop
+    @files, @ptr = @dir_stack.pop
   end
 end
 
+f = FileHierarchy.new
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+p f.next
+
+=begin
 describe 'File hierarchy traversal' do
   def f() @f end
   before(:each) do
@@ -77,5 +101,6 @@ describe 'File hierarchy traversal' do
   end
 
 end
+=end
 
 
