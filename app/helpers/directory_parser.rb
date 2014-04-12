@@ -1,7 +1,10 @@
 # usage: Organise a two level structure of dirs representing catalogue items and image resources in them
+
+#   eg in /home/mark/Pictures
 # 1
 #   ones_image.png
 # etc
+
 # DirectoryParser.grab('/home/mark/Pictures')
 
 
@@ -35,11 +38,3 @@ class DirectoryParser
     puts "resource: #{r}"
   end
 end
-
-# DirectoryParser.grab('/home/mark/Pictures')
-
-
-
-
-
-
