@@ -25,12 +25,14 @@ class Page < ActiveRecord::Base
     Page.all.collect{ |p| p.has_category?( cat ) ? p : nil}.compact
   end
 
-  def has_category?(c)
-    history.last.try(:has_category?, c)
-  end
-
   def self.find_with_tag(tag)
     Page.all.collect{ |p| p.has_tag?( tag ) ? p : nil}.compact
+  end
+
+  #---------------------------------------------------------
+
+  def has_category?(c)
+    history.last.try(:has_category?, c)
   end
 
   def has_tag?(t)

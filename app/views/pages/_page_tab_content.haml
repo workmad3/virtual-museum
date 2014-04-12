@@ -7,17 +7,32 @@
 
   .content-footer.parent-div
     .content-t-and-c.float-left
-      Tags
+      .bold
+        Tags
       .content-tags
         = page.tags_as_html.html_safe
-      Categories
+      %br
+      .bold
+        Categories
       .content-categories
         = page.categories_as_html.html_safe
-      .div
-        - if page.categories.include?('Collection item')
-          Catalogue number: 101       Location: Shelf 16
     .content-edit-button.float-right
       = page.edit_button_as_html(current_user, "/pages/#{params[:id]}/edit")
+  .clear
+
+  - if page.has_category? ('UMCS Collection')
+    .content-footer.parent-div
+
+      .float-left
+        %span.bold
+          Item number
+        \:
+        = page.item_number
+      .float-right
+        %span.bold
+          Location
+        \:
+        =  page.location
   .clear
 
 #comment-width

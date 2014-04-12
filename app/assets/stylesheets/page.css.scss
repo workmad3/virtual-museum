@@ -28,6 +28,7 @@
 .clear         { clear: both;}
 .float-left    { float: left;}
 .float-right   { float: right;}
+.top-align     { }
 
 #content-tab   { }
 #history-tab   { }
@@ -44,9 +45,9 @@
 .content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
 
 .content-footer      { font-size: 0.95em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.7em 1.3em 1em 1em ; }
-.content-t-and-c     { width: 450px; height: auto }
-.content-tags        { margin: 0px 0 0 0;  }
-.content-categories  { }
+.content-t-and-c     { width: 500px; height: auto }
+.content-tags        { margin-left: 0em;  }
+.content-categories  { margin-left: 0em; }
 .content-edit-button { float: right;  margin: 5px 0 0 0; }
 
 
