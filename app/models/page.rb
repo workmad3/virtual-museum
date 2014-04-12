@@ -9,6 +9,7 @@ class Page < ActiveRecord::Base
 
   has_many :history, class_name: "PageState"
   has_many :comments
+  has_many :resources
 
   history_attr :content
   history_attr :categories
