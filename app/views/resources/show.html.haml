@@ -1,0 +1,13 @@
+.container
+  .content
+    .content-title
+      %a{href: page_url(resource.page.slug)}
+        = resource.page.title
+      %span.resource-ptr
+        resource >&nbsp;
+      = resource.title
+    %p
+      = resource.description
+    %br
+    %a{href: resource.file}
+      %img{src: resource.file}

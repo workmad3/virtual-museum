@@ -8,5 +8,6 @@ VirtualMuseum::Application.routes.draw do
   resources :pages do
     resources :comments
   end
+  resources :resources
 
 end
