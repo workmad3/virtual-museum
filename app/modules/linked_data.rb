@@ -7,6 +7,7 @@ module LinkedData
 
   def ld_categories
     [
+      ['Ferranti Mark I', :isa, 'Computer'],
       ['MU5', :isa, 'Computer'],
       ['Atlas', :isa, 'Computer'],
       ['MU6G', :isa, 'Computer'],

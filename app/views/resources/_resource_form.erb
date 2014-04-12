@@ -1,0 +1,18 @@
+<%= form_for(resource) do |f| %>
+    <ul>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.label :file %>
+    <%= f.text_field :file %>
+
+    <%= f.label :page_id %>
+    <%= f.select :page_id, [[7,7],[8,8],[9,9]] %>
+    <br/>
+    <%= f.submit class: 'btn btn-primary' %>
+<% end %>

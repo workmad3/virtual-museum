@@ -78,10 +78,14 @@
 // make div have height of child floats
 .parent-div:after { content: " "; display: block; clear: both;}
 
-#page_title { width:  500px; }
+// field widths
+
+#page_title, #resource_title { width:  500px; }
 #page_categories { width:  500px; }
 #page_content { width:  500px; height: 450px; }
 #page_tags { width:  500px; }
+#resource_description  { width:  500px; }
+#resource_file  { width:  500px; }
 
 //.search-results  div {
 //  white-space: nowrap;

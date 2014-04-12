@@ -1,13 +1,23 @@
 .container
   .content
-    .content-title
-      %a{href: page_url(resource.page.slug)}
-        = resource.page.title
-      %span.resource-ptr
-        resource >&nbsp;
-      = resource.title
-    %p
-      = resource.description
-    %br
-    %a{href: resource.file}
-      %img{src: resource.file}
+    #content-width
+      .content-title
+        = resource.title
+      %p
+        = resource.description
+      %br
+      %a{href: resource.file}
+        %img{src: resource.file}
+      %p
+
+
+      .content-footer.parent-div
+        .content-t-and-c.float-left
+          Resource belongs to
+          .content-tags
+            %a{href: page_url(resource.page.slug)}
+              = resource.page.title
+
+        .content-edit-button.float-right
+          - if current_user
+            = link_to("Edit resource", "/resources/#{params[:id]}/edit", class: "btn btn-primary")
