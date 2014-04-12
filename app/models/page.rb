@@ -14,6 +14,8 @@ class Page < ActiveRecord::Base
   history_attr :content
   history_attr :categories
   history_attr :tags
+  history_attr :item_number
+  history_attr :location
 
   validates_associated :history
 
