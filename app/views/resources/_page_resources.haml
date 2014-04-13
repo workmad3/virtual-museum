@@ -1,9 +1,11 @@
 %ul{'no-bullets'.to_sym => true}
   - page.resources.each do |r|
-    %p.bold
+    %li
+      %p.bold
+        %a{href: resource_path(r)}
+          = r.title
       %a{href: resource_path(r)}
-        = r.title
-    %a{href: resource_path(r)}
-      %img.resource-image{src: r.file, title: "#{r.description}"}
+        %img.resource-image{src: r.file, title: "#{r.description}"}
+      %hr
 
 

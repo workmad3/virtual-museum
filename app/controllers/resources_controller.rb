@@ -37,6 +37,12 @@ class ResourcesController < ApplicationController
     end
   end
 
+  def destroy
+    resource.destroy
+    render :index
+  end
+
+
   def page_params
     params.require(:resource).permit(:file, :description, :title, :page_id)
   end

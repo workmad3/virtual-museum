@@ -17,7 +17,10 @@
       .content-categories
         = page.categories_as_html.html_safe
     .content-edit-button.float-right
-      = page.edit_button_as_html(current_user, "/pages/#{params[:id]}/edit")
+      - if current_user
+        = link_to("Edit page", "/pages/#{params[:id]}/edit", class: "btn btn-primary")
+        = # %br
+        = # link_to("Add resource", "/resources/new", class: "btn btn-primary")
   .clear
 
   - if page.has_category? ('UMCS Collection')

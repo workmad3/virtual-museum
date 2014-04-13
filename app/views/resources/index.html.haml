@@ -1,0 +1,14 @@
+.container
+  %h1
+
+  - Resource.all.sort{|a,b|a.title<=>b.title}.each do |r|
+    %div
+      %img{src: r.file, width: '150px'}
+      %br
+      %a{href: resource_path(r.id)}
+        = r.title
+      &nbsp; &nbsp;
+      = link_to 'Remove resource', r,
+               :confirm => 'Are you sure you want to remove this resource? This cannot be undone.',
+               :method => :delete
+    %hr

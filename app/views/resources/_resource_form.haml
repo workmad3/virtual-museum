@@ -1,0 +1,19 @@
+- page_arr = []
+- Page.all.sort{|a,b|a.title<=>b.title}.each {|p| page_arr.push [p.title, p.id]}
+
+= form_for(resource) do |f|
+
+  = f.label :title
+  = f.text_field :title
+
+
+  = f.label :description
+  = f.text_area :description
+
+  = f.label :file
+  = f.text_field :file
+
+  = f.label :page_id
+  = f.select :page_id, page_arr
+  %br
+  = f.submit class: 'btn btn-primary'

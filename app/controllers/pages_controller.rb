@@ -3,11 +3,14 @@ class PagesController < ApplicationController
 
   def new
     #TODO only if logged in, redirect to login
-    self.page = Page.new.decorate
+    #TODO lost page title in new page
+    p = Page.new
+    self.page = p.decorate
   end
 
   def create
-    self.page = Page.new(page_params.merge(creator: current_user))
+    #TODO get page titles showing from the wiki page link
+    self.page = Page.new
     if page.save
       redirect_to page_url(page), status: 301
     else
@@ -29,6 +32,12 @@ class PagesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    p = Page.friendly.find(page.slug)
+    p.destroy
+    render :index
   end
 
   def page_params

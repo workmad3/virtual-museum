@@ -1,0 +1,17 @@
+.container
+  %h1
+    All pages
+  - Page.all.sort{|a,b| a.title<=>b.title}.each do |p|
+    %p
+      - if p.resources != []
+        %a{href: page_path("#{p.slug}")}
+          %img{src: p.resources.first.file, width: '150px'}
+          %br
+      %a{href: page_path("#{p.slug}")}
+        = p.title
+      &nbsp; &nbsp;
+      = link_to 'Remove page', p,
+               :confirm => 'Are you sure you want to remove this page? This cannot be undone.',
+               :method => :delete
+    %hr
+

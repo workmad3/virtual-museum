@@ -7,9 +7,9 @@ class Page < ActiveRecord::Base
   friendly_id :original_title, use: :slugged
   extend HistoryControl
 
-  has_many :history, class_name: "PageState"
-  has_many :comments
-  has_many :resources
+  has_many :history, class_name: "PageState", dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :resources, dependent: :destroy
 
   history_attr :content
   history_attr :categories
