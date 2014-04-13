@@ -45,11 +45,11 @@ class PageState < ActiveRecord::Base
   end
 
   def has_category?(cat)
-    categories.include?(cat)
+    categories ? categories.include?(cat) : false
   end
 
   def has_tag?(tag)
-    tags.include?(tag)
+    tags ? tags.include?(tag) : false
   end
 
   private

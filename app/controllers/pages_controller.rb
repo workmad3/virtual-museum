@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def new
     #TODO only if logged in, redirect to login
     #TODO lost page title in new page
-    p = Page.new
+    p = Page.new(title: params[:page_title])
     self.page = p.decorate
   end
 
