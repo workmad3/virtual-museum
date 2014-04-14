@@ -1,6 +1,6 @@
 .container
-  %h1
-
+  .content-title
+    All resources
   - Resource.all.sort{|a,b|a.title<=>b.title}.each do |r|
     %div
       %img{src: r.file, width: '150px'}
