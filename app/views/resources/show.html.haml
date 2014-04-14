@@ -15,8 +15,9 @@
         .content-t-and-c.float-left
           Resource belongs to
           .content-tags
-            %a{href: page_url(resource.page.slug)}
-              = resource.page.title
+            = resource.pages.all.each do |r|
+              %a{href: page_url(r.page.slug)}
+                = r.page.title
 
         .content-edit-button.float-right
           - if current_user

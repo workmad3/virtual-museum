@@ -9,7 +9,7 @@ class ResourcesController < ApplicationController
     self.resource = Resource.new(file: params['resource']['file'],
                                   description: params['resource']['description'],
                                   title: params['resource']['title'],
-                                  page_id: params['resource']['page_id']
+                                  pages: params['resource']['page_ids'].split(',')
                                  )
     if resource.save
       redirect_to resource_url(resource), status: 301

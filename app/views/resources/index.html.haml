@@ -3,7 +3,8 @@
     All resources
   - Resource.all.sort{|a,b|a.title<=>b.title}.each do |r|
     %div
-      %img{src: r.file, width: '150px'}
+      %a{href: resource_path(r.id)}
+        %img{src: r.file, width: '150px'}
       %br
       %a{href: resource_path(r.id)}
         = r.title
