@@ -1,0 +1,17 @@
+%li
+  .time-and-user
+    = render 'users/user_and_time', user: page_state.user.name, thing: page_state
+
+  #history-width
+    .history-title
+      = page_state.title
+    .history-content
+      = ContentHtmlGenerator.generate(page_state).html_safe
+    .history-t-and-c
+      .history-tags
+        = render 'tags/tags', tags: page_state.tags_as_array
+      .history-tags
+        = render 'categories/categories', categories: page_state.categories_as_array
+
+
+
