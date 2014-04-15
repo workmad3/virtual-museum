@@ -31,6 +31,10 @@ class Page < ActiveRecord::Base
     Page.all.collect{ |p| p.has_tag?( tag ) ? p : nil}.compact
   end
 
+  def self.find_by_title(t)
+    Page.all.collect{ |p| p.title == t ? p : nil}.compact.first
+  end
+
   #---------------------------------------------------------
 
   def has_category?(c)
