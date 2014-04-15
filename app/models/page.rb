@@ -9,8 +9,8 @@ class Page < ActiveRecord::Base
 
   has_many :history, class_name: "PageState", dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :page_resource_uses
-  has_many :resources, through: :page_resource_uses
+  has_many :resource_usages
+  has_many :resources, through: :resource_usages
 
 
   history_attr :content
