@@ -44,6 +44,6 @@ class ResourcesController < ApplicationController
 
 
   def page_params
-    params.require(:resource).permit(:file, :description, :title, :page_id)
+    params.require(:resource).permit(:file, :description, :title, :resource_usages, :pages)
   end
 end

@@ -13,10 +13,7 @@
   = f.label :file
   = f.text_field :file
 
-  = f.label :page_ids
-  = f.text_field :page_ids
-
-  = # f.label :page_id
-  = # f.select :page_id, page_arr
+  = f.label :pages
+  = f.collection_select :resource_usages, Page.all.sort, :id, :title, :prompt => false
   %br
   = f.submit class: 'btn btn-primary'
