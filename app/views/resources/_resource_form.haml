@@ -1,6 +1,3 @@
-- page_arr = []
-- Page.all.sort{|a,b|a.title<=>b.title}.each {|p| page_arr.push [p.title, p.id]}
-
 = form_for(resource) do |f|
 
   = f.label :title
@@ -14,6 +11,7 @@
   = f.text_field :file
 
   = f.label :pages
-  = f.collection_select :resource_usages, Page.all.sort{|p,q|p.title<=>q.title}, :id, :title,{selected: resource.pages.map(&:id) },{:multiple => true}
+  = f.collection_select :resource_usages, Page.all.sort{|p,q|p.title<=>q.title}, :id, :title,
+                                              {selected: resource.pages.map(&:id) },{:multiple => true}
   %br
   = f.submit class: 'btn btn-primary'
