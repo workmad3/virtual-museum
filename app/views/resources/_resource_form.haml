@@ -14,6 +14,6 @@
   = f.text_field :file
 
   = f.label :pages
-  = f.collection_select :resource_usages, Page.all.sort, :id, :title, :prompt => false
+  = f.collection_select :resource_usages, Page.all.sort{|p,q|p.title<=>q.title}, :id, :title,{selected: resource.pages.map(&:id) },{:multiple => true}
   %br
   = f.submit class: 'btn btn-primary'
