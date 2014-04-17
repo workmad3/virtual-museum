@@ -13,10 +13,16 @@ class ResourcesController < ApplicationController
   end
 
   def create
+    titles_to_add = params['resource_pages']
+    .collect{|title,checked|checked=='0'?nil:title}.delete_if{|v|!v}
+    selected_pages = []
+    titles_to_add.each do |t|
+      selected_pages << Page.find_by_title(t)
+    end
     self.resource = Resource.new(file: params['resource']['file'],
                                   description: params['resource']['description'],
                                   title: params['resource']['title'],
-                                  pages: params['resource']['page_ids'].split(',')
+                                  pages: selected_pages
                                  )
     if resource.save
       redirect_to resource_url(resource), status: 301

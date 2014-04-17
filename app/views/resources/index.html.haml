@@ -9,7 +9,8 @@
       %a{href: resource_path(r.id)}
         = r.title
       &nbsp; &nbsp;
-      = link_to 'Remove resource', r,
+      - if current_user.can_delete?(r)
+        = link_to 'Remove resource', r,
                :confirm => 'Are you sure you want to remove this resource? This cannot be undone.',
                :method => :delete
     %hr

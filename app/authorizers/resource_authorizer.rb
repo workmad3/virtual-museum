@@ -1,4 +1,4 @@
-class PageAuthorizer < Authority::Authorizer
+class ResourceAuthorizer < Authority::Authorizer
 
   def self.default(adjective, user)
     if adjective == :deletable

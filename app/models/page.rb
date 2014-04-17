@@ -1,8 +1,8 @@
 require 'set'
 
 class Page < ActiveRecord::Base
-    include Authority::Abilities
-    self.authorizer_name = 'PageAuthorizer'
+  include Authority::Abilities
+  self.authorizer_name = 'PageAuthorizer'
 
   include LinkedData
 

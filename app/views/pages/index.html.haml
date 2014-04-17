@@ -9,8 +9,9 @@
           %br
       %a{href: page_path("#{p.slug}")}
         = p.title
-      &nbsp; &nbsp;
-      = link_to 'Remove page', p,
+        - if current_user.can_delete?(p)
+          &nbsp; &nbsp;
+          = link_to 'Remove page', p,
                :confirm => 'Are you sure you want to remove this page? This cannot be undone.',
                :method => :delete
     %hr
