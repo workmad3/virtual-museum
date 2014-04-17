@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   # because we are interested if someone is signed in or not
   # except int he case of delete when they must be signed in and an admin, see
   #     authorize_action_for p
-  # in delete
+  # in destroy
 
   def new
     p = Page.new(title: params[:page_title])

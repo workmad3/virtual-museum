@@ -1,6 +1,13 @@
 class ResourcesController < ApplicationController
   expose(:resource)         { Resource.find(params[:id]) }
 
+  before_action :authenticate_user!, :except => [:index, :show]
+  # use the above instead of Authorize's authorize_actions_for Page, except: [:index, :show]
+  # because we are interested if someone is signed in or not
+  # except int he case of delete when they must be signed in and an admin, see
+  #     authorize_action_for p
+  # in destroy
+
   def new
     self.resource = Resource.new
   end
@@ -31,13 +38,7 @@ class ResourcesController < ApplicationController
     titles_to_add.each do |t|
       selected_pages << Page.find_by_title(t)
     end
-=begin
-    selected_pages = params['resource']['resource_usages']
-    selected_pages = [] if selected_pages == nil
-    selected_pages = [selected_pages] if selected_pages.class != Array
-    selected_pages = selected_pages.delete_if{|s| s == ''}
-    selected_pages = selected_pages.collect{|s| Page.find_by_id(Integer(s)) }
-=end
+
     # this assigns attributes using setters that are either provided by active record or explicitly
     if resource.update_attributes(file: params['resource']['file'],
                                   description: params['resource']['description'],
@@ -51,6 +52,7 @@ class ResourcesController < ApplicationController
   end
 
   def destroy
+    authorize_action_for resource
     resource.destroy
     render :index
   end
