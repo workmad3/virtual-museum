@@ -1,18 +1,20 @@
 require 'set'
 
 class Page < ActiveRecord::Base
+    include Authority::Abilities
+    self.authorizer_name = 'PageAuthorizer'
 
   include LinkedData
+
   extend FriendlyId
   friendly_id :original_title, use: :slugged
-  extend HistoryControl
 
   has_many :history, class_name: "PageState", dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :resource_usages
   has_many :resources, through: :resource_usages
 
-
+  extend HistoryControl
   history_attr :content
   history_attr :categories
   history_attr :tags

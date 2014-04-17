@@ -1,21 +1,27 @@
 class PagesController < ApplicationController
-  expose(:page)         { Page.friendly.find(params[:id]).decorate }
+  expose(:page)         { Page.friendly.find(params[:id]).decorate  }
 
   def new
-    #TODO only if logged in, redirect to login
-    #TODO lost page title in new page
     p = Page.new(title: params[:page_title])
     self.page = p.decorate
+    if current_user
+      render :new
+    else
+      redirect_to user_session_path, status: 301
+    end
   end
 
   def create
-    #TODO get page titles showing from the wiki page link
-    self.page = Page.new
-    if page.save
-      redirect_to page_url(page), status: 301
+    if current_user
+      self.page = Page.new(page_params.merge(creator: current_user))
+      if page.save
+        redirect_to page_url(page), status: 301
+      else
+        self.page = page.decorate
+        render :create
+      end
     else
-      self.page = page.decorate
-      render :new
+      redirect_to user_session_path, status: 301
     end
   end
 
