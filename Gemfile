@@ -24,6 +24,7 @@ gem 'draper'
 gem 'diffy'
 gem 'haml'
 gem 'redcarpet'
+gem 'authority'
 
 
 group :development, :test do

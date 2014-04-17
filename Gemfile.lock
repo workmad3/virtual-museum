@@ -28,6 +28,9 @@ GEM
     addressable (2.3.5)
     arel (4.0.2)
     atomic (1.1.15)
+    authority (2.10.0)
+      activesupport (>= 3.0.0)
+      rake (>= 0.8.7)
     bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
@@ -210,6 +213,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (= 4.0.3)
+  authority
   better_errors
   binding_of_caller
   bootstrap-sass (~> 2.3.2.2)
