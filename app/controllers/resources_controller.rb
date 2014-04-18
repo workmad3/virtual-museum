@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  expose(:resource)         { Resource.find(params[:id]) }
+  expose(:resource)         { begin Resource.find(params[:id]) rescue nil end }
 
   before_action :authenticate_user!, :except => [:index, :show]
   # use the above instead of Authorize's authorize_actions_for Page, except: [:index, :show]
@@ -32,6 +32,7 @@ class ResourcesController < ApplicationController
   end
 
   def show
+    redirect_to resources_path unless resource
   end
 
   def edit
