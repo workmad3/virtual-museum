@@ -21,48 +21,8 @@ class Page < ActiveRecord::Base
   history_attr :item_number
   history_attr :location
 
-  #validates_associated :history
   validate :title_ok?
-  #validate :slug_ok?
   validate :content_ok?
-
-  def title_ok?
-    new_title_chars = self.title.tr('^A-Za-z0-9', '').downcase
-    match = false
-    Page.all.each do |p|
-      existing_title_chars = p.title.tr('^A-Za-z0-9', '').downcase
-      if  new_title_chars == existing_title_chars && p.id != self.id
-        match = existing_title_chars
-      end
-    end
-    if match == self.title
-        errors.add :title, "is the same as '#{match}', an existing page title"
-    elsif match
-      errors.add :title, "#{self.title} is too similar to #{match}, an existing page title"
-      errors.add :titles, "need to differ while ignoring letter-case, spaces and punctuation"
-    end
-    match
-  end
-
-  def content_ok?
-    if self.content.blank?
-      errors.add :content, " can't be blank"
-    end
-  end
-
-  def slug_ok?
-    if Page.where(slug: self.slug).where.not(id: self.id).exists?
-      errors.add :title, "2 is too similar to another page's title, make sure there are different letters in the title (ignoring letter case)"
-    end
-  end
-
-  def self.create_slug(title)
-    title.parameterize
-  end
-
-  def to_param
-    slug
-  end
 
   #---------------------------------------------------------
 
@@ -134,6 +94,42 @@ class Page < ActiveRecord::Base
   # used when invoking diffy
   def previous_content
     history.length == 1 ? nil : history[-2].content
+  end
+
+  #------------------------------------------------------------------
+
+  def self.create_slug(title)
+    title.parameterize
+  end
+
+  def to_param
+    slug
+  end
+
+  #------------------------------------------------------------------
+
+  def title_ok?
+    new_title_chars = self.title.tr('^A-Za-z0-9', '').downcase
+    match = false
+    Page.all.each do |p|
+      existing_title_chars = p.title.tr('^A-Za-z0-9', '').downcase
+      if  new_title_chars == existing_title_chars && p.id != self.id
+        match = existing_title_chars
+      end
+    end
+    if match == self.title
+      errors.add :title, "is the same as '#{match}', an existing page title"
+    elsif match
+      errors.add :title, "#{self.title} is too similar to #{match}, an existing page title"
+      errors.add :titles, "need to differ while ignoring letter-case, spaces and punctuation"
+    end
+    match
+  end
+
+  def content_ok?
+    if self.content.blank?
+      errors.add :content, " can't be blank"
+    end
   end
 
 end
