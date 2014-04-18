@@ -23,6 +23,10 @@ class Page < ActiveRecord::Base
 
   validates_associated :history
 
+  def self.create_slug(title)
+    title.parameterize
+  end
+
   def to_param
     slug
   end

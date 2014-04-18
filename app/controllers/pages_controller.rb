@@ -15,7 +15,8 @@ class PagesController < ApplicationController
   end
 
   def create
-      self.page = Page.new(page_params.merge(creator: current_user))
+      self.page = Page.new( page_params.merge( creator: current_user,
+                                                slug: Page.create_slug( page_params['title'] ) ) )
       if page.save
         redirect_to page_url(page), status: 301
       else
