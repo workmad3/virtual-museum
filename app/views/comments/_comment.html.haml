@@ -2,6 +2,6 @@
   %hr
     - if comment.commenter
       .time-and-user
-        = render 'users/user_and_time', user: comment.commenter, thing: comment
+        = render 'users/user_and_time', user: User.find(comment.user_id).name, thing: comment
       .comment-content
         = comment.content
