@@ -2,6 +2,75 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.bold          { font-weight: bold}
+.clear         { clear: both;}
+[data-page]    { color:blue }
+[data-new-page] { color:red; }
+.field_with_errors { border-color: red; box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+.float-left    { float: left;}
+.float-right   { float: right;}
+[no-bullets]   { list-style-type: none; margin-left: 0px; }
+.red           {color: #ff5e1f}
+.std-width     { width: 640px; }
+.time-and-user { color: lightseagreen; font-size: 0.96em; margin: 0 0 6px 0;}
+[yellow-background] {background-color: yellow}
+
+
+#content-tab   { }
+#history-tab   { }
+#history-tab li   { margin-bottom: 40px; }
+#last-change-tab {}
+
+.content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em}
+.content-content img    { margin: 0 0 1.7em 0; }
+.content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
+
+.content-footer      { font-size: 0.95em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.7em 1.3em 1em 1em ; }
+.content-edit-button { float: right;  margin: 5px 0 0 0; }
+
+#comments-spacer     { padding-top: 15px;}
+#new-comment-form-to-show { margin: 20px 13px 10px 20px; }
+#button-to-hide      {margin: 8px 0 0 0}
+
+.resource-image    { margin-left: 2em; width: 200px; }
+
+
+#history-width     { width: 500px; font-size: 0.95em }
+#history-width p   { margin: 0 0 1.4em 0; font-size: inherit; }
+
+#comment-title     { color: #444; }
+.content-title     { font-size: 3em;   font-weight: bold; margin: 0.6em 0 0.8em 0; line-height: 1.2em }
+.history-title     { font-size: 1em;   font-weight: bold; margin: 10px 0 3px 0; }
+.summary-title     { font-size: 1.2em; font-weight: bold; margin: 0em 0 15px 0; }
+
+.history-tags-and-categories { line-height: 1.4em; font-size: 0.8em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.5em 1em 0.5em 1em ; }
+.tags-and-categories { margin: 0px 0 0 0;  }
+
+
+.hiddenx { display: none;  height: 200px}
+// make div have height of child floats
+.parent-div:after { content: " "; display: block; clear: both;}
+
+// field widths
+
+.ccc { width:  514px; }
+.ddd {height: 30px; }
+.eee {height: 460px; }
+.field_with_errors {height: 100%; }
+.relative{ position: relative; }
+
+.fixed-height-box-for-truncated-page-text {
+  height: 40px;
+  width: 95%;
+  display: block;
+  overflow: hidden;
+}
+
+// on edit resources page, select list height
+#resource_resource_usages { height: 200px; }
+
+// diff ---------------------------------------------------------
+
 .diff{overflow:auto;}
 .diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
 .diff del, .diff ins{display:block;text-decoration:none;}
@@ -16,106 +85,6 @@
 .diff li.diff-comment { display: none; }
 .diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
 
-[data-new-page] { color:red; }
-[data-page] { color:blue }
-[no-bullets] { list-style-type: none; margin-left: 0px; }
-[yellow-background] {background-color: yellow}
-
-.field_with_errors { border-color: red; box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
-
-.time-and-user { color: lightseagreen; font-size: 0.96em; margin: 0 0 6px 0;}
-.bold          { font-weight: bold}
-.clear         { clear: both;}
-.float-left    { float: left;}
-.float-right   { float: right;}
-.top-align     { }
-.red           {color: #ff5e1f
-}
-
-#content-tab   { }
-#history-tab   { }
-#history-tab li   { margin-bottom: 40px; }
-#last-change-tab {}
-
-#page-title   { width: 600px; height: 20px; }
-#page-content { width: 600px; height: 350px; }
-.page-width   { width: 640; }
-
-#content-width { width: 640px; }
-.content-title       { margin: 0.6em 0 0.8em 0; font-size: 3em; font-weight: bold; line-height: 1.2em }
-.content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em}
-.content-content img    { margin: 0 0 1.7em 0; }
-.content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
-
-.content-footer      { font-size: 0.95em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.7em 1.3em 1em 1em ; }
-.content-t-and-c     { width: 500px; height: auto }
-.content-tags        { margin-left: 0em;  }
-.content-categories  { margin-left: 0em; }
-.content-edit-button { float: right;  margin: 5px 0 0 0; }
-
-
-#comment-width { width: 640px; padding-top: 15px;}
-#comment-title { color: #444; }
-#new-comment-form-to-show { margin: 20px 13px 10px 20px; }
-#button-to-hide {margin: 8px 0 0 0}
-#comment_commenter { width: 100%; }
-#comment_content   { width: 100%; height: 120px; }
-.comment-commenter { margin: 10px 0 6px 20px;   color: lightseagreen;}
-
-.resource-image    { margin-left: 2em; width: 200px; }
-
-
-#history-width     { width: 500px }
-.history-title     { margin: 10px 0 3px 0; font-size: 1em; font-weight: bold; }
-.history-content   { margin: 0 0 0 0; width: 500px}
-.history-content p { margin: 0 0 1.4em 0; font-size: 0.95em; width: 500px}
-
-
-.history-t-and-c   { line-height: 1.4em; font-size: 0.8em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.5em 1em 0.5em 1em ; }
-.history-tags      { margin: 0px 0 0 0;  }
-.history-categories {}
-
-.page-heading-in-page-summary {font-size: 1.2em; font-weight: bold; margin: 0em 0 15px 0;}
-
-
-.hiddenx { display: none;  height: 200px}
-// make div have height of child floats
-.parent-div:after { content: " "; display: block; clear: both;}
-
-// field widths
-
-.ccc { width:  514px; }
-.ddd {height: 30px; }
-.eee {height: 460px; }
-.field_with_errors {height: 100%}
-
-#page_title, #resource_title { width:  500px; }
-#page_categories { width:  500px; }
-#page_content { width:  500px; height: 450px; }
-#page_tags { width:  500px; }
-#resource_description  { width:  500px; }
-#resource_file  { width:  500px; }
-
-//.search-results  div {
-//  white-space: nowrap;
-//  overflow: hidden;
-//  text-overflow: ellipsis; }
-
-.relative{
-  position: relative;
-}
-
-.fixed-height-box-for-truncated-page-text {
-  height: 40px;
-  width: 95%;
-  display: block;
-  overflow: hidden;
-}
-
-.resource-ptr {font-size: 0.3em; position:relative; top: -0.8em;}
-
-// on edit resources page, select list height
-#resource_resource_usages { height: 200px; }
 
 
 

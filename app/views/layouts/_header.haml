@@ -7,27 +7,19 @@
 
       .nav
         %ul.nav.pull-right
-          %li
-            = link_to     'Pages',         pages_path
-          %li
-            = link_to     'Resources',     resources_path
+          %li= link_to     'Pages',         pages_path
+          %li= link_to     'Resources',     resources_path
 
           - if current_user
-            %li
-              = link_to 'New Page', new_page_path, :id => 'add_page_link'
-            %li
-              = link_to 'New Resource', new_resource_path, :id => 'add_resource_link'
-            %li
-              = link_to 'Edit Profile', edit_user_registration_path
+            %li= link_to 'New Page', new_page_path, :id => 'add_page_link'
+            %li= link_to 'New Resource', new_resource_path, :id => 'add_resource_link'
+            %li= link_to 'Edit Profile', edit_user_registration_path
             %li
               - if current_user.admin?
-                = link_to 'Adm', new_page_path
+                = link_to 'Adm', edit_user_registration_path
               - else
-                = link_to 'Nor', new_page_path
-            %li
-              = link_to 'Logout',       destroy_user_session_path,  :method => :delete
+                = link_to 'Nor', edit_user_registration_path
+            %li= link_to 'Logout',       destroy_user_session_path,  :method => :delete
           - else
-            %li
-              = link_to 'Sign up',      new_user_registration_path
-            %li
-              = link_to 'Login',        new_user_session_path
+            %li= link_to 'Sign up',      new_user_registration_path
+            %li= link_to 'Login',        new_user_session_path

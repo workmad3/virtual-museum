@@ -1,6 +1,6 @@
 .container
   .content
-    #content-width
+    .std-width
       .content-title
         = resource.title
       %p
@@ -14,7 +14,7 @@
       .content-footer.parent-div
         .content-t-and-c.float-left
           Resource belongs to
-          .content-tags
+          %div
             - resource.pages.all.each do |r|
               %a{href: page_url(r.slug)}
                 = r.title

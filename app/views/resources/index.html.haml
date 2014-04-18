@@ -2,7 +2,7 @@
   .content-title
     All resources
   - Resource.all.sort{|a,b|a.title<=>b.title}.each do |r|
-    .page-heading-in-page-summary
+    .summary-title
       %a{href: resource_path(r.id)}
         = r.title
 

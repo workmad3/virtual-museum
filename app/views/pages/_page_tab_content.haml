@@ -1,4 +1,4 @@
-#content-width
+.std-width
 
   .content-title
     = page.title
@@ -9,13 +9,11 @@
     .content-t-and-c.float-left
       .bold
         Tags
-      .content-tags
-        = page.tags_as_html.html_safe
+      = page.tags_as_html.html_safe
       %br
       .bold
         Categories
-      .content-categories
-        = page.categories_as_html.html_safe
+      = page.categories_as_html.html_safe
     .content-edit-button.float-right
       - if current_user
         = link_to("Edit page", "/pages/#{params[:id]}/edit", class: "btn btn-primary")
@@ -38,5 +36,6 @@
         =  page.location
   .clear
 
-#comment-width
-  = render partial: 'comments/comments_page_tab'
+.std-width
+  #comments-padding
+    = render partial: 'comments/comments_page_tab'
