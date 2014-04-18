@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    @page = Page.friendly.find(params['page_id'])
+    @page = Page.find_by_slug('page_id')
     @comment = @page.comments.create(user: current_user,
                                      commenter: params[:comment][:commenter],
                                      content: params[:comment][:content]  )

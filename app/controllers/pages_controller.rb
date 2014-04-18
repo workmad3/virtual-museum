@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  expose(:page)         { Page.friendly.find(params[:id]).decorate  }
+  expose(:page)         { Page.find_by_slug(params[:id]).decorate  }
 
   before_action :authenticate_user!, :except => [:index, :show]
   # use the above instead of Authorize's authorize_actions_for Page, except: [:index, :show]
@@ -40,7 +40,8 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    p = Page.friendly.find(page.slug)
+    #TODO I think the next line is redundant, cause we know page is set
+    p = Page.find_by_slug(page.slug)
     authorize_action_for p
     p.destroy
     render :index

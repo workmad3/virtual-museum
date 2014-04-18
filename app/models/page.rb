@@ -6,8 +6,8 @@ class Page < ActiveRecord::Base
 
   include LinkedData
 
-  extend FriendlyId
-  friendly_id :original_title, use: :slugged
+  #extend FriendlyId
+  #friendly_id :original_title, use: :slugged
 
   has_many :history, class_name: "PageState", dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -23,6 +23,10 @@ class Page < ActiveRecord::Base
 
   validates_associated :history
 
+  def to_param
+    slug
+  end
+
   #---------------------------------------------------------
 
   def self.find_with_category(cat)
@@ -35,6 +39,11 @@ class Page < ActiveRecord::Base
 
   def self.find_by_title(t)
     Page.all.collect{ |p| p.title == t ? p : nil}.compact.first
+  end
+
+  def self.find_by_slug(t)
+    Page.find_by(slug: t)
+    # returns nil if not found
   end
 
   #---------------------------------------------------------

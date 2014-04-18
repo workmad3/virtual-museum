@@ -1,3 +1,6 @@
+=begin
+
+
 # FriendlyId Global Configuration
 #
 # Use this to set up shared configuration options for your entire application.
@@ -8,6 +11,7 @@
 # To learn more, check out the guide:
 #
 # http://norman.github.io/friendly_id/file.Guide.html
+
 
 FriendlyId.defaults do |config|
   # ## Reserved Words
@@ -86,3 +90,4 @@ FriendlyId.defaults do |config|
   #   end
   # }
 end
+=end

@@ -17,7 +17,7 @@ gem 'pg'
 #gem 'mysql2'
 gem 'rolify'
 gem 'simple_form'
-gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+# gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 gem 'parslet'
 gem 'decent_exposure'
 gem 'draper'
