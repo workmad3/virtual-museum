@@ -2,15 +2,17 @@
   .content-title
     All resources
   - Resource.all.sort{|a,b|a.title<=>b.title}.each do |r|
-    %div
-      %a{href: resource_path(r.id)}
-        %img{src: r.file, width: '150px'}
-      %br
+    .page-heading-in-page-summary
       %a{href: resource_path(r.id)}
         = r.title
-      &nbsp; &nbsp;
-      - if current_user.can_delete?(r)
+
+    %a{href: resource_path(r.id)}
+      %img{src: r.file, width: '150px'}
+    %br
+
+    - if current_user.can_delete?(r)
+      .float-right
         = link_to 'Remove resource', r,
-               :confirm => 'Are you sure you want to remove this resource? This cannot be undone.',
-               :method => :delete
+             :confirm => 'Are you sure you want to remove this resource? This cannot be undone.',
+             :method => :delete
     %hr

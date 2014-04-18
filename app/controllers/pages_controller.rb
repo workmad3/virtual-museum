@@ -45,7 +45,7 @@ class PagesController < ApplicationController
     p = Page.find_by_slug(page.slug)
     authorize_action_for p
     p.destroy
-    render :index
+    redirect_to :back
   end
 
   def page_params

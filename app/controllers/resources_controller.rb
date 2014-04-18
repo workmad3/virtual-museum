@@ -60,7 +60,7 @@ class ResourcesController < ApplicationController
   def destroy
     authorize_action_for resource
     resource.destroy
-    render :index
+    redirect_to :back
   end
 
 
