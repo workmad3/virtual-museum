@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   end
 
   def create
+
       self.page = Page.new( page_params.merge( creator: current_user,
                                                 slug: Page.create_slug( page_params['title'] ) ) )
       if page.save
@@ -26,6 +27,8 @@ class PagesController < ApplicationController
   end
 
   def show
+    flash[:notice] = ['Welcome!']
+    flash[:alert] = ['My birthday is soon to be.', "My birthday is never"]
   end
 
   def edit

@@ -1,24 +1,29 @@
 class ResourcesController < ApplicationController
-  expose(:resource)         { begin Resource.find(params[:id]) rescue nil end }
 
   before_action :authenticate_user!, :except => [:index, :show]
-  # use the above instead of Authorize's authorize_actions_for Page, except: [:index, :show]
-  # because we are interested if someone is signed in or not
-  # except int he case of delete when they must be signed in and an admin, see
-  #     authorize_action_for p
-  # in destroy
+
+  expose(:resource) { resource_or_nil }
+
+  def resource_or_nil
+    id = params[:id]
+    result = nil
+    if id == id.gsub(/[^0-9]/, '').gsub(/^0/,'')
+      result = begin
+        Resource.find(id) rescue nil
+      end
+    end
+    result
+  end
+
+
+
 
   def new
     self.resource = Resource.new
   end
 
   def create
-    titles_to_add = params['resource_pages']
-    .collect{|title,checked|checked=='0'?nil:title}.delete_if{|v|!v}
-    selected_pages = []
-    titles_to_add.each do |t|
-      selected_pages << Page.find_by_title(t)
-    end
+    selected_pages = get_titles_from_params
     self.resource = Resource.new(file: params['resource']['file'],
                                   description: params['resource']['description'],
                                   title: params['resource']['title'],
@@ -32,20 +37,21 @@ class ResourcesController < ApplicationController
   end
 
   def show
-    redirect_to resources_path unless resource
+    unless resource
+      flash[:warning] = ["Resource #{params[:id]} does not exist"]
+      redirect_to resources_path
+    end
   end
 
   def edit
+    unless resource
+      flash[:warning] = ["Resource #{params[:id]} does not exist"]
+      redirect_to resources_path
+    end
   end
 
   def update
-    titles_to_add = params['resource_pages']
-                      .collect{|title,checked|checked=='0'?nil:title}.delete_if{|v|!v}
-    selected_pages = []
-    titles_to_add.each do |t|
-      selected_pages << Page.find_by_title(t)
-    end
-
+    selected_pages = get_titles_from_params
     # this assigns attributes using setters that are either provided by active record or explicitly
     if resource.update_attributes(file: params['resource']['file'],
                                   description: params['resource']['description'],
@@ -59,7 +65,7 @@ class ResourcesController < ApplicationController
   end
 
   def destroy
-    authorize_action_for resource
+    authorize_action_for resource # user must be an admin
     resource.destroy
     redirect_to :back
   end
@@ -67,5 +73,16 @@ class ResourcesController < ApplicationController
 
   def page_params
     params.require(:resource).permit(:file, :description, :title, :resource_usages, :pages)
+  end
+
+  private
+
+  def get_titles_from_params
+    titles_to_add = params['resource_pages'].collect{ |title, checked| checked=='0' ? nil : title }.delete_if { |v| !v }
+    selected_pages = []
+    titles_to_add.each do |t|
+      selected_pages << Page.find_by_title(t)
+    end
+    selected_pages
   end
 end
