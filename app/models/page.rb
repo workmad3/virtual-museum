@@ -27,18 +27,21 @@ class Page < ActiveRecord::Base
   validate :content_ok?
 
   def title_ok?
-    title_chars = self.title.tr('^A-Za-z0-9', '').downcase
-    match = nil
-    res = Page.all.collect do |p|
-      match = p.title if p.title.tr('^A-Za-z0-9', '').downcase == title_chars
-      match && p.id != self.id
+    new_title_chars = self.title.tr('^A-Za-z0-9', '').downcase
+    match = false
+    Page.all.each do |p|
+      existing_title_chars = p.title.tr('^A-Za-z0-9', '').downcase
+      if  new_title_chars == existing_title_chars && p.id != self.id
+        match = existing_title_chars
+      end
     end
     if match == self.title
         errors.add :title, "is the same as '#{match}', an existing page title"
-    else
+    elsif match
       errors.add :title, "#{self.title} is too similar to #{match}, an existing page title"
       errors.add :titles, "need to differ while ignoring letter-case, spaces and punctuation"
     end
+    match
   end
 
   def content_ok?
