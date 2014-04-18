@@ -24,12 +24,26 @@ class Page < ActiveRecord::Base
   #validates_associated :history
   validate :title_ok?
   #validate :slug_ok?
+  validate :content_ok?
 
   def title_ok?
     title_chars = self.title.tr('^A-Za-z0-9', '').downcase
-    res = Page.all.collect{|p| ( p.title.tr('^A-Za-z0-9', '').downcase == title_chars ) && p.id != self.id }
-    if res.include? true
-      errors.add :title, "Title is too similar to another page's title, make sure there are different letters in the title (ignoring letter case)"
+    match = nil
+    res = Page.all.collect do |p|
+      match = p.title if p.title.tr('^A-Za-z0-9', '').downcase == title_chars
+      match && p.id != self.id
+    end
+    if match == self.title
+        errors.add :title, "is the same as '#{match}', an existing page title"
+    else
+      errors.add :title, "#{self.title} is too similar to #{match}, an existing page title"
+      errors.add :titles, "need to differ while ignoring letter-case, spaces and punctuation"
+    end
+  end
+
+  def content_ok?
+    if self.content.blank?
+      errors.add :content, " can't be blank"
     end
   end
 
