@@ -25,6 +25,7 @@ gem 'diffy'
 gem 'haml'
 gem 'redcarpet'
 gem 'authority'
+gem 'kaminari'
 
 
 group :development, :test do
