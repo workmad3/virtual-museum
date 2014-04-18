@@ -3,6 +3,10 @@
     - if page.history.last
       - page.history.last.errors.full_messages.each do |msg|
         %li
+          = msg
+      - page.errors.full_messages.each do |msg|
+        %li
+          = msg
 
   = f.label :title
   = f.text_field :title

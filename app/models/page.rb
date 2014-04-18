@@ -21,7 +21,23 @@ class Page < ActiveRecord::Base
   history_attr :item_number
   history_attr :location
 
-  validates_associated :history
+  #validates_associated :history
+  validate :title_ok?
+  #validate :slug_ok?
+
+  def title_ok?
+    title_chars = self.title.tr('^A-Za-z0-9', '').downcase
+    res = Page.all.collect{|p| ( p.title.tr('^A-Za-z0-9', '').downcase == title_chars ) && p.id != self.id }
+    if res.include? true
+      errors.add :title, "Title is too similar to another page's title, make sure there are different letters in the title (ignoring letter case)"
+    end
+  end
+
+  def slug_ok?
+    if Page.where(slug: self.slug).where.not(id: self.id).exists?
+      errors.add :title, "2 is too similar to another page's title, make sure there are different letters in the title (ignoring letter case)"
+    end
+  end
 
   def self.create_slug(title)
     title.parameterize

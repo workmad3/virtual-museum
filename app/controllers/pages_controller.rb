@@ -21,7 +21,7 @@ class PagesController < ApplicationController
         redirect_to page_url(page), status: 301
       else
         self.page = page.decorate
-        render :create
+        render :new
       end
   end
 

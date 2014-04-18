@@ -12,7 +12,7 @@ class PageState < ActiveRecord::Base
   end
 =end
 
-  validate :uniqueish_title
+  #validate :uniqueish_title
   validates :title,   presence: {allow_blank: false }
   validates :content, presence: {allow_blank: false }
   #TODO is this meaningless?
