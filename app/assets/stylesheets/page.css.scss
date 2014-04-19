@@ -3,85 +3,79 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .bold          { font-weight: bold}
-.clear         { clear: both;}
+.clear         { clear: both; }
 [data-page]    { color:blue }
 [data-new-page] { color:red; }
 .field_with_errors { border-color: red; box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
 .float-left    { float: left;}
 .float-right   { float: right;}
 [no-bullets]   { list-style-type: none; margin-left: 0px; }
-.red           {color: #ff5e1f}
+                  // make parent div have height of child floats
+.parent-div:after { content: " "; display: block; clear: both; }
+.red           { color: #ff5e1f; }
+.relative      { position: relative; }
 .std-width     { width: 640px; }
-.time-and-user { color: lightseagreen; font-size: 0.96em; margin: 0 0 6px 0;}
-[yellow-background] {background-color: yellow}
+.time-and-user { color: lightseagreen; font-size: 0.96em; margin: 0 0 6px 0; }
+[yellow-background] {background-color: yellow; }
 
 // main tab
-.content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em}
-.content-content img    { margin: 0 0 1.7em 0; }
-.content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em}
+.content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em; }
+.content-content img { margin: 0 0 1.7em 0; }
+.content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em; }
 
 .content-footer      { font-size: 0.95em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.7em 1.3em 1em 1em ; }
 .content-edit-button { float: right;  margin: 5px 0 0 0; }
 
-#comments-spacer     { padding-top: 15px;}
-#new-comment-form-to-show { margin: 20px 13px 10px 20px; }
-#button-to-hide      {margin: 8px 0 0 0}
+#comments-spacer     { padding-top: 15px; }
+// content tab, reveal comments
+.hiddenx                      { display: none;  height: 200px; }
+#new-comment-form-to-show     { margin: 20px 13px 10px 20px; }
+#button-to-unhide-add_comment {margin: 8px 0 0 0; }
 
 // resource tab
 .resource-image    { margin-left: 2em; width: 200px; }
 
 // history tab
-#history-width     { width: 500px; font-size: 0.95em }
+#history-width     { width: 500px; font-size: 0.95em; }
 #history-width p   { margin: 0 0 1.4em 0; font-size: inherit; }
 #history-tab li   { margin-bottom: 40px; }
 
-
 // various titles - homogenise?
 #comment-title     { color: #444; }
-.content-title     { font-size: 3em;   font-weight: bold; margin: 0.6em 0 0.8em 0; line-height: 1.2em }
+.content-title     { font-size: 3em;   font-weight: bold; margin: 0.6em 0 0.8em 0; line-height: 1.2em; }
 .history-title     { font-size: 1em;   font-weight: bold; margin: 10px 0 3px 0; }
 .summary-title     { font-size: 1.2em; font-weight: bold; margin: 0em 0 15px 0; }
 
 // tags and categories - homogenise?
 .history-tags-and-categories { line-height: 1.4em; font-size: 0.8em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.5em 1em 0.5em 1em ; }
-.tags-and-categories { margin: 0px 0 0 0;  }
+.tags-and-categories { margin: 0px 0 0 0; }
 
+// page listing pages, two lines of text ------------------
+.fixed-height-box-for-truncated-page-text { height: 40px; width: 95%; display: block; overflow: hidden; }
 
-.hiddenx { display: none;  height: 200px}
-// make div have height of child floats
-.parent-div:after { content: " "; display: block; clear: both;}
+// edit resources page, select list height ----------------
+#resource_resource_usages { height: 200px; }
 
-// field widths
+// new pages, for form fields ------------------------------
+#page_categories,
+#page_content,
+#page_tags,
+#page_title,
+#resource_description,
+#resource_file,
+#resource_title  { width:  500px; }
+#page_content    { height: 450px; }
+
+// dimensions for error feedback boxes
 .ccc { width:  514px; }
 .ddd {height: 30px; }
 .eee {height: 460px; }
 .field_with_errors {height: 100%; }
-.relative{ position: relative; }
 
-.fixed-height-box-for-truncated-page-text {
-  height: 40px;
-  width: 95%;
-  display: block;
-  overflow: hidden;
-}
-
-// on edit resources page, select list height
-#resource_resource_usages { height: 200px; }
-
-// for form fields ------------------------------
-#page_title, #resource_title { width:  500px; }
-#page_categories { width:  500px; }
-#page_content { width:  500px; height: 450px; }
-#page_tags { width:  500px; }
-#resource_description  { width:  500px; }
-#resource_file  { width:  500px; }
-
-
-// for tabs on page page --------------------------
+// for tabs on page page ------------------------------------
 #content-tab   { }
 #history-tab   { }
 #last-change-tab {}
-
 
 // diff tab ---------------------------------------------------------
 
