@@ -66,11 +66,17 @@
 #resource_title  { width:  500px; }
 #page_content    { height: 450px; }
 
+.checkbox-item {width: 250px;}
+
 // dimensions for error feedback boxes
 .ccc { width:  514px; }
 .ddd {height: 30px; }
 .eee {height: 460px; }
 .field_with_errors {height: 100%; }
+
+// resources form
+.scrolling-div { width: 300px; height: 100px; overflow: auto; border-radius: 4px; border: 1px solid darkgray}
+.tick-box       { margin: 0 10px 14px 10px; }
 
 // for tabs on page page ------------------------------------
 #content-tab   { }

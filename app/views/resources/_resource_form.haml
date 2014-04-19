@@ -15,10 +15,11 @@
   = f.text_field :file
 
   = f.label :pages
-  = f.collection_select :resource_usages, Page.all.sort{|p,q|p.title<=>q.title}, :id, :title,
+  = # f.collection_select :resource_usages, Page.all.sort{|p,q|p.title<=>q.title}, :id, :title,
                                               {selected: resource.pages.map(&:id) },{:multiple => true}
   %br
-  =  render partial: 'resources/resource_check_boxes',
+    .scrolling-div
+      =  render partial: 'resources/resource_check_boxes',
                                  locals: {pages_for_partial: resource.pages, f: f}
   %br
   = f.submit class: 'btn btn-primary'
