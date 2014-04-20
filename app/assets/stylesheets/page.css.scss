@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.try_in_rhs {display: inline-block; max-height: 140px; overflow: hidden}
+.float-left img { margin-bottom: 10px;}
+
+.absolute      { position: absolute; }
+.auto          { overflow: auto}
 .bold          { font-weight: bold}
-.clear         { clear: both; }
+.clear        { clear: both; }
 [data-page]    { color:blue }
 [data-new-page] { color:red; }
 .field_with_errors { border-color: red; box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
@@ -17,6 +22,8 @@
 .std-width     { width: 640px; }
 .time-and-user { color: lightseagreen; font-size: 0.96em; margin: 0 0 6px 0; }
 [yellow-background] {background-color: yellow; }
+.page-summary-rh { left: 200px; top: 0; width: '800px'; }
+.page-summary-lh { left: 0; top: 0; }
 
 // main tab
 .content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em; }
@@ -47,12 +54,13 @@
 .summary-title     { font-size: 1.2em; font-weight: bold; margin: 0em 0 15px 0; }
 
 // tags and categories - homogenise?
-.history-tags-and-categories { line-height: 1.4em; font-size: 0.8em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.5em 1em 0.5em 1em ; }
+.history-tags-and-categories { line-height: 1.4em; font-size: 0.8em; color: gray;
+     background-color: rgba(135, 202, 250, 0.18); padding: 0.5em 1em 0.5em 1em ; }
 .tags-and-categories { margin: 0px 0 0 0; }
 
 // page listing pages, two lines of text ------------------
-.fixed-height-box-for-truncated-page-text { height: 40px; width: 95%; display: block; overflow: hidden; }
-
+.fixed-height-box-for-truncated-page-text { height: 50px; width: 95%; display: block; overflow: hidden; }
+.fixed-height-box-for-truncated-page-text p { line-height: 1.2em; }
 // edit resources page, select list height ----------------
 #resource_resource_usages { height: 200px; }
 

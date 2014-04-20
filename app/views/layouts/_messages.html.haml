@@ -1,6 +1,7 @@
 = # Rails flash messages styled for Twitter Bootstrap 2.3 modified %>
 
 - flash.each do |type, msgs|
+  - msgs = [msgs] if msgs.class == String
   - msgs.each do |m|
     %div{class: "alert alert-#{type == :notice ? 'success' : 'error'}"}
       = content_tag :div, m

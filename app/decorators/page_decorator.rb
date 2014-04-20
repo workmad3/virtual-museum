@@ -4,7 +4,7 @@ class PageDecorator < Draper::Decorator
   # contents tab
 
   def content_as_html(thing)
-    ContentHtmlGenerator.generate(thing).html_safe
+    ContentHtmlGenerator.generate_full(thing).html_safe
   end
 
   def categories_as_html

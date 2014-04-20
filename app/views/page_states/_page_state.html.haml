@@ -4,7 +4,7 @@
       = render 'users/user_and_time', user: page_state.user.name, thing: page_state
     .history-title
       = page_state.title
-    = ContentHtmlGenerator.generate(page_state).html_safe
+    = ContentHtmlGenerator.generate_full(page_state).html_safe
     .history-tags-and-categories
       .tags-and-categories
         = render 'tags/tags', tags: page_state.tags_as_array

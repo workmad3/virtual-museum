@@ -6,9 +6,6 @@ class Page < ActiveRecord::Base
 
   include LinkedData
 
-  #extend FriendlyId
-  #friendly_id :original_title, use: :slugged
-
   has_many :history, class_name: "PageState", dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :resource_usages
@@ -21,7 +18,7 @@ class Page < ActiveRecord::Base
   history_attr :item_number
   history_attr :location
 
-  validate :title_ok?
+  #validate :title_ok?
   validate :content_ok?
 
   #---------------------------------------------------------
@@ -59,10 +56,6 @@ class Page < ActiveRecord::Base
     history.last.try(:creator)
   end
 
-  def title
-    history.last.try(:title)
-  end
-
   def creator=(c)
     if history.last.try(:new_record?)
       history.last.user = c
@@ -71,8 +64,12 @@ class Page < ActiveRecord::Base
     end
   end
 
+  def title_from_history
+    history.last.try(:title)
+  end
+
   def title=(new_title)
-    self.original_title ||= new_title
+    self['title'] = new_title
     if history.last.try(:new_record?)
       history.last.title = new_title
     else

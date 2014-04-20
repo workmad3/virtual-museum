@@ -13,7 +13,7 @@
     <p bold>Contents</p>
 
     <ul no-bullets>
-      <% pages.sort { |x, y| x.title.downcase<=>y.title.downcase }.each do |pg| %>
+      <% pages.order(:title).each do |pg| %>
           <li li-text-spacing><%= link_to pg.title, pg %></li>
       <% end %>
     </ul>

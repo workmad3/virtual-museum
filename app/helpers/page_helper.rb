@@ -1,5 +1,7 @@
 module PageHelper
   def safe_html(pg)
-  ContentHtmlGenerator.generate(pg).html_safe
+    #TODO remove
+    xxx should never get here
+  ContentHtmlGenerator.generate_full(pg).html_safe
   end
   end

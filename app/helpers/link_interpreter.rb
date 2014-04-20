@@ -3,6 +3,10 @@ require 'pp'
 
 class LinkInterpreter
 
+  def url
+    @first
+  end
+
   def initialize text
     @text = text.strip
     @first, @rest = @text.split(/ /, 2)
@@ -38,7 +42,7 @@ class LinkInterpreter
 
   def domain
     return nil unless url?
-    d = @first.gsub(/https?\:\/\//, '')
+    d = @first.gsub(/https?:\/\//, '')
     d.gsub!(/\/.*/, '')
     d
   end

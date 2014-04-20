@@ -1,6 +1,6 @@
 .container
   .content-title
     All pages
-  - Page.all.sort{|a,b| a.title<=>b.title}.each do |pgs|
+  - Page.order(:title).each do |pgs|
     = render partial: 'pages/page_summary', locals: {page: pgs}
 
