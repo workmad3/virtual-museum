@@ -6,19 +6,24 @@
       %p
         = resource.description
       %br
+      - get_from = resource.file
+      - get_from = resource.url if resource.url
       %a{href: resource.file}
-        %img{src: resource.file}
+        %img{src: get_from}
       %p
-
 
       .content-footer.parent-div
         .content-t-and-c.float-left
-          Resource belongs to
-          %div
-            - resource.pages.all.each do |r|
-              %a{href: page_url(r.slug)}
-                = r.title
-                .br
+          - if resource.pages != nil && resource.pages != []
+            Resource belongs to
+            %div
+              - resource.pages.all.each do |r|
+                %a{href: page_url(r.slug)}
+                  = r.title
+          - else
+            This is not a resource for any pages yet, edit to associate with pages
+          %div{style: 'color: #bbb'}
+            = "Resource created by #{resource.user.name}"
 
         .content-edit-button.float-right
           - if current_user

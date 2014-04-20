@@ -4,6 +4,17 @@
       %li
         = msg
 
+  %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+    Our terms of use identify you as responsible for copyright adherence for
+    any resource that you create.
+  %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+    Linking to an existing image or document elsewhere in the internet is
+    entirely safe: You can't break copyright by linking to something
+    elsewhere on the Internet.
+  %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+    If instead of linking you are uploading a file, please make sure it is sharable
+    according to its copyright and/or licence.
+
   = f.label :title
   = f.text_field :title
 
@@ -14,12 +25,19 @@
   = f.label :file
   = f.text_field :file
 
-  = f.label :pages
-  = # f.collection_select :resource_usages, Page.all.sort{|p,q|p.title<=>q.title}, :id, :title,
-                                              {selected: resource.pages.map(&:id) },{:multiple => true}
+  %br
+  Resource URL to link to
+  %br
+  = f.text_field :url
+
+  = f.label :user
+  = f.collection_select :user_id, User.all.sort{|p,q|p.name<=>q.name}, :id, :name, options: {selected: resource.user}
+
+  = f.label 'Pages resource is a resource for'
   %br
     .scrolling-div
       =  render partial: 'resources/resource_check_boxes',
                                  locals: {pages_for_partial: resource.pages, f: f}
   %br
+  = #xxx
   = f.submit class: 'btn btn-primary'

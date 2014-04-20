@@ -1,33 +1,35 @@
+- if current_user && current_user.can_delete?(page)
+  .float-right{style: 'position: relative; top: 40px;'}
+    = link_to 'Remove page', page,
+             :confirm => 'Are you sure you want to remove this page? This cannot be undone.',
+             :method => :delete
 .search-results
   %div
     %a.summary-title{href: page_url(page)}
       = page.title
   .clear
     <br/>
-  .parent-div{style: 'width: 600px;'}
-    .float-left
-      %img{src: ContentHtmlGenerator.page_image(page), width: '150px'}
-      <br/>
-    .float-right{style: 'width: 400px;'}
-      .try_in_rhs
-        = ContentHtmlGenerator.generate_part(page).html_safe
+    %div
+    .parent-div{style: 'width: 600px; margin-left: 10px;'}
+      .float-left
+        %img{src: ContentHtmlGenerator.page_image(page), width: '150px'}
+        <br/>
+      .float-right{style: 'width: 400px;'}
+        .try_in_rhs
+          = ContentHtmlGenerator.generate_part(page).html_safe
+        .clear
       .clear
+
+
+    .history-tags-and-categories{style: 'width: 600px; margin: 0 0 25px 10px;'}
+      .tags-and-categories
+        = render 'tags/tags', tags: page.history.last.tags_as_array
+      .tags-and-categories
+        = render partial: 'categories/categories', locals: {categories: page.history.last.categories_as_array}
     .clear
 
 
-  .history-tags-and-categories{style: 'width: 600px; margin-bottom: 25px;'}
-    .tags-and-categories
-      = render 'tags/tags', tags: page.history.last.tags_as_array
-    .tags-and-categories
-      = render partial: 'categories/categories', locals: {categories: page.history.last.categories_as_array}
-  .clear
 
-
-  -# if false #current_user && current_user.can_delete?(page)
-    - # %div
-      - #link_to 'Remove page', page,
-      - #     :confirm => 'Are you sure you want to remove this page? This cannot be undone.',
-      - #     :method => :delete
 
 .clear
 

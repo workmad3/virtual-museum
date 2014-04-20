@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
 
   has_many :page_states
   has_many :comments
+  has_many :resources
 end
