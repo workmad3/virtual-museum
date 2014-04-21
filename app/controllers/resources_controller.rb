@@ -15,19 +15,18 @@ class ResourcesController < ApplicationController
     result
   end
 
-
-
-
   def new
     self.resource = Resource.new
   end
 
   def create
     selected_pages = get_titles_from_params
-    self.resource = Resource.new(file: params['resource']['file'],
+    self.resource = Resource.new( file: params['resource']['file'],
+                                  url: params['resource']['url'],
                                   description: params['resource']['description'],
                                   title: params['resource']['title'],
-                                  pages: selected_pages
+                                  pages: selected_pages,
+                                  user: current_user
                                  )
     if resource.save
       redirect_to resource_url(resource), status: 301
@@ -57,8 +56,7 @@ class ResourcesController < ApplicationController
     if resource.update_attributes(file: params['resource']['file'],
                                   description: params['resource']['description'],
                                   title: params['resource']['title'],
-                                  pages: selected_pages,
-                                  user_id: params['resource']['user_id']
+                                  pages: selected_pages
                                   )
       redirect_to resource_url(resource), status: 301
     else

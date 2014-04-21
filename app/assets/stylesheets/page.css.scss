@@ -71,8 +71,12 @@
 #page_title,
 #resource_description,
 #resource_file,
-#resource_title  { width:  500px; }
-#page_content    { height: 450px; }
+#resource_title,
+#resource_url      { width:  500px; }
+#page_content      { height: 450px; }
+
+// messing around pages index view
+.try_in_rhs p {font-size: 1em; line-height: 1.4em}
 
 .checkbox-item {width: 250px;}
 

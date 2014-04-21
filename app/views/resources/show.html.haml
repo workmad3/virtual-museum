@@ -3,15 +3,17 @@
     .std-width
       .content-title
         = resource.title
-      %p
-        = resource.description
-      %br
+
       - get_from = resource.file
       - get_from = resource.url if resource.url
       %a{href: resource.file}
         %img{src: get_from}
+      %br
+      %br
+      %br
       %p
-
+        = resource.description
+      %br
       .content-footer.parent-div
         .content-t-and-c.float-left
           - if resource.pages != nil && resource.pages != []
@@ -24,7 +26,6 @@
             This is not a resource for any pages yet, edit to associate with pages
           %div{style: 'color: #bbb'}
             = "Resource created by #{resource.user.name}"
-
         .content-edit-button.float-right
           - if current_user
             = link_to("Edit resource", "/resources/#{params[:id]}/edit", class: "btn btn-primary")

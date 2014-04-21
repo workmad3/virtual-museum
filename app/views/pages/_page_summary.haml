@@ -12,7 +12,10 @@
     %div
     .parent-div{style: 'width: 600px; margin-left: 10px;'}
       .float-left
-        %img{src: ContentHtmlGenerator.page_image(page), width: '150px'}
+        - source =  ContentHtmlGenerator.page_image(page)
+        - #TODO any edge conditions?
+        - source = page.resources.first.source if source && page.resources.first
+        %img{src: source, width: '150px'}
         <br/>
       .float-right{style: 'width: 400px;'}
         .try_in_rhs

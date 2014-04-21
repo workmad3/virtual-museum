@@ -6,8 +6,10 @@
       %a{href: resource_path(r.id)}
         = r.title
 
-    %a{href: resource_path(r.id)}
-      %img{src: r.file, width: '150px'}
+    - get_from = r.file
+    - get_from = r.url if r.url
+    %a{href: resource_path(r.id), style: 'width: 600px; margin-left: 10px;'}
+      %img{src: get_from, width: '150px'}
     %br
 
     - if current_user && current_user.can_delete?(r)

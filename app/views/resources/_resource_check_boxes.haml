@@ -1,4 +1,4 @@
-- Page.all.sort.each do |p|
+- Page.order(:title).each do |p|
   - titles = pages_for_partial.collect{ |pg| pg.title }
   .checkbox-item.relative
     = ('<span class="tick-box">' + check_box(:resource_pages, p.title, checked: titles.include?(p.title) ) + '</span>' + p.title).html_safe

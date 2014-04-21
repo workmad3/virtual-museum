@@ -8,4 +8,8 @@ class Resource < ActiveRecord::Base
   belongs_to :user
 
   validates :title,   presence: {allow_blank: false }
+
+  def source
+    url || file
+  end
 end
