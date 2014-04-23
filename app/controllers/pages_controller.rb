@@ -15,6 +15,7 @@ class PagesController < ApplicationController
                                                 slug: Page.create_slug( page_params['title'] ) ) )
       if page.save
         redirect_to page_url(page), status: 301
+        # duplicate key value violates unique constraint "index_pages_on_title"
       else
         self.page = page.decorate
         render :new

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421075323) do
+ActiveRecord::Schema.define(version: 20140423183356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,19 +28,6 @@ ActiveRecord::Schema.define(version: 20140421075323) do
   add_index "comments", ["page_id"], name: "index_comments_on_page_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
-    t.datetime "created_at"
-  end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
-
   create_table "page_states", force: true do |t|
     t.text     "title"
     t.text     "content"
@@ -54,6 +41,8 @@ ActiveRecord::Schema.define(version: 20140421075323) do
     t.string   "location"
   end
 
+  add_index "page_states", ["page_id"], name: "index_page_states_on_page_id", using: :btree
+
   create_table "pages", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,11 +51,15 @@ ActiveRecord::Schema.define(version: 20140421075323) do
   end
 
   add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
+  add_index "pages", ["title"], name: "index_pages_on_title", unique: true, using: :btree
 
   create_table "resource_usages", force: true do |t|
     t.integer "page_id"
     t.integer "resource_id"
   end
+
+  add_index "resource_usages", ["page_id"], name: "index_resource_usages_on_page_id", using: :btree
+  add_index "resource_usages", ["resource_id"], name: "index_resource_usages_on_resource_id", using: :btree
 
   create_table "resources", force: true do |t|
     t.string   "file"

@@ -18,7 +18,7 @@ class Page < ActiveRecord::Base
   history_attr :item_number
   history_attr :location
 
-  #validate :title_ok?
+  validate :title_ok?
   validate :content_ok?
 
   #---------------------------------------------------------
@@ -106,21 +106,31 @@ class Page < ActiveRecord::Base
   #------------------------------------------------------------------
 
   def title_ok?
-    new_title_chars = self.title.tr('^A-Za-z0-9', '').downcase
-    match = false
+    desired_compressed = self.title.tr('^A-Za-z0-9', '').downcase
+    title_match = false
+    slug_match = false
     Page.all.each do |p|
-      existing_title_chars = p.title.tr('^A-Za-z0-9', '').downcase
-      if  new_title_chars == existing_title_chars && p.id != self.id
-        match = existing_title_chars
+      existing_title_compressed = p.title.tr('^A-Za-z0-9', '').downcase
+      if  desired_compressed == existing_title_compressed && p.id != self.id
+        title_match = p.title
       end
+      existing_slug_compressed = p.slug.tr('-', '').downcase
+      if  desired_compressed == existing_slug_compressed && p.id != self.id
+        slug_match = p.slug
+      end
+
     end
-    if match == self.title
-      errors.add :title, "is the same as '#{match}', an existing page title"
-    elsif match
-      errors.add :title, "#{self.title} is too similar to #{match}, an existing page title"
-      errors.add :titles, "need to differ while ignoring letter-case, spaces and punctuation"
+    if title_match == self.title
+      errors.add :title, "is the same as '#{title_match}', an existing page title"
+    elsif title_match
+      errors.add :title, "#{self.title} is too similar to #{title_match}, an existing page title"
+    elsif slug_match
+      errors.add :url, "for this page is the same as or too similar to an existing url ending #{slug_match}"
     end
-    match
+    if title_match || slug_match
+      errors.add :these, "need to differ while ignoring case, punctuation and spaces"
+    end
+    title_match || slug_match
   end
 
   def content_ok?
