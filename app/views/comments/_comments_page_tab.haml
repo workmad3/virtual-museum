@@ -2,8 +2,9 @@
 
   %h2#comment-title.float-left
     Comments
-  #button-to-unhide-add_comment.float-right
+  #button-to-unhide.float-right
     = link_to("Add a comment", 'x', class: "btn btn-primary", onclick: "hide_and_show();")
 #new-comment-form-to-show.hiddenx
   = page.new_comment_form_as_html(current_user)
+- #TODO move to haml
 = page.comments_as_html

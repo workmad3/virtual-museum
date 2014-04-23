@@ -5,5 +5,5 @@ jQuery(document).ready(function ($) {
 function hide_and_show() {
     event.preventDefault();
     document.getElementById('new-comment-form-to-show').className = '';
-    document.getElementById('button-to-hide').className = 'hiddenx';
+    document.getElementById('button-to-unhide').className = 'hiddenx';
 }

@@ -34,15 +34,17 @@
 .content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em; }
 .content-content img { margin: 0 0 1.7em 0; }
 .content-content p   { margin: 0 0 1.7em 0; line-height: 1.7em; font-size: 1.2em; }
-
-.content-footer      { font-size: 0.95em; color: gray; background-color: rgba(135, 202, 250, 0.18); padding: 0.7em 1.3em 1em 1em ; }
-.content-edit-button { float: right;  margin: 5px 0 0 0; }
+.content-edit-button { float: right;  margin: 3px 0 0 0; }
+.content-footer      { font-size: 0.95em; color: gray; background-color: rgba(135, 202, 250, 0.18);
+                       padding: 0.7em 1.3em 1em 1em ; margin-bottom: 1em; }
+#button-to-unhide    {margin-top: 1em; }
 
 #comments-spacer     { padding-top: 15px; }
 // content tab, reveal comments
 .hiddenx                      { display: none;  height: 200px; }
 #new-comment-form-to-show     { margin: 20px 13px 10px 20px; }
 #button-to-unhide-add_comment {margin: 8px 0 0 0; }
+#comment_content { width: 619px; height: 150px}
 
 // resource tab
 .resource-image    { margin-left: 2em; width: 200px; }

@@ -53,9 +53,7 @@ class PageDecorator < Draper::Decorator
 
   def comments_as_html
     if model.comments
-      h.content_tag :ul, 'no-bullets' => true do
-        h.render(partial: 'comments/comment', collection: model.comments)
-      end
+      h.render(partial: 'comments/comments', locals: {comments: model.comments})
     else
       'No comments so far'
     end

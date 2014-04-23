@@ -1,0 +1,10 @@
+%ul.no-bullets
+  - comments.each do |comm|
+    - #TODO get rid of next line
+    - if comm.id
+      %li
+        .time-and-user
+          = render 'users/user_and_time', user: User.find(comm.user_id).name, thing: comm
+        .comment-content
+          = comm.content.html_safe
+      %hr
