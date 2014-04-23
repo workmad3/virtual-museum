@@ -24,6 +24,11 @@
 [yellow-background] {background-color: yellow; }
 .page-summary-rh { left: 200px; top: 0; width: '800px'; }
 .page-summary-lh { left: 0; top: 0; }
+.width-150px     {width: 150px}
+.width-400px     {width: 400px}
+.width-600px     {width: 600px}
+
+
 
 // main tab
 .content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em; }
@@ -77,6 +82,10 @@
 
 // messing around pages index view
 .try_in_rhs p {font-size: 1em; line-height: 1.4em}
+.delete-page {position: relative; top: 40px;}
+.page-summary-width { width: 600px; }
+.page-summary-image-indent { margin-left: 10px; }
+.page-summary-footer-indent_and_spacing { margin: 0 0 25px 10px; }
 
 .checkbox-item {width: 250px;}
 
