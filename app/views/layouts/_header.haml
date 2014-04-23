@@ -1,12 +1,12 @@
 .header.navbar.navbar-fixed-top.navbar-inverse
   .navbar-inner
-    .container
+    .container.relative
 
-      .nav{style: 'font-family: arial; font-size: 20pt;'}
+      #logo.nav.float-left
         = link_to           'UMCS Computers', root_path, id: 'logo'
 
-      .nav
-        %ul.nav.pull-right
+      #header-nav.nav
+        %ul.nav
           %li= link_to     'Pages',         pages_path
           %li= link_to     'Resources',     resources_path
 

@@ -14,6 +14,8 @@
 .field_with_errors { border-color: red; box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
 .float-left    { float: left;}
 .float-right   { float: right;}
+#header-nav    { float: right;}
+#logo          {font-family: arial; font-size: 20pt;}
 [no-bullets]   { list-style-type: none; margin-left: 0px; }
                   // make parent div have height of child floats
 .parent-div:after { content: " "; display: block; clear: both; }
@@ -27,6 +29,8 @@
 .width-150px     {width: 150px}
 .width-400px     {width: 400px}
 .width-600px     {width: 600px}
+
+.header .navbar-inner
 
 
 
