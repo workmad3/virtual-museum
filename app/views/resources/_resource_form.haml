@@ -5,32 +5,32 @@
         = msg
 
   - if act == :create
-    %div{style: 'margin-left:20px; color:#11831A'}
-      %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+    %div
+      .notice-para
         A resource is typically an image (but may be any document or file).
-      %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+      .notice-para
         A resource will typically be added to a page
         (that may represent a collection item or a person, or that may simply serve to supply information).
         Resources attached to a page are displayed in the page's resources' tab.
-      %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+      .notice-para
         Our terms of use identify you as responsible for copyright adherence for
         any resource that you create.
-      %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+      .notice-para
         %span.bold
           Linking to an existing image or document elsewhere in the internet is
           entirely safe.
         You can't break copyright by linking to something
         elsewhere on the Internet.
-      %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+      .notice-para
         If instead of linking you are uploading a file, please make sure it is sharable
         according to its copyright and/or licence.
   - else
     - source = resource.file
     - source = resource.url if resource.url
-    - #TODO validate on presence of url or file
+    - #TODO validate on presence of url or filewidth: 500px; margin-bottom: 0.6em;
     %br
-    %img{src: source, style: 'width: 500px;'}
-    %div{style: 'width: 500px; margin-bottom: 0.6em; color: #ccc'}
+    %img.width-600px{src: source}
+    .instruction.change-note
       = "This resource asset above may ony be changed by this resource's creator&nbsp;(#{resource.user.name}) or by an administrator.".html_safe
 
 
@@ -42,7 +42,7 @@
   = f.text_area :description
 
   - if act == :create
-    %div{style: 'width: 500px; margin-bottom: 0.6em;'}
+    .instruction
       Either choose a file on your local computer and add copyright information,
       or supply the URL of a file elsewhere on the internet
       %br
