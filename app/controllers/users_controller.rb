@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+=begin
   def update
     authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
     else
       redirect_to users_path, :alert => "Unable to update user."
     end
+  end
   end
 
   def destroy
@@ -29,4 +31,5 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "Can't delete yourself."
     end
   end
+=end
 end

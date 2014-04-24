@@ -24,16 +24,15 @@
 .relative      { position: relative; }
 .std-width     { width: 640px; }
 .time-and-user { color: lightseagreen; font-size: 0.96em; margin: 0 0 6px 0; }
-[yellow-background] {background-color: yellow; }
+[yellow-background] { background-color: yellow; }
 .page-summary-rh { left: 200px; top: 0; width: '800px'; }
 .page-summary-lh { left: 0; top: 0; }
-.width-150px     {width: 150px}
-.width-400px     {width: 400px}
-.width-600px     {width: 600px}
-
-.header .navbar-inner
-
-
+.width-150px     { width: 150px; }
+.width-400px     { width: 400px; }
+.width-492px     { width: 492px; }
+.width-500px     { width: 512px; }
+.width-550px     { width: 550px; }
+.width-600px     { width: 600px; }
 
 // main tab
 .content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em; }
@@ -82,10 +81,10 @@
 #page_tags,
 #page_title,
 #resource_description,
-#resource_file,
-#resource_title,
-#resource_url      { width:  500px; }
+#resource_title      { width:  500px; }
 #page_content      { height: 450px; }
+#resource_file,
+#resource_url      { width: 478px; }
 
 // messing around pages index view
 .try_in_rhs p {font-size: 1em; line-height: 1.4em}

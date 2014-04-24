@@ -34,21 +34,21 @@
       = "This resource asset above may ony be changed by this resource's creator&nbsp;(#{resource.user.name}) or by an administrator.".html_safe
 
 
-  = f.label :title
-  = f.text_field :title
+  .width-500px
+    = f.label :title
+    = f.text_field :title
 
 
-  = f.label :description
-  = f.text_area :description
+    = f.label :description
+    = f.text_area :description
 
   - if act == :create
     .instruction
       Either choose a file on your local computer and add copyright information,
       or supply the URL of a file elsewhere on the internet
       %br
-      %span.red
-        MARK ADD THE NESC VALIDATION
-    %div.margin-left-20px
+
+    .margin-left-20px.width-492px
       File to upload (from your computer)
       %br
       = f.text_field :file
@@ -59,7 +59,8 @@
     %br
 
 
-  = f.label 'Optionally add the resource to one or more pages (you can also do this later if you want to)'
+  .width-550px
+    = f.label 'Optionally add the resource to one or more pages (you can also do this later if you want to)'
   .scrolling-div
     =  render partial: 'resources/resource_check_boxes',
                                locals: {pages_for_partial: resource.pages, f: f}

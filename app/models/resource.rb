@@ -8,8 +8,14 @@ class Resource < ActiveRecord::Base
   belongs_to :user
 
   validates :title,   presence: {allow_blank: false }
+  validate :source_ok?
 
   def source
     url || file
+  end
+
+  def source_ok?
+    ret = (url && !file) || (!url && file)
+    errors.add :either, ' file or URL should be set as the resource source'
   end
 end
