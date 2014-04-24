@@ -16,6 +16,7 @@
 .float-right   { float: right;}
 #header-nav    { float: right;}
 #logo          {font-family: arial; font-size: 20pt;}
+.margin-left-20px { margin-left: 20px; }
 [no-bullets]   { list-style-type: none; margin-left: 0px; }
                   // make parent div have height of child floats
 .parent-div:after { content: " "; display: block; clear: both; }
@@ -46,7 +47,7 @@
 #comments-spacer     { padding-top: 15px; }
 // content tab, reveal comments
 .hiddenx                      { display: none;  height: 200px; }
-#new-comment-form-to-show     { margin: 20px 13px 10px 20px; }
+#new-comment-form-to-show     { margin: 20px 13px 10px 20px; }r
 #button-to-unhide-add_comment {margin: 8px 0 0 0; }
 #comment_content { width: 619px; height: 150px}
 
@@ -93,7 +94,18 @@
 .page-summary-image-indent { margin-left: 10px; }
 .page-summary-footer-indent_and_spacing { margin: 0 0 25px 10px; }
 
+// resources index view
+.resources-summary-width-and-margin { width: 600px; margin-left: 10px;}
+
+// resource form
+.notice-para { width: 550px; margin-bottom: 0.6em; margin-left:20px; color:#58A55E; }
+.change-note { color: #ccc; }
+.instruction { width: 550px; margin-bottom: 0.6em; }
+
 .checkbox-item {width: 250px;}
+
+// resource show
+.color-bbb { color: #bbb}
 
 // dimensions for error feedback boxes
 .ccc { width:  514px; }
