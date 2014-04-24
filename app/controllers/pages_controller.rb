@@ -23,7 +23,6 @@ class PagesController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
@@ -39,10 +38,8 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    #TODO I think the next line is redundant, cause we know page is set
-    p = Page.find_by_slug(page.slug)
-    authorize_action_for p
-    p.destroy
+    authorize_action_for page
+    page.destroy
     redirect_to :back
   end
 

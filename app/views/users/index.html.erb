@@ -1,5 +1,10 @@
-<h3>Users</h3>
+<h1>Users</h1>
+
+<%= "You are logged in as #{link_to current_user.name, current_user} (#{current_user.email})".html_safe %>
+
 <div class="span8">
+  <br/>
+  <br/>
   <table class="table table-condensed">
     <thead>
     <tr>
@@ -14,16 +19,12 @@
     <tbody>
     <% @users.each do |user| %>
         <tr>
-          <td><%= link_to user.name, user %></td>
+          <td>
+            <%= link_to user.name, user %>
+          </td>
           <td><%= user.email %></td>
           <td><%= user.created_at.to_date %></td>
-          <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
-          <td>
-            <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change
-              role</a>
-            <%= render user %>
-          </td>
-          <td><%= link_to("Delete user", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></td>
+          <td><%= user.admin? ? 'administrator' : 'user' %></td>
         </tr>
     <% end %>
     </tbody>
