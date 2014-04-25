@@ -6,6 +6,7 @@
 .float-left img { margin-bottom: 10px;}
 
 .absolute      { position: absolute; }
+.admin-position { top: 31px; left: auto; right: 24px; }
 .auto          { overflow: auto}
 .bold          { font-weight: bold}
 .clear        { clear: both; }
@@ -18,6 +19,7 @@
 #logo          {font-family: arial; font-size: 20pt;}
 .margin-left-20px { margin-left: 20px; }
 [no-bullets]   { list-style-type: none; margin-left: 0px; }
+.omniauth-provider-button {padding: 0 0 0 0; }
                   // make parent div have height of child floats
 .parent-div:after { content: " "; display: block; clear: both; }
 .red           { color: #ff5e1f; }
@@ -60,7 +62,7 @@
 
 // various titles - homogenise?
 #comment-title     { color: #444; }
-.content-title     { font-size: 3em;   font-weight: bold; margin: 0.6em 0 0.8em 0; line-height: 1.2em; }
+.page-title { font-size: 3em;   font-weight: bold; margin: 0.6em 0 0.8em 0; line-height: 1.2em; }
 .history-title     { font-size: 1em;   font-weight: bold; margin: 10px 0 3px 0; }
 .summary-title     { font-size: 1.4em; font-weight: bold; margin: 0em 0 15px 0; }
 

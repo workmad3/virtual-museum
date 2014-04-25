@@ -1,5 +1,5 @@
 .container
-  .content-title
+  .page-title
     All pages
   - Page.order(:title).each do |pgs|
     = render partial: 'pages/page_summary', locals: {page: pgs}
