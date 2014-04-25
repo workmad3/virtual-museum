@@ -26,6 +26,7 @@ gem 'haml'
 gem 'redcarpet'
 gem 'authority'
 gem 'kaminari'
+gem 'omniauth-twitter'
 
 
 group :development, :test do
