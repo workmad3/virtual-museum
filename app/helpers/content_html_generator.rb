@@ -26,7 +26,7 @@ class ContentHtmlGenerator
       li = LinkInterpreter.new($1)
       image = li.url if ! image && li.image_url?
     end
-    image = page.resources.first if !image && page.resources.first
+    image = page.resources.first.source if !image && page.resources.first
     image
   end
 end

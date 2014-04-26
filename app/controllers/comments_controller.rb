@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @page.comments.create(user: current_user,
                                      commenter: params[:comment][:commenter],
                                      content: params[:comment][:content]  )
-    redirect_to page_path(@page)
+    redirect_to :back
   end
 
   def index

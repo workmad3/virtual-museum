@@ -25,11 +25,10 @@
         If instead of linking you are uploading a file, please make sure it is sharable
         according to its copyright and/or licence.
   - else
-    - source = resource.file
-    - source = resource.url if resource.url
-    - #TODO validate on presence of url or filewidth: 500px; margin-bottom: 0.6em;
+    - if current_user.admin? || current_user == resource.user
+
     %br
-    %img.width-600px{src: source}
+    %img.width-600px{src: resource.source}
     .instruction.change-note
       = "This resource asset above may ony be changed by this resource's creator&nbsp;(#{resource.user.name}) or by an administrator.".html_safe
 

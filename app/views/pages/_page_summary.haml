@@ -14,8 +14,7 @@
     .float-left.width-150px.page-summary-image-indent
       - source =  ContentHtmlGenerator.page_image(page)
       - #TODO any edge conditions?
-      - source = page.resources.first.source if source && page.resources.first
-      - source = 'http://localhost/Pictures/no_image.png'    unless source
+      - source = 'http://localhost/Pictures/no_image.png' unless source
       %img{src: source}
       <br/>
     .float-right.width-400px

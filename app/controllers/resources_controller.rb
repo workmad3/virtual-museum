@@ -51,13 +51,13 @@ class ResourcesController < ApplicationController
 
   def update
     selected_pages = get_titles_from_params
-    # ccc
-    # this assigns attributes using setters that are either provided by active record or explicitly
-    if resource.update_attributes(file: params['resource']['file'],
-                                  description: params['resource']['description'],
-                                  title: params['resource']['title'],
-                                  pages: selected_pages
-                                  )
+
+    update_params = { description: params['resource']['description'],
+                      title: params['resource']['title'],
+                      pages: selected_pages }
+
+    # update_attributes this assigns attributes using setters that are either provided by active record or explicitly
+    if resource.update_attributes(update_params)
       redirect_to resource_url(resource), status: 301
     else
       render :edit

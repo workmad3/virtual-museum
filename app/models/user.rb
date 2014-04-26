@@ -15,15 +15,26 @@ class User < ActiveRecord::Base
   # -----------------------------------------------------------
 
   def self.process_omniauth(auth)
+
     User.where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.email = 'a@b.c'# auth.info.email
+      #TODO clean up - easy
+      user.skip_confirmation!
+      #user.email = 'a@b.c'# auth.info.email
+
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
       user.name = auth.info.nickname
       # user.image = auth.info.image # assuming the user model has an image
     end
+  end
+
+
+  # -----------------------------------------------------------
+
+  def editor?
+
   end
 
 end

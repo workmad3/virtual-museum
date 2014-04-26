@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   expose(:page)         { Page.find_by_slug(params[:id]).decorate  }
 
   before_action :authenticate_user!, :except => [:index, :show]
-    # delete admin authorised in #destroy
+                # :destroy requires admin, see method body
 
   def new
     p = Page.new(title: params[:page_title])
@@ -15,7 +15,6 @@ class PagesController < ApplicationController
                                                 slug: Page.create_slug( page_params['title'] ) ) )
       if page.save
         redirect_to page_url(page), status: 301
-        # duplicate key value violates unique constraint "index_pages_on_title"
       else
         self.page = page.decorate
         render :new
