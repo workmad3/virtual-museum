@@ -25,13 +25,12 @@
         If instead of linking you are uploading a file, please make sure it is sharable
         according to its copyright and/or licence.
   - else
-    - if current_user.admin? || current_user == resource.user
-
-    %br
+    - # must be an edit cause it's not a create action
     %img.width-600px{src: resource.source}
-    .instruction.change-note
-      = "This resource asset above may ony be changed by this resource's creator&nbsp;(#{resource.user.name}) or by an administrator.".html_safe
-
+    - if !current_user.admin? && current_user != resource.user
+      %br
+      .instruction.change-note
+        = "This resource asset above may ony be changed by this resource's creator&nbsp;(#{resource.user.name}) or by an administrator.".html_safe
 
   .width-500px
     = f.label :title
@@ -41,7 +40,7 @@
     = f.label :description
     = f.text_area :description
 
-  - if act == :create
+  - if act == :create || current_user.admin? || current_user == resource.user
     .instruction
       Either choose a file on your local computer and add copyright information,
       or supply the URL of a file elsewhere on the internet
@@ -64,5 +63,4 @@
     =  render partial: 'resources/resource_check_boxes',
                                locals: {pages_for_partial: resource.pages, f: f}
   %br
-  = #xxx
   = f.submit class: 'btn btn-primary'

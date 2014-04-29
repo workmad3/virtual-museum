@@ -20,6 +20,7 @@ class Page < ActiveRecord::Base
 
   validate :title_ok?
   validate :content_ok?
+  validate :page_type_ok?
 
   #---------------------------------------------------------
 
@@ -120,7 +121,9 @@ class Page < ActiveRecord::Base
       end
 
     end
-    if title_match == self.title
+    if self.title == ''
+      errors.add :title, "can't be blank"
+    elsif title_match == self.title
       errors.add :title, "is the same as '#{title_match}', an existing page title"
     elsif title_match
       errors.add :title, "#{self.title} is too similar to #{title_match}, an existing page title"
@@ -128,9 +131,9 @@ class Page < ActiveRecord::Base
       errors.add :url, "for this page is the same as or too similar to an existing url ending #{slug_match}"
     end
     if title_match || slug_match
-      errors.add :these, "need to differ while ignoring case, punctuation and spaces"
+      errors.add :hint, " titles need to differ while ignoring case, punctuation and spaces"
     end
-    title_match || slug_match
+    title_match || slug_match || self.title == ''
   end
 
   def content_ok?
@@ -139,4 +142,18 @@ class Page < ActiveRecord::Base
     end
   end
 
+  def page_type_ok?
+    page_type_count = 0
+    cats = ( self.categories == '' ? [] : self.categories.split(',').collect{|t| t.strip}.delete_if{|t| t == ''})
+    self.ld_page_type.each do |type_triple|
+      page_type_count = page_type_count+ 1 if cats.include?(type_triple[0])
+    end
+    if page_type_count == 0
+      errors.add :page_type, "is not specified as #{self.ld_page_types} (as one of the categories <- will deprecate)"
+    end
+    if page_type_count > 1
+      errors.add :page_type, 'conflict: page type specified more than once (as one of the categories <- will deprecate)'
+    end
+    page_type_count == 1
+  end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'xx' do
+describe 'Page' do
 
   def page
     @page
@@ -12,7 +12,7 @@ describe 'xx' do
   end
 
   it 'should be available' do
-    page.ld_page_type.should == [["CollectionItem", :isa, "Page Type"], ["Person", :isa, "Page Type"], ["Resource", :isa, "Page Type"]]
+    page.ld_page_type.should == [["CollectionItem", :isa, "Type"], ["Person", :isa, "Type"], ["Resource", :isa, "Type"]]
   end
 
   it 'should have the right categories set' do

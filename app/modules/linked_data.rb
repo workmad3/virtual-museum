@@ -2,7 +2,11 @@ module LinkedData
   def ld_page_type
     [ ['Collection item', :isa, 'Type'],
       ['Person', :isa, 'Type'],
-      ['Resource', :isa, 'Type']]
+      ['Other', :isa, 'Type']]
+  end
+
+  def ld_page_types
+    ld_page_type.collect{|triple| triple[0] }.join(', ')
   end
 
   def ld_categories

@@ -3,11 +3,8 @@
     .std-width
       .page-title
         = resource.title
-
-      - get_from = resource.file
-      - get_from = resource.url if resource.url
       %a{href: resource.file}
-        %img{src: get_from}
+        %img{src: resource.source}
       %br
       %br
       %br
@@ -19,9 +16,11 @@
           - if resource.pages != nil && resource.pages != []
             Resource belongs to
             %div
+              - started = false
               - resource.pages.all.each do |r|
-                %a{href: page_url(r.slug)}
-                  = r.title
+                = ', ' if started
+                - started = true
+                %a{href: page_url(r.slug)} #{r.title}
           - else
             This is not a resource for any pages yet, edit to associate with pages
           .color-bbb
