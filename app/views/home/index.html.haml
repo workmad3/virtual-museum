@@ -1,0 +1,22 @@
+%img{src: "http://media.rhizome.org/blog/8922/qc4.jpeg", width: "840"}
+
+%br/
+%p
+  A community project documenting groundbreaking computers desinged and built by the University of Manchester.
+  %br/
+  One of our aims to calogue and describe the School of Computer Science's collection of
+  historic artefacts, which include hardware components from computers built over the years, design documents,
+  and photographs.
+  %br/
+  Pictured above, Alan Turing, without whom all this would have been much more difficult.
+  %br/
+- if pages == []
+  %p
+    No content yet
+    %br/
+    Add a page by clicking New Page at the top right of this page
+- else
+  %h3 Contents
+  %ul
+  - pages.order(:title).each do |pg|
+    %li= link_to pg.title, pg

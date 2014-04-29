@@ -1,4 +1,6 @@
 = form_for(page) do |f|
+  = f.number_field :lock_version
+
   %ul.red
     - if page.history.last
       - page.history.last.errors.full_messages.each do |msg|
@@ -30,5 +32,7 @@
 
     = f.label :location
     = f.text_field :location
+
   %br
   = f.submit class: 'btn btn-primary'
+

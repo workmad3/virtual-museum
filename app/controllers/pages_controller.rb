@@ -28,13 +28,21 @@ class PagesController < ApplicationController
   end
 
   def update
-    # this assigns attributes using setters that are either provided by active record or explicitly
-    if page.update_attributes(page_params.merge(creator: current_user))
-      redirect_to page_url(page), status: 301
-    else
-      render :edit
+    begin
+      if page.update_attributes(page_params.merge(creator: current_user))
+        redirect_to page_url(page), status: 301
+      else
+        render :edit
+      end
+    rescue ActiveRecord::StaleObjectError
+      flash[:warning] = 'Another user has made a conflicting change, you can resolve the differences and save the page again'
+      render :edit, :status => :conflict, locals: {conflicts: page_params}
+    rescue ActiveRecord::RecordNotFound
+      xxxxxxxxxxxxx
     end
   end
+
+
 
   def destroy
     authorize_action_for page
@@ -43,8 +51,14 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:title, :content,
-                                 :tags, :categories,
-                                 :item_number, :location, :creator )
+    params.require(:page).permit(:categories,
+                                 :content,
+                                 :creator,
+                                 :item_number,
+                                 :location,
+                                 :lock_version,
+                                 :tags,
+                                 :title
+                                 )
   end
 end
