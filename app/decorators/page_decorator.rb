@@ -74,4 +74,35 @@ class PageDecorator < Draper::Decorator
     end
   end
 
+  def page_changes_as_html
+    html = ((any_diff_as_html :title) +
+    (any_diff_as_html :content) +
+    (any_diff_as_html :tags) +
+    (any_diff_as_html :categories)).html_safe
+    html == '' ? '<p>No change on last save</p>'.html_safe : html
+  end
+
+  def compare_versions(previous, current)
+    Diffy::Diff.new(previous, current).to_s(:html)
+  end
+
+  def any_diff_as_html (symb)
+    if symb == :title && page.previous_title != title
+      ret = '<h3>Title</h3>' +
+            compare_versions(page.previous_title, title)
+    elsif symb == :content  && page.previous_content != content
+      ret = '<h3>Content</h3>' +
+            compare_versions(page.previous_content, content)
+    elsif symb == :tags && page.previous_tags != tags
+      ret = '<h3>Tags</h3>' +
+            compare_versions(page.previous_tags, tags)
+    elsif symb == :categories && page.previous_categories != categories
+      ret = '<h3>Categories</h3>' +
+            compare_versions(page.previous_categories, categories)
+    else
+      ret = ''
+    end
+    ret
+  end
+
 end

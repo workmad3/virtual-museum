@@ -1,8 +1,21 @@
 module LinkedData
   def ld_page_type
-    [ ['Collection item', :isa, 'Type'],
-      ['Person', :isa, 'Type'],
-      ['Other', :isa, 'Type']]
+    [ # ['Collection item', :isa, 'Type'],
+      # ['Person', :isa, 'Type'],
+      # ['Other', :isa, 'Type'],
+      ['Context', :isa, 'Type'],
+      ['Issue', :isa, 'Type'],
+      ['Competition', :isa, 'Type'],
+
+      ['Need', :isa, 'Type'],
+      ['Capability', :isa, 'Type'],
+
+
+
+
+
+
+    ]
   end
 
   def ld_page_types
@@ -11,7 +24,12 @@ module LinkedData
 
   def ld_categories
     [
-      ['Ferranti Mark I', :isa, 'Computer'],
+        ['Issue', :isa, 'Library Technology Consideration'],
+        ['Context', :isa, 'Library Technology Consideration'],
+        ['Need', :isa, 'Library Technology Consideration'],
+        ['Capability', :isa, 'Library Technology Consideration'],
+        ['Competition', :isa, 'Library Technology Consideration'],
+      ['Ferranti Mark I', :isa, 'Library Technology Consideration'],
       ['MU5', :isa, 'Computer'],
       ['Atlas', :isa, 'Computer'],
       ['MU6G', :isa, 'Computer'],

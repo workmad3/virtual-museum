@@ -37,7 +37,7 @@ class PagesController < ApplicationController
     rescue ActiveRecord::StaleObjectError
       flash[:warning] = 'Another user has made a conflicting change, you can resolve the differences and save the page again'
       page.reload
-      render :edit, :status => :conflict, locals: {conflicts: page_params}
+      render :edit_with_conflicts, locals: {conflicts: page_params}
     rescue ActiveRecord::RecordNotFound
       xxxxxxxxxxxxx
     end

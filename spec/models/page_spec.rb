@@ -8,7 +8,7 @@ describe Page do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @page = FactoryGirl.create(:page, creator: @user, content: "check me")
+    @page = FactoryGirl.create(:page, creator: @user, content: 'check me')
     @page_state = @page.history.first
     @user2 = FactoryGirl.create(:user)
     subject {@page}
@@ -68,9 +68,7 @@ describe Page do
     current_page_state.user.should == user2
   end
 
-  it "page title and content should reflect with sucessive changes" do
-    original_content = page.content
-    original_title = page.title
+  it 'page title and content should reflect with sucessive changes' do
 
     page.update_attributes(creator: user, title: 'first title change', content: 'first content change')
     page.title.should == 'first title change'
@@ -96,11 +94,6 @@ describe Page do
     history[1].content.should == 'first content change'
     history[2].content.should == 'second content change'
   end
-
-  it "should split tags properly"
-  page.tags='a,b,c'
-
-
 end
 
 

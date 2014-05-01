@@ -89,9 +89,22 @@ class Page < ActiveRecord::Base
     self.history.length == 1 ? nil : history.last.user
   end
 
+  def title
+    @title
+  end
+
   # used when invoking diffy
   def previous_content
     history.length == 1 ? nil : history[-2].content
+  end
+  def previous_title
+    history.length == 1 ? nil : history[-2].title
+  end
+  def previous_categories
+    history.length == 1 ? nil : history[-2].categories
+  end
+  def previous_tags
+    history.length == 1 ? nil : history[-2].tags
   end
 
   #------------------------------------------------------------------

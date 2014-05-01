@@ -1,14 +1,7 @@
-%img{src: "http://media.rhizome.org/blog/8922/qc4.jpeg", width: "840"}
 
 %br/
 %p
-  A community project documenting groundbreaking computers desinged and built by the University of Manchester.
-  %br/
-  One of our aims to calogue and describe the School of Computer Science's collection of
-  historic artefacts, which include hardware components from computers built over the years, design documents,
-  and photographs.
-  %br/
-  Pictured above, Alan Turing, without whom all this would have been much more difficult.
+  Living documentation for The University of Kent's Library technology roadmap.
   %br/
 - if pages == []
   %p
@@ -16,7 +9,47 @@
     %br/
     Add a page by clicking New Page at the top right of this page
 - else
-  %h3 Contents
-  %ul
-  - pages.order(:title).each do |pg|
-    %li= link_to pg.title, pg
+  %h2 Context
+  - pgs = Page.all.collect{|p| p.has_category?('Context') ? p : nil}.compact
+  - if pgs != []
+    %ul
+      - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+        %li= link_to pg.title, pg
+  -else
+    No items yet
+
+  %h2 Issue
+  - pgs = Page.all.collect{|p| p.has_category?('Issue') ? p : nil}.compact
+  - if pgs != []
+    %ul
+      - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+        %li= link_to pg.title, pg
+  -else
+    No items yet
+
+  %h2 Competition
+  - pgs = Page.all.collect{|p| p.has_category?('Competition') ? p : nil}.compact
+  - if pgs != []
+    %ul
+      - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+        %li= link_to pg.title, pg
+  -else
+    No items yet
+
+  %h2 Needs
+  - pgs = Page.all.collect{|p| p.has_category?('Need') ? p : nil}.compact
+  - if pgs != []
+    %ul
+      - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+        %li= link_to pg.title, pg
+  -else
+    No items yet
+  %h2 Capabilities
+  - pgs = Page.all.collect{|p| p.has_category?('Capability') ? p : nil}.compact
+  - if pgs != []
+    %ul
+      - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+        %li= link_to pg.title, pg
+  -else
+    No items yet
+
