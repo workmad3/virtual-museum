@@ -2,10 +2,10 @@
 
   .page-title
     = page.title
-  %h2
-    - page.lock_version = 0 unless page.lock_version
-    - page.save
-    - # The lock version is #{page.lock_version}
+
+  .bold
+    lock version is #{page.lock_version}
+
   .content-content
     = page.content_as_html(page)
 

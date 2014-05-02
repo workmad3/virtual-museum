@@ -18,9 +18,9 @@ class Page < ActiveRecord::Base
   history_attr :item_number
   history_attr :location
 
-  validate :title_ok?
-  validate :content_ok?
-  validate :page_type_ok?
+  #validate :title_ok?
+  #validate :content_ok?
+  #validate :page_type_ok?
 
   #---------------------------------------------------------
 
@@ -69,14 +69,6 @@ class Page < ActiveRecord::Base
     history.last.try(:title)
   end
 
-  def title=(new_title)
-    self['title'] = new_title
-    if history.last.try(:new_record?)
-      history.last.title = new_title
-    else
-      history.new(title: new_title)
-    end
-  end
 
   #------------------------------------------------------------------
 
@@ -87,10 +79,6 @@ class Page < ActiveRecord::Base
 
   def editor
     self.history.length == 1 ? nil : history.last.user
-  end
-
-  def title
-    @title
   end
 
   # used when invoking diffy
@@ -150,7 +138,7 @@ class Page < ActiveRecord::Base
   end
 
   def content_ok?
-    if self.content.blank?
+    if content.blank?
       errors.add :content, " can't be blank"
     end
   end

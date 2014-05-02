@@ -1,5 +1,5 @@
 = form_for(page) do |f|
-  = f.hidden_field :lock_version
+  = f.number_field :lock_version
 
   %ul.red
     - if page.history.last
