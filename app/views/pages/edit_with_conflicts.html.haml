@@ -1,7 +1,7 @@
 %h1.page-title Resolve editing conflicts
 
 %h2 Current Page
-= render :partial => 'edit_form', locals: {page: page}
+= render :partial => 'page_conflict_edit_form', locals: {page: page}
 
 %h2 Your changes
-= render :partial => 'edit_form', locals: {page: @conflict}
+= render :partial => 'page_conflict_edit_form', locals: {page: @conflict}

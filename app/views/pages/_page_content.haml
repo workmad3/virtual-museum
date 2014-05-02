@@ -5,6 +5,8 @@
 
   .bold
     lock version is #{page.lock_version}
+    %br/
+    page type is #{page.page_type}
 
   .content-content
     = page.content_as_html(page)

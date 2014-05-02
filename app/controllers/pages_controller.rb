@@ -11,8 +11,9 @@ class PagesController < ApplicationController
   end
 
   def create
-    page = Page.new(page_params.merge(user: current_user))
+    page = Page.new(page_params.merge(user: current_user).merge(page_type: 'hi'))
     if page.save
+      xxx
       redirect_to page_url(page), status: 301
     else
       self.page = page.decorate
@@ -56,7 +57,8 @@ class PagesController < ApplicationController
                                  :lock_version,
                                  :slug,
                                  :tags,
-                                 :title
+                                 :title,
+                                 :page_type
                                  )
   end
 end
