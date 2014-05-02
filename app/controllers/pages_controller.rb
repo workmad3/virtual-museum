@@ -11,9 +11,8 @@ class PagesController < ApplicationController
   end
 
   def create
-    page = Page.new(page_params.merge(user: current_user).merge(page_type: 'hi'))
+    page = Page.new(page_params.merge(user: current_user))
     if page.save
-      xxx
       redirect_to page_url(page), status: 301
     else
       self.page = page.decorate
@@ -44,7 +43,9 @@ class PagesController < ApplicationController
 
   def destroy
     authorize_action_for page
+    ActiveRecord::Base.lock_optimistically = false
     page.destroy
+    ActiveRecord::Base.lock_optimistically = true
     redirect_to :back
   end
 
