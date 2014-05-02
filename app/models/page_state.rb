@@ -44,7 +44,7 @@ class PageState < ActiveRecord::Base
   end
 
   def as_array(str)
-    str == '' ? [] : str.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
+    str.blank? ? [] : str.split(',').collect{|t| t.strip}.delete_if{|t| t == ''}
   end
 
 end

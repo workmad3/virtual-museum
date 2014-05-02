@@ -1,7 +1,6 @@
 .container
   .page-title
     All pages
-  - pgs = Page.all.collect{|p| p.has_category?('Need') || p.has_category?('Issue') || p.has_category?('Competition') || p.has_category?('Capability') || p.has_category?('Context') ? p : nil }.compact
-  - pgs.sort{|p,q| p.title <=> q.title}.each do |pgs|
+  - pgs = Page.order('title ASC').all.each do |pgs|
     = render partial: 'pages/page_summary', locals: {page: pgs}
 

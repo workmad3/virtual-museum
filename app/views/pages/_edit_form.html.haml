@@ -4,29 +4,17 @@
   %ul.red
     - if page.history.last
       - page.history.last.errors.full_messages.each do |msg|
-        %li
-          = msg
-      - page.errors.full_messages.each do |msg|
-        %li
-          = msg
-  .ccc
-    = f.label :title
-    .ddd
-      = f.text_field :title
-
-  .ccc
-    = f.label :slug, "Slug (leave blank to generate a page slug automatically)"
-    .ddd
-      = f.text_field :slug
+        %li= msg
+    - page.errors.full_messages.each do |msg|
+      %li= msg
+  .ccc= f.label :title
+  .ddd= f.text_field :title
 
   = f.label :categories
   = f.text_field :categories
 
-
-  .ccc
-    = f.label :content
-    .eee
-      = f.text_area :content
+  .ccc= f.label :content
+  .eee= f.text_area :content
 
   = f.label :tags
   = f.text_field :tags
@@ -41,4 +29,5 @@
 
   %br
   = f.submit class: 'btn btn-primary'
+
 

@@ -1,41 +1,7 @@
 %h1.page-title Resolve editing conflicts
 
-= form_for(page) do |f|
-  = f.number_field :lock_version
+%h2 Current Page
+= render :partial => 'edit_form', locals: {page: page}
 
-  %ul.red
-    - if page.history.last
-      - page.history.last.errors.full_messages.each do |msg|
-        %li
-          = msg
-      - page.errors.full_messages.each do |msg|
-        %li
-          = msg
-  .ccc
-    = f.label :title
-    .ddd
-      = f.text_field :title
-
-  = f.label :categories
-  = f.text_field :categories
-
-  .ccc
-    = f.label :content
-    .eee
-      = f.text_area :content
-
-  = f.label :tags
-  = f.text_field :tags
-
-  - if page.has_category? 'UMCS Collection'
-
-    = f.label :item_number
-    = f.text_field :item_number
-
-    = f.label :location
-    = f.text_field :location
-
-  %br
-  = f.submit class: 'btn btn-primary'
-
-
+%h2 Your changes
+= render :partial => 'edit_form', locals: {page: @conflict}

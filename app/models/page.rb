@@ -6,21 +6,32 @@ class Page < ActiveRecord::Base
 
   include LinkedData
 
-  has_many :history, class_name: "PageState", dependent: :destroy
+  has_many :history, class_name: "PageState", dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy
   has_many :resource_usages
   has_many :resources, through: :resource_usages
 
   extend HistoryControl
   history_attr :content
+  history_attr :user
   history_attr :categories
   history_attr :tags
   history_attr :item_number
   history_attr :location
 
-  #validate :title_ok?
-  #validate :content_ok?
+  #attr_readonly :slug
+
+  before_validation :set_slug
+  before_validation :ensure_page_state_id_ok
+
+
+  validates :content, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :slug, uniqueness: true
+  validates :page_state_id, presence: true
+
   #validate :page_type_ok?
+
 
   #---------------------------------------------------------
 
@@ -52,8 +63,9 @@ class Page < ActiveRecord::Base
   end
 
   #---------------------------------------------------------
-
-  def creator
+=begin
+  def creator-
+e
     history.last.try(:creator)
   end
 
@@ -68,7 +80,7 @@ class Page < ActiveRecord::Base
   def title_from_history
     history.last.try(:title)
   end
-
+=end
 
   #------------------------------------------------------------------
 
@@ -97,8 +109,8 @@ class Page < ActiveRecord::Base
 
   #------------------------------------------------------------------
 
-  def self.create_slug(title)
-    title.parameterize
+  def set_slug
+    self.slug = title.parameterize
   end
 
   def to_param
@@ -107,41 +119,11 @@ class Page < ActiveRecord::Base
 
   #------------------------------------------------------------------
 
-  def title_ok?
-    desired_compressed = self.title.tr('^A-Za-z0-9', '').downcase
-    title_match = false
-    slug_match = false
-    Page.all.each do |p|
-      existing_title_compressed = p.title.tr('^A-Za-z0-9', '').downcase
-      if  desired_compressed == existing_title_compressed && p.id != self.id
-        title_match = p.title
-      end
-      existing_slug_compressed = p.slug.tr('-', '').downcase
-      if  desired_compressed == existing_slug_compressed && p.id != self.id
-        slug_match = p.slug
-      end
-
-    end
-    if self.title == ''
-      errors.add :title, "can't be blank"
-    elsif title_match == self.title
-      errors.add :title, "is the same as '#{title_match}', an existing page title"
-    elsif title_match
-      errors.add :title, "#{self.title} is too similar to #{title_match}, an existing page title"
-    elsif slug_match
-      errors.add :url, "for this page is the same as or too similar to an existing url ending #{slug_match}"
-    end
-    if title_match || slug_match
-      errors.add :hint, " titles need to differ while ignoring case, punctuation and spaces"
-    end
-    title_match || slug_match || self.title == ''
+  def ensure_page_state_id_ok
+    self.page_state_id = PageState.last.id + 1 if self.page_state_id == nil
   end
 
-  def content_ok?
-    if content.blank?
-      errors.add :content, " can't be blank"
-    end
-  end
+  
 
   def page_type_ok?
     page_type_count = 0
@@ -155,6 +137,5 @@ class Page < ActiveRecord::Base
     if page_type_count > 1
       errors.add :page_type, 'conflict: page type specified more than once (as one of the categories <- will deprecate)'
     end
-    page_type_count == 1
   end
 end
