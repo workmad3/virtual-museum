@@ -54,9 +54,9 @@ class PagesController < ApplicationController
                                  :item_number,
                                  :location,
                                  :lock_version,
+                                 :slug,
                                  :tags,
-                                 :title,
-                                 :slug
+                                 :title
                                  )
   end
 end

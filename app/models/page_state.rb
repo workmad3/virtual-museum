@@ -2,7 +2,7 @@ class PageState < ActiveRecord::Base
 
   default_scope -> { order('created_at ASC') }
 
-  belongs_to :page
+  belongs_to :page, touch: true
   belongs_to :user
 
   def categories=(new_categories)

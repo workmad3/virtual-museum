@@ -19,19 +19,13 @@ class Page < ActiveRecord::Base
   history_attr :item_number
   history_attr :location
 
-  #attr_readonly :slug
+  attr_readonly :slug
 
-  before_validation :set_slug
-  before_validation :ensure_page_state_id_ok
-
+  before_validation :set_slug, on: :create
 
   validates :content, presence: true
   validates :title, presence: true, uniqueness: true
   validates :slug, uniqueness: true
-  validates :page_state_id, presence: true
-
-  #validate :page_type_ok?
-
 
   #---------------------------------------------------------
 
@@ -45,11 +39,6 @@ class Page < ActiveRecord::Base
 
   def self.find_by_title(t)
     Page.all.collect{ |p| p.title == t ? p : nil}.compact.first
-  end
-
-  def self.find_by_slug(t)
-    Page.find_by(slug: t)
-    # returns nil if not found
   end
 
   #---------------------------------------------------------
@@ -110,7 +99,15 @@ e
   #------------------------------------------------------------------
 
   def set_slug
-    self.slug = title.parameterize
+    if slug.blank?
+      self.slug = title.parameterize
+    end
+  end
+
+  def slug=(new_slug)
+    if self[:slug].blank?
+      super
+    end
   end
 
   def to_param
@@ -120,10 +117,9 @@ e
   #------------------------------------------------------------------
 
   def ensure_page_state_id_ok
+    # kludge!
     self.page_state_id = PageState.last.id + 1 if self.page_state_id == nil
   end
-
-  
 
   def page_type_ok?
     page_type_count = 0
