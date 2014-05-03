@@ -3,18 +3,12 @@ module LinkedData
     [ # ['Collection item', :isa, 'Type'],
       # ['Person', :isa, 'Type'],
       # ['Other', :isa, 'Type'],
+      ['Guide/Informational', :isa, 'Type'],
       ['Context', :isa, 'Type'],
       ['Issue', :isa, 'Type'],
       ['Competition', :isa, 'Type'],
-
       ['Need', :isa, 'Type'],
       ['Capability', :isa, 'Type'],
-
-
-
-
-
-
     ]
   end
 
