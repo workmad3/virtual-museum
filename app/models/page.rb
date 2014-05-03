@@ -23,8 +23,8 @@ class Page < ActiveRecord::Base
 
   before_validation :set_slug, on: :create
 
-  validates :content, presence: true
   validates :title, presence: true, uniqueness: true
+  validates :content, presence: true
   validates :slug, uniqueness: true
 
   #---------------------------------------------------------
@@ -52,26 +52,6 @@ class Page < ActiveRecord::Base
   end
 
   #---------------------------------------------------------
-=begin
-  def creator-
-e
-    history.last.try(:creator)
-  end
-
-  def creator=(c)
-    if history.last.try(:new_record?)
-      history.last.user = c
-    else
-      history.new(user: c)
-    end
-  end
-
-  def title_from_history
-    history.last.try(:title)
-  end
-=end
-
-  #------------------------------------------------------------------
 
   # Page#change now only used in tests, refactor to not exist
   def change(editing_user, args)
@@ -121,17 +101,4 @@ e
     self.page_state_id = PageState.last.id + 1 if self.page_state_id == nil
   end
 
-  def page_type_ok?
-    page_type_count = 0
-    cats = ( self.categories == '' ? [] : self.categories.split(',').collect{|t| t.strip}.delete_if{|t| t == ''})
-    self.ld_page_type.each do |type_triple|
-      page_type_count = page_type_count+ 1 if cats.include?(type_triple[0])
-    end
-    if page_type_count == 0
-      errors.add :page_type, "is not specified as #{self.ld_page_types} (as one of the categories <- will deprecate)"
-    end
-    if page_type_count > 1
-      errors.add :page_type, 'conflict: page type specified more than once (as one of the categories <- will deprecate)'
-    end
-  end
 end
