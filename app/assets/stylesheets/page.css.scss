@@ -40,6 +40,8 @@
 .width-500px     { width: 512px; }
 .width-550px     { width: 550px; }
 .width-600px     { width: 600px; }
+.width-800px     { width: 800px; }
+
 
 // main tab
 .content-content     { margin: 0 0 1em 0; line-height: 1.7em; font-size: 1em; }
@@ -67,8 +69,11 @@
 
 // various titles - homogenise?
 #comment-title     { color: #444; }
-.page-title { font-size: 3em;   font-weight: bold; margin: 0.6em 0 0.8em 0; line-height: 1.2em; }
-.page-title-after-type  { font-size: 3em;   font-weight: bold; margin: 0em 0 0.8em 0; line-height: 1.2em; }
+.page-title { font-size: 3em;   font-weight: bold; margin: 0.6em 0 0.8em 0; line-height: 1.2em; color: rgb(44, 2, 117); }
+.page-title-after-type  { font-size: 3em;   font-weight: bold; margin: 0em 0 0.8em 0; line-height: 1.2em; color: rgb(44, 2, 117); }
+.container .content h1,
+.container .content h2,
+.container .content h3  { color: rgb(44, 2, 117)}
 .history-title     { font-size: 1em;   font-weight: bold; margin: 10px 0 3px 0; }
 .summary-title     { font-size: 1.4em; font-weight: bold; margin: 0em 0 15px 0; }
 

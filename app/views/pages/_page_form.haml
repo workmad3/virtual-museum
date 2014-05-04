@@ -1,5 +1,5 @@
 = form_for(page) do |f|
-  = f.number_field :lock_version
+  = f.hidden_field :lock_version
 
   %ul.red
     - if page.history.last
@@ -18,9 +18,9 @@
   = f.select :page_type, page.ld_page_type.collect{|t| [t[0], t[0]] }
 
   .ccc
-    = f.label :slug, "Slug (leave blank to generate a page slug automatically)"
+    - f.label :slug, "Slug (leave blank to generate a page slug automatically)"
     .ddd
-      = f.text_field :slug
+      - f.text_field :slug
 
   = f.label :categories
   = f.text_field :categories

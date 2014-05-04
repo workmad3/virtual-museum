@@ -3,7 +3,7 @@ module LinkedData
     [ # ['Collection item', :isa, 'Type'],
       # ['Person', :isa, 'Type'],
       # ['Other', :isa, 'Type'],
-      ['Guide/Informational', :isa, 'Type'],
+      ['Guide or Informational', :isa, 'Type'],
       ['Context', :isa, 'Type'],
       ['Issue', :isa, 'Type'],
       ['Competition', :isa, 'Type'],
@@ -17,13 +17,7 @@ module LinkedData
   end
 
   def ld_categories
-    [
-        ['Issue', :isa, 'Library Technology Consideration'],
-        ['Context', :isa, 'Library Technology Consideration'],
-        ['Need', :isa, 'Library Technology Consideration'],
-        ['Capability', :isa, 'Library Technology Consideration'],
-        ['Competition', :isa, 'Library Technology Consideration'],
-      ['Ferranti Mark I', :isa, 'Library Technology Consideration'],
+    [ ['Ferranti Mark I', :isa, 'Library Technology Consideration'],
       ['MU5', :isa, 'Computer'],
       ['Atlas', :isa, 'Computer'],
       ['MU6G', :isa, 'Computer'],

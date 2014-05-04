@@ -1,87 +1,104 @@
-%img{src: 'http://localhost/Pictures/templeman.jpg', width: '900px'}
-- # http://www.penoyreprasad.com/wp-content/uploads/2012/11/Projects-Higher-Education-University-of-Kent-Templeman-Library-West-Elevation-Penoyre-and-Prasad-803x536.jpg
-%br/
-%p
-  Living documentation for The University of Kent's Library technology roadmap.
-%br/
-.container
-  .content
-    = render partial: 'home/home_tab_nav'
+.width-800px
+  %img{src: 'http://localhost/Pictures/templeman.jpg', width: '900px'}
+  - # http://www.penoyreprasad.com/wp-content/uploads/2012/11/Projects-Higher-Education-University-of-Kent-Templeman-Library-West-Elevation-Penoyre-and-Prasad-803x536.jpg
+  %br/
+  %p
+    Living documentation for The University of Kent's Library technology roadmap.
+  %br/
 
-    #my-tab-content.tab-content
+  .container.width-800px
+    .content.width-800px
+      = render partial: 'home/home_tab_nav'
 
-      #guide-tab.tab-pane.active
-        %br/
-        As part of its ongoing refinement of online library facilities, the
-        University of Kent Templeman Library has been examining both the broad
-        HE institutional library landscape, and University of Kent-specific drivers
-        for change.
-        %br/
-        %br/
-        The ongoing results of this work, undertaken in conjunction with library and
-        educational consultants
-        %a{href: 'http://www.kenchadconsulting.com/'}
-          Ken Chad
-        and
-        %a{href: 'http//hedtek.com'}
-          Mark van Harmelen,
-        are documented here.
-        %br/
-        %br/
-        This is a living archive whose contents are being co-operatively developed within the
-        University.
-        %br/
-        %br/
-        All pages that constitute this archive may be changed or commented on by members of the
-        University.
-        %br/
-        %br/
-        Commenting is a particularly easy way to get your opinion heard, and Library staff will
-        change page content to reflect comments.
+      #my-tab-content.tab-content.width-800px
 
+        #introduction-tab.tab-pane.active
+          %br/
+          As part of its ongoing development of the University of Kent's online library facilities, the
+          Templeman Library has been examining the
+          HE library landscape, and Kent-specific drivers for change.
+          %br/
+          %br/
+          The ongoing results of this work, undertaken in conjunction with library and
+          educational consultants
+          %a{href: 'http://www.kenchadconsulting.com/'}
+            Ken Chad
+          and
+          %a{href: 'http://hedtek.com'}
+            Mark van Harmelen,
+          are documented here.
+          %br/
+          %br/
+          This is a living archive whose contents are being developed co-operatively  within the
+          University and by the consultants.
 
-      #context-tab.tab-pane
-        - pgs = Page.all.collect{|p| p.has_page_type?('Context') ? p : nil}.compact
-        - if pgs != []
-          %ul
-            - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-              %li= link_to pg.title, pg
-        -else
-          No items yet
+          %br/
+          %br/
+          Commenting on the developing contents is a particularly easy way to get your opinion heard.
+          %br/
+          %br/
+          You do need to
+          %a{href: 'http://localhost:3000/users/sign_up'} register
+          and then
+          %a{href: 'http://localhost:3000/users/sign_in'} sign in
+          to comment or change content.
+          %br/
+          %br/
+          Alternately, you can
+          %a{href: 'http://localhost:3000/users/sign_in'} sign in
+          using an existing Twitter account.
 
-      #issue-tab.tab-pane
-        - pgs = Page.all.collect{|p| p.has_page_type?('Issue') ? p : nil}.compact
-        - if pgs != []
-          %ul
-            - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-              %li= link_to pg.title, pg
-        -else
-          No items yet
+        #guide-tab.tab-pane
+          - pgs = Page.all.collect{|p| p.has_page_type?('Guide or Informational') ? p : nil}.compact
+          - if pgs != []
+            %ul
+              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+                %li= link_to pg.title, pg
+          -else
+            No items yet
 
-      #need-tab.tab-pane
-        - pgs = Page.all.collect{|p| p.has_page_type?('Need') ? p : nil}.compact
-        - if pgs != []
-          %ul
-            - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-              %li= link_to pg.title, pg
-        -else
-          No items yet
+        #context-tab.tab-pane
+          - pgs = Page.all.collect{|p| p.has_page_type?('Context') ? p : nil}.compact
+          - if pgs != []
+            %ul
+              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+                %li= link_to pg.title, pg
+          -else
+            No items yet
 
-      #competition-tab.tab-pane
-        - pgs = Page.all.collect{|p| p.has_page_type?('Competition') ? p : nil}.compact
-        - if pgs != []
-          %ul
-            - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-              %li= link_to pg.title, pg
-        -else
-          No items yet
+        #issue-tab.tab-pane
+          - pgs = Page.all.collect{|p| p.has_page_type?('Issue') ? p : nil}.compact
+          - if pgs != []
+            %ul
+              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+                %li= link_to pg.title, pg
+          -else
+            No items yet
 
-      #capability-tab.tab-pane
-        - pgs = Page.all.collect{|p| p.has_page_type?('Capability') ? p : nil}.compact
-        - if pgs != []
-          %ul
-            - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-              %li= link_to pg.title, pg
-        -else
-          No items yet
+        #need-tab.tab-pane
+          - pgs = Page.all.collect{|p| p.has_page_type?('Need') ? p : nil}.compact
+          - if pgs != []
+            %ul
+              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+                %li= link_to pg.title, pg
+          -else
+            No items yet
+
+        #competition-tab.tab-pane
+          - pgs = Page.all.collect{|p| p.has_page_type?('Competition') ? p : nil}.compact
+          - if pgs != []
+            %ul
+              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+                %li= link_to pg.title, pg
+          -else
+            No items yet
+
+        #capability-tab.tab-pane
+          - pgs = Page.all.collect{|p| p.has_page_type?('Capability') ? p : nil}.compact
+          - if pgs != []
+            %ul
+              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+                %li= link_to pg.title, pg
+          -else
+            No items yet
 

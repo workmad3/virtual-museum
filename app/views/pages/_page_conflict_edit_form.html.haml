@@ -1,5 +1,5 @@
 = form_for(page) do |f|
-  = f.number_field :lock_version
+  = f.hidden_field :lock_version
 
   %ul.red
     - if page.history.last
@@ -7,17 +7,34 @@
         %li= msg
     - page.errors.full_messages.each do |msg|
       %li= msg
-  .ccc= f.label :title
-  .ddd= f.text_field :title
 
-  = f.label :categories
-  = f.text_field :categories
+  Please edit to resolve the differences shown below:
 
-  .ccc= f.label :content
-  .eee= f.text_area :content
+  - if page.title != conflict.title
+    %h3 Title differs
+    Your version: #{conflict.title}
+    .ddd= f.text_field :title
+    %br/
 
-  = f.label :tags
-  = f.text_field :tags
+
+  - if page.page_type != conflict.page_type
+    %h3 Page type differs
+    Your version: #{conflict.page_type}
+    = f.select :page_type, page.ld_page_type.collect{|t| [t[0], t[0]] }
+    %br/
+
+
+  - if page.categories != conflict.categories
+    %h3  Categories differ
+    Your version: #{conflict.categories}
+    .ddd= f.text_field :categories
+
+
+  - if page.tags != conflict.tags
+    %h3  Tags differ
+    Your version: #{conflict.tags}
+    .ddd= f.text_field :tags
+    %br/
 
   - if page.has_category? 'UMCS Collection'
 
@@ -26,6 +43,14 @@
 
     = f.label :location
     = f.text_field :location
+
+  - if page.content != conflict.content
+    %h3  Content differs
+    Your version:
+    %br/
+    #{conflict.content}
+    %br/
+    = f.text_area :content
 
   %br
   = f.submit class: 'btn btn-primary'

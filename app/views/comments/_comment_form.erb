@@ -1,6 +1,5 @@
 <%= form_for([page, page.comments.build]) do |f| %>
 
-      <%= f.label :comment_text %>
       <%= f.text_area :content %>
       <br/>
       <%= f.submit class: 'btn btn-primary', value: 'Add comment' %>
