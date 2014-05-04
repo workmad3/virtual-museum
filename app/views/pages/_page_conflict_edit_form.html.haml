@@ -15,6 +15,8 @@
     Your version: #{conflict.title}
     .ddd= f.text_field :title
     %br/
+  -else
+    = f.hidden_field :title
 
 
   - if page.page_type != conflict.page_type
@@ -22,20 +24,25 @@
     Your version: #{conflict.page_type}
     = f.select :page_type, page.ld_page_type.collect{|t| [t[0], t[0]] }
     %br/
-
+  -else
+    = f.hidden_field :page_type
 
   - if page.categories != conflict.categories
     %h3  Categories differ
     Your version: #{conflict.categories}
     .ddd= f.text_field :categories
+  - else
+    = f.hidden_field :categories
 
 
   - if page.tags != conflict.tags
     %h3  Tags differ
     Your version: #{conflict.tags}
     .ddd= f.text_field :tags
-    %br/
+  - else
+    = f.hidden_field :tags
 
+  #TODO bad tech debt -> sort this asap
   - if page.has_category? 'UMCS Collection'
 
     = f.label :item_number
@@ -51,6 +58,8 @@
     #{conflict.content}
     %br/
     = f.text_area :content
+  - else
+    = f.hidden_field :content
 
   %br
   = f.submit class: 'btn btn-primary'
