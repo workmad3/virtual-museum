@@ -11,27 +11,17 @@
   Please edit to resolve the differences shown below.
   %br/
   %br/
-  What you wanted is shown in red.
+  What is currently saved shown in red.
   %br/
-  What the page currently contains is in green.
+  What you wanted to save appears in green. If you didn't want anything then you will see nothing in green.
   %br/
   %br/
   The current contents are shown in the edit boxes,
   %br/
   ready for your further changes.
 
-
-
-  - if page.title != conflict.title
-    %h3 Title differs
-    %br/
-    .width-500px
-      = (page.compare_versions conflict.title, page.title).html_safe
-      %br
-      = f.text_field :title
-    %br/
-  -else
-    = f.hidden_field :title
+  = render partial: 'pages/conflict',
+    locals: {f: f, field: :title, current: page.title, desired: conflict.title}
 
   - if page.page_type != conflict.page_type
     %h3 Page type differs
@@ -43,49 +33,21 @@
   -else
     = f.hidden_field :page_type
 
-  - if page.categories != conflict.categories
-    %h3  Categories differ
-    %br/
-    .width-500px
-      = (page.compare_versions conflict.categories, page.categories).html_safe
-      %br
-      = f.text_field :categories
-  - else
-    = f.hidden_field :categories
+
+  = render partial: 'pages/conflict',
+    locals: {f: f, field: :categories, current: page.categories, desired: conflict.categories}
+
+  = render partial: 'pages/conflict',
+    locals: {f: f, field: :tags, current: page.tags, desired: conflict.tags}
 
 
-  - if page.tags != conflict.tags
-    %h3  Tags differ
-    %br/
-    .width-500px
-      = (page.compare_versions conflict.tags, page.tags).html_safe
-      %br
-      = f.text_field :tags
-  - else
-    = f.hidden_field :tags
-
-  - #TODO see if UMCS Collection is a page_type
+  - #TODO test this collection item number and location handling
   - if page.has_page_type? 'UMCS Collection'
-
     .width-500px
-      - if page.item_number != conflict.item_number
-        %h3  UMCS colletion item number differs
-        %br/
-        = (page.compare_versions conflict.item_number, page.item_number).html_safe
-        %br
-        = f.text_field :tags
-      - else
-        = f.hidden_field :tags
-
-    .width-500px
-      - if page.location != conflict.location
-        %h3  UMCS colletion location differs
-        %br/
-        = (page.compare_versions conflict.location, page.location).html_safe
-        %br
-        = f.text_field :location
-      - else
-        = f.hidden_field :location
+      = render partial: 'pages/conflict',
+        locals: {f: f, field: :item_number, current: page.item_number, desired: conflict.item_number}
+      = render partial: 'pages/conflict',
+        locals: {f: f, field: :location, current: page.location, desired: conflict.location}
 
   - if page.content != conflict.content
     %h3  Content differs

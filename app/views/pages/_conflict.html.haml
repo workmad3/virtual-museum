@@ -1,0 +1,10 @@
+-# locals f,field, current, desired
+- if current != desired
+  %h3  #{field.capitalize} differ
+  %br/
+  .width-500px
+    = (page.compare_versions current, desired).html_safe
+    %br
+    = f.text_field field
+- else
+  = f.hidden_field field
