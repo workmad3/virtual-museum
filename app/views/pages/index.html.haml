@@ -1,6 +1,9 @@
+- @pages = Page.order('title ASC').page(params[:page]).per(5)
+
+
 .container
-  .page-title
-    All pages
-  - pgs = Page.order('title ASC').all.each do |pgs|
+  .page-title Pages
+  = paginate @pages
+  - @pages.each do |pgs|
     = render partial: 'pages/page_summary', locals: {page: pgs}
 
