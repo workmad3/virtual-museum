@@ -1,0 +1,13 @@
+- @pages = Kaminari.paginate_array(Page.find_with_tag(params[:id])).page(params[:page]).per(2)
+
+%h1#top Pages tagged #{params[:id]}
+
+= paginate @pages
+
+- @pages.each do |p|
+  = render :partial => 'pages/page_summary', :locals => {:page => p}
+  %br/
+
+= paginate @pages
+
+

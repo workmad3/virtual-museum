@@ -1,8 +1,16 @@
-%h1#top
-  = "Pages categorised #{params[:id]}"
+- @pages = Kaminari.paginate_array(Page.all.select{ |p| p.ld_page_in_inverse_set(params[:id], :isa) }).page(params[:page]).per(2)
+%h1#top Pages categorised #{params[:id]}
 
--  pages.each do |p|
+= paginate @pages
+
+- @pages.each do |p|
   = render :partial => 'pages/page_summary', :locals => {:page => p}
+
+= paginate @pages
+
+
+
+
 
 
 

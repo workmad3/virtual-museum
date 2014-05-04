@@ -4,11 +4,15 @@ VirtualMuseum::Application.routes.draw do
                                       :omniauth_callbacks => "omniauth_callbacks" }
   resources :users
   resources :pages
+  resources :resources
+
   resources :tags, only: [:index, :create, :show]
   resources :categories, only: [:index, :create, :show]
+  resources :page_types, only: [:index, :create, :show]
+
   resources :pages do
     resources :comments
   end
-  resources :resources
+
 
 end

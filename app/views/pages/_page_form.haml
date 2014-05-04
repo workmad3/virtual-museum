@@ -15,7 +15,7 @@
       = f.text_field :title
 
   = f.label :page_type
-  = f.select :page_type, page.ld_page_type.collect{|t| [t[0], t[0]] }
+  = f.select :page_type, page.ld_page_type.collect{|t| [t[0], t[0]] }.sort{|a,b| a<=>b}
 
   .ccc
     - f.label :slug, "Slug (leave blank to generate a page slug automatically)"

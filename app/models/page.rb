@@ -30,15 +30,15 @@ class Page < ActiveRecord::Base
   #---------------------------------------------------------
 
   def self.find_with_category(cat)
-    Page.all.collect{ |p| p.has_category?( cat ) ? p : nil}.compact
+    Page.order(:title).select{ |p| p.has_category?( cat ) ? p : nil}
   end
 
   def self.find_with_tag(tag)
-    Page.all.collect{ |p| p.has_tag?( tag ) ? p : nil}.compact
+    Page.order(:title).select{ |p| p.has_tag?( tag ) }
   end
 
   def self.find_by_title(t)
-    Page.all.collect{ |p| p.title == t ? p : nil}.compact.first
+    Page.where(title: t).first
   end
 
   #---------------------------------------------------------

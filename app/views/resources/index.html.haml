@@ -1,6 +1,5 @@
 .container
-  .page-title
-    All resources
+  .page-title Resources
   - Resource.order(:title).each do |r|
     .summary-title
       %a{href: resource_path(r.id)}

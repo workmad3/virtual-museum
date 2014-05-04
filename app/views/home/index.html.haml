@@ -14,9 +14,10 @@
 
         #introduction-tab.tab-pane.active
           %br/
-          As part of its ongoing development of the University of Kent's online library facilities, the
+          As part of its ongoing development of the University of Kent's online library facilities and its
+          library technology roadmap, the
           Templeman Library has been examining the
-          HE library landscape, and Kent-specific drivers for change.
+          HE landscape together with Kent-specific drivers for change.
           %br/
           %br/
           The ongoing results of this work, undertaken in conjunction with library and
@@ -48,8 +49,12 @@
           %a{href: 'http://localhost:3000/users/sign_in'} sign in
           using an existing Twitter account.
 
-        #guide-tab.tab-pane
-          - pgs = Page.all.collect{|p| p.has_page_type?('Guide or Informational') ? p : nil}.compact
+        #theme-tab.tab-pane
+          %br/
+          The following are broad themes, guides and other cross-cutting information.
+          %br/
+          %br/
+          - pgs = Page.all.collect{|p| p.has_page_type?('Theme') ? p : nil}.compact
           - if pgs != []
             %ul
               - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
@@ -85,6 +90,13 @@
             No items yet
 
         #competition-tab.tab-pane
+          %br/
+          External competition in respect of library resources and function offer opportunities for change.
+          %br/
+          %br/
+          For example, by co-opting the external competition to add to library resources and functionality.
+          %br/
+          %br/
           - pgs = Page.all.collect{|p| p.has_page_type?('Competition') ? p : nil}.compact
           - if pgs != []
             %ul
@@ -94,6 +106,19 @@
             No items yet
 
         #capability-tab.tab-pane
+          - pgs = Page.all.collect{|p| p.has_page_type?('Capability') ? p : nil}.compact
+          - if pgs != []
+            %ul
+              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
+                %li= link_to pg.title, pg
+          -else
+            No items yet
+
+        #action-tab.tab-pane
+          %br
+          Actions for the future, either broad-sweep or (to be) expressed in the library technology roadmap.
+          %br/
+          %br/
           - pgs = Page.all.collect{|p| p.has_page_type?('Capability') ? p : nil}.compact
           - if pgs != []
             %ul

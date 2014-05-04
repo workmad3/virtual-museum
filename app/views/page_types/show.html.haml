@@ -1,0 +1,13 @@
+- @pages = Page.where(page_type: params[:id]).page(params[:page]).per(2)
+
+%h1#top #{params[:id]} pages
+
+= paginate @pages
+
+- @pages.each do |p|
+  = render :partial => 'pages/page_summary', :locals => {:page => p}
+  %br/
+
+= paginate @pages
+
+

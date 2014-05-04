@@ -5,7 +5,9 @@
              :method => :delete
 .search-results
   %div.page-summary-width.page-summary-image-indent
-    .page_summary_page_type  #{page.page_type}
+    - if page.page_type
+      .page_summary_page_type
+        = link_to "#{page.page_type}", page_type_path(page.page_type)
     %a.summary-title{href: page_url(page)}
       = page.title
   .clear
