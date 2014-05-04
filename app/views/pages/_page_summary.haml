@@ -4,7 +4,8 @@
              :confirm => 'Are you sure you want to remove this page? This cannot be undone.',
              :method => :delete
 .search-results
-  %div.page-summary-width
+  %div.page-summary-width.page-summary-image-indent
+    .page_summary_page_type  #{page.page_type}
     %a.summary-title{href: page_url(page)}
       = page.title
   .clear
@@ -30,5 +31,7 @@
     .tags-and-categories
       = render partial: 'categories/categories', locals: {categories: page.history.last.categories_as_array}
   .clear
+    .page-summary-width-plus
+      %hr
 
 

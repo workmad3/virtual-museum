@@ -1,8 +1,10 @@
-- @pages = Page.order('title ASC').page(params[:page]).per(10)
+- @pages = Page.order('title ASC').page(params[:page]).per(5)
 
 .container
   .page-title Pages
   = paginate @pages
+  .page-summary-width-plus
+    %hr
   - @pages.each do |pgs|
     = render partial: 'pages/page_summary', locals: {page: pgs}
   = paginate @pages

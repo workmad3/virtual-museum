@@ -73,13 +73,19 @@
 .page-title-after-type  { font-size: 3em;   font-weight: bold; margin: 0em 0 0.8em 0; line-height: 1.2em; color: rgb(44, 2, 117); }
 .container .content h1,
 .container .content h2,
-.container .content h3  { color: rgb(44, 2, 117)}
+.container .content h3  { color: #2c0275}
+.container .content h2,
+.container .content h3  { font-weight: normal;}
 .history-title     { font-size: 1em;   font-weight: bold; margin: 10px 0 3px 0; }
 .summary-title     { font-size: 1.4em; font-weight: bold; margin: 0em 0 15px 0; }
+a.summary-title {color: #2c0275;}
+a.summary-title:hover {color: #2132F8;}
+
 
 // tags and categories - homogenise?
 .history-tags-and-categories { line-height: 1.4em; font-size: 0.8em; color: gray;
      background-color: rgba(135, 202, 250, 0.18); padding: 0.5em 1em 0.5em 1em ; }
+.page_summary_page_type {line-height: 1.4em; font-size: 0.8em; color: gray; padding-bottom: .45em; }
 .tags-and-categories { margin: 0px 0 0 0; }
 
 // page listing pages, two lines of text ------------------
@@ -103,8 +109,10 @@
 .try_in_rhs p {font-size: 1em; line-height: 1.4em}
 .delete-page {position: relative; top: 40px;}
 .page-summary-width { width: 600px; }
+.page-summary-width-plus { width: 630px; }
 .page-summary-image-indent { margin-left: 10px; }
 .page-summary-footer-indent_and_spacing { margin: 0 0 25px 10px; }
+.page-summary-width-plus hr {border-top: 1px solid #33244D; }
 
 // resources index view
 .resources-summary-width-and-margin { width: 600px; margin-left: 10px;}
