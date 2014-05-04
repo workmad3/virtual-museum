@@ -6,9 +6,9 @@ VirtualMuseum::Application.routes.draw do
   resources :pages
   resources :resources
 
-  resources :tags, only: [:index, :create, :show]
-  resources :categories, only: [:index, :create, :show]
-  resources :page_types, only: [:index, :create, :show]
+  resources :tags,       only: [:show]
+  resources :categories, only: [:show]
+  resources :page_types, only: [:show]
 
   resources :pages do
     resources :comments
