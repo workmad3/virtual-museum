@@ -42,16 +42,18 @@
 
   - if act == :create || current_user.admin? || current_user == resource.user
     .instruction
-      Either choose a file on your local computer and add copyright information,
-      or supply the URL of a file elsewhere on the internet
+      DONT: Either choose a file on your local computer and add copyright information,
+      or supply the URL of a file elsewhere on the internet. The File to upload feature is
+      not implemented yet
       %br
+      DO: Fill in the resource on the web field with the URL of a resource
 
     .margin-left-20px.width-492px
-      File to upload (from your computer)
+      DONT USE: File to upload (from your computer)
       %br
       = f.text_field :file
       %br
-      File to link to (URL beginning with http)
+      FILL THIS IN: Resource on the web to link to (URL beginning with http)
       %br
       = f.text_field :url
     %br

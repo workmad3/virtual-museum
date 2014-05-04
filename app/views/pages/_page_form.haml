@@ -25,12 +25,15 @@
   = f.label :categories
   = f.text_field :categories
 
+  %br/
+  .parent-div.ccc
+    .float-right= link_to("Show content editing help", '', class: "btn btn-primary", onclick: "help_dialog();")
 
-  .ccc
-    = f.label :content
-    .eee
-      = f.text_area :content
-
+    .float-left
+      = f.label :content
+      .eee
+        = f.text_area :content
+  .clear
   = f.label :tags
   = f.text_field :tags
 
@@ -44,4 +47,23 @@
 
   %br
   = f.submit class: 'btn btn-primary'
+
+#dialog{title: "Formatting help", display: 'none'}
+  %p Use a blank line for a new paragraph.
+  %p Put links to wiki pages in text:
+  %p &nbsp;&nbsp; [existing page name] to reference another page.
+  %p &nbsp;&nbsp; [new page name] to to create a link to create a new page.
+  %p Put links to other pages on the web in text:
+  %p &nbsp;&nbsp; [url optional-display-text] to to create a link to create a new page.
+  %p For images and YouTube videos the following should be on lines by themselves
+  %p &nbsp;&nbsp; [url-for-image optional-width]
+  %p &nbsp;&nbsp;[url-for-youtube-video optional-width]
+  %p Titles, for successive levels start the line with # ## or ###
+  %p List item starts with * with blank lines above and below list
+  %p Quote starts with >
+  %p &nbsp;&nbsp; replicate for successive quoted paragraphs
+  %p
+    Google markdown for more formatting or see its
+    %a{href: 'http://daringfireball.net/projects/markdown/syntax'}
+      documentation.
 

@@ -1,4 +1,4 @@
-- @pages = Kaminari.paginate_array(Page.all.select{ |p| p.ld_page_in_inverse_set(params[:id], :isa) }).page(params[:page]).per(2)
+- @pages = Kaminari.paginate_array(Page.all.select{ |p| p.ld_page_in_inverse_set(params[:id], :isa) }).page(params[:page]).per(10)
 %h1#top Pages categorised #{params[:id]}
 
 = paginate @pages

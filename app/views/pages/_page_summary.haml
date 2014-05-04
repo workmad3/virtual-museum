@@ -18,7 +18,8 @@
       - source =  ContentHtmlGenerator.page_image(page)
       - #TODO any edge conditions?
       - source = 'http://localhost/Pictures/no_image.png' unless source
-      %img{src: source}
+      %a{href: page_url(page)}
+        %img{src: source}
       <br/>
     .float-right.width-400px
       .try_in_rhs

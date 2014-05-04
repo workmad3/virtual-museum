@@ -15,8 +15,11 @@ class Resource < ActiveRecord::Base
   end
 
   def source_ok?
+    self.url = nil if url == ''
+    self.file = nil if file == ''
+
     ret = (url && !file) || (!url && file)
-    errors.add :either, ' one of file or URL should be set as the resource source' unless ret
+    errors.add :either, 'one of file or URL should be set as the resource source' unless ret
     ret
   end
 end
