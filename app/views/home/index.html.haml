@@ -1,7 +1,6 @@
 .width-800px
-  %img{src: 'http://localhost/Pictures/templeman.jpg', width: '900px'}
-  - # http://www.penoyreprasad.com/wp-content/uploads/2012/11/Projects-Higher-Education-University-of-Kent-Templeman-Library-West-Elevation-Penoyre-and-Prasad-803x536.jpg
-  %br/
+  =image_tag 'templeman.jpg', width: '900'
+ %br/
   %p
     Living documentation for The University of Kent's Library technology roadmap.
   %br/
@@ -39,14 +38,14 @@
           %br/
           %br/
           You do need to
-          %a{href: 'http://localhost:3000/users/sign_up'} register
+          = link_to 'register', new_user_registration_path
           and then
-          %a{href: 'http://localhost:3000/users/sign_in'} sign in
+          = link_to 'sign in', new_user_session_path
           to comment or change content.
           %br/
           %br/
           Alternately, you can
-          %a{href: 'http://localhost:3000/users/sign_in'} sign in
+          = link_to 'sign in', new_user_session_path
           using an existing Twitter account.
 
         #theme-tab.tab-pane
