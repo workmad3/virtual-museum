@@ -6,8 +6,8 @@ class Page < ActiveRecord::Base
 
   include LinkedData
 
-  has_many :history, class_name: "PageState", dependent: :destroy, autosave: true
-  has_many :comments, dependent: :destroy
+  has_many :history, class_name: "PageState", dependent: :delete_all, autosave: true
+  has_many :comments, dependent: :delete_all
   has_many :resource_usages
   has_many :resources, through: :resource_usages
 

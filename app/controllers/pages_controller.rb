@@ -27,7 +27,13 @@ class PagesController < ApplicationController
   end
 
   def update
-    if page.update_attributes(page_params.merge(user: current_user))
+    success = nil
+    Page.transaction do
+      if need_to_update?
+        success = page.update_attributes(page_params.merge(user: current_user))
+      end
+    end
+    if success
       redirect_to page_url(page), status: 301
     else
       render :edit
@@ -39,11 +45,9 @@ class PagesController < ApplicationController
     render :edit_with_conflicts
   end
 
-
-
   def destroy
     authorize_action_for page
-    ActiveRecord::Base.lock_optimistically = false
+    # ActiveRecord::Base.lock_optimistically = false
     page.destroy
     ActiveRecord::Base.lock_optimistically = true
     redirect_to :back
@@ -62,4 +66,15 @@ class PagesController < ApplicationController
                                  :page_type
                                  )
   end
+
+  private
+
+  def need_to_update?
+    page.title          != page_params[:title]      ||
+        page.categories != page_params[:categories] ||
+        page.tags       != page_params[:tags]       ||
+        page.content    != page_params[:content]    ||
+        page.page_type  != page_params[:page_type]
+  end
+
 end
