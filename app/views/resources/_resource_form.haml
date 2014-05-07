@@ -12,18 +12,7 @@
         Each resource will typically be added to one or more pages.
       .notice-para
         Resources that have been added to a page are displayed in the page's resources' tab.
-      - #.notice-para
-      - #  Our terms of use identify you as responsible for copyright adherence for
-      - #  any resource that you create.
-      - #.notice-para
-      - #  %span.bold
-      - #    Linking to an existing image or document elsewhere in the internet is
-      - #    entirely safe.
-      - #  You can't break copyright by linking to something
-      - #  elsewhere on the Internet.
-      - #.notice-para
-      - #  NOT IMPLEMENTED YET: If instead of linking you are uploading a file, please make sure it is sharable
-      - #  according to its copyright and/or licence.
+
   - else
     - # must be an edit cause it's not a create action
     %img.width-600px{src: resource.source}
@@ -41,23 +30,11 @@
     = f.text_area :description
 
   - if act == :create || current_user.admin? || current_user == resource.user
-    .instruction
-      - #DONT: Either choose a file on your local computer and add copyright information,
-      - #or supply the URL of a file elsewhere on the internet. The File to upload feature is
-      - #not implemented yet
-      - #%br
-      - #DO: Fill in the resource on the web field with the URL of a resource
-
     .width-500px
-      - # DONT USE: File to upload (from your computer)
-      - # %br
-      - #= f.text_field :file
-      - # %br
       Resource on the web to link to (this must be a URL beginning with http)
       %br
       = f.text_field :url
     %br
-
 
   .width-550px
     = f.label 'Optionally add the resource to one or more pages (you can also do this later if you want to)'

@@ -8,11 +8,11 @@
         #header-nav.nav.float-right
           %ul.nav
             %li= link_to     'Pages',         pages_path
-            %li= link_to     'Resources',     resources_path
+            - # %li= link_to     'Resources',     resources_path
 
             - if current_user
               %li= link_to 'New Page', new_page_path, :id => 'add_page_link'
-              %li= link_to 'New Resource', new_resource_path, :id => 'add_resource_link'
+              - # %li= link_to 'New Resource', new_resource_path, :id => 'add_resource_link'
               %li= link_to 'Profile', edit_user_registration_path
               %li
                 - if current_user.admin?

@@ -110,7 +110,7 @@ Initialised empty Git repository in /home/mark/rails01/virtual-museum/virtual-mu
           5)  MiniTest with Capybara
        setup  Enter your selection: 3
     question  Continuous testing?
-          1)  None
+          1)  NoneCanCan
           2)  Guard
        setup  Enter your selection: 1
     question  Fixture replacement?

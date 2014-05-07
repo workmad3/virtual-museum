@@ -11,17 +11,14 @@
   Please edit to resolve the differences shown below.
   %br/
   %br/
-  What is currently saved shown in red.
-  %br/
-  What you wanted to save appears in green. If you didn't want anything then you will see nothing in green.
+  What you wanted to save appears in red. If you didn't want to save anything then you will see nothing in red.
   %br/
   %br/
-  The current contents are shown in the edit boxes,
-  %br/
+  What is currently saved is shown in green and in the edit boxes,
   ready for your further changes.
 
   = render partial: 'pages/conflict',
-    locals: {f: f, field: :title, current: page.title, desired: conflict.title}
+    locals: {f: f, field: :title, current: conflict.title, desired: page.title}
 
   - if page.page_type != conflict.page_type
     %h3 Page type differs
@@ -35,19 +32,19 @@
 
 
   = render partial: 'pages/conflict',
-    locals: {f: f, field: :categories, current: page.categories, desired: conflict.categories}
+    locals: {f: f, field: :categories, current: conflict.categories, desired: page.categories}
 
   = render partial: 'pages/conflict',
-    locals: {f: f, field: :tags, current: page.tags, desired: conflict.tags}
+    locals: {f: f, field: :tags, current: conflict.tags, desired: page.tags}
 
 
   - #TODO test this collection item number and location handling
   - if page.has_page_type? 'UMCS Collection'
     .width-500px
       = render partial: 'pages/conflict',
-        locals: {f: f, field: :item_number, current: page.item_number, desired: conflict.item_number}
+        locals: {f: f, field: :item_number, current: conflict.item_number, desired: page.item_number}
       = render partial: 'pages/conflict',
-        locals: {f: f, field: :location, current: page.location, desired: conflict.location}
+        locals: {f: f, field: :location, current: conflict.location, desired: page.location}
 
   - if page.content != conflict.content
     %h3  Content differs

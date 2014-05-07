@@ -119,7 +119,7 @@
           Actions for the future, either broad-sweep or (to be) expressed in the library technology roadmap.
           %br/
           %br/
-          - pgs = Page.all.collect{|p| p.has_page_type?('Capability') ? p : nil}.compact
+          - pgs = Page.all.collect{|p| p.has_page_type?('Action') ? p : nil}.compact
           - if pgs != []
             %ul
               - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|

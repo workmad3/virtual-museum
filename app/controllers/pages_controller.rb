@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    success = nil
+    success = true
     Page.transaction do
       if need_to_update?
         success = page.update_attributes(page_params.merge(user: current_user))

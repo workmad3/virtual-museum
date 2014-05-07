@@ -51,17 +51,21 @@ class ResourcesController < ApplicationController
 
   def update
     selected_pages = get_titles_from_params
-
     update_params = { description: params['resource']['description'],
                       title: params['resource']['title'],
                       pages: selected_pages }
 
-    # update_attributes this assigns attributes using setters that are either provided by active record or explicitly
     if resource.update_attributes(update_params)
       redirect_to resource_url(resource), status: 301
     else
       render :edit
     end
+
+  rescue ActiveRecord::StaleObjectError
+    flash.now[:warning] = 'Another user has made a conflicting change, you can resolve the differences and save the resource again'
+    resource.reload
+    @conflict = 'set me appropriately'
+    render :edit_with_conflicts
   end
 
   def destroy
@@ -84,5 +88,11 @@ class ResourcesController < ApplicationController
       selected_pages << Page.find_by_title(t)
     end
     selected_pages
+  end
+
+  def need_to_update_resource?(update_params)
+    resource.title          != update_params[:title]      ||
+        resource.description != update_params[:description] ||
+        resource.pages       != update_params[:pages]
   end
 end
