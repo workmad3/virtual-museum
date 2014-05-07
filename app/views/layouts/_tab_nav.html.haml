@@ -1,7 +1,7 @@
-%ul#tabs.nav.nav-tabs{'data-tabs'.to_sym => 'tabs'}
+%ul#tabs.nav.nav-tabs{data: {tabs: 'tabs'}
   %li.active
-    %a{ href: '#content-tab',     'data-toggle'.to_sym => 'tab' } Page
+    %a{ href: '#content-tab',     data: {toggle: 'tab'} } Page
   %li
-    %a{ href: '#resource-tab',    'data-toggle'.to_sym => 'tab' } Resources
+    %a{ href: '#resource-tab',    data: {toggle: 'tab'} } Resources
   %li
-    %a{ href: '#history-tab',     'data-toggle'.to_sym => 'tab' } History
+    %a{ href: '#history-tab',     data: {toggle: 'tab'} } History
