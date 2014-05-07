@@ -23,6 +23,7 @@ gem 'redcarpet'
 gem 'authority'
 gem 'kaminari'
 gem 'omniauth-twitter'
+gem 'puma'
 
 
 group :development, :test do
