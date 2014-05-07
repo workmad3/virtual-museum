@@ -24,6 +24,7 @@ gem 'authority'
 gem 'kaminari'
 gem 'omniauth-twitter'
 gem 'puma'
+gem 'font-awesome-rails'
 
 
 group :development, :test do

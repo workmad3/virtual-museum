@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       #TODO clean up - easy
       user.skip_confirmation!
-      #user.email = 'a@b.c'# auth.info.email
+      user.email = auth.info.email || "#{auth.uid}@#{auth.provider}.com"
 
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
