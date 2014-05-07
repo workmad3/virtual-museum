@@ -47,9 +47,7 @@ class PagesController < ApplicationController
 
   def destroy
     authorize_action_for page
-    # ActiveRecord::Base.lock_optimistically = false
     page.destroy
-    ActiveRecord::Base.lock_optimistically = true
     redirect_to :back
   end
 

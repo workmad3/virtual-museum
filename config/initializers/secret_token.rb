@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-VirtualMuseum::Application.config.secret_key_base = '7dbfeb4ae12bf929a816067ec9d64032ff511d452838a76c728cafc01be8ed5ccb84f11e5e38dcf10a59c06f2eb20167a64d9178fbe80a54e11cf2ecf203b0a6'
+VirtualMuseum::Application.config.secret_key_base = ENV['SECRET_TOKEN']
