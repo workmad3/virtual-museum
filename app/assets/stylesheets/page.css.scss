@@ -13,6 +13,7 @@
 .container .content h2 { margin-top: 1.6em; }
 .content-content ul li { font-size: 1.2em; line-height: 1.7em; }
 .content-content h1 { margin-top: 1.7em; }
+.dark-gray     { color: #555}
 #history-width ul li { font-size: 1em; line-height: 1.7em; margin-bottom: 0px}
 
 [data-page]    { color:blue }
@@ -24,6 +25,8 @@
 #logo          {font-family: arial; font-size: 20pt;}
 .margin-left-20px { margin-left: 20px; }
 [no-bullets]   { list-style-type: none; margin-left: 0px; }
+.tab-pane ul li    { list-style-type: none;   }
+.tab-pane ul       { margin: 0 0 5px 15px; }
 .omniauth-provider-button {padding: 0 0 0 0; }
                   // make parent div have height of child floats
 .parent-div:after { content: " "; display: block; clear: both; }
@@ -121,6 +124,7 @@ a.summary-title:hover {color: #2132F8;}
 // resource form
 .notice-para { width: 550px; margin-bottom: 0.6em; margin-left:20px; color:#58A55E; }
 .change-note { color: #ccc; }
+.hint        { color: rgba(27, 151, 27, 0.8); font-size: 0.8em; }
 .instruction { width: 550px; margin-bottom: 0.6em; }
 
 .checkbox-item {width: 250px;}

@@ -53,40 +53,20 @@
           The following are broad themes, guides and other cross-cutting information.
           %br/
           %br/
-          - pgs = Page.all.collect{|p| p.has_page_type?('Theme') ? p : nil}.compact
-          - if pgs != []
-            %ul
-              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-                %li= link_to pg.title, pg
-          -else
-            No items yet
+          - pgs = Page.select{|p| p.has_page_type?('Theme') }
+          = render 'home/ordered_pages', locals: {filtered_pages: pgs}
 
         #context-tab.tab-pane
-          - pgs = Page.all.collect{|p| p.has_page_type?('Context') ? p : nil}.compact
-          - if pgs != []
-            %ul
-              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-                %li= link_to pg.title, pg
-          -else
-            No items yet
+          - pgs = Page.select{|p| p.has_page_type?('Context') }
+          = render 'home/ordered_pages', locals: {filtered_pages: pgs}
 
         #issue-tab.tab-pane
-          - pgs = Page.all.collect{|p| p.has_page_type?('Issue') ? p : nil}.compact
-          - if pgs != []
-            %ul
-              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-                %li= link_to pg.title, pg
-          -else
-            No items yet
+          - pgs = Page.select{|p| p.has_page_type?('Issue') }
+          = render 'home/ordered_pages', locals: {filtered_pages: pgs}
 
         #need-tab.tab-pane
-          - pgs = Page.all.collect{|p| p.has_page_type?('Need') ? p : nil}.compact
-          - if pgs != []
-            %ul
-              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-                %li= link_to pg.title, pg
-          -else
-            No items yet
+          - pgs = Page.select{|p| p.has_page_type?('Need') }
+          = render 'home/ordered_pages', locals: {filtered_pages: pgs}
 
         #competition-tab.tab-pane
           %br/
@@ -96,33 +76,37 @@
           For example, by co-opting the external competition to add to library resources and functionality.
           %br/
           %br/
-          - pgs = Page.all.collect{|p| p.has_page_type?('Competition') ? p : nil}.compact
-          - if pgs != []
-            %ul
-              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-                %li= link_to pg.title, pg
-          -else
-            No items yet
+          - pgs = Page.select{|p| p.has_page_type?('Competition') }
+          = render 'home/ordered_pages', locals: {filtered_pages: pgs}
 
         #capability-tab.tab-pane
-          - pgs = Page.all.collect{|p| p.has_page_type?('Capability') ? p : nil}.compact
-          - if pgs != []
-            %ul
-              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-                %li= link_to pg.title, pg
-          -else
-            No items yet
+          - pgs = Page.select{|p| p.has_page_type?('Capability') }
+          = render 'home/ordered_pages', locals: {filtered_pages: pgs}
+
 
         #action-tab.tab-pane
           %br
           Actions for the future, either broad-sweep or (to be) expressed in the library technology roadmap.
           %br/
           %br/
-          - pgs = Page.all.collect{|p| p.has_page_type?('Action') ? p : nil}.compact
-          - if pgs != []
-            %ul
-              - pgs.sort{|p, q| p.title <=> q.title}.each do |pg|
-                %li= link_to pg.title, pg
-          -else
-            No items yet
+          - pgs = Page.select{|p| p.has_page_type?('Action') }
+          = render 'home/ordered_pages', locals: {filtered_pages: pgs}
+
+        #link-tab.tab-pane
+          %br
+          Pages tagged
+          %ul
+            %li
+              %a{href: '/tags/to%20do'} to do
+          %br/
+          Prioritisation
+          %ul
+            %li
+              %a{href: '/moscow/Must%20have'} Must have
+            %li
+              %a{href: '/moscow/Should%20have'} Should have
+            %li
+              %a{href: '/moscow/Could%20have'} Could have
+            %li
+              %a{href: '/moscow/Would%20%2F%20won%27t%20have'} Would / won\'t have
 

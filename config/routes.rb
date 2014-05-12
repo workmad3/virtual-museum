@@ -9,6 +9,7 @@ VirtualMuseum::Application.routes.draw do
   resources :tags,       only: [:show]
   resources :categories, only: [:show]
   resources :page_types, only: [:show]
+  resources :moscow,     only: [:show]
 
   resources :pages do
     resources :comments

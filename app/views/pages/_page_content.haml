@@ -1,9 +1,13 @@
 .std-width
 
-  %div
-    #{page.page_type}
+  .parent-div
+    .float-left.dark-gray
+      #{page.page_type}
+    .float-right.dark-gray
+      Inclusion priority: #{page.moscow}
   .page-title-after-type
     = page.title
+  %br/
 
   .content-content
     = page.content_as_html(page)

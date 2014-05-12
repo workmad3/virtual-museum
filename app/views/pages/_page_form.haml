@@ -17,7 +17,18 @@
   = f.label :page_type
   = f.select :page_type, page.ld_page_type.collect{|t| [t[0], t[0]] }.sort{|a,b| a<=>b}
 
-  Must have, should have (if we can manage it), 
+  %br/
+  = f.label :priority
+  .instruction.hint
+    Must have (essential)
+    %br/
+    Should have (high priority, have if funding allows)
+    %br/
+    Could have (desirable but not necessary)
+    %br/
+    Would/wont (would like it, but wont have it in this iteration))
+
+  = f.select :moscow, [['Not set yet', 'Not set yet'], ['Must have', 'Must have'], ['Should have', 'Should have'], ['Could have', 'Could have'], ['Would / won\'t have', 'Would / won\'t have']]
 
   .ccc
     - f.label :slug, "Slug (leave blank to generate a page slug automatically)"

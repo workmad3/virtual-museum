@@ -58,6 +58,7 @@ class PagesController < ApplicationController
                                  :item_number,
                                  :location,
                                  :lock_version,
+                                 :moscow,
                                  :slug,
                                  :tags,
                                  :title,
@@ -72,7 +73,8 @@ class PagesController < ApplicationController
         page.categories != page_params[:categories] ||
         page.tags       != page_params[:tags]       ||
         page.content    != page_params[:content]    ||
-        page.page_type  != page_params[:page_type]
+        page.page_type  != page_params[:page_type]  ||
+        page.moscow     != page_params[:moscow]
   end
 
 end

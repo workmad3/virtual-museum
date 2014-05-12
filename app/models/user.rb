@@ -2,9 +2,8 @@ class User < ActiveRecord::Base
 
   include Authority::UserAbilities
 
-  # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
-  devise :confirmable, :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:twitter]
 

@@ -1,0 +1,45 @@
+.div  Must have
+- pgs = locals[:filtered_pages].select{|p| p.moscow == 'Must have' }.sort{|p, q| p.title <=> q.title}
+%ul
+  - if pgs != []
+    - pgs.each do |pg|
+      %li= link_to pg.title, pg
+  -else
+    %li No items
+
+.div Should have
+- pgs = locals[:filtered_pages].select{|p| p.moscow == 'Should have' }.sort{|p, q| p.title <=> q.title}
+%ul
+  - if pgs != []
+    - pgs.each do |pg|
+      %li= link_to pg.title, pg
+  -else
+    %li No items
+
+.div Could have
+- pgs = locals[:filtered_pages].select{|p| p.moscow == 'Could have' }.sort{|p, q| p.title <=> q.title}
+%ul
+  - if pgs != []
+    - pgs.each do |pg|
+      %li= link_to pg.title, pg
+  -else
+    %li No items
+
+.div Would / won't have
+- pgs = locals[:filtered_pages].select{|p| p.moscow == 'Would / won\'t have' }.sort{|p, q| p.title <=> q.title}
+%ul
+  - if pgs != []
+    - pgs.each do |pg|
+      %li= link_to pg.title, pg
+  -else
+    %li No items
+
+.div Unclassified
+- pgs = locals[:filtered_pages].select{|p| p.moscow == 'Not set yet' }.sort{|p, q| p.title <=> q.title}
+%ul
+  - if pgs != []
+    - pgs.each do |pg|
+      %li= link_to pg.title, pg
+  -else
+    %li No items
+%br

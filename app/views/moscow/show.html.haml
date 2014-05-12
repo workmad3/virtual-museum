@@ -1,0 +1,11 @@
+- @pages = Kaminari.paginate_array(Page.where(moscow: params[:id])).page(params[:page]).per(10)
+
+%h1#top Pages prioritised #{params[:id].downcase}
+
+= paginate @pages
+
+- @pages.each do |p|
+  = render :partial => 'pages/page_summary', :locals => {:page => p}
+  %br/
+
+= paginate @pages
