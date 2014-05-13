@@ -29,11 +29,4 @@ class User < ActiveRecord::Base
     end
   end
 
-
-  # -----------------------------------------------------------
-
-  def editor?
-
-  end
-
 end
