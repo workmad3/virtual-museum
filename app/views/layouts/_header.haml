@@ -3,7 +3,7 @@
     .container
       .parent-div
         #logo.nav.float-left
-          = link_to           'Information Services', root_path, id: 'logo' 
+          = link_to  'Information Services', root_path, id: 'logo'
 
         #header-nav.nav.float-right
           %ul.nav
@@ -18,7 +18,7 @@
                 - if current_user.admin?
                   .red.absolute.admin-position
                     Admin
-              %li= link_to 'Sign out',       destroy_user_session_path,  :method => :delete
+              %li= link_to 'Sign out', destroy_user_session_path,  :method => :delete
             - else
-              %li= link_to 'Register',      new_user_registration_path
-              %li= link_to 'Sign in',        new_user_session_path
+              %li= link_to 'Register', new_user_registration_path
+              %li= link_to 'Sign in',  new_user_session_path

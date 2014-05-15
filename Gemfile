@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'omniauth-twitter'
 gem 'puma'
 gem 'font-awesome-rails'
+gem 'newrelic_rpm'
 
 
 group :development, :test do
