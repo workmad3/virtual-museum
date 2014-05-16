@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   include Authority::UserAbilities
 
-  # :confirmable, :lockable, :timeoutable
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:twitter]
