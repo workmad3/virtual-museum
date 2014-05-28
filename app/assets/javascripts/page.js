@@ -1,12 +1,12 @@
 jQuery(document).ready(function ($) {
     $('#tabs').tab();
+    $("#new-comment-form-to-show").on("click", hide_and_show);
 });
 
-function hide_and_show() {
+function hide_and_show(event) {
     event.preventDefault();
-    document.getElementById('new-comment-form-to-show').className = '';
-    document.getElementById('button-to-unhide').className = 'hiddenx';
-}
+    $(event.target).removeClass("hiddenx");
+    $("#'button-to-unhide").addClass("hiddenx");
 
 function help_dialog() {
     event.preventDefault();
