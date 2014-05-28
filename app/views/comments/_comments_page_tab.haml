@@ -5,7 +5,7 @@
 
   - if current_user
     #button-to-unhide.float-right
-      = link_to("Add a comment", 'x', class: "btn btn-primary", onclick: "hide_and_show();")
+      = link_to("Add a comment", '#', class: "btn btn-primary")
     #new-comment-form-to-show.hiddenx
       = page.new_comment_form_as_html(current_user)
   - else
