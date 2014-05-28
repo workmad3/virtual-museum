@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     $('#tabs').tab();
-    $("#comment-button").on("click", hide_and_show);
+    $(document).on("click", "#comment-button", hide_and_show);
 });
 
 function hide_and_show(event) {
