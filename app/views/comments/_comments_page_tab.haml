@@ -4,9 +4,9 @@
     Comments
 
   - if current_user
-    #button-to-unhide.float-right
+    #comment-button.float-right
       = link_to("Add a comment", '#', class: "btn btn-primary")
-    #new-comment-form-to-show.hiddenx
+    #comment-form.hiddenx
       = page.new_comment_form_as_html(current_user)
   - else
     You need to
