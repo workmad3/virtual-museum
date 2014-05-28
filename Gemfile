@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
+
 gem 'activesupport'
 gem 'rails', '4.0.5'
 gem 'rake'
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.3'
+gem 'sprockets-image_compressor'
+gem 'sprockets-webp'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
