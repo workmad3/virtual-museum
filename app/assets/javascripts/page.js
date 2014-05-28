@@ -5,8 +5,9 @@ jQuery(document).ready(function ($) {
 
 function hide_and_show(event) {
     event.preventDefault();
-    $(event.target).removeClass("hiddenx");
-    $("#'button-to-unhide").addClass("hiddenx");
+    $(event.target).hide();
+    $("#'button-to-unhide").show();
+}
 
 function help_dialog() {
     event.preventDefault();
